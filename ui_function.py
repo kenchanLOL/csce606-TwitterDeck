@@ -33,7 +33,7 @@
 
 from main import * #IMPORTING THE MAIN.PY FILE
 
-from about import *
+from frontend.about import *
 
 
 GLOBAL_STATE = 0 #NECESSERY FOR CHECKING WEATHER THE WINDWO IS FULL SCREEN OR NOT
