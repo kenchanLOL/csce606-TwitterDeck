@@ -734,7 +734,7 @@ QPushButton:pressed {
            </widget>
           </item>
           <item>
-           <widget class="QFrame" name="frame_bug">
+           <widget class="QFrame" name="frame_news">
             <property name="minimumSize">
              <size>
               <width>80</width>
@@ -770,7 +770,7 @@ QPushButton:pressed {
               <number>0</number>
              </property>
              <item>
-              <widget class="QPushButton" name="bn_bug">
+              <widget class="QPushButton" name="bn_news">
                <property name="minimumSize">
                 <size>
                  <width>80</width>
@@ -820,7 +820,7 @@ QPushButton:pressed {
            </widget>
           </item>
           <item>
-           <widget class="QFrame" name="frame_cloud">
+           <widget class="QFrame" name="frame_login_icon">
             <property name="minimumSize">
              <size>
               <width>80</width>
@@ -856,7 +856,7 @@ QPushButton:pressed {
               <number>0</number>
              </property>
              <item>
-              <widget class="QPushButton" name="bn_cloud">
+              <widget class="QPushButton" name="bn_login">
                <property name="minimumSize">
                 <size>
                  <width>80</width>
@@ -906,7 +906,7 @@ QPushButton:pressed {
            </widget>
           </item>
           <item>
-           <widget class="QFrame" name="frame_android">
+           <widget class="QFrame" name="frame_deck">
             <property name="minimumSize">
              <size>
               <width>80</width>
@@ -942,7 +942,7 @@ QPushButton:pressed {
               <number>0</number>
              </property>
              <item>
-              <widget class="QPushButton" name="bn_android">
+              <widget class="QPushButton" name="bn_deck">
                <property name="minimumSize">
                 <size>
                  <width>80</width>
@@ -992,44 +992,46 @@ QPushButton:pressed {
            </widget>
           </item>
           <item>
-           <widget class="QFrame" name="frame_8">
-            <property name="frameShape">
-             <enum>QFrame::NoFrame</enum>
+           <widget class="QPushButton" name="btn_extend">
+            <property name="minimumSize">
+             <size>
+              <width>0</width>
+              <height>55</height>
+             </size>
             </property>
-            <property name="frameShadow">
-             <enum>QFrame::Plain</enum>
+            <property name="styleSheet">
+             <string notr="true">QPushButton {
+	border: none;
+	background-color: rgba(0,0,0,0);
+}
+QPushButton:hover {
+	background-color: rgb(91,90,90);
+}
+QPushButton:pressed {	
+	background-color: rgba(0,0,0,0);
+}</string>
             </property>
-            <layout class="QVBoxLayout" name="verticalLayout_4">
-             <property name="spacing">
-              <number>0</number>
-             </property>
-             <property name="leftMargin">
-              <number>0</number>
-             </property>
-             <property name="topMargin">
-              <number>0</number>
-             </property>
-             <property name="rightMargin">
-              <number>0</number>
-             </property>
-             <property name="bottomMargin">
-              <number>0</number>
-             </property>
-             <item>
-              <spacer name="verticalSpacer_7">
-               <property name="orientation">
-                <enum>Qt::Vertical</enum>
-               </property>
-               <property name="sizeHint" stdset="0">
-                <size>
-                 <width>20</width>
-                 <height>40</height>
-                </size>
-               </property>
-              </spacer>
-             </item>
-            </layout>
+            <property name="text">
+             <string/>
+            </property>
+            <property name="icon">
+             <iconset>
+              <normaloff>icons/1x/dragAsset 52.png</normaloff>icons/1x/dragAsset 52.png</iconset>
+            </property>
            </widget>
+          </item>
+          <item>
+           <spacer name="verticalSpacer_7">
+            <property name="orientation">
+             <enum>Qt::Vertical</enum>
+            </property>
+            <property name="sizeHint" stdset="0">
+             <size>
+              <width>20</width>
+              <height>40</height>
+             </size>
+            </property>
+           </spacer>
           </item>
          </layout>
         </widget>
@@ -1094,7 +1096,7 @@ QPushButton:pressed {
                 <string notr="true"/>
                </property>
                <property name="currentIndex">
-                <number>0</number>
+                <number>6</number>
                </property>
                <widget class="QWidget" name="page_home">
                 <property name="styleSheet">
@@ -1438,7 +1440,7 @@ QScrollBar::sub-page:vertical {
                  </item>
                 </layout>
                </widget>
-               <widget class="QWidget" name="page_about_cloud">
+               <widget class="QWidget" name="page_about_login">
                 <property name="styleSheet">
                  <string notr="true">background:rgb(91,90,90);</string>
                 </property>
@@ -1464,17 +1466,17 @@ QScrollBar::sub-page:vertical {
                  </item>
                 </layout>
                </widget>
-               <widget class="QWidget" name="page_about_android">
+               <widget class="QWidget" name="page_about_deck">
                 <property name="styleSheet">
                  <string notr="true">background:rgb(91,90,90);</string>
                 </property>
                </widget>
-               <widget class="QWidget" name="page_about_bug">
+               <widget class="QWidget" name="page_about_news">
                 <property name="styleSheet">
                  <string notr="true">background:rgb(91,90,90);</string>
                 </property>
                </widget>
-               <widget class="QWidget" name="page_bug">
+               <widget class="QWidget" name="page_news">
                 <property name="styleSheet">
                  <string notr="true">background:rgb(91,90,90);</string>
                 </property>
@@ -1523,7 +1525,7 @@ QScrollBar::sub-page:vertical {
                   </widget>
                  </item>
                  <item>
-                  <widget class="QFrame" name="frame_bug_main">
+                  <widget class="QFrame" name="frame_news_main">
                    <property name="minimumSize">
                     <size>
                      <width>0</width>
@@ -1543,85 +1545,8 @@ QScrollBar::sub-page:vertical {
                     <enum>QFrame::Plain</enum>
                    </property>
                    <layout class="QGridLayout" name="gridLayout">
-                    <item row="5" column="7">
-                     <spacer name="horizontalSpacer">
-                      <property name="orientation">
-                       <enum>Qt::Horizontal</enum>
-                      </property>
-                      <property name="sizeHint" stdset="0">
-                       <size>
-                        <width>421</width>
-                        <height>20</height>
-                       </size>
-                      </property>
-                     </spacer>
-                    </item>
-                    <item row="0" column="0">
-                     <widget class="QLabel" name="lab_bullet">
-                      <property name="maximumSize">
-                       <size>
-                        <width>5</width>
-                        <height>16777215</height>
-                       </size>
-                      </property>
-                      <property name="text">
-                       <string/>
-                      </property>
-                      <property name="pixmap">
-                       <pixmap>icons/1x/bulletAsset 54.png</pixmap>
-                      </property>
-                      <property name="alignment">
-                       <set>Qt::AlignCenter</set>
-                      </property>
-                     </widget>
-                    </item>
-                    <item row="2" column="0">
-                     <widget class="QLabel" name="lab_bullet3">
-                      <property name="maximumSize">
-                       <size>
-                        <width>5</width>
-                        <height>16777215</height>
-                       </size>
-                      </property>
-                      <property name="text">
-                       <string/>
-                      </property>
-                      <property name="pixmap">
-                       <pixmap>icons/1x/bulletAsset 54.png</pixmap>
-                      </property>
-                     </widget>
-                    </item>
-                    <item row="1" column="1">
-                     <widget class="QLabel" name="lab_bug2">
-                      <property name="font">
-                       <font>
-                        <family>Segoe UI</family>
-                        <pointsize>14</pointsize>
-                       </font>
-                      </property>
-                      <property name="styleSheet">
-                       <string notr="true">color:rgb(255,255,255);</string>
-                      </property>
-                      <property name="text">
-                       <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; color:#ffffff;&quot;&gt;Simple TO&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
-                      </property>
-                     </widget>
-                    </item>
-                    <item row="2" column="1">
-                     <widget class="QLabel" name="lab_bug3">
-                      <property name="font">
-                       <font>
-                        <family>Segoe UI</family>
-                        <pointsize>14</pointsize>
-                       </font>
-                      </property>
-                      <property name="text">
-                       <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; color:#ffffff;&quot;&gt;Sertilage&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
-                      </property>
-                     </widget>
-                    </item>
-                    <item row="3" column="8">
-                     <widget class="QComboBox" name="comboBox_bug">
+                    <item row="0" column="6">
+                     <widget class="QComboBox" name="comboBox_news">
                       <property name="maximumSize">
                        <size>
                         <width>16777215</width>
@@ -1720,55 +1645,48 @@ QComboBox::drop-down {
                       </item>
                      </widget>
                     </item>
-                    <item row="0" column="1">
-                     <widget class="QLabel" name="lab_bug1">
-                      <property name="minimumSize">
-                       <size>
-                        <width>0</width>
-                        <height>0</height>
-                       </size>
-                      </property>
-                      <property name="maximumSize">
-                       <size>
-                        <width>16777215</width>
-                        <height>16777215</height>
-                       </size>
-                      </property>
-                      <property name="font">
-                       <font>
-                        <family>Segoe UI</family>
-                        <pointsize>14</pointsize>
-                       </font>
+                    <item row="1" column="5" colspan="3">
+                     <widget class="QProgressBar" name="progressBar_news">
+                      <property name="enabled">
+                       <bool>true</bool>
                       </property>
                       <property name="styleSheet">
-                       <string notr="true">color:rgb(255,255,255);</string>
+                       <string notr="true">QProgressBar
+{
+	color:rgb(255,255,255);
+	background-color :rgb(51,51,51);
+	border : 2px;
+	border-radius:4px;
+}
+
+QProgressBar::chunk{
+	border : 2px;
+	border-radius:4px;
+	background-color:rgb(0,143,170);
+}</string>
                       </property>
-                      <property name="text">
-                       <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; color:#ffffff;&quot;&gt;Vore/Lore&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+                      <property name="value">
+                       <number>0</number>
                       </property>
                       <property name="alignment">
-                       <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignTop</set>
+                       <set>Qt::AlignCenter</set>
+                      </property>
+                      <property name="textVisible">
+                       <bool>true</bool>
+                      </property>
+                      <property name="orientation">
+                       <enum>Qt::Horizontal</enum>
+                      </property>
+                      <property name="invertedAppearance">
+                       <bool>false</bool>
+                      </property>
+                      <property name="textDirection">
+                       <enum>QProgressBar::TopToBottom</enum>
                       </property>
                      </widget>
                     </item>
-                    <item row="1" column="0">
-                     <widget class="QLabel" name="lab_bullet2">
-                      <property name="maximumSize">
-                       <size>
-                        <width>5</width>
-                        <height>16777215</height>
-                       </size>
-                      </property>
-                      <property name="text">
-                       <string/>
-                      </property>
-                      <property name="pixmap">
-                       <pixmap>icons/1x/bulletAsset 54.png</pixmap>
-                      </property>
-                     </widget>
-                    </item>
-                    <item row="3" column="9">
-                     <widget class="QPushButton" name="bn_bug_start">
+                    <item row="0" column="7">
+                     <widget class="QPushButton" name="bn_news_start">
                       <property name="minimumSize">
                        <size>
                         <width>69</width>
@@ -1820,77 +1738,6 @@ QPushButton:disabled {
                       </property>
                      </widget>
                     </item>
-                    <item row="4" column="7" colspan="3">
-                     <widget class="QProgressBar" name="progressBar_bug">
-                      <property name="enabled">
-                       <bool>true</bool>
-                      </property>
-                      <property name="styleSheet">
-                       <string notr="true">QProgressBar
-{
-	color:rgb(255,255,255);
-	background-color :rgb(51,51,51);
-	border : 2px;
-	border-radius:4px;
-}
-
-QProgressBar::chunk{
-	border : 2px;
-	border-radius:4px;
-	background-color:rgb(0,143,170);
-}</string>
-                      </property>
-                      <property name="value">
-                       <number>0</number>
-                      </property>
-                      <property name="alignment">
-                       <set>Qt::AlignCenter</set>
-                      </property>
-                      <property name="textVisible">
-                       <bool>true</bool>
-                      </property>
-                      <property name="orientation">
-                       <enum>Qt::Horizontal</enum>
-                      </property>
-                      <property name="invertedAppearance">
-                       <bool>false</bool>
-                      </property>
-                      <property name="textDirection">
-                       <enum>QProgressBar::TopToBottom</enum>
-                      </property>
-                     </widget>
-                    </item>
-                    <item row="3" column="7">
-                     <widget class="QLabel" name="lab_bug_action">
-                      <property name="minimumSize">
-                       <size>
-                        <width>0</width>
-                        <height>20</height>
-                       </size>
-                      </property>
-                      <property name="maximumSize">
-                       <size>
-                        <width>16777215</width>
-                        <height>30</height>
-                       </size>
-                      </property>
-                      <property name="font">
-                       <font>
-                        <family>Segoe UI</family>
-                        <pointsize>16</pointsize>
-                       </font>
-                      </property>
-                      <property name="styleSheet">
-                       <string notr="true">color:rgb(255,255,255);</string>
-                      </property>
-                      <property name="text">
-                       <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; color:#ffffff;&quot;&gt;Action: &lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
-                      </property>
-                      <property name="alignment">
-                       <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
-                      </property>
-                     </widget>
-                    </item>
                    </layout>
                   </widget>
                  </item>
@@ -1909,7 +1756,7 @@ QProgressBar::chunk{
                  </item>
                 </layout>
                </widget>
-               <widget class="QWidget" name="page_cloud">
+               <widget class="QWidget" name="page_login">
                 <property name="styleSheet">
                  <string notr="true">background:rgb(91,90,90);</string>
                 </property>
@@ -1930,7 +1777,7 @@ QProgressBar::chunk{
                   <number>5</number>
                  </property>
                  <item>
-                  <widget class="QLabel" name="lab_cloud_main">
+                  <widget class="QLabel" name="lab_login_main">
                    <property name="minimumSize">
                     <size>
                      <width>0</width>
@@ -1960,7 +1807,7 @@ QProgressBar::chunk{
                   </widget>
                  </item>
                  <item>
-                  <widget class="QFrame" name="frame_2">
+                  <widget class="QFrame" name="frame_login">
                    <property name="enabled">
                     <bool>true</bool>
                    </property>
@@ -2021,7 +1868,7 @@ QProgressBar::chunk{
                      </spacer>
                     </item>
                     <item row="2" column="4">
-                     <widget class="QPushButton" name="bn_cloud_connect">
+                     <widget class="QPushButton" name="bn_login_login">
                       <property name="minimumSize">
                        <size>
                         <width>69</width>
@@ -2068,7 +1915,7 @@ QPushButton:disabled {
                      </widget>
                     </item>
                     <item row="0" column="0">
-                     <widget class="QLabel" name="label_2">
+                     <widget class="QLabel" name="label_login_id">
                       <property name="minimumSize">
                        <size>
                         <width>100</width>
@@ -2090,7 +1937,7 @@ QPushButton:disabled {
                      </widget>
                     </item>
                     <item row="1" column="0">
-                     <widget class="QLabel" name="label_3">
+                     <widget class="QLabel" name="label_login_password">
                       <property name="minimumSize">
                        <size>
                         <width>100</width>
@@ -2112,7 +1959,7 @@ QPushButton:disabled {
                      </widget>
                     </item>
                     <item row="0" column="1" colspan="4">
-                     <widget class="QLineEdit" name="line_cloud_id">
+                     <widget class="QLineEdit" name="line_login_id">
                       <property name="enabled">
                        <bool>true</bool>
                       </property>
@@ -2152,7 +1999,7 @@ QLineEdit:disabled {
                      </widget>
                     </item>
                     <item row="2" column="3">
-                     <widget class="QPushButton" name="bn_cloud_clear">
+                     <widget class="QPushButton" name="bn_login_clear">
                       <property name="enabled">
                        <bool>true</bool>
                       </property>
@@ -2215,7 +2062,7 @@ QPushButton:disabled {
                      </spacer>
                     </item>
                     <item row="1" column="1" colspan="4">
-                     <widget class="QLineEdit" name="line_cloud_adress">
+                     <widget class="QLineEdit" name="line_login_password">
                       <property name="minimumSize">
                        <size>
                         <width>400</width>
@@ -2252,7 +2099,7 @@ QLineEdit:disabled {
                      </widget>
                     </item>
                     <item row="2" column="2">
-                     <widget class="QPushButton" name="bn_cloud_register">
+                     <widget class="QPushButton" name="bn_login_register">
                       <property name="minimumSize">
                        <size>
                         <width>69</width>
@@ -2339,7 +2186,7 @@ QPushButton:disabled {
                   <number>0</number>
                  </property>
                  <item>
-                  <widget class="QFrame" name="frame_android_menu">
+                  <widget class="QFrame" name="frame_deck_menu">
                    <property name="minimumSize">
                     <size>
                      <width>0</width>
@@ -2378,7 +2225,7 @@ QPushButton:disabled {
                      <number>0</number>
                     </property>
                     <item>
-                     <widget class="QFrame" name="frame_android_contact">
+                     <widget class="QFrame" name="frame_deck_event">
                       <property name="minimumSize">
                        <size>
                         <width>80</width>
@@ -2414,7 +2261,7 @@ QPushButton:disabled {
                         <number>0</number>
                        </property>
                        <item>
-                        <widget class="QPushButton" name="bn_android_contact">
+                        <widget class="QPushButton" name="bn_deck_event">
                          <property name="minimumSize">
                           <size>
                            <width>80</width>
@@ -2464,7 +2311,7 @@ QPushButton:pressed {
                      </widget>
                     </item>
                     <item>
-                     <widget class="QFrame" name="frame_android_game">
+                     <widget class="QFrame" name="frame_deck_query">
                       <property name="minimumSize">
                        <size>
                         <width>80</width>
@@ -2500,7 +2347,7 @@ QPushButton:pressed {
                         <number>0</number>
                        </property>
                        <item>
-                        <widget class="QPushButton" name="bn_android_game">
+                        <widget class="QPushButton" name="bn_deck_query">
                          <property name="minimumSize">
                           <size>
                            <width>80</width>
@@ -2550,7 +2397,7 @@ QPushButton:pressed {
                      </widget>
                     </item>
                     <item>
-                     <widget class="QFrame" name="frame_android_world">
+                     <widget class="QFrame" name="frame_deck_advance">
                       <property name="minimumSize">
                        <size>
                         <width>80</width>
@@ -2586,7 +2433,7 @@ QPushButton:pressed {
                         <number>0</number>
                        </property>
                        <item>
-                        <widget class="QPushButton" name="bn_android_world">
+                        <widget class="QPushButton" name="bn_deck_advance">
                          <property name="minimumSize">
                           <size>
                            <width>80</width>
@@ -2630,7 +2477,7 @@ QPushButton:pressed {
                      </widget>
                     </item>
                     <item>
-                     <widget class="QFrame" name="frame_android_clean">
+                     <widget class="QFrame" name="frame_deck_clean">
                       <property name="minimumSize">
                        <size>
                         <width>80</width>
@@ -2666,7 +2513,7 @@ QPushButton:pressed {
                         <number>0</number>
                        </property>
                        <item>
-                        <widget class="QPushButton" name="bn_android_clean">
+                        <widget class="QPushButton" name="bn_deck_clean">
                          <property name="minimumSize">
                           <size>
                            <width>80</width>
@@ -2726,14 +2573,14 @@ QPushButton:pressed {
                   </widget>
                  </item>
                  <item>
-                  <widget class="QStackedWidget" name="stackedWidget_android">
+                  <widget class="QStackedWidget" name="stackedWidget_deck">
                    <property name="styleSheet">
                     <string notr="true">background:rgb(91,90,90);</string>
                    </property>
                    <property name="currentIndex">
-                    <number>2</number>
+                    <number>1</number>
                    </property>
-                   <widget class="QWidget" name="page_android_contact">
+                   <widget class="QWidget" name="page_deck_event">
                     <property name="styleSheet">
                      <string notr="true">background:rgb(91,90,90);</string>
                     </property>
@@ -2754,7 +2601,7 @@ QPushButton:pressed {
                       <number>5</number>
                      </property>
                      <item>
-                      <widget class="QLabel" name="lab_android_contact">
+                      <widget class="QLabel" name="label_event_title">
                        <property name="minimumSize">
                         <size>
                          <width>0</width>
@@ -2782,7 +2629,7 @@ QPushButton:pressed {
                       </widget>
                      </item>
                      <item>
-                      <widget class="QFrame" name="frame_android_bottom">
+                      <widget class="QFrame" name="frame_event_bottom">
                        <property name="frameShape">
                         <enum>QFrame::NoFrame</enum>
                        </property>
@@ -2841,7 +2688,7 @@ QPushButton:pressed {
                          </spacer>
                         </item>
                         <item row="0" column="1" rowspan="2">
-                         <widget class="QFrame" name="frame_android_field">
+                         <widget class="QFrame" name="frame_event_field">
                           <property name="frameShape">
                            <enum>QFrame::NoFrame</enum>
                           </property>
@@ -2865,11 +2712,14 @@ QPushButton:pressed {
                             <number>5</number>
                            </property>
                            <item row="6" column="3">
-                            <widget class="QComboBox" name="comboBox">
+                            <widget class="QComboBox" name="combo_event_type">
                              <property name="font">
                               <font>
                                <pointsize>15</pointsize>
                               </font>
+                             </property>
+                             <property name="editable">
+                              <bool>true</bool>
                              </property>
                              <item>
                               <property name="text">
@@ -2902,9 +2752,9 @@ QPushButton:pressed {
                             </spacer>
                            </item>
                            <item row="1" column="3">
-                            <widget class="QLineEdit" name="line_android_name">
+                            <widget class="QLineEdit" name="line_event_location">
                              <property name="enabled">
-                              <bool>false</bool>
+                              <bool>true</bool>
                              </property>
                              <property name="minimumSize">
                               <size>
@@ -2945,7 +2795,7 @@ QLineEdit:disabled {
                             </widget>
                            </item>
                            <item row="3" column="0" colspan="3">
-                            <widget class="QLabel" name="label_5">
+                            <widget class="QLabel" name="label_event_since">
                              <property name="font">
                               <font>
                                <family>Segoe UI</family>
@@ -2961,7 +2811,7 @@ QLineEdit:disabled {
                             </widget>
                            </item>
                            <item row="6" column="0">
-                            <widget class="QLabel" name="label_6">
+                            <widget class="QLabel" name="label_event_type">
                              <property name="font">
                               <font>
                                <family>Segoe UI</family>
@@ -2993,7 +2843,7 @@ QLineEdit:disabled {
                             </spacer>
                            </item>
                            <item row="3" column="3">
-                            <widget class="QDateTimeEdit" name="dateTimeEdit">
+                            <widget class="QDateTimeEdit" name="date_event_since">
                              <property name="minimumSize">
                               <size>
                                <width>0</width>
@@ -3021,7 +2871,7 @@ QLineEdit:disabled {
                             </spacer>
                            </item>
                            <item row="1" column="0" colspan="3">
-                            <widget class="QLabel" name="label">
+                            <widget class="QLabel" name="label_event_location">
                              <property name="font">
                               <font>
                                <family>Segoe UI</family>
@@ -3037,7 +2887,7 @@ QLineEdit:disabled {
                             </widget>
                            </item>
                            <item row="8" column="0" colspan="7">
-                            <widget class="QFrame" name="frame_3">
+                            <widget class="QFrame" name="frame_event_bottom_btns">
                              <property name="frameShape">
                               <enum>QFrame::NoFrame</enum>
                              </property>
@@ -3061,7 +2911,7 @@ QLineEdit:disabled {
                                <number>0</number>
                               </property>
                               <item>
-                               <widget class="QPushButton" name="bn_android_contact_edit">
+                               <widget class="QPushButton" name="bn_deck_event_edit">
                                 <property name="minimumSize">
                                  <size>
                                   <width>69</width>
@@ -3108,54 +2958,7 @@ QPushButton:disabled {
                                </widget>
                               </item>
                               <item>
-                               <widget class="QPushButton" name="bn_android_contact_share">
-                                <property name="minimumSize">
-                                 <size>
-                                  <width>69</width>
-                                  <height>25</height>
-                                 </size>
-                                </property>
-                                <property name="maximumSize">
-                                 <size>
-                                  <width>69</width>
-                                  <height>25</height>
-                                 </size>
-                                </property>
-                                <property name="font">
-                                 <font>
-                                  <family>Segoe UI</family>
-                                  <pointsize>15</pointsize>
-                                 </font>
-                                </property>
-                                <property name="styleSheet">
-                                 <string notr="true">QPushButton {
-	border: 2px solid rgb(51,51,51);
-	border-radius: 5px;	
-	color:rgb(255,255,255);
-	background-color: rgb(51,51,51);
-}
-QPushButton:hover {
-	border: 2px solid rgb(0,143,150);
-	background-color: rgb(0,143,150);
-}
-QPushButton:pressed {	
-	border: 2px solid rgb(0,143,150);
-	background-color: rgb(51,51,51);
-}
-
-QPushButton:disabled {	
-	border-radius: 5px;	
-	border: 2px solid rgb(112,112,112);
-	background-color: rgb(112,112,112);
-}</string>
-                                </property>
-                                <property name="text">
-                                 <string>Share</string>
-                                </property>
-                               </widget>
-                              </item>
-                              <item>
-                               <widget class="QPushButton" name="bn_android_contact_delete">
+                               <widget class="QPushButton" name="bn_deck_event_delete">
                                 <property name="minimumSize">
                                  <size>
                                   <width>69</width>
@@ -3202,7 +3005,7 @@ QPushButton:disabled {
                                </widget>
                               </item>
                               <item>
-                               <widget class="QPushButton" name="bn_android_contact_save">
+                               <widget class="QPushButton" name="bn_deck_event_save">
                                 <property name="enabled">
                                  <bool>false</bool>
                                 </property>
@@ -3255,7 +3058,7 @@ QPushButton:disabled {
                             </widget>
                            </item>
                            <item row="4" column="0">
-                            <widget class="QLabel" name="label_8">
+                            <widget class="QLabel" name="label_event_till">
                              <property name="font">
                               <font>
                                <pointsize>20</pointsize>
@@ -3270,7 +3073,7 @@ QPushButton:disabled {
                             </widget>
                            </item>
                            <item row="4" column="3">
-                            <widget class="QDateTimeEdit" name="dateTimeEdit_2">
+                            <widget class="QDateTimeEdit" name="date_event_till">
                              <property name="font">
                               <font>
                                <pointsize>15</pointsize>
@@ -3286,7 +3089,7 @@ QPushButton:disabled {
                      </item>
                     </layout>
                    </widget>
-                   <widget class="QWidget" name="page_android_game">
+                   <widget class="QWidget" name="page_deck_query">
                     <property name="styleSheet">
                      <string notr="true">background:rgb(91,90,90);</string>
                     </property>
@@ -3307,7 +3110,7 @@ QPushButton:disabled {
                       <number>5</number>
                      </property>
                      <item>
-                      <widget class="QFrame" name="frame_textbar">
+                      <widget class="QFrame" name="frame_query">
                        <property name="styleSheet">
                         <string notr="true">background:rgb(91,90,90);</string>
                        </property>
@@ -3334,109 +3137,162 @@ QPushButton:disabled {
                          <number>0</number>
                         </property>
                         <item>
-                         <layout class="QVBoxLayout" name="verticalLayout_15">
-                          <item>
-                           <layout class="QHBoxLayout" name="horizontalLayout_30">
-                            <property name="sizeConstraint">
-                             <enum>QLayout::SetDefaultConstraint</enum>
-                            </property>
-                            <item>
-                             <widget class="QLabel" name="label_4">
-                              <property name="sizePolicy">
-                               <sizepolicy hsizetype="Preferred" vsizetype="Maximum">
-                                <horstretch>0</horstretch>
-                                <verstretch>0</verstretch>
-                               </sizepolicy>
+                         <widget class="QFrame" name="frame_query_0">
+                          <layout class="QVBoxLayout" name="verticalLayout_15">
+                           <item>
+                            <widget class="QFrame" name="frame_query_0_search">
+                             <layout class="QHBoxLayout" name="horizontalLayout_30">
+                              <property name="sizeConstraint">
+                               <enum>QLayout::SetDefaultConstraint</enum>
                               </property>
-                              <property name="font">
-                               <font>
-                                <pointsize>20</pointsize>
-                                <bold>false</bold>
-                               </font>
-                              </property>
-                              <property name="styleSheet">
-                               <string notr="true">color:rgb(255,255,255);</string>
-                              </property>
-                              <property name="text">
-                               <string>Query:</string>
-                              </property>
-                             </widget>
-                            </item>
-                            <item>
-                             <widget class="QLineEdit" name="lineEdit">
-                              <property name="styleSheet">
-                               <string notr="true">color:rgb(255,255,255);</string>
-                              </property>
-                             </widget>
-                            </item>
-                            <item>
-                             <widget class="QPushButton" name="pushButton">
-                              <property name="maximumSize">
-                               <size>
-                                <width>50</width>
-                                <height>16777215</height>
-                               </size>
-                              </property>
-                              <property name="text">
-                               <string>↵</string>
-                              </property>
-                             </widget>
-                            </item>
-                            <item>
-                             <widget class="QToolButton" name="toolButton">
-                              <property name="text">
-                               <string>...</string>
-                              </property>
-                             </widget>
-                            </item>
-                           </layout>
-                          </item>
-                          <item>
-                           <layout class="QVBoxLayout" name="verticalLayout_19"/>
-                          </item>
-                          <item>
-                           <widget class="QScrollArea" name="scrollArea">
-                            <property name="styleSheet">
-                             <string notr="true"/>
-                            </property>
-                            <property name="widgetResizable">
-                             <bool>true</bool>
-                            </property>
-                            <widget class="QWidget" name="scrollAreaWidgetContents">
-                             <property name="geometry">
-                              <rect>
-                               <x>0</x>
-                               <y>0</y>
-                               <width>331</width>
-                               <height>480</height>
-                              </rect>
-                             </property>
-                             <layout class="QVBoxLayout" name="verticalLayout_14">
                               <item>
-                               <widget class="QTextEdit" name="textEdit">
+                               <widget class="QLabel" name="label_query_0">
                                 <property name="sizePolicy">
-                                 <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+                                 <sizepolicy hsizetype="Preferred" vsizetype="Maximum">
                                   <horstretch>0</horstretch>
                                   <verstretch>0</verstretch>
                                  </sizepolicy>
                                 </property>
-                                <property name="minimumSize">
+                                <property name="font">
+                                 <font>
+                                  <pointsize>20</pointsize>
+                                  <bold>false</bold>
+                                 </font>
+                                </property>
+                                <property name="styleSheet">
+                                 <string notr="true">color:rgb(255,255,255);</string>
+                                </property>
+                                <property name="text">
+                                 <string>Query:</string>
+                                </property>
+                               </widget>
+                              </item>
+                              <item>
+                               <widget class="QLineEdit" name="line_query_0">
+                                <property name="sizePolicy">
+                                 <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
+                                  <horstretch>0</horstretch>
+                                  <verstretch>0</verstretch>
+                                 </sizepolicy>
+                                </property>
+                                <property name="styleSheet">
+                                 <string notr="true">color:rgb(255,255,255);</string>
+                                </property>
+                                <property name="text">
+                                 <string>FOOD AND RESOURCE</string>
+                                </property>
+                               </widget>
+                              </item>
+                              <item>
+                               <spacer name="horizontalSpacer_9">
+                                <property name="orientation">
+                                 <enum>Qt::Horizontal</enum>
+                                </property>
+                                <property name="sizeType">
+                                 <enum>QSizePolicy::Preferred</enum>
+                                </property>
+                                <property name="sizeHint" stdset="0">
                                  <size>
-                                  <width>300</width>
-                                  <height>150</height>
+                                  <width>10</width>
+                                  <height>20</height>
                                  </size>
+                                </property>
+                               </spacer>
+                              </item>
+                              <item>
+                               <widget class="QPushButton" name="bn_query_0_enter">
+                                <property name="sizePolicy">
+                                 <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
+                                  <horstretch>0</horstretch>
+                                  <verstretch>0</verstretch>
+                                 </sizepolicy>
                                 </property>
                                 <property name="maximumSize">
                                  <size>
-                                  <width>350</width>
+                                  <width>50</width>
                                   <height>16777215</height>
                                  </size>
                                 </property>
                                 <property name="styleSheet">
-                                 <string notr="true">background-color:rgb(255,255,255);border-radius: 10px;padding-top: 10px;</string>
+                                 <string notr="true">background: rgb(255, 255, 255);</string>
                                 </property>
-                                <property name="html">
-                                 <string>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
+                                <property name="text">
+                                 <string>↵</string>
+                                </property>
+                               </widget>
+                              </item>
+                              <item>
+                               <spacer name="horizontalSpacer">
+                                <property name="orientation">
+                                 <enum>Qt::Horizontal</enum>
+                                </property>
+                                <property name="sizeType">
+                                 <enum>QSizePolicy::Preferred</enum>
+                                </property>
+                                <property name="sizeHint" stdset="0">
+                                 <size>
+                                  <width>10</width>
+                                  <height>20</height>
+                                 </size>
+                                </property>
+                               </spacer>
+                              </item>
+                              <item>
+                               <widget class="QToolButton" name="bn_query_0_advance">
+                                <property name="styleSheet">
+                                 <string notr="true">background:rgb(255,255,255);</string>
+                                </property>
+                                <property name="text">
+                                 <string>...</string>
+                                </property>
+                               </widget>
+                              </item>
+                             </layout>
+                            </widget>
+                           </item>
+                           <item>
+                            <widget class="QScrollArea" name="scrollArea_query_0_tweets">
+                             <property name="styleSheet">
+                              <string notr="true"/>
+                             </property>
+                             <property name="widgetResizable">
+                              <bool>true</bool>
+                             </property>
+                             <widget class="QWidget" name="scrollAreaWidget_query_0_tweets">
+                              <property name="geometry">
+                               <rect>
+                                <x>0</x>
+                                <y>0</y>
+                                <width>331</width>
+                                <height>480</height>
+                               </rect>
+                              </property>
+                              <layout class="QVBoxLayout" name="verticalLayout_14">
+                               <item>
+                                <widget class="QTextEdit" name="text__query_0_tweets0">
+                                 <property name="sizePolicy">
+                                  <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+                                   <horstretch>0</horstretch>
+                                   <verstretch>0</verstretch>
+                                  </sizepolicy>
+                                 </property>
+                                 <property name="minimumSize">
+                                  <size>
+                                   <width>300</width>
+                                   <height>150</height>
+                                  </size>
+                                 </property>
+                                 <property name="maximumSize">
+                                  <size>
+                                   <width>16777215</width>
+                                   <height>16777215</height>
+                                  </size>
+                                 </property>
+                                 <property name="styleSheet">
+                                  <string notr="true">background-color:rgb(255,255,255);border-radius: 10px;padding-top: 10px;</string>
+                                 </property>
+                                 <property name="html">
+                                  <string>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
 &lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;meta charset=&quot;utf-8&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
 p, li { white-space: pre-wrap; }
 hr { height: 1px; border-width: 0; }
@@ -3446,34 +3302,34 @@ li.checked::marker { content: &quot;\2612&quot;; }
 &lt;p style=&quot; margin-top:10px; margin-bottom:5px; margin-left:10px; margin-right:10px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;img src=&quot;twitter-avatar.jpg&quot; alt=&quot;User Avatar&quot; /&gt; &lt;span style=&quot; font-weight:700;&quot;&gt;@9NewsAUS&lt;/span&gt; &lt;/p&gt;
 &lt;p style=&quot; margin-top:12px; margin-bottom:12px; margin-left:10px; margin-right:10px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:14px;&quot;&gt;JUST IN: Tsunami warning has been dropped for all countries, except &lt;/span&gt;&lt;span style=&quot; font-size:14px; color:#1da1f2;&quot;&gt;#Chile&lt;/span&gt;&lt;span style=&quot; font-size:14px;&quot;&gt; and &lt;/span&gt;&lt;span style=&quot; font-size:14px; color:#1da1f2;&quot;&gt;#Peru&lt;/span&gt;&lt;span style=&quot; font-size:14px;&quot;&gt;. &lt;/span&gt;&lt;span style=&quot; font-size:14px; color:#1da1f2;&quot;&gt;#9News&lt;/span&gt;&lt;span style=&quot; font-size:14px;&quot;&gt; huh? Terribly written tweet? &lt;/span&gt;&lt;/p&gt;
 &lt;p style=&quot; margin-top:10px; margin-bottom:0px; margin-left:10px; margin-right:10px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; color:#1da1f2;&quot;&gt;Like&lt;/span&gt; &lt;span style=&quot; color:#1da1f2;&quot;&gt;Retweet&lt;/span&gt; &lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
-                                </property>
-                               </widget>
-                              </item>
-                              <item>
-                               <widget class="QTextEdit" name="textEdit_5">
-                                <property name="sizePolicy">
-                                 <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
-                                  <horstretch>0</horstretch>
-                                  <verstretch>0</verstretch>
-                                 </sizepolicy>
-                                </property>
-                                <property name="minimumSize">
-                                 <size>
-                                  <width>300</width>
-                                  <height>150</height>
-                                 </size>
-                                </property>
-                                <property name="maximumSize">
-                                 <size>
-                                  <width>350</width>
-                                  <height>16777215</height>
-                                 </size>
-                                </property>
-                                <property name="styleSheet">
-                                 <string notr="true">background-color:rgb(255,255,255);border-radius: 10px;padding-top: 10px;</string>
-                                </property>
-                                <property name="html">
-                                 <string>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
+                                 </property>
+                                </widget>
+                               </item>
+                               <item>
+                                <widget class="QTextEdit" name="text__query_0_tweets1">
+                                 <property name="sizePolicy">
+                                  <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+                                   <horstretch>0</horstretch>
+                                   <verstretch>0</verstretch>
+                                  </sizepolicy>
+                                 </property>
+                                 <property name="minimumSize">
+                                  <size>
+                                   <width>300</width>
+                                   <height>150</height>
+                                  </size>
+                                 </property>
+                                 <property name="maximumSize">
+                                  <size>
+                                   <width>16777215</width>
+                                   <height>16777215</height>
+                                  </size>
+                                 </property>
+                                 <property name="styleSheet">
+                                  <string notr="true">background-color:rgb(255,255,255);border-radius: 10px;padding-top: 10px;</string>
+                                 </property>
+                                 <property name="html">
+                                  <string>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
 &lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;meta charset=&quot;utf-8&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
 p, li { white-space: pre-wrap; }
 hr { height: 1px; border-width: 0; }
@@ -3483,28 +3339,28 @@ li.checked::marker { content: &quot;\2612&quot;; }
 &lt;p style=&quot; margin-top:10px; margin-bottom:5px; margin-left:10px; margin-right:10px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;img src=&quot;twitter-avatar.jpg&quot; alt=&quot;User Avatar&quot; /&gt; &lt;span style=&quot; font-weight:700;&quot;&gt;User&lt;/span&gt; &lt;/p&gt;
 &lt;p style=&quot; margin-top:12px; margin-bottom:12px; margin-left:10px; margin-right:10px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:14px;&quot;&gt;Sending and surrounding the beings of &lt;/span&gt;&lt;span style=&quot; font-size:14px; color:#1da1f2;&quot;&gt;#Chile&lt;/span&gt;&lt;span style=&quot; font-size:14px;&quot;&gt; with an abundance of love, light and prayers... May all be safe. &lt;/span&gt;&lt;span style=&quot; font-size:14px; color:#1da1f2;&quot;&gt;#earthquake&lt;/span&gt;&lt;span style=&quot; font-size:14px;&quot;&gt; &lt;/span&gt;&lt;span style=&quot; font-size:14px; color:#1da1f2;&quot;&gt;#tsunami&lt;/span&gt;&lt;span style=&quot; font-size:14px;&quot;&gt; &lt;/span&gt;&lt;/p&gt;
 &lt;p style=&quot; margin-top:10px; margin-bottom:0px; margin-left:10px; margin-right:10px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; color:#1da1f2;&quot;&gt;Like&lt;/span&gt; &lt;span style=&quot; color:#1da1f2;&quot;&gt;Retweet&lt;/span&gt; &lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
-                                </property>
-                               </widget>
-                              </item>
-                              <item>
-                               <widget class="QTextEdit" name="textEdit_2">
-                                <property name="sizePolicy">
-                                 <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
-                                  <horstretch>0</horstretch>
-                                  <verstretch>0</verstretch>
-                                 </sizepolicy>
-                                </property>
-                                <property name="minimumSize">
-                                 <size>
-                                  <width>300</width>
-                                  <height>150</height>
-                                 </size>
-                                </property>
-                                <property name="styleSheet">
-                                 <string notr="true">background-color:rgb(255,255,255);border-radius: 10px;padding-top: 10px;</string>
-                                </property>
-                                <property name="html">
-                                 <string>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
+                                 </property>
+                                </widget>
+                               </item>
+                               <item>
+                                <widget class="QTextEdit" name="text__query_0_tweets2">
+                                 <property name="sizePolicy">
+                                  <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+                                   <horstretch>0</horstretch>
+                                   <verstretch>0</verstretch>
+                                  </sizepolicy>
+                                 </property>
+                                 <property name="minimumSize">
+                                  <size>
+                                   <width>300</width>
+                                   <height>150</height>
+                                  </size>
+                                 </property>
+                                 <property name="styleSheet">
+                                  <string notr="true">background-color:rgb(255,255,255);border-radius: 10px;padding-top: 10px;</string>
+                                 </property>
+                                 <property name="html">
+                                  <string>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
 &lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;meta charset=&quot;utf-8&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
 p, li { white-space: pre-wrap; }
 hr { height: 1px; border-width: 0; }
@@ -3514,97 +3370,148 @@ li.checked::marker { content: &quot;\2612&quot;; }
 &lt;p style=&quot; margin-top:10px; margin-bottom:5px; margin-left:10px; margin-right:10px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;img src=&quot;twitter-avatar.jpg&quot; alt=&quot;User Avatar&quot; /&gt; &lt;span style=&quot; font-weight:700;&quot;&gt;User&lt;/span&gt; &lt;/p&gt;
 &lt;p style=&quot; margin-top:12px; margin-bottom:12px; margin-left:10px; margin-right:10px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:14px;&quot;&gt;Sending and surrounding the beings of &lt;/span&gt;&lt;span style=&quot; font-size:14px; color:#1da1f2;&quot;&gt;#Chile&lt;/span&gt;&lt;span style=&quot; font-size:14px;&quot;&gt; with an abundance of love, light and prayers... May all be safe. &lt;/span&gt;&lt;span style=&quot; font-size:14px; color:#1da1f2;&quot;&gt;#earthquake&lt;/span&gt;&lt;span style=&quot; font-size:14px;&quot;&gt; &lt;/span&gt;&lt;span style=&quot; font-size:14px; color:#1da1f2;&quot;&gt;#tsunami&lt;/span&gt;&lt;span style=&quot; font-size:14px;&quot;&gt; &lt;/span&gt;&lt;/p&gt;
 &lt;p style=&quot; margin-top:10px; margin-bottom:0px; margin-left:10px; margin-right:10px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; color:#1da1f2;&quot;&gt;Like&lt;/span&gt; &lt;span style=&quot; color:#1da1f2;&quot;&gt;Retweet&lt;/span&gt; &lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
-                                </property>
-                               </widget>
-                              </item>
-                             </layout>
+                                 </property>
+                                </widget>
+                               </item>
+                              </layout>
+                             </widget>
                             </widget>
-                           </widget>
-                          </item>
-                         </layout>
+                           </item>
+                          </layout>
+                         </widget>
                         </item>
                         <item>
-                         <layout class="QVBoxLayout" name="verticalLayout_17">
-                          <item>
-                           <layout class="QHBoxLayout" name="horizontalLayout_31">
-                            <item>
-                             <widget class="QLabel" name="label_7">
-                              <property name="font">
-                               <font>
-                                <pointsize>20</pointsize>
-                               </font>
-                              </property>
-                              <property name="styleSheet">
-                               <string notr="true">color:rgb(255,255,255);</string>
-                              </property>
-                              <property name="text">
-                               <string>Query: </string>
-                              </property>
-                             </widget>
-                            </item>
-                            <item>
-                             <widget class="QLineEdit" name="lineEdit_2">
-                              <property name="styleSheet">
-                               <string notr="true">color:rgb(255,255,255);</string>
-                              </property>
-                             </widget>
-                            </item>
-                            <item>
-                             <widget class="QPushButton" name="pushButton_2">
-                              <property name="maximumSize">
-                               <size>
-                                <width>50</width>
-                                <height>16777215</height>
-                               </size>
-                              </property>
-                              <property name="text">
-                               <string>↵</string>
-                              </property>
-                             </widget>
-                            </item>
-                            <item>
-                             <widget class="QToolButton" name="toolButton_2">
-                              <property name="text">
-                               <string>...</string>
-                              </property>
-                             </widget>
-                            </item>
-                           </layout>
-                          </item>
-                          <item>
-                           <widget class="QScrollArea" name="scrollArea_2">
-                            <property name="widgetResizable">
-                             <bool>true</bool>
-                            </property>
-                            <widget class="QWidget" name="scrollAreaWidgetContents_2">
-                             <property name="geometry">
-                              <rect>
-                               <x>0</x>
-                               <y>0</y>
-                               <width>330</width>
-                               <height>408</height>
-                              </rect>
-                             </property>
-                             <layout class="QVBoxLayout" name="verticalLayout_16">
+                         <widget class="QFrame" name="frame_query_1">
+                          <layout class="QVBoxLayout" name="verticalLayout_17">
+                           <item>
+                            <widget class="QFrame" name="frame_query_1_search">
+                             <layout class="QHBoxLayout" name="horizontalLayout_31">
                               <item>
-                               <widget class="QTextEdit" name="textEdit_3">
+                               <widget class="QLabel" name="label_query_1">
+                                <property name="font">
+                                 <font>
+                                  <pointsize>20</pointsize>
+                                 </font>
+                                </property>
+                                <property name="styleSheet">
+                                 <string notr="true">color:rgb(255,255,255);</string>
+                                </property>
+                                <property name="text">
+                                 <string>Query: </string>
+                                </property>
+                               </widget>
+                              </item>
+                              <item>
+                               <widget class="QLineEdit" name="line_query_1">
+                                <property name="styleSheet">
+                                 <string notr="true">color:rgb(255,255,255);</string>
+                                </property>
+                                <property name="text">
+                                 <string>MISSING PEOPLE</string>
+                                </property>
+                               </widget>
+                              </item>
+                              <item>
+                               <spacer name="horizontalSpacer_10">
+                                <property name="orientation">
+                                 <enum>Qt::Horizontal</enum>
+                                </property>
+                                <property name="sizeType">
+                                 <enum>QSizePolicy::Preferred</enum>
+                                </property>
+                                <property name="sizeHint" stdset="0">
+                                 <size>
+                                  <width>10</width>
+                                  <height>20</height>
+                                 </size>
+                                </property>
+                               </spacer>
+                              </item>
+                              <item>
+                               <widget class="QPushButton" name="bn_query_1_enter">
                                 <property name="sizePolicy">
                                  <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
                                   <horstretch>0</horstretch>
                                   <verstretch>0</verstretch>
                                  </sizepolicy>
                                 </property>
-                                <property name="minimumSize">
+                                <property name="maximumSize">
                                  <size>
-                                  <width>300</width>
-                                  <height>0</height>
+                                  <width>50</width>
+                                  <height>16777215</height>
                                  </size>
                                 </property>
                                 <property name="styleSheet">
-                                 <string notr="true">background-color:rgb(255,255,255);border-radius: 10px;padding-top: 10px;</string>
+                                 <string notr="true">background:rgb(255,255,255);</string>
                                 </property>
-                                <property name="html">
-                                 <string>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
+                                <property name="text">
+                                 <string>↵</string>
+                                </property>
+                               </widget>
+                              </item>
+                              <item>
+                               <spacer name="horizontalSpacer_8">
+                                <property name="orientation">
+                                 <enum>Qt::Horizontal</enum>
+                                </property>
+                                <property name="sizeType">
+                                 <enum>QSizePolicy::Preferred</enum>
+                                </property>
+                                <property name="sizeHint" stdset="0">
+                                 <size>
+                                  <width>10</width>
+                                  <height>20</height>
+                                 </size>
+                                </property>
+                               </spacer>
+                              </item>
+                              <item>
+                               <widget class="QToolButton" name="bn_query_1_advance">
+                                <property name="styleSheet">
+                                 <string notr="true">background:rgb(255,255,255);</string>
+                                </property>
+                                <property name="text">
+                                 <string>...</string>
+                                </property>
+                               </widget>
+                              </item>
+                             </layout>
+                            </widget>
+                           </item>
+                           <item>
+                            <widget class="QScrollArea" name="scrollArea_query_1_tweets">
+                             <property name="widgetResizable">
+                              <bool>true</bool>
+                             </property>
+                             <widget class="QWidget" name="scrollAreaWidget_query_1_tweets">
+                              <property name="geometry">
+                               <rect>
+                                <x>0</x>
+                                <y>0</y>
+                                <width>347</width>
+                                <height>385</height>
+                               </rect>
+                              </property>
+                              <layout class="QVBoxLayout" name="verticalLayout_16">
+                               <item>
+                                <widget class="QTextEdit" name="text__query_1_tweets0">
+                                 <property name="sizePolicy">
+                                  <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+                                   <horstretch>0</horstretch>
+                                   <verstretch>0</verstretch>
+                                  </sizepolicy>
+                                 </property>
+                                 <property name="minimumSize">
+                                  <size>
+                                   <width>300</width>
+                                   <height>0</height>
+                                  </size>
+                                 </property>
+                                 <property name="styleSheet">
+                                  <string notr="true">background-color:rgb(255,255,255);border-radius: 10px;padding-top: 10px;</string>
+                                 </property>
+                                 <property name="html">
+                                  <string>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
 &lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;meta charset=&quot;utf-8&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
 p, li { white-space: pre-wrap; }
 hr { height: 1px; border-width: 0; }
@@ -3614,28 +3521,28 @@ li.checked::marker { content: &quot;\2612&quot;; }
 &lt;p style=&quot; margin-top:10px; margin-bottom:5px; margin-left:10px; margin-right:10px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;img src=&quot;twitter-avatar.jpg&quot; alt=&quot;User Avatar&quot; /&gt; &lt;span style=&quot; font-weight:700;&quot;&gt;@Vallie&lt;/span&gt; &lt;/p&gt;
 &lt;p style=&quot; margin-top:12px; margin-bottom:12px; margin-left:10px; margin-right:10px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:14px;&quot;&gt;WATCH LIVE: U.S. Geological Survey briefing on major Chilean earthquake &lt;/span&gt;&lt;a href=&quot;http://t.co/6Kj1mkBCT3&quot;&gt;&lt;span style=&quot; font-size:14px; text-decoration: underline; color:#1da1f2;&quot;&gt;http://t.co/6Kj1mkBCT3&lt;/span&gt;&lt;/a&gt;&lt;span style=&quot; font-size:14px;&quot;&gt; #ChileEarthquake &lt;/span&gt;&lt;/p&gt;
 &lt;p style=&quot; margin-top:10px; margin-bottom:0px; margin-left:10px; margin-right:10px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; color:#1da1f2;&quot;&gt;Like&lt;/span&gt; &lt;span style=&quot; color:#1da1f2;&quot;&gt;Retweet&lt;/span&gt; &lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
-                                </property>
-                               </widget>
-                              </item>
-                              <item>
-                               <widget class="QTextEdit" name="textEdit_4">
-                                <property name="sizePolicy">
-                                 <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
-                                  <horstretch>0</horstretch>
-                                  <verstretch>0</verstretch>
-                                 </sizepolicy>
-                                </property>
-                                <property name="minimumSize">
-                                 <size>
-                                  <width>300</width>
-                                  <height>0</height>
-                                 </size>
-                                </property>
-                                <property name="styleSheet">
-                                 <string notr="true">background-color:rgb(255,255,255);border-radius: 10px;padding-top: 10px;</string>
-                                </property>
-                                <property name="html">
-                                 <string>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
+                                 </property>
+                                </widget>
+                               </item>
+                               <item>
+                                <widget class="QTextEdit" name="text__query_1_tweets1">
+                                 <property name="sizePolicy">
+                                  <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+                                   <horstretch>0</horstretch>
+                                   <verstretch>0</verstretch>
+                                  </sizepolicy>
+                                 </property>
+                                 <property name="minimumSize">
+                                  <size>
+                                   <width>300</width>
+                                   <height>0</height>
+                                  </size>
+                                 </property>
+                                 <property name="styleSheet">
+                                  <string notr="true">background-color:rgb(255,255,255);border-radius: 10px;padding-top: 10px;</string>
+                                 </property>
+                                 <property name="html">
+                                  <string>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
 &lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;meta charset=&quot;utf-8&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
 p, li { white-space: pre-wrap; }
 hr { height: 1px; border-width: 0; }
@@ -3645,21 +3552,22 @@ li.checked::marker { content: &quot;\2612&quot;; }
 &lt;p style=&quot; margin-top:10px; margin-bottom:5px; margin-left:10px; margin-right:10px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;img src=&quot;twitter-avatar.jpg&quot; alt=&quot;User Avatar&quot; /&gt; &lt;span style=&quot; font-weight:700;&quot;&gt;@Euphorian54&lt;/span&gt; &lt;/p&gt;
 &lt;p style=&quot; margin-top:12px; margin-bottom:12px; margin-left:10px; margin-right:10px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:14px;&quot;&gt;RT &lt;/span&gt;&lt;span style=&quot; font-size:14px; font-weight:700;&quot;&gt;@debbiegibson&lt;/span&gt;&lt;span style=&quot; font-size:14px;&quot;&gt; &amp;amp; &lt;/span&gt;&lt;span style=&quot; font-size:14px; color:#1da1f2;&quot;&gt;#TeamDeb&lt;/span&gt;&lt;span style=&quot; font-size:14px;&quot;&gt; for &lt;/span&gt;&lt;span style=&quot; font-size:14px; color:#1da1f2;&quot;&gt;@bizarro_chile&lt;/span&gt;&lt;span style=&quot; font-size:14px;&quot;&gt; &lt;/span&gt;&lt;span style=&quot; font-size:14px; color:#1da1f2;&quot;&gt;#HITPARADE&lt;/span&gt;&lt;span style=&quot; font-size:14px;&quot;&gt; &amp;amp; &lt;/span&gt;&lt;span style=&quot; font-size:14px; color:#1da1f2;&quot;&gt;@Blondieclub&lt;/span&gt;&lt;span style=&quot; font-size:14px;&quot;&gt; ! &lt;/span&gt;&lt;span style=&quot; font-size:14px; color:#1da1f2;&quot;&gt;#chile&lt;/span&gt;&lt;span style=&quot; font-size:14px;&quot;&gt; &lt;/span&gt;&lt;span style=&quot; font-size:14px; color:#1da1f2;&quot;&gt;#santiago&lt;/span&gt;&lt;span style=&quot; font-size:14px;&quot;&gt; &lt;/span&gt;&lt;a href=&quot;http://t.co/A…&quot;&gt;&lt;span style=&quot; font-size:14px; text-decoration: underline; color:#1da1f2;&quot;&gt;http://t.co/A…&lt;/span&gt;&lt;/a&gt;&lt;span style=&quot; font-size:14px;&quot;&gt; &lt;/span&gt;&lt;/p&gt;
 &lt;p style=&quot; margin-top:10px; margin-bottom:0px; margin-left:10px; margin-right:10px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; color:#1da1f2;&quot;&gt;Like&lt;/span&gt; &lt;span style=&quot; color:#1da1f2;&quot;&gt;Retweet&lt;/span&gt; &lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
-                                </property>
-                               </widget>
-                              </item>
-                             </layout>
+                                 </property>
+                                </widget>
+                               </item>
+                              </layout>
+                             </widget>
                             </widget>
-                           </widget>
-                          </item>
-                         </layout>
+                           </item>
+                          </layout>
+                         </widget>
                         </item>
                        </layout>
                       </widget>
                      </item>
                     </layout>
                    </widget>
-                   <widget class="QWidget" name="page_android_clean">
+                   <widget class="QWidget" name="page_deck_clean">
                     <property name="styleSheet">
                      <string notr="true">background:rgb(91,90,90);</string>
                     </property>
@@ -4203,86 +4111,92 @@ QSlider::sub-page:vertical {
                      </item>
                     </layout>
                    </widget>
-                   <widget class="QWidget" name="page_android_world">
+                   <widget class="QWidget" name="page_deck_advance">
                     <property name="styleSheet">
                      <string notr="true">background:rgb(91,90,90);</string>
                     </property>
                     <layout class="QHBoxLayout" name="horizontalLayout_27">
                      <item>
-                      <layout class="QVBoxLayout" name="verticalLayout_18">
-                       <item>
-                        <layout class="QHBoxLayout" name="horizontalLayout_32">
-                         <item>
-                          <widget class="QLabel" name="label_9">
-                           <property name="font">
-                            <font>
-                             <pointsize>20</pointsize>
-                            </font>
-                           </property>
-                           <property name="styleSheet">
-                            <string notr="true">color:rgb(255,255,255);</string>
-                           </property>
-                           <property name="text">
-                            <string>Query: </string>
-                           </property>
-                          </widget>
-                         </item>
-                         <item>
-                          <widget class="QLineEdit" name="lineEdit_3">
-                           <property name="styleSheet">
-                            <string notr="true">color:rgb(255,255,255);</string>
-                           </property>
-                          </widget>
-                         </item>
-                         <item>
-                          <widget class="QPushButton" name="pushButton_3">
-                           <property name="maximumSize">
-                            <size>
-                             <width>50</width>
-                             <height>16777215</height>
-                            </size>
-                           </property>
-                           <property name="text">
-                            <string>↵</string>
-                           </property>
-                          </widget>
-                         </item>
-                        </layout>
-                       </item>
-                       <item>
-                        <widget class="QScrollArea" name="scrollArea_3">
-                         <property name="widgetResizable">
-                          <bool>true</bool>
-                         </property>
-                         <widget class="QWidget" name="scrollAreaWidgetContents_3">
-                          <property name="geometry">
-                           <rect>
-                            <x>0</x>
-                            <y>0</y>
-                            <width>423</width>
-                            <height>408</height>
-                           </rect>
-                          </property>
-                          <layout class="QVBoxLayout" name="verticalLayout_20">
+                      <widget class="QFrame" name="frame_advance_display">
+                       <layout class="QVBoxLayout" name="verticalLayout_18">
+                        <item>
+                         <widget class="QFrame" name="frame_advance_display_search">
+                          <layout class="QHBoxLayout" name="layout_deck_advance_display_query">
                            <item>
-                            <widget class="QTextEdit" name="textEdit_6">
-                             <property name="sizePolicy">
-                              <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
-                               <horstretch>0</horstretch>
-                               <verstretch>0</verstretch>
-                              </sizepolicy>
+                            <widget class="QLabel" name="label_advance_display_search">
+                             <property name="font">
+                              <font>
+                               <pointsize>20</pointsize>
+                              </font>
                              </property>
-                             <property name="minimumSize">
+                             <property name="styleSheet">
+                              <string notr="true">color:rgb(255,255,255);</string>
+                             </property>
+                             <property name="text">
+                              <string>Query: </string>
+                             </property>
+                            </widget>
+                           </item>
+                           <item>
+                            <widget class="QLineEdit" name="line_advance_display_search">
+                             <property name="styleSheet">
+                              <string notr="true">color:rgb(255,255,255);</string>
+                             </property>
+                            </widget>
+                           </item>
+                           <item>
+                            <widget class="QPushButton" name="bn_advance_display_search">
+                             <property name="maximumSize">
                               <size>
-                               <width>300</width>
-                               <height>0</height>
+                               <width>50</width>
+                               <height>16777215</height>
                               </size>
                              </property>
                              <property name="styleSheet">
-                              <string notr="true">background-color:rgb(255,255,255);border-radius: 10px;padding-top: 10px;</string>
+                              <string notr="true">background: rgb(255, 255, 255);</string>
                              </property>
-                             <property name="html">
-                              <string>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
+                             <property name="text">
+                              <string>↵</string>
+                             </property>
+                            </widget>
+                           </item>
+                          </layout>
+                         </widget>
+                        </item>
+                        <item alignment="Qt::AlignTop">
+                         <widget class="QScrollArea" name="scrollArea_advance_display_tweets">
+                          <property name="widgetResizable">
+                           <bool>true</bool>
+                          </property>
+                          <widget class="QWidget" name="scrollAreaWidgetContents_advance_display_query_tweets">
+                           <property name="geometry">
+                            <rect>
+                             <x>0</x>
+                             <y>0</y>
+                             <width>440</width>
+                             <height>379</height>
+                            </rect>
+                           </property>
+                           <layout class="QVBoxLayout" name="verticalLayout_20">
+                            <item>
+                             <widget class="QTextEdit" name="text_advance_display_query_tweet0">
+                              <property name="sizePolicy">
+                               <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+                                <horstretch>0</horstretch>
+                                <verstretch>0</verstretch>
+                               </sizepolicy>
+                              </property>
+                              <property name="minimumSize">
+                               <size>
+                                <width>300</width>
+                                <height>0</height>
+                               </size>
+                              </property>
+                              <property name="styleSheet">
+                               <string notr="true">background-color:rgb(255,255,255);border-radius: 10px;padding-top: 10px;</string>
+                              </property>
+                              <property name="html">
+                               <string>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
 &lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;meta charset=&quot;utf-8&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
 p, li { white-space: pre-wrap; }
 hr { height: 1px; border-width: 0; }
@@ -4292,28 +4206,28 @@ li.checked::marker { content: &quot;\2612&quot;; }
 &lt;p style=&quot; margin-top:10px; margin-bottom:5px; margin-left:10px; margin-right:10px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;img src=&quot;twitter-avatar.jpg&quot; alt=&quot;User Avatar&quot; /&gt; &lt;span style=&quot; font-weight:700;&quot;&gt;@Vallie&lt;/span&gt; &lt;/p&gt;
 &lt;p style=&quot; margin-top:12px; margin-bottom:12px; margin-left:10px; margin-right:10px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:14px;&quot;&gt;WATCH LIVE: U.S. Geological Survey briefing on major Chilean earthquake &lt;/span&gt;&lt;a href=&quot;http://t.co/6Kj1mkBCT3&quot;&gt;&lt;span style=&quot; font-size:14px; text-decoration: underline; color:#1da1f2;&quot;&gt;http://t.co/6Kj1mkBCT3&lt;/span&gt;&lt;/a&gt;&lt;span style=&quot; font-size:14px;&quot;&gt; #ChileEarthquake &lt;/span&gt;&lt;/p&gt;
 &lt;p style=&quot; margin-top:10px; margin-bottom:0px; margin-left:10px; margin-right:10px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; color:#1da1f2;&quot;&gt;Like&lt;/span&gt; &lt;span style=&quot; color:#1da1f2;&quot;&gt;Retweet&lt;/span&gt; &lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
-                             </property>
-                            </widget>
-                           </item>
-                           <item>
-                            <widget class="QTextEdit" name="textEdit_7">
-                             <property name="sizePolicy">
-                              <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
-                               <horstretch>0</horstretch>
-                               <verstretch>0</verstretch>
-                              </sizepolicy>
-                             </property>
-                             <property name="minimumSize">
-                              <size>
-                               <width>300</width>
-                               <height>0</height>
-                              </size>
-                             </property>
-                             <property name="styleSheet">
-                              <string notr="true">background-color:rgb(255,255,255);border-radius: 10px;padding-top: 10px;</string>
-                             </property>
-                             <property name="html">
-                              <string>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
+                              </property>
+                             </widget>
+                            </item>
+                            <item>
+                             <widget class="QTextEdit" name="text_advance_display_query_tweet1">
+                              <property name="sizePolicy">
+                               <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+                                <horstretch>0</horstretch>
+                                <verstretch>0</verstretch>
+                               </sizepolicy>
+                              </property>
+                              <property name="minimumSize">
+                               <size>
+                                <width>300</width>
+                                <height>0</height>
+                               </size>
+                              </property>
+                              <property name="styleSheet">
+                               <string notr="true">background-color:rgb(255,255,255);border-radius: 10px;padding-top: 10px;</string>
+                              </property>
+                              <property name="html">
+                               <string>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
 &lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;meta charset=&quot;utf-8&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
 p, li { white-space: pre-wrap; }
 hr { height: 1px; border-width: 0; }
@@ -4323,168 +4237,182 @@ li.checked::marker { content: &quot;\2612&quot;; }
 &lt;p style=&quot; margin-top:10px; margin-bottom:5px; margin-left:10px; margin-right:10px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;img src=&quot;twitter-avatar.jpg&quot; alt=&quot;User Avatar&quot; /&gt; &lt;span style=&quot; font-weight:700;&quot;&gt;@Euphorian54&lt;/span&gt; &lt;/p&gt;
 &lt;p style=&quot; margin-top:12px; margin-bottom:12px; margin-left:10px; margin-right:10px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:14px;&quot;&gt;RT &lt;/span&gt;&lt;span style=&quot; font-size:14px; font-weight:700;&quot;&gt;@debbiegibson&lt;/span&gt;&lt;span style=&quot; font-size:14px;&quot;&gt; &amp;amp; &lt;/span&gt;&lt;span style=&quot; font-size:14px; color:#1da1f2;&quot;&gt;#TeamDeb&lt;/span&gt;&lt;span style=&quot; font-size:14px;&quot;&gt; for &lt;/span&gt;&lt;span style=&quot; font-size:14px; color:#1da1f2;&quot;&gt;@bizarro_chile&lt;/span&gt;&lt;span style=&quot; font-size:14px;&quot;&gt; &lt;/span&gt;&lt;span style=&quot; font-size:14px; color:#1da1f2;&quot;&gt;#HITPARADE&lt;/span&gt;&lt;span style=&quot; font-size:14px;&quot;&gt; &amp;amp; &lt;/span&gt;&lt;span style=&quot; font-size:14px; color:#1da1f2;&quot;&gt;@Blondieclub&lt;/span&gt;&lt;span style=&quot; font-size:14px;&quot;&gt; ! &lt;/span&gt;&lt;span style=&quot; font-size:14px; color:#1da1f2;&quot;&gt;#chile&lt;/span&gt;&lt;span style=&quot; font-size:14px;&quot;&gt; &lt;/span&gt;&lt;span style=&quot; font-size:14px; color:#1da1f2;&quot;&gt;#santiago&lt;/span&gt;&lt;span style=&quot; font-size:14px;&quot;&gt; &lt;/span&gt;&lt;a href=&quot;http://t.co/A…&quot;&gt;&lt;span style=&quot; font-size:14px; text-decoration: underline; color:#1da1f2;&quot;&gt;http://t.co/A…&lt;/span&gt;&lt;/a&gt;&lt;span style=&quot; font-size:14px;&quot;&gt; &lt;/span&gt;&lt;/p&gt;
 &lt;p style=&quot; margin-top:10px; margin-bottom:0px; margin-left:10px; margin-right:10px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; color:#1da1f2;&quot;&gt;Like&lt;/span&gt; &lt;span style=&quot; color:#1da1f2;&quot;&gt;Retweet&lt;/span&gt; &lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
-                             </property>
-                            </widget>
-                           </item>
-                          </layout>
+                              </property>
+                             </widget>
+                            </item>
+                           </layout>
+                          </widget>
                          </widget>
-                        </widget>
-                       </item>
-                      </layout>
+                        </item>
+                       </layout>
+                      </widget>
                      </item>
                      <item>
-                      <layout class="QVBoxLayout" name="verticalLayout">
-                       <item>
-                        <widget class="QGroupBox" name="groupBox_clean_2">
-                         <property name="minimumSize">
-                          <size>
-                           <width>250</width>
-                           <height>150</height>
-                          </size>
-                         </property>
-                         <property name="maximumSize">
-                          <size>
-                           <width>250</width>
-                           <height>300</height>
-                          </size>
-                         </property>
-                         <property name="sizeIncrement">
-                          <size>
-                           <width>0</width>
-                           <height>0</height>
-                          </size>
-                         </property>
-                         <property name="font">
-                          <font>
-                           <family>Segoe UI</family>
-                           <pointsize>10</pointsize>
-                          </font>
-                         </property>
-                         <property name="styleSheet">
-                          <string notr="true">QGroupBox{
+                      <widget class="QFrame" name="frame_advance_config">
+                       <layout class="QVBoxLayout" name="verticalLayout">
+                        <item>
+                         <widget class="QGroupBox" name="groupBox_deck_advance_content">
+                          <property name="minimumSize">
+                           <size>
+                            <width>250</width>
+                            <height>150</height>
+                           </size>
+                          </property>
+                          <property name="maximumSize">
+                           <size>
+                            <width>250</width>
+                            <height>300</height>
+                           </size>
+                          </property>
+                          <property name="sizeIncrement">
+                           <size>
+                            <width>0</width>
+                            <height>0</height>
+                           </size>
+                          </property>
+                          <property name="font">
+                           <font>
+                            <family>Segoe UI</family>
+                            <pointsize>10</pointsize>
+                           </font>
+                          </property>
+                          <property name="styleSheet">
+                           <string notr="true">QGroupBox{
 	border:1px solid rgb(51,51,51);	
 	border-radius:4px;
 	color:white;
 	background:rgb(91,90,90);
 }
 </string>
-                         </property>
-                         <property name="title">
-                          <string>Content</string>
-                         </property>
-                         <property name="alignment">
-                          <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
-                         </property>
-                         <property name="flat">
-                          <bool>false</bool>
-                         </property>
-                         <property name="checkable">
-                          <bool>false</bool>
-                         </property>
-                         <layout class="QVBoxLayout" name="verticalLayout_21">
-                          <item>
-                           <layout class="QHBoxLayout" name="horizontalLayout_33">
-                            <property name="sizeConstraint">
-                             <enum>QLayout::SetDefaultConstraint</enum>
-                            </property>
-                            <item>
-                             <widget class="QLabel" name="label_11">
-                              <property name="sizePolicy">
-                               <sizepolicy hsizetype="Fixed" vsizetype="Minimum">
-                                <horstretch>0</horstretch>
-                                <verstretch>0</verstretch>
-                               </sizepolicy>
-                              </property>
-                              <property name="minimumSize">
-                               <size>
-                                <width>50</width>
-                                <height>20</height>
-                               </size>
-                              </property>
-                              <property name="maximumSize">
-                               <size>
-                                <width>16777215</width>
-                                <height>20</height>
-                               </size>
-                              </property>
-                              <property name="text">
-                               <string>Include</string>
-                              </property>
-                             </widget>
-                            </item>
-                            <item>
-                             <widget class="QLineEdit" name="lineEdit_4">
-                              <property name="sizePolicy">
-                               <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
-                                <horstretch>0</horstretch>
-                                <verstretch>0</verstretch>
-                               </sizepolicy>
-                              </property>
-                              <property name="maximumSize">
-                               <size>
-                                <width>16777215</width>
-                                <height>20</height>
-                               </size>
-                              </property>
-                             </widget>
-                            </item>
-                           </layout>
-                          </item>
-                          <item>
-                           <layout class="QHBoxLayout" name="horizontalLayout_34">
-                            <item>
-                             <widget class="QLabel" name="label_12">
-                              <property name="sizePolicy">
-                               <sizepolicy hsizetype="Fixed" vsizetype="Minimum">
-                                <horstretch>0</horstretch>
-                                <verstretch>0</verstretch>
-                               </sizepolicy>
-                              </property>
-                              <property name="minimumSize">
-                               <size>
-                                <width>50</width>
-                                <height>20</height>
-                               </size>
-                              </property>
-                              <property name="maximumSize">
-                               <size>
-                                <width>16777215</width>
-                                <height>20</height>
-                               </size>
-                              </property>
-                              <property name="text">
-                               <string>Exclude</string>
-                              </property>
-                             </widget>
-                            </item>
-                            <item>
-                             <widget class="QLineEdit" name="lineEdit_5">
-                              <property name="sizePolicy">
-                               <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
-                                <horstretch>0</horstretch>
-                                <verstretch>0</verstretch>
-                               </sizepolicy>
-                              </property>
-                              <property name="maximumSize">
-                               <size>
-                                <width>16777215</width>
-                                <height>20</height>
-                               </size>
-                              </property>
-                             </widget>
-                            </item>
-                           </layout>
-                          </item>
-                          <item>
-                           <widget class="QRadioButton" name="radioButton_8">
-                            <property name="font">
-                             <font>
-                              <family>Segoe UI</family>
-                              <pointsize>9</pointsize>
-                             </font>
-                            </property>
-                            <property name="styleSheet">
-                             <string notr="true">QRadioButton {
+                          </property>
+                          <property name="title">
+                           <string>Content</string>
+                          </property>
+                          <property name="alignment">
+                           <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
+                          </property>
+                          <property name="flat">
+                           <bool>false</bool>
+                          </property>
+                          <property name="checkable">
+                           <bool>false</bool>
+                          </property>
+                          <layout class="QVBoxLayout" name="verticalLayout_21">
+                           <item>
+                            <layout class="QHBoxLayout" name="frame_deck_advance_content_include">
+                             <property name="sizeConstraint">
+                              <enum>QLayout::SetDefaultConstraint</enum>
+                             </property>
+                             <item>
+                              <widget class="QLabel" name="label_content_include">
+                               <property name="sizePolicy">
+                                <sizepolicy hsizetype="Fixed" vsizetype="Minimum">
+                                 <horstretch>0</horstretch>
+                                 <verstretch>0</verstretch>
+                                </sizepolicy>
+                               </property>
+                               <property name="minimumSize">
+                                <size>
+                                 <width>50</width>
+                                 <height>20</height>
+                                </size>
+                               </property>
+                               <property name="maximumSize">
+                                <size>
+                                 <width>16777215</width>
+                                 <height>20</height>
+                                </size>
+                               </property>
+                               <property name="styleSheet">
+                                <string notr="true">color: rgb(255, 255, 255);</string>
+                               </property>
+                               <property name="text">
+                                <string>Include</string>
+                               </property>
+                              </widget>
+                             </item>
+                             <item>
+                              <widget class="QLineEdit" name="line_deck_advance_content_include">
+                               <property name="sizePolicy">
+                                <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+                                 <horstretch>0</horstretch>
+                                 <verstretch>0</verstretch>
+                                </sizepolicy>
+                               </property>
+                               <property name="maximumSize">
+                                <size>
+                                 <width>16777215</width>
+                                 <height>20</height>
+                                </size>
+                               </property>
+                               <property name="styleSheet">
+                                <string notr="true">background: rgb(255, 255, 255);</string>
+                               </property>
+                              </widget>
+                             </item>
+                            </layout>
+                           </item>
+                           <item>
+                            <layout class="QHBoxLayout" name="frame_deck_advance_content_exclude">
+                             <item>
+                              <widget class="QLabel" name="label_content_exclude">
+                               <property name="sizePolicy">
+                                <sizepolicy hsizetype="Fixed" vsizetype="Minimum">
+                                 <horstretch>0</horstretch>
+                                 <verstretch>0</verstretch>
+                                </sizepolicy>
+                               </property>
+                               <property name="minimumSize">
+                                <size>
+                                 <width>50</width>
+                                 <height>20</height>
+                                </size>
+                               </property>
+                               <property name="maximumSize">
+                                <size>
+                                 <width>16777215</width>
+                                 <height>20</height>
+                                </size>
+                               </property>
+                               <property name="styleSheet">
+                                <string notr="true">color: rgb(255, 255, 255);</string>
+                               </property>
+                               <property name="text">
+                                <string>Exclude</string>
+                               </property>
+                              </widget>
+                             </item>
+                             <item>
+                              <widget class="QLineEdit" name="line_deck_advance_content_exclude">
+                               <property name="sizePolicy">
+                                <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+                                 <horstretch>0</horstretch>
+                                 <verstretch>0</verstretch>
+                                </sizepolicy>
+                               </property>
+                               <property name="maximumSize">
+                                <size>
+                                 <width>16777215</width>
+                                 <height>20</height>
+                                </size>
+                               </property>
+                               <property name="styleSheet">
+                                <string notr="true">background: rgb(255, 255, 255);</string>
+                               </property>
+                              </widget>
+                             </item>
+                            </layout>
+                           </item>
+                           <item>
+                            <widget class="QRadioButton" name="radio_deck_advance_content_include">
+                             <property name="font">
+                              <font>
+                               <family>Segoe UI</family>
+                               <pointsize>9</pointsize>
+                              </font>
+                             </property>
+                             <property name="styleSheet">
+                              <string notr="true">QRadioButton {
 	background:rgb(91,90,90);
     color:white;
 }
@@ -4502,163 +4430,186 @@ QRadioButton::indicator:unchecked {
     background-color:rgb(91,90,90);
     border:2px solid rgb(51,51,51);
 }</string>
-                            </property>
-                            <property name="text">
-                             <string>Retweet</string>
-                            </property>
-                            <property name="autoExclusive">
-                             <bool>true</bool>
-                            </property>
-                           </widget>
-                          </item>
-                         </layout>
-                        </widget>
-                       </item>
-                       <item>
-                        <widget class="QGroupBox" name="groupBox_2">
-                         <property name="minimumSize">
-                          <size>
-                           <width>0</width>
-                           <height>150</height>
-                          </size>
-                         </property>
-                         <property name="styleSheet">
-                          <string notr="true">QGroupBox{
+                             </property>
+                             <property name="text">
+                              <string>Retweet</string>
+                             </property>
+                             <property name="autoExclusive">
+                              <bool>true</bool>
+                             </property>
+                            </widget>
+                           </item>
+                          </layout>
+                         </widget>
+                        </item>
+                        <item>
+                         <widget class="QGroupBox" name="groupBox_deck_advance_user">
+                          <property name="minimumSize">
+                           <size>
+                            <width>0</width>
+                            <height>150</height>
+                           </size>
+                          </property>
+                          <property name="styleSheet">
+                           <string notr="true">QGroupBox{
 	border:1px solid rgb(51,51,51);	
 	border-radius:4px;
 	color:white;
 	background:rgb(91,90,90);
 }
 </string>
-                         </property>
-                         <property name="title">
-                          <string>User</string>
-                         </property>
-                         <layout class="QVBoxLayout" name="verticalLayout_24">
-                          <item>
-                           <layout class="QHBoxLayout" name="horizontalLayout_35">
-                            <property name="sizeConstraint">
-                             <enum>QLayout::SetDefaultConstraint</enum>
-                            </property>
-                            <item>
-                             <widget class="QLabel" name="label_13">
-                              <property name="sizePolicy">
-                               <sizepolicy hsizetype="Fixed" vsizetype="Preferred">
-                                <horstretch>0</horstretch>
-                                <verstretch>0</verstretch>
-                               </sizepolicy>
-                              </property>
-                              <property name="minimumSize">
-                               <size>
-                                <width>50</width>
-                                <height>50</height>
-                               </size>
-                              </property>
-                              <property name="maximumSize">
-                               <size>
-                                <width>16777215</width>
-                                <height>50</height>
-                               </size>
-                              </property>
-                              <property name="font">
-                               <font>
-                                <pointsize>10</pointsize>
-                               </font>
-                              </property>
-                              <property name="text">
-                               <string>Follwers 
+                          </property>
+                          <property name="title">
+                           <string>User</string>
+                          </property>
+                          <layout class="QVBoxLayout" name="verticalLayout_24">
+                           <item>
+                            <layout class="QHBoxLayout" name="frame_deck_advance_user_followRange">
+                             <property name="sizeConstraint">
+                              <enum>QLayout::SetDefaultConstraint</enum>
+                             </property>
+                             <item>
+                              <widget class="QLabel" name="label_deck_advance_user_followRange">
+                               <property name="sizePolicy">
+                                <sizepolicy hsizetype="Fixed" vsizetype="Preferred">
+                                 <horstretch>0</horstretch>
+                                 <verstretch>0</verstretch>
+                                </sizepolicy>
+                               </property>
+                               <property name="minimumSize">
+                                <size>
+                                 <width>50</width>
+                                 <height>50</height>
+                                </size>
+                               </property>
+                               <property name="maximumSize">
+                                <size>
+                                 <width>16777215</width>
+                                 <height>50</height>
+                                </size>
+                               </property>
+                               <property name="font">
+                                <font>
+                                 <pointsize>10</pointsize>
+                                </font>
+                               </property>
+                               <property name="styleSheet">
+                                <string notr="true">color: rgb(255, 255, 255);</string>
+                               </property>
+                               <property name="text">
+                                <string>Follwers 
  Range</string>
-                              </property>
-                             </widget>
-                            </item>
-                            <item>
-                             <widget class="QSpinBox" name="spinBox"/>
-                            </item>
-                            <item>
-                             <widget class="QSpinBox" name="spinBox_2"/>
-                            </item>
-                           </layout>
-                          </item>
-                          <item>
-                           <layout class="QHBoxLayout" name="horizontalLayout_36">
-                            <item>
-                             <widget class="QLabel" name="label_14">
-                              <property name="sizePolicy">
-                               <sizepolicy hsizetype="Fixed" vsizetype="Minimum">
-                                <horstretch>0</horstretch>
-                                <verstretch>0</verstretch>
-                               </sizepolicy>
-                              </property>
-                              <property name="minimumSize">
-                               <size>
-                                <width>50</width>
-                                <height>20</height>
-                               </size>
-                              </property>
-                              <property name="maximumSize">
-                               <size>
-                                <width>16777215</width>
-                                <height>20</height>
-                               </size>
-                              </property>
-                              <property name="text">
-                               <string>ID:</string>
-                              </property>
-                             </widget>
-                            </item>
-                            <item>
-                             <widget class="QLineEdit" name="lineEdit_7">
-                              <property name="sizePolicy">
-                               <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
-                                <horstretch>0</horstretch>
-                                <verstretch>0</verstretch>
-                               </sizepolicy>
-                              </property>
-                              <property name="maximumSize">
-                               <size>
-                                <width>16777215</width>
-                                <height>20</height>
-                               </size>
-                              </property>
-                             </widget>
-                            </item>
-                           </layout>
-                          </item>
-                         </layout>
-                        </widget>
-                       </item>
-                       <item>
-                        <widget class="QPushButton" name="pushButton_4">
-                         <property name="sizePolicy">
-                          <sizepolicy hsizetype="Minimum" vsizetype="Preferred">
-                           <horstretch>0</horstretch>
-                           <verstretch>0</verstretch>
-                          </sizepolicy>
-                         </property>
-                         <property name="font">
-                          <font>
-                           <pointsize>15</pointsize>
-                          </font>
-                         </property>
-                         <property name="text">
-                          <string>Filter</string>
-                         </property>
-                        </widget>
-                       </item>
-                       <item>
-                        <spacer name="verticalSpacer_6">
-                         <property name="orientation">
-                          <enum>Qt::Vertical</enum>
-                         </property>
-                         <property name="sizeHint" stdset="0">
-                          <size>
-                           <width>20</width>
-                           <height>40</height>
-                          </size>
-                         </property>
-                        </spacer>
-                       </item>
-                      </layout>
+                               </property>
+                              </widget>
+                             </item>
+                             <item>
+                              <widget class="QSpinBox" name="spin_deck_advance_user_followRange_low">
+                               <property name="styleSheet">
+                                <string notr="true">background: rgb(255, 255, 255);</string>
+                               </property>
+                              </widget>
+                             </item>
+                             <item>
+                              <widget class="QSpinBox" name="spin_deck_advance_user_followRange_hi">
+                               <property name="styleSheet">
+                                <string notr="true">background: rgb(255, 255, 255);</string>
+                               </property>
+                              </widget>
+                             </item>
+                            </layout>
+                           </item>
+                           <item>
+                            <widget class="QFrame" name="frame_deck_advance_user_id">
+                             <layout class="QHBoxLayout" name="layout_deck_advance_user_id">
+                              <item>
+                               <widget class="QLabel" name="label_deck_advance_user_id">
+                                <property name="sizePolicy">
+                                 <sizepolicy hsizetype="Fixed" vsizetype="Minimum">
+                                  <horstretch>0</horstretch>
+                                  <verstretch>0</verstretch>
+                                 </sizepolicy>
+                                </property>
+                                <property name="minimumSize">
+                                 <size>
+                                  <width>50</width>
+                                  <height>20</height>
+                                 </size>
+                                </property>
+                                <property name="maximumSize">
+                                 <size>
+                                  <width>16777215</width>
+                                  <height>20</height>
+                                 </size>
+                                </property>
+                                <property name="styleSheet">
+                                 <string notr="true">color: rgb(255, 255, 255);</string>
+                                </property>
+                                <property name="text">
+                                 <string>ID:</string>
+                                </property>
+                               </widget>
+                              </item>
+                              <item>
+                               <widget class="QLineEdit" name="line_deck_advance_user_id">
+                                <property name="sizePolicy">
+                                 <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+                                  <horstretch>0</horstretch>
+                                  <verstretch>0</verstretch>
+                                 </sizepolicy>
+                                </property>
+                                <property name="maximumSize">
+                                 <size>
+                                  <width>16777215</width>
+                                  <height>20</height>
+                                 </size>
+                                </property>
+                                <property name="styleSheet">
+                                 <string notr="true">background: rgb(255, 255, 255);</string>
+                                </property>
+                               </widget>
+                              </item>
+                             </layout>
+                            </widget>
+                           </item>
+                          </layout>
+                         </widget>
+                        </item>
+                        <item>
+                         <widget class="QPushButton" name="bn_deck_advance_filter">
+                          <property name="sizePolicy">
+                           <sizepolicy hsizetype="Minimum" vsizetype="Preferred">
+                            <horstretch>0</horstretch>
+                            <verstretch>0</verstretch>
+                           </sizepolicy>
+                          </property>
+                          <property name="font">
+                           <font>
+                            <pointsize>15</pointsize>
+                           </font>
+                          </property>
+                          <property name="styleSheet">
+                           <string notr="true">background: rgb(255, 255, 255);</string>
+                          </property>
+                          <property name="text">
+                           <string>Filter</string>
+                          </property>
+                         </widget>
+                        </item>
+                        <item>
+                         <spacer name="verticalSpacer_6">
+                          <property name="orientation">
+                           <enum>Qt::Vertical</enum>
+                          </property>
+                          <property name="sizeHint" stdset="0">
+                           <size>
+                            <width>20</width>
+                            <height>40</height>
+                           </size>
+                          </property>
+                         </spacer>
+                        </item>
+                       </layout>
+                      </widget>
                      </item>
                     </layout>
                    </widget>

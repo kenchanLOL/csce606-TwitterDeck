@@ -1,35 +1,3 @@
-###########################################################################################
-###                        CODE:       WRITTEN BY: ANJAL.P AUGUST 11 2020               ###
-###                        PROJECT:    PELLIS Z1                                        ###
-###                        PURPOSE:    WINDOWS/LINUX/MAC OS FLAT MODERN UI              ###
-###                                    BASED ON QT DESIGNER, PySide2                    ###
-###                        USE CASE:   TEMPLATE FOR SOFTWARES                           ###
-###                        LICENCE:    MIT OPENSOURCE LICENCE                           ###
-###                                                                                     ###
-###                            CODE IS FREE TO USE AND MODIFY                           ###
-###########################################################################################
-
-###########################################################################################
-#                                     DOCUMENTATION                                       #
-#                                                                                         #
-#                                                                                         #
-#  Each line of the code described below is commented well, such as: the purpose of the   #
-#  code, its function, returns e.t.c as in certain caes: the alternatives to that solul-  #
-#  ution, other sources like included PDF document has also the working of the code.      #
-#  CSS stylesheet of the buttons are given seperatly in the CSS.txt in the parent folder  #
-###########################################################################################
-
-###########################################################################################
-#                                       CAUTION                                           #
-#  SINCE MOST OF THE WORK IS DONE IN THE QT DESIGNER, YOU WAY NOT SEE THE STYLESHEET HERE #
-#  FOR THAT PLEASE REFER THE CSS.txt FILE PROVIDED IN THIS SAME FILE.                     #
-#  ALSO AMNY OF THE SETTINGS IS PREDEFINED IN THE QT DESIGNER ITSELF, SO HERE IN THIS FUN-#
-#  CTION WHAY HAPPENS AFTER THIS I.E. WHEN THE USER CHANGES THE INPUT STATE, ONLY IS DELT #
-#  HERE, SO IF YOU WANT TO MODIFY THE FILE, PLEASE OPEN THE CORRESPONDING .ui FILE IN QT  #
-#  DESIGNER AND MADE THE MODIFICATION AND THENY COME BACK HERE TO ADD FUNCTIONALITY TO THE#
-#  CHANGES.                                                                               #
-########################################################################################### 
-
 
 from main import * #IMPORTING THE MAIN.PY FILE
 
@@ -40,8 +8,8 @@ GLOBAL_STATE = 0 #NECESSERY FOR CHECKING WEATHER THE WINDWO IS FULL SCREEN OR NO
 GLOBAL_TITLE_BAR = True #NECESSERY FOR CHECKING WEATHER THE WINDWO IS FULL SCREEN OR NOT
 init = False # NECRESSERY FOR INITITTION OF THE WINDOW.
 
-# tab_Buttons = ['bn_home', 'bn_bug', 'bn_android', 'bn_cloud'] #BUTTONS IN MAIN TAB  
-# android_buttons = ['bn_android_contact', 'bn_android_game', 'bn_android_clean', 'bn_android_world'] #BUTTONS IN ANDROID STACKPAGE
+# tab_Buttons = ['bn_home', 'bn_news', 'bn_deck', 'bn_login'] #BUTTONS IN MAIN TAB  
+# deck_buttons = ['bn_deck_event', 'bn_deck_query', 'bn_deck_clean', 'bn_deck_advance'] #BUTTONS IN deck STACKPAGE
 
 # THIS CLASS HOUSES ALL FUNCTION NECESSERY FOR OUR PROGRAMME TO RUN.
 class UIFunction(MainWindow):
@@ -188,39 +156,39 @@ class UIFunction(MainWindow):
                 self.ui.lab_tab.setText("About > Home")
                 self.ui.frame_home.setStyleSheet("background:rgb(91,90,90)") # SETS THE BACKGROUND OF THE CLICKED BUTTON TO LITER COLOR THAN THE REST
 
-        elif buttonName=='bn_bug':
+        elif buttonName=='bn_news':
             if self.ui.frame_bottom_west.width()==80 and index!=5:
-                self.ui.stackedWidget.setCurrentWidget(self.ui.page_bug)
-                self.ui.lab_tab.setText("Bug")
-                self.ui.frame_bug.setStyleSheet("background:rgb(91,90,90)") # SETS THE BACKGROUND OF THE CLICKED BUTTON TO LITER COLOR THAN THE REST
+                self.ui.stackedWidget.setCurrentWidget(self.ui.page_news)
+                self.ui.lab_tab.setText("News")
+                self.ui.frame_news.setStyleSheet("background:rgb(91,90,90)") # SETS THE BACKGROUND OF THE CLICKED BUTTON TO LITER COLOR THAN THE REST
 
             elif self.ui.frame_bottom_west.width()==160 and index!=4:   # ABOUT PAGE STACKED WIDGET
-                self.ui.stackedWidget.setCurrentWidget(self.ui.page_about_bug)
-                self.ui.lab_tab.setText("About > Bug")
-                self.ui.frame_bug.setStyleSheet("background:rgb(91,90,90)") # SETS THE BACKGROUND OF THE CLICKED BUTTON TO LITER COLOR THAN THE REST
+                self.ui.stackedWidget.setCurrentWidget(self.ui.page_about_news)
+                self.ui.lab_tab.setText("About > News")
+                self.ui.frame_news.setStyleSheet("background:rgb(91,90,90)") # SETS THE BACKGROUND OF THE CLICKED BUTTON TO LITER COLOR THAN THE REST
 
-        elif buttonName=='bn_android':
+        elif buttonName=='bn_deck':
             if self.ui.frame_bottom_west.width()==80  and index!=7:
                 self.ui.stackedWidget.setCurrentWidget(self.ui.page_deck)
-                self.ui.lab_tab.setText("Android")
-                self.ui.frame_android.setStyleSheet("background:rgb(91,90,90)") # SETS THE BACKGROUND OF THE CLICKED BUTTON TO LITER COLOR THAN THE REST
-                UIFunction.androidStackPages(self, "page_contact")
+                self.ui.lab_tab.setText("Deck")
+                self.ui.frame_deck.setStyleSheet("background:rgb(91,90,90)") # SETS THE BACKGROUND OF THE CLICKED BUTTON TO LITER COLOR THAN THE REST
+                UIFunction.deckStackPages(self, "page_event")
 
             elif self.ui.frame_bottom_west.width()==160  and index!=3:   # ABOUT PAGE STACKED WIDGET
-                self.ui.stackedWidget.setCurrentWidget(self.ui.page_about_android)
-                self.ui.lab_tab.setText("About > Android")
-                self.ui.frame_android.setStyleSheet("background:rgb(91,90,90)") # SETS THE BACKGROUND OF THE CLICKED BUTTON TO LITER COLOR THAN THE REST
+                self.ui.stackedWidget.setCurrentWidget(self.ui.page_about_deck)
+                self.ui.lab_tab.setText("About > Deck")
+                self.ui.frame_deck.setStyleSheet("background:rgb(91,90,90)") # SETS THE BACKGROUND OF THE CLICKED BUTTON TO LITER COLOR THAN THE REST
 
-        elif buttonName=='bn_cloud':
+        elif buttonName=='bn_login':
             if self.ui.frame_bottom_west.width()==80 and index!=6:
-                self.ui.stackedWidget.setCurrentWidget(self.ui.page_cloud)
-                self.ui.lab_tab.setText("Cloud")
-                self.ui.frame_cloud.setStyleSheet("background:rgb(91,90,90)") # SETS THE BACKGROUND OF THE CLICKED BUTTON TO LITER COLOR THAN THE REST
+                self.ui.stackedWidget.setCurrentWidget(self.ui.page_login)
+                self.ui.lab_tab.setText("Login")
+                self.ui.frame_login.setStyleSheet("background:rgb(91,90,90)") # SETS THE BACKGROUND OF THE CLICKED BUTTON TO LITER COLOR THAN THE REST
 
             elif self.ui.frame_bottom_west.width()==160 and index!=2:   # ABOUT PAGE STACKED WIDGET
-                self.ui.stackedWidget.setCurrentWidget(self.ui.page_about_cloud)
-                self.ui.lab_tab.setText("About > Cloud")
-                self.ui.frame_cloud.setStyleSheet("background:rgb(91,90,90)") # SETS THE BACKGROUND OF THE CLICKED BUTTON TO LITER COLOR THAN THE REST
+                self.ui.stackedWidget.setCurrentWidget(self.ui.page_about_login)
+                self.ui.lab_tab.setText("About > Login")
+                self.ui.frame_login.setStyleSheet("background:rgb(91,90,90)") # SETS THE BACKGROUND OF THE CLICKED BUTTON TO LITER COLOR THAN THE REST
 
         #ADD ANOTHER ELIF STATEMENT HERE FOR EXECTUITING A NEW MENU BUTTON STACK PAGE.
     ########################################################################################################################
@@ -235,35 +203,35 @@ class UIFunction(MainWindow):
         self.ui.lab_home_main_hed.setText("Profile")
         self.ui.lab_home_stat_hed.setText("Stat")
 
-        ######### PAGE_BUG ############## BELOW DISPLAYS THE FUNCTION OF WIDGET, LABEL, PROGRESS BAR, E.T.C IN STACKEDWIDGET page_bug
-        self.ui.bn_bug_start.clicked.connect(lambda: APFunction.addNumbers(self, self.ui.comboBox_bug.currentText(), True))  
+        ######### PAGE_news ############## BELOW DISPLAYS THE FUNCTION OF WIDGET, LABEL, PROGRESS BAR, E.T.C IN STACKEDWIDGET page_news
+        self.ui.bn_news_start.clicked.connect(lambda: APFunction.addNumbers(self, self.ui.comboBox_news.currentText(), True))  
 
-        # THIS CALLS A SIMPLE FUNCTION LOOPS THROW THE NUMBER FORWARDED BY THE COMBOBOX 'comboBox_bug' AND DISPLAY IN PROGRESS BAR
+        # THIS CALLS A SIMPLE FUNCTION LOOPS THROW THE NUMBER FORWARDED BY THE COMBOBOX 'comboBox_news' AND DISPLAY IN PROGRESS BAR
         #ALONGWITH MOVING THE PROGRESS CHUNK FROM 0 TO 100%
 
         #########PAGE CLOUD #############
-        self.ui.bn_cloud_connect.clicked.connect(lambda: APFunction.cloudConnect(self))
-        #self.ui.bn_cloud_clear.clicked.connect(lambda: self.dialogexec("Warning", "Do you want to save the file", "icons/1x/errorAsset 55.png", "Cancel", "Save"))
-        self.ui.bn_cloud_clear.clicked.connect(lambda: APFunction.cloudClear(self))
+        self.ui.bn_login_login.clicked.connect(lambda: APFunction.cloudConnect(self))
+        #self.ui.bn_login_clear.clicked.connect(lambda: self.dialogexec("Warning", "Do you want to save the file", "icons/1x/errorAsset 55.png", "Cancel", "Save"))
+        self.ui.bn_login_clear.clicked.connect(lambda: APFunction.cloudClear(self))
 
-        #########PAGE ANDROID WIDGET AND ITS STACKANDROID WIDGET PAGES
-        self.ui.bn_android_contact.clicked.connect(lambda: UIFunction.androidStackPages(self, "page_contact"))
-        self.ui.bn_android_game.clicked.connect(lambda: UIFunction.androidStackPages(self, "page_game"))
-        self.ui.bn_android_clean.clicked.connect(lambda: UIFunction.androidStackPages(self, "page_clean"))
-        self.ui.bn_android_world.clicked.connect(lambda: UIFunction.androidStackPages(self, "page_world"))
+        #########PAGE deck WIDGET AND ITS STACKdeck WIDGET PAGES
+        self.ui.bn_deck_event.clicked.connect(lambda: UIFunction.deckStackPages(self, "page_event"))
+        self.ui.bn_deck_query.clicked.connect(lambda: UIFunction.deckStackPages(self, "page_query"))
+        self.ui.bn_deck_clean.clicked.connect(lambda: UIFunction.deckStackPages(self, "page_clean"))
+        self.ui.bn_deck_advance.clicked.connect(lambda: UIFunction.deckStackPages(self, "page_advance"))
         
-        ######ANDROID > PAGE CONTACT >>>>>>>>>>>>>>>>>>>>
-        self.ui.bn_android_contact_delete.clicked.connect(lambda: self.dialogexec("Warning", "The Contact Infromtion will be Deleted, Do you want to continue.", "icons/1x/errorAsset 55.png", "Cancel", "Yes"))
+        ######deck > PAGE event >>>>>>>>>>>>>>>>>>>>
+        self.ui.bn_deck_event_delete.clicked.connect(lambda: self.dialogexec("Warning", "The event Infromtion will be Deleted, Do you want to continue.", "icons/1x/errorAsset 55.png", "Cancel", "Yes"))
 
-        self.ui.bn_android_contact_edit.clicked.connect(lambda: APFunction.editable(self))
+        self.ui.bn_deck_event_edit.clicked.connect(lambda: APFunction.editable(self))
 
-        self.ui.bn_android_contact_save.clicked.connect(lambda: APFunction.saveContact(self))
+        self.ui.bn_deck_event_save.clicked.connect(lambda: APFunction.saveevent(self))
 
-        #######ANDROID > PAGE GAMEPAD >>>>>>>>>>>>>>>>>>>
-        # self.ui.textEdit_gamepad.setVerticalScrollBar(self.ui.vsb_gamepad)   # SETTING THE TEXT FILED AREA A SCROLL BAR
-        # self.ui.textEdit_gamepad.setText("Type Here Something, or paste something here")
+        #######deck > PAGE queryPAD >>>>>>>>>>>>>>>>>>>
+        # self.ui.textEdit_querypad.setVerticalScrollBar(self.ui.vsb_querypad)   # SETTING THE TEXT FILED AREA A SCROLL BAR
+        # self.ui.textEdit_querypad.setText("Type Here Something, or paste something here")
 
-        ######ANDROID > PAGE CLEAN >>>>>>>>>>>>>>>>>>>>>>
+        ######deck > PAGE CLEAN >>>>>>>>>>>>>>>>>>>>>>
         #NOTHING HERE
         self.ui.horizontalSlider_2.valueChanged.connect(lambda: print("Slider: Horizondal: ", self.ui.horizontalSlider_2.value())) #CHECK WEATHER THE SLIDER IS MOVED OR NOT
         self.ui.checkBox.stateChanged.connect(lambda: self.errorexec("Happy to Know you liked the UI", "icons/1x/smile2Asset 1.png", "Ok")) #WHEN THE CHECK BOX IS CHECKED IT ECECUTES THE ERROR BOX WITH MESSAGE.
@@ -275,34 +243,34 @@ class UIFunction(MainWindow):
     ################################################################################################################################
 
 
-    #-----> FUNCTION TO SHOW CORRESPONDING STACK PAGE WHEN THE ANDROID BUTTONS ARE PRESSED: CONTACT, GAME, CLOUD, WORLD
-    # SINCE THE ANDROID PAGE AHS A SUB STACKED WIDGET WIT FOUR MORE BUTTONS, ALL THIS 4 PAGES CONTENT: BUTTONS, TEXT, LABEL E.T.C ARE INITIALIED OVER HERE. 
-    def androidStackPages(self, page):
+    #-----> FUNCTION TO SHOW CORRESPONDING STACK PAGE WHEN THE deck BUTTONS ARE PRESSED: event, query, CLOUD, advance
+    # SINCE THE deck PAGE AHS A SUB STACKED WIDGET WIT FOUR MORE BUTTONS, ALL THIS 4 PAGES CONTENT: BUTTONS, TEXT, LABEL E.T.C ARE INITIALIED OVER HERE. 
+    def deckStackPages(self, page):
         #------> THIS LINE CLEARS THE BG COLOR OF PREVIOUS TABS
-        for each in self.ui.frame_android_menu.findChildren(QFrame):
+        for each in self.ui.frame_deck_menu.findChildren(QFrame):
             each.setStyleSheet("background:rgb(51,51,51)")
 
-        if page == "page_contact":
-            self.ui.stackedWidget_android.setCurrentWidget(self.ui.page_android_contact)
-            self.ui.lab_tab.setText("Android > Contact")
-            self.ui.frame_android_contact.setStyleSheet("background:rgb(91,90,90)")
+        if page == "page_event":
+            self.ui.stackedWidget_deck.setCurrentWidget(self.ui.page_deck_event)
+            self.ui.lab_tab.setText("deck > event")
+            self.ui.frame_deck_event.setStyleSheet("background:rgb(91,90,90)")
 
-        elif page == "page_game":
-            self.ui.stackedWidget_android.setCurrentWidget(self.ui.page_android_game)
-            self.ui.lab_tab.setText("Android > GamePad")
-            self.ui.frame_android_game.setStyleSheet("background:rgb(91,90,90)")
+        elif page == "page_query":
+            self.ui.stackedWidget_deck.setCurrentWidget(self.ui.page_deck_query)
+            self.ui.lab_tab.setText("deck > queryPad")
+            self.ui.frame_deck_query.setStyleSheet("background:rgb(91,90,90)")
 
         elif page == "page_clean":
-            self.ui.stackedWidget_android.setCurrentWidget(self.ui.page_android_clean)
-            self.ui.lab_tab.setText("Android > Clean")
-            self.ui.frame_android_clean.setStyleSheet("background:rgb(91,90,90)")
+            self.ui.stackedWidget_deck.setCurrentWidget(self.ui.page_deck_clean)
+            self.ui.lab_tab.setText("deck > Clean")
+            self.ui.frame_deck_clean.setStyleSheet("background:rgb(91,90,90)")
 
-        elif page == "page_world":
-            self.ui.stackedWidget_android.setCurrentWidget(self.ui.page_android_world)
-            self.ui.lab_tab.setText("Android > World")
-            self.ui.frame_android_world.setStyleSheet("background:rgb(91,90,90)")
+        elif page == "page_advance":
+            self.ui.stackedWidget_deck.setCurrentWidget(self.ui.page_deck_advance)
+            self.ui.lab_tab.setText("deck > advance")
+            self.ui.frame_deck_advance.setStyleSheet("background:rgb(91,90,90)")
 
-        #ADD A ADDITIONAL ELIF STATEMNT WITH THE SIMILAR CODE UP ABOVE FOR YOUR NEW SUBMENU BUTTON IN THE ANDROID STACK PAGE.
+        #ADD A ADDITIONAL ELIF STATEMNT WITH THE SIMILAR CODE UP ABOVE FOR YOUR NEW SUBMENU BUTTON IN THE deck STACK PAGE.
     ##############################################################################################################
 
     
@@ -319,51 +287,48 @@ class APFunction():
             for x in range(0, int(number), 1):
                 progress = int((x/int(number))*100)
                 if progress!=lastProgress:
-                    self.ui.progressBar_bug.setValue(progress)
+                    self.ui.progressBar_news.setValue(progress)
                     lastProgress = progress
-            self.ui.progressBar_bug.setValue(100)
+            self.ui.progressBar_news.setValue(100)
     ###########################
 
     #---> FUNCTION TO CONNECT THE CLOUD USING ADRESS AND RETURN A ERROR STATEMENT
+    #@BUG: rewrite this function
     def cloudConnect(self):
-        self.ui.bn_cloud_clear.setEnabled(False)
-        textID = self.ui.line_cloud_id.text()
-        textADRESS = self.ui.line_cloud_adress.text()
+        self.ui.bn_login_clear.setEnabled(False)
+        textID = self.ui.line_login_id.text()
+        textADRESS = self.ui.line_login_password.text()
         if textID=='asd' and textADRESS=='1234':
-            self.ui.line_cloud_adress.setText("")
-            self.ui.line_cloud_id.setText("")
-            self.ui.line_cloud_proxy.setText("Connection established")
+            self.ui.line_login_password.setText("")
+            self.ui.line_login_id.setText("")
         else:
             self.errorexec("Incorrect Credentials", "icons/1x/errorAsset 55.png", "Retry")
 
     def cloudClear(self):
-        self.ui.line_cloud_proxy.setText("")
-        self.ui.line_cloud_adress.setText("")
-        self.ui.line_cloud_id.setText("")
+        self.ui.line_login_password.setText("")
+        self.ui.line_login_id.setText("")
 
-    #-----> FUNCTION IN ACCOUNT OF CONTACT PAGE IN ANDROID MENU
+    #-----> FUNCTION IN ACCOUNT OF event PAGE IN deck MENU
     def editable(self):
-        self.ui.line_android_name.setEnabled(True)
-        self.ui.line_android_adress.setEnabled(True)
-        self.ui.line_android_org.setEnabled(True)
-        self.ui.line_android_email.setEnabled(True)
-        self.ui.line_android_ph.setEnabled(True)
+        self.ui.line_deck_name.setEnabled(True)
+        self.ui.line_deck_adress.setEnabled(True)
+        self.ui.line_deck_org.setEnabled(True)
+        self.ui.line_deck_email.setEnabled(True)
+        self.ui.line_deck_ph.setEnabled(True)
 
-        self.ui.bn_android_contact_save.setEnabled(True)
-        self.ui.bn_android_contact_edit.setEnabled(False)
-        self.ui.bn_android_contact_share.setEnabled(False)
-        self.ui.bn_android_contact_delete.setEnabled(False)
+        self.ui.bn_deck_event_save.setEnabled(True)
+        self.ui.bn_deck_event_edit.setEnabled(False)
+        self.ui.bn_deck_event_delete.setEnabled(False)
 
 #-----> FUNCTION TO SAVE THE MODOFOED TEXT FIELD
-    def saveContact(self):
-        self.ui.line_android_name.setEnabled(False)
-        self.ui.line_android_adress.setEnabled(False)
-        self.ui.line_android_org.setEnabled(False)
-        self.ui.line_android_email.setEnabled(False)
-        self.ui.line_android_ph.setEnabled(False)
+    def saveevent(self):
+        self.ui.line_deck_name.setEnabled(False)
+        self.ui.line_deck_adress.setEnabled(False)
+        self.ui.line_deck_org.setEnabled(False)
+        self.ui.line_deck_email.setEnabled(False)
+        self.ui.line_deck_ph.setEnabled(False)
 
-        self.ui.bn_android_contact_save.setEnabled(False)
-        self.ui.bn_android_contact_edit.setEnabled(True)
-        self.ui.bn_android_contact_share.setEnabled(True)
-        self.ui.bn_android_contact_delete.setEnabled(True)
+        self.ui.bn_deck_event_save.setEnabled(False)
+        self.ui.bn_deck_event_edit.setEnabled(True)
+        self.ui.bn_deck_event_delete.setEnabled(True)
 ###############################################################################################################################################################
