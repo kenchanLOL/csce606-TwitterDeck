@@ -167,13 +167,13 @@ class MainWindow(QMainWindow):
 
 
         #----> MENU BUTTON PRESSED EVENTS
-        #NOW SINCE OUR DEMO APPLICATION HAS ONLY 4 MENU BUTTONS: Home, Bug, Android, Cloud, WHEN USER PRESSES IT THE FOLLOWING CODE             ---------(C8)
+        #NOW SINCE OUR DEMO APPLICATION HAS ONLY 4 MENU BUTTONS: Home, Bug, deck, login, WHEN USER PRESSES IT THE FOLLOWING CODE             ---------(C8)
         #REDIRECTS IT TO THE ui_function.py FILE buttonPressed() FUNCTION TO MAKE THE NECESSERY RESPONSES TO THE BUTTON PRESSED.
         #IT TAKES SELF AND THE BUTTON NAME AS THE RGUMENT, THIS IS ONLY TO RECOGNISE WHICH BUTTON IS PRESSED BY THE buttonPressed() FUNCTION.
         self.ui.bn_home.clicked.connect(lambda: UIFunction.buttonPressed(self, 'bn_home'))
-        self.ui.bn_bug.clicked.connect(lambda: UIFunction.buttonPressed(self, 'bn_bug'))
-        self.ui.bn_android.clicked.connect(lambda: UIFunction.buttonPressed(self, 'bn_android'))
-        self.ui.bn_cloud.clicked.connect(lambda: UIFunction.buttonPressed(self, 'bn_cloud'))
+        self.ui.bn_news.clicked.connect(lambda: UIFunction.buttonPressed(self, 'bn_news'))
+        self.ui.bn_deck.clicked.connect(lambda: UIFunction.buttonPressed(self, 'bn_deck'))
+        self.ui.bn_login.clicked.connect(lambda: UIFunction.buttonPressed(self, 'bn_login'))
         #############################################################
 
 
@@ -229,11 +229,11 @@ class MainWindow(QMainWindow):
         #self.ui.comboBox_bug.currentIndex() #GIVES THE CURRENT INDEX OF THE LIST
 
     #--USING START BUTTON-----------:
-        #self.ui.bn_bug_start.clicked.connect(some function to execute) #THE FUNCTION GET ACTIVATED WHEN YOU CLICK THE BUTTON
+        #self.ui.bn_news_start.clicked.connect(some function to execute) #THE FUNCTION GET ACTIVATED WHEN YOU CLICK THE BUTTON
 
-#--PAGE CLOUD--------------------------------:
+#--PAGE login--------------------------------:
     #--CHANGE HEADING---------------:
-        #self.ui.lab_cloud_main.setText("heading")
+        #self.ui.lab_login_main.setText("heading")
 
     #--CHANGING LABELS--------------:
         #self.ui.label_2.setText("change: Clint ID")
@@ -241,26 +241,26 @@ class MainWindow(QMainWindow):
         #self.ui.label_4.setText("change: Proxy")
 
     #--USING LINE FILED-------------:
-        #self.ui.line_cloud_id.setText("set the initial text")
-        #text_get = self.ui.line_cloud_id.text() #GIVES THE TEXT ENTERED BY THE USER.
-        #DO THE SAME CODE OFR THE RES OF THE LINE EDIT : line_cloud_adress and line_cloud_proxy
+        #self.ui.line_login_id.setText("set the initial text")
+        #text_get = self.ui.line_login_id.text() #GIVES THE TEXT ENTERED BY THE USER.
+        #DO THE SAME CODE OFR THE RES OF THE LINE EDIT : line_login_adress and line_login_proxy
 
     #--USING THE PUSH BUTTONS-------:
-        #self.ui.bn_cloud_clear.clicked.connect(function to execute)
-        #self.ui.bn_cloud_connect.clikced.connect(function to execute)
+        #self.ui.bn_login_clear.clicked.connect(function to execute)
+        #self.ui.bn_login_connect.clikced.connect(function to execute)
 
-#--PAGE ANDROID:CONTACT----------------------:
+#--PAGE deck:CONTACT----------------------:
     #--CHANGING THE HEADING---------:
-        #self.ui.lab_android_contact.setText("Heading")
+        #self.ui.lab_deck_contact.setText("Heading")
 
     #--CHANGING LABELS--------------:
         #self.ui.label.setText("-----")
         #perform the same for the label with obeject tname: 'label_5', 'label_6', 'label_7', 'label_8'
 
     #--USING TEXT FIELD-------------:
-        #sefl.ui.line_android_name.setText("---")
-        #self.ui.lineandroid_name.text() #TO GET WHAT THE USER HAS ENTERED.
-        #PERFORM THE SAME CODE FOR THE: OBJECT NAME: 'line_android_adress', 'line_android_eamil', 'line_android_ph', 'line_android_org'
+        #sefl.ui.line_deck_name.setText("---")
+        #self.ui.linedeck_name.text() #TO GET WHAT THE USER HAS ENTERED.
+        #PERFORM THE SAME CODE FOR THE: OBJECT NAME: 'line_deck_adress', 'line_deck_eamil', 'line_deck_ph', 'line_deck_org'
 
     #--USING PUSH BUTTONS-----------:
         #self.ui.bn_adroid_contact_edit.clicked.connect("function goes here")
@@ -268,10 +268,10 @@ class MainWindow(QMainWindow):
         #self.ui.bn_adroid_contact_delete.clicked.connect("function goes here")
         #self.ui.bn_adroid_contact_save.clicked.connect("function goes here")
 
-        #self.ui.bn_android_contact_save.setEnable(True) #TO ENABLE THE BUTTON
+        #self.ui.bn_deck_contact_save.setEnable(True) #TO ENABLE THE BUTTON
         #DO THE SAME FOR THE REST OF THE BUTTON WHEREEVER NECESSERY.
 
-#--PAGE ANDROID:GAME-------------------------:
+#--PAGE deck:GAME-------------------------:
     #--CHANGING THE HEADING---------:
         #self.ui.lab_gamepad.setText("-----")
 
