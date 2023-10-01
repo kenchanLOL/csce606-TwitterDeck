@@ -1333,7 +1333,7 @@ class Ui_MainWindow(object):
 
         self.bn_deck_event_save = QPushButton(self.frame_event_bottom_btns)
         self.bn_deck_event_save.setObjectName(u"bn_deck_event_save")
-        self.bn_deck_event_save.setEnabled(False)
+        self.bn_deck_event_save.setEnabled(True)
         self.bn_deck_event_save.setMinimumSize(QSize(69, 25))
         self.bn_deck_event_save.setMaximumSize(QSize(69, 25))
         self.bn_deck_event_save.setFont(font10)
@@ -2214,6 +2214,16 @@ class Ui_MainWindow(object):
 
         self.verticalLayout.addWidget(self.bn_deck_advance_filter)
 
+        self.bn_deck_advance_apply = QPushButton(self.frame_advance_config)
+        self.bn_deck_advance_apply.setObjectName(u"bn_deck_advance_apply")
+        sizePolicy5.setHeightForWidth(self.bn_deck_advance_apply.sizePolicy().hasHeightForWidth())
+        self.bn_deck_advance_apply.setSizePolicy(sizePolicy5)
+        self.bn_deck_advance_apply.setMinimumSize(QSize(10, 0))
+        self.bn_deck_advance_apply.setFont(font8)
+        self.bn_deck_advance_apply.setStyleSheet(u"background: rgb(255, 255, 255);")
+
+        self.verticalLayout.addWidget(self.bn_deck_advance_apply)
+
         self.verticalSpacer_6 = QSpacerItem(20, 40, QSizePolicy.Minimum, QSizePolicy.Expanding)
 
         self.verticalLayout.addItem(self.verticalSpacer_6)
@@ -2295,8 +2305,8 @@ class Ui_MainWindow(object):
 
         self.retranslateUi(MainWindow)
 
-        self.stackedWidget.setCurrentIndex(6)
-        self.stackedWidget_deck.setCurrentIndex(1)
+        self.stackedWidget.setCurrentIndex(7)
+        self.stackedWidget_deck.setCurrentIndex(3)
 
 
         QMetaObject.connectSlotsByName(MainWindow)
@@ -2510,6 +2520,7 @@ class Ui_MainWindow(object):
 " Range", None))
         self.label_deck_advance_user_id.setText(QCoreApplication.translate("MainWindow", u"ID:", None))
         self.bn_deck_advance_filter.setText(QCoreApplication.translate("MainWindow", u"Filter", None))
+        self.bn_deck_advance_apply.setText(QCoreApplication.translate("MainWindow", u"Apply", None))
         self.lab_tab.setText(QCoreApplication.translate("MainWindow", u"<html><head/><body><p><br/></p></body></html>", None))
 #if QT_CONFIG(tooltip)
         self.frame_drag.setToolTip(QCoreApplication.translate("MainWindow", u"Drag", None))

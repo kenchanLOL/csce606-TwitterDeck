@@ -222,14 +222,20 @@ class UIFunction(MainWindow):
         
         ######deck > PAGE event >>>>>>>>>>>>>>>>>>>>
         self.ui.bn_deck_event_delete.clicked.connect(lambda: self.dialogexec("Warning", "The event Infromtion will be Deleted, Do you want to continue.", "icons/1x/errorAsset 55.png", "Cancel", "Yes"))
-
         self.ui.bn_deck_event_edit.clicked.connect(lambda: APFunction.editable(self))
-
         self.ui.bn_deck_event_save.clicked.connect(lambda: APFunction.saveevent(self))
+        self.ui.bn_deck_event_save.clicked.connect(lambda: UIFunction.deckStackPages(self, "page_query")) # Jump to new page
 
-        #######deck > PAGE queryPAD >>>>>>>>>>>>>>>>>>>
+
+        #######deck > PAGE query >>>>>>>>>>>>>>>>>>>
         # self.ui.textEdit_querypad.setVerticalScrollBar(self.ui.vsb_querypad)   # SETTING THE TEXT FILED AREA A SCROLL BAR
         # self.ui.textEdit_querypad.setText("Type Here Something, or paste something here")
+        self.ui.bn_query_0_advance.clicked.connect(lambda: UIFunction.deckStackPages(self, "page_advance")) # Jump to new page
+        self.ui.bn_query_1_advance.clicked.connect(lambda: UIFunction.deckStackPages(self, "page_advance")) # Jump to new page
+
+        #######deck > PAGE advance >>>>>>>>>>>>>>>>>>>
+        self.ui.bn_deck_advance_apply.clicked.connect(lambda: UIFunction.deckStackPages(self, "page_query")) # Jump to new page
+
 
         ######deck > PAGE CLEAN >>>>>>>>>>>>>>>>>>>>>>
         #NOTHING HERE
@@ -310,11 +316,11 @@ class APFunction():
 
     #-----> FUNCTION IN ACCOUNT OF event PAGE IN deck MENU
     def editable(self):
-        self.ui.line_deck_name.setEnabled(True)
-        self.ui.line_deck_adress.setEnabled(True)
-        self.ui.line_deck_org.setEnabled(True)
-        self.ui.line_deck_email.setEnabled(True)
-        self.ui.line_deck_ph.setEnabled(True)
+        # self.ui.line_deck_name.setEnabled(True)
+        # self.ui.line_deck_adress.setEnabled(True)
+        # self.ui.line_deck_org.setEnabled(True)
+        # self.ui.line_deck_email.setEnabled(True)
+        # self.ui.line_deck_ph.setEnabled(True)
 
         self.ui.bn_deck_event_save.setEnabled(True)
         self.ui.bn_deck_event_edit.setEnabled(False)
@@ -322,11 +328,11 @@ class APFunction():
 
 #-----> FUNCTION TO SAVE THE MODOFOED TEXT FIELD
     def saveevent(self):
-        self.ui.line_deck_name.setEnabled(False)
-        self.ui.line_deck_adress.setEnabled(False)
-        self.ui.line_deck_org.setEnabled(False)
-        self.ui.line_deck_email.setEnabled(False)
-        self.ui.line_deck_ph.setEnabled(False)
+        # self.ui.line_deck_name.setEnabled(False)
+        # self.ui.line_deck_adress.setEnabled(False)
+        # self.ui.line_deck_org.setEnabled(False)
+        # self.ui.line_deck_email.setEnabled(False)
+        # self.ui.line_deck_ph.setEnabled(False)
 
         self.ui.bn_deck_event_save.setEnabled(False)
         self.ui.bn_deck_event_edit.setEnabled(True)
