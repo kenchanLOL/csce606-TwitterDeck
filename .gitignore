@@ -1,6 +1,8 @@
 # Compiled class file
 *.class
-
+__pycache__/
+.git/
+.pyc
 # Log file
 *.log
 

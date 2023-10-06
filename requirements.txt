@@ -1,2 +1,2 @@
 PyQt5>=5.15
-PySide2>= 5.15
+PySide6>= 5.15
