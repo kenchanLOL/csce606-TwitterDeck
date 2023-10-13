@@ -721,7 +721,7 @@ class Ui_MainWindow(object):
         self.btn_login.setFont(font)
         self.btn_login.setCursor(QCursor(Qt.PointingHandCursor))
         self.btn_login.setLayoutDirection(Qt.LeftToRight)
-        self.btn_login.setStyleSheet(u"background-image: url(:/icons/images/icons/cil-save.png)")
+        self.btn_login.setStyleSheet(u"background-image: url(:/icons/images/icons/cil-save.png);")
 
         self.verticalLayout_8.addWidget(self.btn_login)
 
