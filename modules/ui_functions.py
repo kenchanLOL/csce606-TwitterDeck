@@ -1,38 +1,16 @@
-# ///////////////////////////////////////////////////////////////
-#
-# BY: WANDERSON M.PIMENTA
-# PROJECT MADE WITH: Qt Designer and PySide6
-# V: 1.0.0
-#
-# This project can be used freely for all uses, as long as they maintain the
-# respective credits only in the Python scripts, any information in the visual
-# interface (GUI) can be modified without any implication.
-#
-# There are limitations on Qt licenses if you want to use your products
-# commercially, I recommend reading them on the official website:
-# https://doc.qt.io/qtforpython/licenses.html
-#
-# ///////////////////////////////////////////////////////////////
-
 # MAIN FILE
 # ///////////////////////////////////////////////////////////////
 from main import *
-
-# GLOBALS
-# ///////////////////////////////////////////////////////////////
-GLOBAL_STATE = False
-GLOBAL_TITLE_BAR = True
-
-class UIFunctions(MainWindow):
+class UIFunctions():
     # MAXIMIZE/RESTORE
     # ///////////////////////////////////////////////////////////////
     def maximize_restore(self):
-        global GLOBAL_STATE
-        status = GLOBAL_STATE
-        if status == False:
+        # global self.global_state
+        # status = self.global_state
+        if self.global_state == False:
             self.showMaximized()
-            GLOBAL_STATE = True
-            self.ui.appMargins.setContentsMargins(0, 0, 0, 0)
+            self.global_state = True
+            self.ui.appLayout.setContentsMargins(0, 0, 0, 0)
             self.ui.maximizeRestoreAppBtn.setToolTip("Restore")
             self.ui.maximizeRestoreAppBtn.setIcon(QIcon(u":/icons/images/icons/icon_restore.png"))
             self.ui.frame_size_grip.hide()
@@ -41,10 +19,11 @@ class UIFunctions(MainWindow):
             self.top_grip.hide()
             self.bottom_grip.hide()
         else:
-            GLOBAL_STATE = False
+            self.global_state = False
             self.showNormal()
             self.resize(self.width()+1, self.height()+1)
-            self.ui.appMargins.setContentsMargins(10, 10, 10, 10)
+            # self.ui.appMargins.setContentsMargins(10, 10, 10, 10)
+            self.ui.appLayout.setContentsMargins(10, 10, 10, 10)
             self.ui.maximizeRestoreAppBtn.setToolTip("Maximize")
             self.ui.maximizeRestoreAppBtn.setIcon(QIcon(u":/icons/images/icons/icon_maximize.png"))
             self.ui.frame_size_grip.show()
@@ -56,13 +35,12 @@ class UIFunctions(MainWindow):
     # RETURN STATUS
     # ///////////////////////////////////////////////////////////////
     def returStatus(self):
-        return GLOBAL_STATE
+        return self.global_state
 
     # SET STATUS
     # ///////////////////////////////////////////////////////////////
     def setStatus(self, status):
-        global GLOBAL_STATE
-        GLOBAL_STATE = status
+        self.global_state = status
 
     # TOGGLE MENU
     # ///////////////////////////////////////////////////////////////
@@ -232,8 +210,8 @@ class UIFunctions(MainWindow):
                     UIFunctions.maximize_restore(self)
                 # MOVE WINDOW
                 if event.buttons() == Qt.LeftButton:
-                    self.move(self.pos() + event.globalPos() - self.dragPos)
-                    self.dragPos = event.globalPos()
+                    self.move(self.pos() + event.globalPosition().toPoint() - self.dragPos)
+                    self.dragPos = event.globalPosition().toPoint()
                     event.accept()
             self.ui.titleRightInfo.mouseMoveEvent = moveWindow
 

@@ -23,7 +23,10 @@ from PySide6.QtWidgets import (QAbstractItemView, QAbstractScrollArea, QApplicat
     QSizePolicy, QSlider, QSpacerItem, QSpinBox,
     QStackedWidget, QTableWidget, QTableWidgetItem, QTextEdit,
     QVBoxLayout, QWidget)
+
+from widgets import TwitterDeck
 from . resources_rc import *
+
 class Ui_MainWindow(object):
     def setupUi(self, MainWindow):
         if not MainWindow.objectName():
@@ -573,8 +576,8 @@ class Ui_MainWindow(object):
 "	font: 20pt \"Segoe UI\";\n"
 "}\n"
 "")
-        self.horizontalLayout_23 = QHBoxLayout(self.styleSheet)
-        self.horizontalLayout_23.setObjectName(u"horizontalLayout_23")
+        self.verticalLayout_26 = QVBoxLayout(self.styleSheet)
+        self.verticalLayout_26.setObjectName(u"verticalLayout_26")
         self.bgApp = QFrame(self.styleSheet)
         self.bgApp.setObjectName(u"bgApp")
         self.bgApp.setStyleSheet(u"")
@@ -1067,20 +1070,20 @@ class Ui_MainWindow(object):
 
         self.verticalLayout_21.addItem(self.verticalSpacer_3)
 
-        self.frame = QFrame(self.login)
-        self.frame.setObjectName(u"frame")
+        self.row_login_1 = QFrame(self.login)
+        self.row_login_1.setObjectName(u"row_login_1")
         sizePolicy3 = QSizePolicy(QSizePolicy.Preferred, QSizePolicy.Fixed)
         sizePolicy3.setHorizontalStretch(0)
         sizePolicy3.setVerticalStretch(0)
-        sizePolicy3.setHeightForWidth(self.frame.sizePolicy().hasHeightForWidth())
-        self.frame.setSizePolicy(sizePolicy3)
-        self.horizontalLayout_6 = QHBoxLayout(self.frame)
+        sizePolicy3.setHeightForWidth(self.row_login_1.sizePolicy().hasHeightForWidth())
+        self.row_login_1.setSizePolicy(sizePolicy3)
+        self.horizontalLayout_6 = QHBoxLayout(self.row_login_1)
         self.horizontalLayout_6.setObjectName(u"horizontalLayout_6")
         self.horizontalSpacer = QSpacerItem(200, 20, QSizePolicy.Preferred, QSizePolicy.Minimum)
 
         self.horizontalLayout_6.addItem(self.horizontalSpacer)
 
-        self.label_2 = QLabel(self.frame)
+        self.label_2 = QLabel(self.row_login_1)
         self.label_2.setObjectName(u"label_2")
         sizePolicy3.setHeightForWidth(self.label_2.sizePolicy().hasHeightForWidth())
         self.label_2.setSizePolicy(sizePolicy3)
@@ -1095,7 +1098,7 @@ class Ui_MainWindow(object):
 
         self.horizontalLayout_6.addWidget(self.label_2)
 
-        self.text_username = QPlainTextEdit(self.frame)
+        self.text_username = QPlainTextEdit(self.row_login_1)
         self.text_username.setObjectName(u"text_username")
         self.text_username.setMaximumSize(QSize(16777215, 50))
         self.text_username.setStyleSheet(u"background-color: rgb(33, 37, 43);")
@@ -1103,19 +1106,19 @@ class Ui_MainWindow(object):
         self.horizontalLayout_6.addWidget(self.text_username)
 
 
-        self.verticalLayout_21.addWidget(self.frame)
+        self.verticalLayout_21.addWidget(self.row_login_1)
 
-        self.frame1 = QFrame(self.login)
-        self.frame1.setObjectName(u"frame1")
-        sizePolicy3.setHeightForWidth(self.frame1.sizePolicy().hasHeightForWidth())
-        self.frame1.setSizePolicy(sizePolicy3)
-        self.horizontalLayout_7 = QHBoxLayout(self.frame1)
+        self.row_login_2 = QFrame(self.login)
+        self.row_login_2.setObjectName(u"row_login_2")
+        sizePolicy3.setHeightForWidth(self.row_login_2.sizePolicy().hasHeightForWidth())
+        self.row_login_2.setSizePolicy(sizePolicy3)
+        self.horizontalLayout_7 = QHBoxLayout(self.row_login_2)
         self.horizontalLayout_7.setObjectName(u"horizontalLayout_7")
         self.horizontalSpacer_2 = QSpacerItem(200, 20, QSizePolicy.Preferred, QSizePolicy.Minimum)
 
         self.horizontalLayout_7.addItem(self.horizontalSpacer_2)
 
-        self.label_3 = QLabel(self.frame1)
+        self.label_3 = QLabel(self.row_login_2)
         self.label_3.setObjectName(u"label_3")
         sizePolicy3.setHeightForWidth(self.label_3.sizePolicy().hasHeightForWidth())
         self.label_3.setSizePolicy(sizePolicy3)
@@ -1124,7 +1127,7 @@ class Ui_MainWindow(object):
 
         self.horizontalLayout_7.addWidget(self.label_3)
 
-        self.test_password = QPlainTextEdit(self.frame1)
+        self.test_password = QPlainTextEdit(self.row_login_2)
         self.test_password.setObjectName(u"test_password")
         self.test_password.setMaximumSize(QSize(16777215, 50))
         self.test_password.setStyleSheet(u"background-color: rgb(33, 37, 43);")
@@ -1132,18 +1135,18 @@ class Ui_MainWindow(object):
         self.horizontalLayout_7.addWidget(self.test_password)
 
 
-        self.verticalLayout_21.addWidget(self.frame1)
+        self.verticalLayout_21.addWidget(self.row_login_2)
 
-        self.frame2 = QFrame(self.login)
-        self.frame2.setObjectName(u"frame2")
-        self.frame2.setStyleSheet(u"")
-        self.horizontalLayout_8 = QHBoxLayout(self.frame2)
+        self.row_login_3 = QFrame(self.login)
+        self.row_login_3.setObjectName(u"row_login_3")
+        self.row_login_3.setStyleSheet(u"")
+        self.horizontalLayout_8 = QHBoxLayout(self.row_login_3)
         self.horizontalLayout_8.setObjectName(u"horizontalLayout_8")
         self.horizontalSpacer_3 = QSpacerItem(600, 20, QSizePolicy.Expanding, QSizePolicy.Minimum)
 
         self.horizontalLayout_8.addItem(self.horizontalSpacer_3)
 
-        self.btn_login_login = QPushButton(self.frame2)
+        self.btn_login_login = QPushButton(self.row_login_3)
         self.btn_login_login.setObjectName(u"btn_login_login")
         sizePolicy3.setHeightForWidth(self.btn_login_login.sizePolicy().hasHeightForWidth())
         self.btn_login_login.setSizePolicy(sizePolicy3)
@@ -1165,7 +1168,7 @@ class Ui_MainWindow(object):
 
         self.horizontalLayout_8.addWidget(self.btn_login_login)
 
-        self.btn_login_register = QPushButton(self.frame2)
+        self.btn_login_register = QPushButton(self.row_login_3)
         self.btn_login_register.setObjectName(u"btn_login_register")
         sizePolicy3.setHeightForWidth(self.btn_login_register.sizePolicy().hasHeightForWidth())
         self.btn_login_register.setSizePolicy(sizePolicy3)
@@ -1187,7 +1190,7 @@ class Ui_MainWindow(object):
         self.horizontalLayout_8.addWidget(self.btn_login_register)
 
 
-        self.verticalLayout_21.addWidget(self.frame2)
+        self.verticalLayout_21.addWidget(self.row_login_3)
 
         self.verticalSpacer = QSpacerItem(20, 40, QSizePolicy.Minimum, QSizePolicy.Expanding)
 
@@ -1335,7 +1338,7 @@ class Ui_MainWindow(object):
         self.scrollArea.setWidgetResizable(True)
         self.scrollAreaWidgetContents = QWidget()
         self.scrollAreaWidgetContents.setObjectName(u"scrollAreaWidgetContents")
-        self.scrollAreaWidgetContents.setGeometry(QRect(0, -101, 339, 218))
+        self.scrollAreaWidgetContents.setGeometry(QRect(0, 0, 315, 218))
         self.scrollAreaWidgetContents.setStyleSheet(u" QScrollBar:vertical {\n"
 "	border: none;\n"
 "    background: rgb(52, 59, 72);\n"
@@ -1527,6 +1530,9 @@ class Ui_MainWindow(object):
         self.verticalLayout.addWidget(self.row_3)
 
         self.stackedWidget.addWidget(self.widgets)
+        self.test = TwitterDeck()
+        self.test.setObjectName(u"test")
+        self.stackedWidget.addWidget(self.test)
         self.deck = QWidget()
         self.deck.setObjectName(u"deck")
         self.verticalLayout_20 = QVBoxLayout(self.deck)
@@ -1698,7 +1704,7 @@ class Ui_MainWindow(object):
         self.scrollArea_2.setWidgetResizable(True)
         self.scrollAreaWidgetContents_2 = QWidget()
         self.scrollAreaWidgetContents_2.setObjectName(u"scrollAreaWidgetContents_2")
-        self.scrollAreaWidgetContents_2.setGeometry(QRect(0, 0, 326, 556))
+        self.scrollAreaWidgetContents_2.setGeometry(QRect(0, 0, 316, 556))
         self.verticalLayout_22 = QVBoxLayout(self.scrollAreaWidgetContents_2)
         self.verticalLayout_22.setObjectName(u"verticalLayout_22")
         self.textEdit_2 = QTextEdit(self.scrollAreaWidgetContents_2)
@@ -1791,7 +1797,7 @@ class Ui_MainWindow(object):
         self.scrollArea_4.setWidgetResizable(True)
         self.scrollAreaWidgetContents_4 = QWidget()
         self.scrollAreaWidgetContents_4.setObjectName(u"scrollAreaWidgetContents_4")
-        self.scrollAreaWidgetContents_4.setGeometry(QRect(0, 0, 343, 556))
+        self.scrollAreaWidgetContents_4.setGeometry(QRect(0, 0, 315, 556))
         self.verticalLayout_23 = QVBoxLayout(self.scrollAreaWidgetContents_4)
         self.verticalLayout_23.setObjectName(u"verticalLayout_23")
         self.textEdit_8 = QTextEdit(self.scrollAreaWidgetContents_4)
@@ -1884,7 +1890,7 @@ class Ui_MainWindow(object):
         self.scrollArea_6.setWidgetResizable(True)
         self.scrollAreaWidgetContents_6 = QWidget()
         self.scrollAreaWidgetContents_6.setObjectName(u"scrollAreaWidgetContents_6")
-        self.scrollAreaWidgetContents_6.setGeometry(QRect(0, 0, 342, 556))
+        self.scrollAreaWidgetContents_6.setGeometry(QRect(0, 0, 316, 556))
         self.verticalLayout_29 = QVBoxLayout(self.scrollAreaWidgetContents_6)
         self.verticalLayout_29.setObjectName(u"verticalLayout_29")
         self.textEdit_16 = QTextEdit(self.scrollAreaWidgetContents_6)
@@ -2273,14 +2279,14 @@ class Ui_MainWindow(object):
         self.appLayout.addWidget(self.contentBox)
 
 
-        self.horizontalLayout_23.addWidget(self.bgApp)
+        self.verticalLayout_26.addWidget(self.bgApp)
 
         MainWindow.setCentralWidget(self.styleSheet)
 
         self.retranslateUi(MainWindow)
 
         self.stackedWidget.setCurrentIndex(3)
-        self.stackedWidget_2.setCurrentIndex(0)
+        self.stackedWidget_2.setCurrentIndex(1)
 
 
         QMetaObject.connectSlotsByName(MainWindow)

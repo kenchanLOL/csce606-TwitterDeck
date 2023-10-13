@@ -1,59 +1,36 @@
-# ///////////////////////////////////////////////////////////////
-#
-# BY: WANDERSON M.PIMENTA
-# PROJECT MADE WITH: Qt Designer and PySide6
-# V: 1.0.0
-#
-# This project can be used freely for all uses, as long as they maintain the
-# respective credits only in the Python scripts, any information in the visual
-# interface (GUI) can be modified without any implication.
-#
-# There are limitations on Qt licenses if you want to use your products
-# commercially, I recommend reading them on the official website:
-# https://doc.qt.io/qtforpython/licenses.html
-#
-# ///////////////////////////////////////////////////////////////
-
 import sys
 import os
 import platform
 
-# IMPORT / GUI AND MODULES AND WIDGETS
+# IMPORT / GUI AND MODULES AND widgets
 # ///////////////////////////////////////////////////////////////
 from modules import *
 from widgets import *
 os.environ["QT_FONT_DPI"] = "96" # FIX Problem for High DPI and Scale above 100%
 
-# SET AS GLOBAL WIDGETS
-# ///////////////////////////////////////////////////////////////
-widgets = None
-
 class MainWindow(QMainWindow):
     def __init__(self):
         QMainWindow.__init__(self)
 
-        # SET AS GLOBAL WIDGETS
+        # SET AS GLOBAL self.ui
         # ///////////////////////////////////////////////////////////////
         self.ui = Ui_MainWindow()
         self.ui.setupUi(self)
-        global widgets
-        widgets = self.ui
-
+        self.global_state = False
         # USE CUSTOM TITLE BAR | USE AS "False" FOR MAC OR LINUX
         # ///////////////////////////////////////////////////////////////
         Settings.ENABLE_CUSTOM_TITLE_BAR = True
-
         # APP NAME
         # ///////////////////////////////////////////////////////////////
-        title = "PyDracula - Modern GUI"
-        description = "PyDracula APP - Theme with colors based on Dracula for Python."
+        title = "Crisis Deck"
+        description = "Crisis Deck - A social monitoring tool for tracking real-time crisis humanitarian information."
         # APPLY TEXTS
         self.setWindowTitle(title)
-        widgets.titleRightInfo.setText(description)
+        self.ui.titleRightInfo.setText(description)
 
         # TOGGLE MENU
         # ///////////////////////////////////////////////////////////////
-        widgets.toggleButton.clicked.connect(lambda: UIFunctions.toggleMenu(self, True))
+        self.ui.toggleButton.clicked.connect(lambda: UIFunctions.toggleMenu(self, True))
 
         # SET UI DEFINITIONS
         # ///////////////////////////////////////////////////////////////
@@ -61,35 +38,35 @@ class MainWindow(QMainWindow):
 
         # QTableWidget PARAMETERS
         # ///////////////////////////////////////////////////////////////
-        widgets.tableWidget.horizontalHeader().setSectionResizeMode(QHeaderView.Stretch)
+        self.ui.tableWidget.horizontalHeader().setSectionResizeMode(QHeaderView.Stretch)
 
         # BUTTONS CLICK
         # ///////////////////////////////////////////////////////////////
 
         # LEFT MENUS
-        widgets.btn_home.clicked.connect(self.buttonClick)
-        widgets.btn_widgets.clicked.connect(self.buttonClick)
-        widgets.btn_new.clicked.connect(self.buttonClick)
-        widgets.btn_login.clicked.connect(self.buttonClick)
+        self.ui.btn_home.clicked.connect(self.buttonClick)
+        self.ui.btn_widgets.clicked.connect(self.buttonClick)
+        self.ui.btn_new.clicked.connect(self.buttonClick)
+        self.ui.btn_login.clicked.connect(self.buttonClick)
 
         # DECK STACK
-        widgets.btn_login_login.clicked.connect(self.deck_buttonClick)
-        widgets.btn_search.clicked.connect(self.deck_buttonClick)
-        widgets.btn_query_1.clicked.connect(self.deck_buttonClick)
-        widgets.btn_query_2.clicked.connect(self.deck_buttonClick)
-        widgets.btn_query_3.clicked.connect(self.deck_buttonClick)
-        widgets.btn_apply.clicked.connect(self.deck_buttonClick)
+        self.ui.btn_login_login.clicked.connect(self.deck_buttonClick)
+        self.ui.btn_search.clicked.connect(self.deck_buttonClick)
+        self.ui.btn_query_1.clicked.connect(self.deck_buttonClick)
+        self.ui.btn_query_2.clicked.connect(self.deck_buttonClick)
+        self.ui.btn_query_3.clicked.connect(self.deck_buttonClick)
+        self.ui.btn_apply.clicked.connect(self.deck_buttonClick)
 
         # EXTRA LEFT BOX
         def openCloseLeftBox():
             UIFunctions.toggleLeftBox(self, True)
-        widgets.toggleLeftBox.clicked.connect(openCloseLeftBox)
-        widgets.extraCloseColumnBtn.clicked.connect(openCloseLeftBox)
+        self.ui.toggleLeftBox.clicked.connect(openCloseLeftBox)
+        self.ui.extraCloseColumnBtn.clicked.connect(openCloseLeftBox)
 
         # EXTRA RIGHT BOX
         def openCloseRightBox():
             UIFunctions.toggleRightBox(self, True)
-        widgets.settingsTopBtn.clicked.connect(openCloseRightBox)
+        self.ui.settingsTopBtn.clicked.connect(openCloseRightBox)
 
         # SHOW APP
         # ///////////////////////////////////////////////////////////////
@@ -110,8 +87,8 @@ class MainWindow(QMainWindow):
 
         # SET HOME PAGE AND SELECT MENU
         # ///////////////////////////////////////////////////////////////
-        widgets.stackedWidget.setCurrentWidget(widgets.home)
-        widgets.btn_home.setStyleSheet(UIFunctions.selectMenu(widgets.btn_home.styleSheet()))
+        self.ui.stackedWidget.setCurrentWidget(self.ui.home)
+        self.ui.btn_home.setStyleSheet(UIFunctions.selectMenu(self.ui.btn_home.styleSheet()))
 
 
     # BUTTONS CLICK
@@ -124,25 +101,25 @@ class MainWindow(QMainWindow):
 
         # SHOW HOME PAGE
         if btnName == "btn_home":
-            widgets.stackedWidget.setCurrentWidget(widgets.home)
+            self.ui.stackedWidget.setCurrentWidget(self.ui.home)
             UIFunctions.resetStyle(self, btnName)
             btn.setStyleSheet(UIFunctions.selectMenu(btn.styleSheet()))
 
-        # SHOW WIDGETS PAGE
+        # SHOW self.ui PAGE
         if btnName == "btn_widgets":
-            widgets.stackedWidget.setCurrentWidget(widgets.widgets)
+            self.ui.stackedWidget.setCurrentWidget(self.ui.widgets)
             UIFunctions.resetStyle(self, btnName)
             btn.setStyleSheet(UIFunctions.selectMenu(btn.styleSheet()))
 
         # SHOW NEW PAGE
         if btnName == "btn_new":
-            widgets.stackedWidget.setCurrentWidget(widgets.deck) # SET PAGE
+            self.ui.stackedWidget.setCurrentWidget(self.ui.test)
+            # self.ui.stackedWidget.setCurrentWidget(self.ui.deck) # SET PAGE
             UIFunctions.resetStyle(self, btnName) # RESET ANOTHERS BUTTONS SELECTED
             btn.setStyleSheet(UIFunctions.selectMenu(btn.styleSheet())) # SELECT MENU
-
         if btnName == "btn_login":
             # print("Save BTN clicked!")
-            widgets.stackedWidget.setCurrentWidget(widgets.login) # SET PAGE
+            self.ui.stackedWidget.setCurrentWidget(self.ui.login) # SET PAGE
             UIFunctions.resetStyle(self, btnName) # RESET ANOTHERS BUTTONS SELECTED
             btn.setStyleSheet(UIFunctions.selectMenu(btn.styleSheet())) # SELECT MENU
 
@@ -155,19 +132,19 @@ class MainWindow(QMainWindow):
         btnName = btn.objectName()
         # NAVIGATE TO DECK
         if btnName == "btn_login_login":
-            widgets.stackedWidget.setCurrentWidget(widgets.deck)
+            self.ui.stackedWidget.setCurrentWidget(self.ui.deck)
 
         # SHOW QUERIES
         if btnName == "btn_search":
-            widgets.stackedWidget_2.setCurrentWidget(widgets.queries)
+            self.ui.stackedWidget_2.setCurrentWidget(self.ui.queries)
         
         # SHOW FILTER
         if "btn_query" in btnName:
-            widgets.stackedWidget_2.setCurrentWidget(widgets.filter)
+            self.ui.stackedWidget_2.setCurrentWidget(self.ui.filter)
         
         # SHOW QUERIES
         if btnName == "btn_apply":
-            widgets.stackedWidget_2.setCurrentWidget(widgets.queries)
+            self.ui.stackedWidget_2.setCurrentWidget(self.ui.queries)
 
     # RESIZE EVENTS
     # ///////////////////////////////////////////////////////////////
@@ -179,7 +156,7 @@ class MainWindow(QMainWindow):
     # ///////////////////////////////////////////////////////////////
     def mousePressEvent(self, event):
         # SET DRAG POS WINDOW
-        self.dragPos = event.globalPos()
+        self.dragPos = event.globalPosition().toPoint()
 
         # PRINT MOUSE EVENTS
         if event.buttons() == Qt.LeftButton:
@@ -191,4 +168,4 @@ if __name__ == "__main__":
     app = QApplication(sys.argv)
     app.setWindowIcon(QIcon("icon.ico"))
     window = MainWindow()
-    sys.exit(app.exec_())
+    sys.exit(app.exec())

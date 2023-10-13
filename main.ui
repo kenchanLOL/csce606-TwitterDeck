@@ -552,7 +552,7 @@ Button */
 }
 </string>
    </property>
-   <layout class="QHBoxLayout" name="horizontalLayout_23">
+   <layout class="QVBoxLayout" name="verticalLayout_26">
     <item>
      <widget class="QFrame" name="bgApp">
       <property name="styleSheet">
@@ -1898,7 +1898,7 @@ background-repeat: no-repeat;</string>
                         </spacer>
                        </item>
                        <item>
-                        <widget class="QFrame" name="">
+                        <widget class="QFrame" name="row_login_1">
                          <property name="sizePolicy">
                           <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
                            <horstretch>0</horstretch>
@@ -1973,7 +1973,7 @@ background-repeat: no-repeat;</string>
                         </widget>
                        </item>
                        <item>
-                        <widget class="QFrame" name="">
+                        <widget class="QFrame" name="row_login_2">
                          <property name="sizePolicy">
                           <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
                            <horstretch>0</horstretch>
@@ -2042,7 +2042,7 @@ background-repeat: no-repeat;</string>
                         </widget>
                        </item>
                        <item>
-                        <widget class="QFrame" name="">
+                        <widget class="QFrame" name="row_login_3">
                          <property name="styleSheet">
                           <string notr="true"/>
                          </property>
@@ -2443,8 +2443,8 @@ QPushButton:pressed {
                                <property name="geometry">
                                 <rect>
                                  <x>0</x>
-                                 <y>-101</y>
-                                 <width>339</width>
+                                 <y>0</y>
+                                 <width>315</width>
                                  <height>218</height>
                                 </rect>
                                </property>
@@ -2963,6 +2963,7 @@ QPushButton:pressed {
                        </item>
                       </layout>
                      </widget>
+                     <widget class="TwitterDeck" name="test"/>
                      <widget class="QWidget" name="deck">
                       <layout class="QVBoxLayout" name="verticalLayout_20">
                        <item>
@@ -3332,7 +3333,7 @@ font:bold, 22px</string>
                                    <rect>
                                     <x>0</x>
                                     <y>0</y>
-                                    <width>326</width>
+                                    <width>316</width>
                                     <height>556</height>
                                    </rect>
                                   </property>
@@ -3572,7 +3573,7 @@ p, li { white-space: pre-wrap; }
                                    <rect>
                                     <x>0</x>
                                     <y>0</y>
-                                    <width>343</width>
+                                    <width>315</width>
                                     <height>556</height>
                                    </rect>
                                   </property>
@@ -3812,7 +3813,7 @@ p, li { white-space: pre-wrap; }
                                    <rect>
                                     <x>0</x>
                                     <y>0</y>
-                                    <width>342</width>
+                                    <width>316</width>
                                     <height>556</height>
                                    </rect>
                                   </property>
@@ -4687,6 +4688,14 @@ p, li { white-space: pre-wrap; }
    </layout>
   </widget>
  </widget>
+ <customwidgets>
+  <customwidget>
+   <class>TwitterDeck</class>
+   <extends>QWidget</extends>
+   <header>twitter_deck.h</header>
+   <container>1</container>
+  </customwidget>
+ </customwidgets>
  <resources>
   <include location="resources.qrc"/>
  </resources>
