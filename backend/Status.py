@@ -1,0 +1,3 @@
+
+STATUS_OK = 200
+NOT_FOUND = 300

@@ -1,0 +1,51 @@
+syntax = "proto3";
+
+package userservice;
+
+service UserService {
+    rpc CreateUser(CreateUserRequest) returns (CreateUserResponse);
+    rpc GetUser(GetUserRequest) returns (GetUserResponse);
+    rpc UpdateUser(UpdateUserRequest) returns (UpdateUserResponse);
+    rpc DeleteUser(DeleteUserRequest) returns (DeleteUserResponse);
+}
+
+message UserMessage {
+    int32 ID = 1;
+    string name = 2;
+    string password = 3;
+    string content = 4;
+}
+
+message CreateUserRequest {
+    // ... 字段定义
+}
+
+message CreateUserResponse {
+    // ... 字段定义
+}
+
+message GetUserRequest {
+    int32 status = 1;    // 你可以根据需要选择适当的数据类型
+    bytes body = 2;
+}
+
+message GetUserResponse {
+    int32 status = 1;    // 你可以根据需要选择适当的数据类型
+    bytes body = 2;
+}
+
+message UpdateUserRequest {
+    // ... 字段定义
+}
+
+message UpdateUserResponse {
+    // ... 字段定义
+}
+
+message DeleteUserRequest {
+    // ... 字段定义
+}
+
+message DeleteUserResponse {
+    // ... 字段定义
+}
