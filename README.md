@@ -11,6 +11,7 @@ A Twitter Deck clone for digital humanitarian purpose
 After building new UI by running 
 ```
 pyside6-uic .\main.ui -o .\modules\ui_main.py
+pyside6-rcc .\resources.qrc -o ./resources_rc.qrc
 ```
 modify these two import statements
 ```
@@ -22,4 +23,6 @@ into the following two
 from widgets import TwitterDeck
 from . resources_rc import *
 ```
+
+
 

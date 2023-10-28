@@ -1,7 +1,9 @@
 import sys
 import os
 import platform
-
+from protobufs.CrisisDeck_pb2_grpc import CrisisDeckStub
+import grpc
+# https://twitter.com/search-advanced
 # IMPORT / GUI AND MODULES AND widgets
 # ///////////////////////////////////////////////////////////////
 from modules import *
@@ -10,6 +12,11 @@ os.environ["QT_FONT_DPI"] = "96" # FIX Problem for High DPI and Scale above 100%
 
 class MainWindow(QMainWindow):
     def __init__(self):
+        # CREATE gRPC client
+        # //////////////////////////////////////////////////////////////
+        channel = grpc.insecure_channel("localhost:50051")
+        stub = CrisisDeckStub(channel)
+
         QMainWindow.__init__(self)
 
         # SET AS GLOBAL self.ui
@@ -46,8 +53,8 @@ class MainWindow(QMainWindow):
         # LEFT MENUS
         self.ui.btn_home.clicked.connect(self.buttonClick)
         self.ui.btn_widgets.clicked.connect(self.buttonClick)
-        self.ui.btn_new.clicked.connect(self.buttonClick)
-        self.ui.btn_login.clicked.connect(self.buttonClick)
+        self.ui.btn_deck.clicked.connect(self.buttonClick)
+        self.ui.btn_management.clicked.connect(self.buttonClick)
 
         # DECK STACK
         self.ui.btn_login_login.clicked.connect(self.deck_buttonClick)
@@ -57,11 +64,21 @@ class MainWindow(QMainWindow):
         self.ui.btn_query_3.clicked.connect(self.deck_buttonClick)
         self.ui.btn_apply.clicked.connect(self.deck_buttonClick)
 
+        # MANAGEMENT STACK
+        self.ui.management.table_event.doubleClicked.connect(self.management_buttonClick)
+
         # EXTRA LEFT BOX
         def openCloseLeftBox():
             UIFunctions.toggleLeftBox(self, True)
-        self.ui.toggleLeftBox.clicked.connect(openCloseLeftBox)
+        for i in range(self.ui.management.table_event.rowCount()):
+            self.ui.management.table_event.findChild(QPushButton, f"btn_edit_event_{i}").clicked.connect(openCloseLeftBox)
         self.ui.extraCloseColumnBtn.clicked.connect(openCloseLeftBox)
+
+        # EXTRA LEFT GROUP BOX
+        self.ui.btn_content.clicked.connect(self.openCloseLeftGroupBox)
+        self.ui.btn_location.clicked.connect(self.openCloseLeftGroupBox)
+        self.ui.btn_engagement.clicked.connect(self.openCloseLeftGroupBox)
+
 
         # EXTRA RIGHT BOX
         def openCloseRightBox():
@@ -112,14 +129,14 @@ class MainWindow(QMainWindow):
             btn.setStyleSheet(UIFunctions.selectMenu(btn.styleSheet()))
 
         # SHOW NEW PAGE
-        if btnName == "btn_new":
-            self.ui.stackedWidget.setCurrentWidget(self.ui.test)
+        if btnName == "btn_deck":
+            self.ui.stackedWidget.setCurrentWidget(self.ui.deck)
             # self.ui.stackedWidget.setCurrentWidget(self.ui.deck) # SET PAGE
             UIFunctions.resetStyle(self, btnName) # RESET ANOTHERS BUTTONS SELECTED
             btn.setStyleSheet(UIFunctions.selectMenu(btn.styleSheet())) # SELECT MENU
-        if btnName == "btn_login":
-            # print("Save BTN clicked!")
-            self.ui.stackedWidget.setCurrentWidget(self.ui.login) # SET PAGE
+        if btnName == "btn_management":
+            print("Save BTN clicked!")
+            self.ui.stackedWidget.setCurrentWidget(self.ui.management) # SET PAGE
             UIFunctions.resetStyle(self, btnName) # RESET ANOTHERS BUTTONS SELECTED
             btn.setStyleSheet(UIFunctions.selectMenu(btn.styleSheet())) # SELECT MENU
 
@@ -146,6 +163,9 @@ class MainWindow(QMainWindow):
         if btnName == "btn_apply":
             self.ui.stackedWidget_2.setCurrentWidget(self.ui.queries)
 
+    def openCloseLeftGroupBox(self):
+        btn = self.sender()
+        UIFunctions.toggleLeftGrp(self, btn, True)
     # RESIZE EVENTS
     # ///////////////////////////////////////////////////////////////
     def resizeEvent(self, event):
@@ -163,6 +183,19 @@ class MainWindow(QMainWindow):
             print('Mouse click: LEFT CLICK')
         if event.buttons() == Qt.RightButton:
             print('Mouse click: RIGHT CLICK')
+
+    def management_buttonClick(self):
+        table = self.sender()
+        # print(btn
+        for idx in table.selectionModel().selectedIndexes():
+            row_number = idx.row()
+            column_number = idx.column()
+            # print(row_number, column_number)
+        if column_number == 0:
+            self.ui.stackedWidget.setCurrentWidget(self.ui.deck)
+        # if "btn_edit" in btnName:
+        #     print("edit")
+        #     self.ui.stackedWidget_2.setCurrentWidget(self.ui.deck)
 
 if __name__ == "__main__":
     app = QApplication(sys.argv)

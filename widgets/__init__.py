@@ -16,3 +16,4 @@
 
 from . custom_grips import CustomGrip
 from . twitter_deck import TwitterDeck
+from . management import ManagementPage

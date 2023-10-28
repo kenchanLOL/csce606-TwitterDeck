@@ -1,6 +1,7 @@
 # MAIN FILE
 # ///////////////////////////////////////////////////////////////
 from main import *
+
 class UIFunctions():
     # MAXIMIZE/RESTORE
     # ///////////////////////////////////////////////////////////////
@@ -122,7 +123,7 @@ class UIFunctions():
                 self.ui.settingsTopBtn.setStyleSheet(style.replace(color, ''))
 
             UIFunctions.start_box_animation(self, widthLeftBox, width, "right")
-
+ 
     def start_box_animation(self, left_box_width, right_box_width, direction):
         right_width = 0
         left_width = 0 
@@ -157,6 +158,72 @@ class UIFunctions():
         self.group.addAnimation(self.left_box)
         self.group.addAnimation(self.right_box)
         self.group.start()
+
+    # TOGGLE LEFT BOX
+    # ///////////////////////////////////////////////////////////////   
+    def toggleLeftGrp(self, selected_btn, enable):
+        other_grps = []
+        other_btns = []
+        height_grps = []
+        for grp in self.ui.extraTopMenu.findChildren(QGroupBox):
+            if grp.objectName().split("_")[-1] != selected_btn.objectName().split("_")[-1]:
+                other_grps.append(grp)
+            else:
+                selected_grp = grp
+        for btn in self.ui.extraTopMenu.findChildren(QPushButton):
+            if btn.objectName() != selected_btn.objectName():
+                other_btns.append(btn)
+
+        if enable:
+            # GET WIDTH
+            selected_height = selected_grp.height()
+            for grp in other_grps:
+                height_grps.append(grp.height())
+            # maxExtend = Settings.GRP_HEIGHT
+            color = Settings.BTN_LEFT_BOX_COLOR
+            # standard = 0
+
+            # GET BTN STYLE
+            style = selected_btn.styleSheet()
+
+            # SET MAX WIDTH
+            if selected_height == 0:
+                # SELECT BTN
+                selected_btn.setStyleSheet(style + color)
+                for btn, height in zip(other_btns, height_grps):
+                    if height != 0:
+                        style = btn.styleSheet()
+                        btn.setStyleSheet(style.replace(Settings.BTN_RIGHT_BOX_COLOR, ''))
+            else:
+                # RESET BTN
+                selected_btn.setStyleSheet(style.replace(color, ''))
+        print(selected_btn, selected_grp, other_grps)
+        UIFunctions.start_grp_animation(self, selected_grp, other_grps, selected_height, height_grps)
+
+
+    def start_grp_animation(self, selected_grp, other_grps, selected_height, other_start):
+        if selected_height == 0:
+            height_end = Settings.GRP_HEIGHT
+        else:
+            height_end = 0
+        other_height_end = 0
+        self.group2 = QParallelAnimationGroup()
+        self.selected_animation = QPropertyAnimation(selected_grp, b"maximumHeight")
+        self.selected_animation.setDuration(Settings.TIME_ANIMATION)
+        self.selected_animation.setStartValue(selected_height)
+        self.selected_animation.setEndValue(height_end)
+        self.selected_animation.setEasingCurve(QEasingCurve.InOutQuart)
+        self.group2.addAnimation(self.selected_animation)
+        # self.other_btns_animation = []
+
+        for grp, other_height_start in zip(other_grps, other_start):
+            unselected_animation = QPropertyAnimation(grp, b"maximumHeight")
+            unselected_animation.setDuration(Settings.TIME_ANIMATION)
+            unselected_animation.setStartValue(other_height_start)
+            unselected_animation.setEndValue(other_height_end)
+            unselected_animation.setEasingCurve(QEasingCurve.InOutQuart)
+            self.group2.addAnimation(unselected_animation)
+        self.group2.start()
 
     # SELECT/DESELECT MENU
     # ///////////////////////////////////////////////////////////////
@@ -257,4 +324,5 @@ class UIFunctions():
             self.bottom_grip.setGeometry(0, self.height() - 10, self.width(), 10)
 
     # ///////////////////////////////////////////////////////////////
+    
     # END - GUI DEFINITIONS
