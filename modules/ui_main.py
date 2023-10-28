@@ -577,10 +577,9 @@ class Ui_MainWindow(object):
 "	font: 20pt \"Segoe UI\";\n"
 "}\n"
 "")
-        self.verticalLayout_33 = QVBoxLayout(self.styleSheet)
-        self.verticalLayout_33.setObjectName(u"verticalLayout_33")
         self.bgApp = QFrame(self.styleSheet)
         self.bgApp.setObjectName(u"bgApp")
+        self.bgApp.setGeometry(QRect(9, 9, 1241, 705))
         self.bgApp.setStyleSheet(u"")
         self.bgApp.setFrameShape(QFrame.NoFrame)
         self.bgApp.setFrameShadow(QFrame.Raised)
@@ -611,27 +610,17 @@ class Ui_MainWindow(object):
         self.topLogo.setMaximumSize(QSize(42, 42))
         self.topLogo.setFrameShape(QFrame.NoFrame)
         self.topLogo.setFrameShadow(QFrame.Raised)
-        self.titleLeftApp = QLabel(self.topLogoInfo)
-        self.titleLeftApp.setObjectName(u"titleLeftApp")
-        self.titleLeftApp.setGeometry(QRect(70, 8, 160, 20))
-        font1 = QFont()
-        font1.setFamilies([u"Segoe UI Semibold"])
-        font1.setPointSize(12)
-        font1.setBold(False)
-        font1.setItalic(False)
-        self.titleLeftApp.setFont(font1)
-        self.titleLeftApp.setAlignment(Qt.AlignLeading|Qt.AlignLeft|Qt.AlignTop)
-        self.titleLeftDescription = QLabel(self.topLogoInfo)
-        self.titleLeftDescription.setObjectName(u"titleLeftDescription")
-        self.titleLeftDescription.setGeometry(QRect(70, 27, 160, 16))
-        self.titleLeftDescription.setMaximumSize(QSize(16777215, 16))
-        font2 = QFont()
-        font2.setFamilies([u"Segoe UI"])
-        font2.setPointSize(8)
-        font2.setBold(False)
-        font2.setItalic(False)
-        self.titleLeftDescription.setFont(font2)
-        self.titleLeftDescription.setAlignment(Qt.AlignLeading|Qt.AlignLeft|Qt.AlignTop)
+        self.titleLeftName = QLabel(self.topLogoInfo)
+        self.titleLeftName.setObjectName(u"titleLeftName")
+        self.titleLeftName.setGeometry(QRect(70, 8, 160, 20))
+        self.titleLeftName.setFont(font)
+        self.titleLeftName.setAlignment(Qt.AlignLeading|Qt.AlignLeft|Qt.AlignTop)
+        self.titleLeftDate = QLabel(self.topLogoInfo)
+        self.titleLeftDate.setObjectName(u"titleLeftDate")
+        self.titleLeftDate.setGeometry(QRect(70, 27, 160, 16))
+        self.titleLeftDate.setMaximumSize(QSize(16777215, 16))
+        self.titleLeftDate.setFont(font)
+        self.titleLeftDate.setAlignment(Qt.AlignLeading|Qt.AlignLeft|Qt.AlignTop)
 
         self.verticalLayout_3.addWidget(self.topLogoInfo)
 
@@ -725,18 +714,6 @@ class Ui_MainWindow(object):
         self.btn_management.setStyleSheet(u"background-image: url(:/icons/images/icons/cil-map.png);")
 
         self.verticalLayout_8.addWidget(self.btn_management)
-
-        self.btn_exit = QPushButton(self.topMenu)
-        self.btn_exit.setObjectName(u"btn_exit")
-        sizePolicy.setHeightForWidth(self.btn_exit.sizePolicy().hasHeightForWidth())
-        self.btn_exit.setSizePolicy(sizePolicy)
-        self.btn_exit.setMinimumSize(QSize(0, 45))
-        self.btn_exit.setFont(font)
-        self.btn_exit.setCursor(QCursor(Qt.PointingHandCursor))
-        self.btn_exit.setLayoutDirection(Qt.LeftToRight)
-        self.btn_exit.setStyleSheet(u"background-image: url(:/icons/images/icons/cil-x.png);")
-
-        self.verticalLayout_8.addWidget(self.btn_exit)
 
 
         self.verticalMenuLayout.addWidget(self.topMenu, 0, Qt.AlignTop)
@@ -1157,13 +1134,13 @@ class Ui_MainWindow(object):
         self.maximizeRestoreAppBtn.setObjectName(u"maximizeRestoreAppBtn")
         self.maximizeRestoreAppBtn.setMinimumSize(QSize(28, 28))
         self.maximizeRestoreAppBtn.setMaximumSize(QSize(28, 28))
-        font3 = QFont()
-        font3.setFamilies([u"Segoe UI"])
-        font3.setPointSize(10)
-        font3.setBold(False)
-        font3.setItalic(False)
-        font3.setStyleStrategy(QFont.PreferDefault)
-        self.maximizeRestoreAppBtn.setFont(font3)
+        font1 = QFont()
+        font1.setFamilies([u"Segoe UI"])
+        font1.setPointSize(10)
+        font1.setBold(False)
+        font1.setItalic(False)
+        font1.setStyleStrategy(QFont.PreferDefault)
+        self.maximizeRestoreAppBtn.setFont(font1)
         self.maximizeRestoreAppBtn.setCursor(QCursor(Qt.PointingHandCursor))
         icon3 = QIcon()
         icon3.addFile(u":/icons/images/icons/icon_maximize.png", QSize(), QIcon.Normal, QIcon.Off)
@@ -1249,22 +1226,23 @@ class Ui_MainWindow(object):
         self.label_5.setSizePolicy(sizePolicy3)
         self.label_5.setMinimumSize(QSize(120, 0))
         self.label_5.setMaximumSize(QSize(16777215, 16777215))
-        font4 = QFont()
-        font4.setFamilies([u"Segoe UI"])
-        font4.setPointSize(20)
-        font4.setBold(False)
-        font4.setItalic(False)
-        self.label_5.setFont(font4)
+        font2 = QFont()
+        font2.setFamilies([u"Segoe UI"])
+        font2.setPointSize(20)
+        font2.setBold(False)
+        font2.setItalic(False)
+        self.label_5.setFont(font2)
         self.label_5.setStyleSheet(u"font:20pt;")
 
         self.horizontalLayout_23.addWidget(self.label_5)
 
-        self.text_username_2 = QPlainTextEdit(self.row_login_5)
-        self.text_username_2.setObjectName(u"text_username_2")
-        self.text_username_2.setMaximumSize(QSize(16777215, 50))
-        self.text_username_2.setStyleSheet(u"background-color: rgb(33, 37, 43);")
+        self.text_username = QLineEdit(self.row_login_5)
+        self.text_username.setObjectName(u"text_username")
+        self.text_username.setMinimumSize(QSize(0, 50))
+        self.text_username.setMaximumSize(QSize(16777215, 16777215))
+        self.text_username.setStyleSheet(u"background-color: rgb(33, 37, 43);  font:22px;")
 
-        self.horizontalLayout_23.addWidget(self.text_username_2)
+        self.horizontalLayout_23.addWidget(self.text_username)
 
 
         self.verticalLayout_27.addWidget(self.row_login_5)
@@ -1284,17 +1262,17 @@ class Ui_MainWindow(object):
         sizePolicy3.setHeightForWidth(self.label_4.sizePolicy().hasHeightForWidth())
         self.label_4.setSizePolicy(sizePolicy3)
         self.label_4.setMinimumSize(QSize(120, 0))
-        self.label_4.setFont(font4)
+        self.label_4.setFont(font2)
         self.label_4.setStyleSheet(u"font:20pt;")
 
         self.horizontalLayout_15.addWidget(self.label_4)
 
-        self.test_password_2 = QPlainTextEdit(self.row_login_4)
-        self.test_password_2.setObjectName(u"test_password_2")
-        self.test_password_2.setMaximumSize(QSize(16777215, 50))
-        self.test_password_2.setStyleSheet(u"background-color: rgb(33, 37, 43);")
+        self.text_password = QLineEdit(self.row_login_4)
+        self.text_password.setObjectName(u"text_password")
+        self.text_password.setMinimumSize(QSize(0, 50))
+        self.text_password.setStyleSheet(u"background-color: rgb(33, 37, 43);  font:22px;")
 
-        self.horizontalLayout_15.addWidget(self.test_password_2)
+        self.horizontalLayout_15.addWidget(self.text_password)
 
 
         self.verticalLayout_27.addWidget(self.row_login_4)
@@ -1308,12 +1286,12 @@ class Ui_MainWindow(object):
 
         self.horizontalLayout_24.addItem(self.horizontalSpacer_6)
 
-        self.btn_login_login_2 = QPushButton(self.row_login_6)
-        self.btn_login_login_2.setObjectName(u"btn_login_login_2")
-        sizePolicy3.setHeightForWidth(self.btn_login_login_2.sizePolicy().hasHeightForWidth())
-        self.btn_login_login_2.setSizePolicy(sizePolicy3)
-        self.btn_login_login_2.setMinimumSize(QSize(250, 0))
-        self.btn_login_login_2.setStyleSheet(u"QPushButton {\n"
+        self.btn_login = QPushButton(self.row_login_6)
+        self.btn_login.setObjectName(u"btn_login")
+        sizePolicy3.setHeightForWidth(self.btn_login.sizePolicy().hasHeightForWidth())
+        self.btn_login.setSizePolicy(sizePolicy3)
+        self.btn_login.setMinimumSize(QSize(250, 0))
+        self.btn_login.setStyleSheet(u"QPushButton {\n"
 "	border: 2px solid rgb(52, 59, 72);\n"
 "	border-radius: 5px;	\n"
 "	background-color: rgb(52, 59, 72);\n"
@@ -1329,14 +1307,14 @@ class Ui_MainWindow(object):
 "	border: 2px solid rgb(43, 50, 61);\n"
 "}")
 
-        self.horizontalLayout_24.addWidget(self.btn_login_login_2)
+        self.horizontalLayout_24.addWidget(self.btn_login)
 
-        self.btn_login_register_2 = QPushButton(self.row_login_6)
-        self.btn_login_register_2.setObjectName(u"btn_login_register_2")
-        sizePolicy3.setHeightForWidth(self.btn_login_register_2.sizePolicy().hasHeightForWidth())
-        self.btn_login_register_2.setSizePolicy(sizePolicy3)
-        self.btn_login_register_2.setMinimumSize(QSize(250, 0))
-        self.btn_login_register_2.setStyleSheet(u"QPushButton {\n"
+        self.btn_register = QPushButton(self.row_login_6)
+        self.btn_register.setObjectName(u"btn_register")
+        sizePolicy3.setHeightForWidth(self.btn_register.sizePolicy().hasHeightForWidth())
+        self.btn_register.setSizePolicy(sizePolicy3)
+        self.btn_register.setMinimumSize(QSize(250, 0))
+        self.btn_register.setStyleSheet(u"QPushButton {\n"
 "	border: 2px solid rgb(52, 59, 72);\n"
 "	border-radius: 5px;	\n"
 "	background-color: rgb(52, 59, 72);\n"
@@ -1351,7 +1329,7 @@ class Ui_MainWindow(object):
 "	border: 2px solid rgb(43, 50, 61);\n"
 "}")
 
-        self.horizontalLayout_24.addWidget(self.btn_login_register_2)
+        self.horizontalLayout_24.addWidget(self.btn_register)
 
 
         self.verticalLayout_27.addWidget(self.row_login_6)
@@ -1364,133 +1342,6 @@ class Ui_MainWindow(object):
         self.verticalLayout_30.addLayout(self.verticalLayout_27)
 
         self.stackedWidget.addWidget(self.home)
-        self.login = QWidget()
-        self.login.setObjectName(u"login")
-        self.verticalLayout_21 = QVBoxLayout(self.login)
-        self.verticalLayout_21.setObjectName(u"verticalLayout_21")
-        self.verticalSpacer_3 = QSpacerItem(20, 40, QSizePolicy.Minimum, QSizePolicy.Expanding)
-
-        self.verticalLayout_21.addItem(self.verticalSpacer_3)
-
-        self.row_login_1 = QFrame(self.login)
-        self.row_login_1.setObjectName(u"row_login_1")
-        sizePolicy3.setHeightForWidth(self.row_login_1.sizePolicy().hasHeightForWidth())
-        self.row_login_1.setSizePolicy(sizePolicy3)
-        self.horizontalLayout_6 = QHBoxLayout(self.row_login_1)
-        self.horizontalLayout_6.setObjectName(u"horizontalLayout_6")
-        self.horizontalSpacer = QSpacerItem(200, 20, QSizePolicy.Preferred, QSizePolicy.Minimum)
-
-        self.horizontalLayout_6.addItem(self.horizontalSpacer)
-
-        self.label_2 = QLabel(self.row_login_1)
-        self.label_2.setObjectName(u"label_2")
-        sizePolicy3.setHeightForWidth(self.label_2.sizePolicy().hasHeightForWidth())
-        self.label_2.setSizePolicy(sizePolicy3)
-        self.label_2.setMinimumSize(QSize(120, 0))
-        self.label_2.setMaximumSize(QSize(16777215, 16777215))
-        self.label_2.setFont(font4)
-
-        self.horizontalLayout_6.addWidget(self.label_2)
-
-        self.text_username = QPlainTextEdit(self.row_login_1)
-        self.text_username.setObjectName(u"text_username")
-        self.text_username.setMaximumSize(QSize(16777215, 50))
-        self.text_username.setStyleSheet(u"background-color: rgb(33, 37, 43);")
-
-        self.horizontalLayout_6.addWidget(self.text_username)
-
-
-        self.verticalLayout_21.addWidget(self.row_login_1)
-
-        self.row_login_2 = QFrame(self.login)
-        self.row_login_2.setObjectName(u"row_login_2")
-        sizePolicy3.setHeightForWidth(self.row_login_2.sizePolicy().hasHeightForWidth())
-        self.row_login_2.setSizePolicy(sizePolicy3)
-        self.horizontalLayout_7 = QHBoxLayout(self.row_login_2)
-        self.horizontalLayout_7.setObjectName(u"horizontalLayout_7")
-        self.horizontalSpacer_2 = QSpacerItem(200, 20, QSizePolicy.Preferred, QSizePolicy.Minimum)
-
-        self.horizontalLayout_7.addItem(self.horizontalSpacer_2)
-
-        self.label_3 = QLabel(self.row_login_2)
-        self.label_3.setObjectName(u"label_3")
-        sizePolicy3.setHeightForWidth(self.label_3.sizePolicy().hasHeightForWidth())
-        self.label_3.setSizePolicy(sizePolicy3)
-        self.label_3.setMinimumSize(QSize(120, 0))
-        self.label_3.setFont(font4)
-
-        self.horizontalLayout_7.addWidget(self.label_3)
-
-        self.test_password = QPlainTextEdit(self.row_login_2)
-        self.test_password.setObjectName(u"test_password")
-        self.test_password.setMaximumSize(QSize(16777215, 50))
-        self.test_password.setStyleSheet(u"background-color: rgb(33, 37, 43);")
-
-        self.horizontalLayout_7.addWidget(self.test_password)
-
-
-        self.verticalLayout_21.addWidget(self.row_login_2)
-
-        self.row_login_3 = QFrame(self.login)
-        self.row_login_3.setObjectName(u"row_login_3")
-        self.row_login_3.setStyleSheet(u"")
-        self.horizontalLayout_8 = QHBoxLayout(self.row_login_3)
-        self.horizontalLayout_8.setObjectName(u"horizontalLayout_8")
-        self.horizontalSpacer_3 = QSpacerItem(600, 20, QSizePolicy.Expanding, QSizePolicy.Minimum)
-
-        self.horizontalLayout_8.addItem(self.horizontalSpacer_3)
-
-        self.btn_login_login = QPushButton(self.row_login_3)
-        self.btn_login_login.setObjectName(u"btn_login_login")
-        sizePolicy3.setHeightForWidth(self.btn_login_login.sizePolicy().hasHeightForWidth())
-        self.btn_login_login.setSizePolicy(sizePolicy3)
-        self.btn_login_login.setMinimumSize(QSize(250, 0))
-        self.btn_login_login.setStyleSheet(u"QPushButton {\n"
-"	border: 2px solid rgb(52, 59, 72);\n"
-"	border-radius: 5px;	\n"
-"	background-color: rgb(52, 59, 72);\n"
-"	text-align:Center;\n"
-"}\n"
-"QPushButton:hover {\n"
-"	background-color: rgb(57, 65, 80);\n"
-"	border: 2px solid rgb(61, 70, 86);\n"
-"}\n"
-"QPushButton:pressed {	\n"
-"	background-color: rgb(35, 40, 49);\n"
-"	border: 2px solid rgb(43, 50, 61);\n"
-"}")
-
-        self.horizontalLayout_8.addWidget(self.btn_login_login)
-
-        self.btn_login_register = QPushButton(self.row_login_3)
-        self.btn_login_register.setObjectName(u"btn_login_register")
-        sizePolicy3.setHeightForWidth(self.btn_login_register.sizePolicy().hasHeightForWidth())
-        self.btn_login_register.setSizePolicy(sizePolicy3)
-        self.btn_login_register.setMinimumSize(QSize(250, 0))
-        self.btn_login_register.setStyleSheet(u"QPushButton {\n"
-"	border: 2px solid rgb(52, 59, 72);\n"
-"	border-radius: 5px;	\n"
-"	background-color: rgb(52, 59, 72);\n"
-"}\n"
-"QPushButton:hover {\n"
-"	background-color: rgb(57, 65, 80);\n"
-"	border: 2px solid rgb(61, 70, 86);\n"
-"}\n"
-"QPushButton:pressed {	\n"
-"	background-color: rgb(35, 40, 49);\n"
-"	border: 2px solid rgb(43, 50, 61);\n"
-"}")
-
-        self.horizontalLayout_8.addWidget(self.btn_login_register)
-
-
-        self.verticalLayout_21.addWidget(self.row_login_3)
-
-        self.verticalSpacer = QSpacerItem(20, 40, QSizePolicy.Minimum, QSizePolicy.Expanding)
-
-        self.verticalLayout_21.addItem(self.verticalSpacer)
-
-        self.stackedWidget.addWidget(self.login)
         self.widgets = QWidget()
         self.widgets.setObjectName(u"widgets")
         self.widgets.setStyleSheet(u"b")
@@ -1632,7 +1483,7 @@ class Ui_MainWindow(object):
         self.scrollArea.setWidgetResizable(True)
         self.scrollAreaWidgetContents = QWidget()
         self.scrollAreaWidgetContents.setObjectName(u"scrollAreaWidgetContents")
-        self.scrollAreaWidgetContents.setGeometry(QRect(0, 0, 343, 218))
+        self.scrollAreaWidgetContents.setGeometry(QRect(0, 0, 218, 218))
         self.scrollAreaWidgetContents.setStyleSheet(u" QScrollBar:vertical {\n"
 "	border: none;\n"
 "    background: rgb(52, 59, 72);\n"
@@ -1721,10 +1572,10 @@ class Ui_MainWindow(object):
         self.tableWidget.setHorizontalHeaderItem(3, __qtablewidgetitem3)
         if (self.tableWidget.rowCount() < 16):
             self.tableWidget.setRowCount(16)
-        font5 = QFont()
-        font5.setFamilies([u"Segoe UI"])
+        font3 = QFont()
+        font3.setFamilies([u"Segoe UI"])
         __qtablewidgetitem4 = QTableWidgetItem()
-        __qtablewidgetitem4.setFont(font5);
+        __qtablewidgetitem4.setFont(font3);
         self.tableWidget.setVerticalHeaderItem(0, __qtablewidgetitem4)
         __qtablewidgetitem5 = QTableWidgetItem()
         self.tableWidget.setVerticalHeaderItem(1, __qtablewidgetitem5)
@@ -1926,12 +1777,12 @@ class Ui_MainWindow(object):
         sizePolicy5.setHeightForWidth(self.btn_search.sizePolicy().hasHeightForWidth())
         self.btn_search.setSizePolicy(sizePolicy5)
         self.btn_search.setMaximumSize(QSize(16777215, 40))
-        font6 = QFont()
-        font6.setFamilies([u"22px"])
-        font6.setPointSize(10)
-        font6.setBold(True)
-        font6.setItalic(False)
-        self.btn_search.setFont(font6)
+        font4 = QFont()
+        font4.setFamilies([u"22px"])
+        font4.setPointSize(10)
+        font4.setBold(True)
+        font4.setItalic(False)
+        self.btn_search.setFont(font4)
         self.btn_search.setStyleSheet(u"background-color: rgb(33, 37, 43);\n"
 "font:bold, 22px")
 
@@ -2555,11 +2406,11 @@ class Ui_MainWindow(object):
         self.creditsLabel = QLabel(self.bottomBar)
         self.creditsLabel.setObjectName(u"creditsLabel")
         self.creditsLabel.setMaximumSize(QSize(16777215, 16))
-        font7 = QFont()
-        font7.setFamilies([u"Segoe UI"])
-        font7.setBold(False)
-        font7.setItalic(False)
-        self.creditsLabel.setFont(font7)
+        font5 = QFont()
+        font5.setFamilies([u"Segoe UI"])
+        font5.setBold(False)
+        font5.setItalic(False)
+        self.creditsLabel.setFont(font5)
         self.creditsLabel.setAlignment(Qt.AlignLeading|Qt.AlignLeft|Qt.AlignVCenter)
 
         self.horizontalLayout_5.addWidget(self.creditsLabel)
@@ -2588,14 +2439,11 @@ class Ui_MainWindow(object):
 
         self.appLayout.addWidget(self.contentBox)
 
-
-        self.verticalLayout_33.addWidget(self.bgApp)
-
         MainWindow.setCentralWidget(self.styleSheet)
 
         self.retranslateUi(MainWindow)
 
-        self.stackedWidget.setCurrentIndex(2)
+        self.stackedWidget.setCurrentIndex(0)
         self.stackedWidget_2.setCurrentIndex(2)
 
 
@@ -2604,14 +2452,13 @@ class Ui_MainWindow(object):
 
     def retranslateUi(self, MainWindow):
         MainWindow.setWindowTitle(QCoreApplication.translate("MainWindow", u"MainWindow", None))
-        self.titleLeftApp.setText(QCoreApplication.translate("MainWindow", u"PyDracula", None))
-        self.titleLeftDescription.setText(QCoreApplication.translate("MainWindow", u"Modern GUI / Flat Style", None))
+        self.titleLeftName.setText(QCoreApplication.translate("MainWindow", u"Username", None))
+        self.titleLeftDate.setText(QCoreApplication.translate("MainWindow", u"Date", None))
         self.toggleButton.setText(QCoreApplication.translate("MainWindow", u"Hide", None))
         self.btn_home.setText(QCoreApplication.translate("MainWindow", u"Home", None))
-        self.btn_widgets.setText(QCoreApplication.translate("MainWindow", u"Widgets", None))
-        self.btn_deck.setText(QCoreApplication.translate("MainWindow", u"New", None))
-        self.btn_management.setText(QCoreApplication.translate("MainWindow", u"Save", None))
-        self.btn_exit.setText(QCoreApplication.translate("MainWindow", u"Exit", None))
+        self.btn_widgets.setText(QCoreApplication.translate("MainWindow", u"Debug", None))
+        self.btn_deck.setText(QCoreApplication.translate("MainWindow", u"deck", None))
+        self.btn_management.setText(QCoreApplication.translate("MainWindow", u"Management", None))
         self.toggleLeftBox.setText(QCoreApplication.translate("MainWindow", u"Left Box", None))
         self.extraLabel.setText(QCoreApplication.translate("MainWindow", u"Filter Setting", None))
 #if QT_CONFIG(tooltip)
@@ -2654,12 +2501,8 @@ class Ui_MainWindow(object):
         self.closeAppBtn.setText("")
         self.label_5.setText(QCoreApplication.translate("MainWindow", u"Username", None))
         self.label_4.setText(QCoreApplication.translate("MainWindow", u"Password", None))
-        self.btn_login_login_2.setText(QCoreApplication.translate("MainWindow", u"Login", None))
-        self.btn_login_register_2.setText(QCoreApplication.translate("MainWindow", u"Register", None))
-        self.label_2.setText(QCoreApplication.translate("MainWindow", u"Username", None))
-        self.label_3.setText(QCoreApplication.translate("MainWindow", u"Password", None))
-        self.btn_login_login.setText(QCoreApplication.translate("MainWindow", u"Login", None))
-        self.btn_login_register.setText(QCoreApplication.translate("MainWindow", u"Register", None))
+        self.btn_login.setText(QCoreApplication.translate("MainWindow", u"Login", None))
+        self.btn_register.setText(QCoreApplication.translate("MainWindow", u"Register", None))
         self.labelBoxBlenderInstalation.setText(QCoreApplication.translate("MainWindow", u"FILE BOX", None))
         self.lineEdit.setText("")
         self.lineEdit.setPlaceholderText(QCoreApplication.translate("MainWindow", u"Type here", None))

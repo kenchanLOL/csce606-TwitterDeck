@@ -1,7 +1,13 @@
 # MAIN FILE
 # ///////////////////////////////////////////////////////////////
-from main import *
-
+# from main import *
+from PySide6.QtCore import *
+from PySide6.QtGui import *
+from PySide6.QtWidgets import *
+from modules.app_settings import Settings
+from widgets import CustomGrip
+from protobufs import CrisisDeck_pb2
+from modules.ui_dialog import Ui_Dialog
 class UIFunctions():
     # MAXIMIZE/RESTORE
     # ///////////////////////////////////////////////////////////////
@@ -324,5 +330,49 @@ class UIFunctions():
             self.bottom_grip.setGeometry(0, self.height() - 10, self.width(), 10)
 
     # ///////////////////////////////////////////////////////////////
+    def login(self):
+        name  = self.ui.text_username.text()
+        password = self.ui.text_password.text()
+        print(name, password)
+        user = CrisisDeck_pb2.User(
+            ID = -1,
+            name = name,
+            password = password,
+            content = ""
+        )
+        reply = self.stub.Login(user)
+        # print(reply.ID)
+        if reply.ID == 0:
+            print("here")
+            popUp = dialog("Login Failed")
+            popUp.exec()
+            
+        # TODO: uplock btns
+        # TODO: jump to management page
     
+    def register(self):
+        name  = self.ui.text_username.text()
+        password = self.ui.text_password.text()
+        print(name, password)
+        user = CrisisDeck_pb2.User(
+            ID = -1,
+            name = name,
+            password = password,
+            content = ""
+        )
+        reply = self.stub.CreateUser(user)
+        print(reply) 
+        # TODO: uplock btns
+        # TODO: jump to management page
+
     # END - GUI DEFINITIONS
+
+class dialog(QDialog):
+    def __init__(self, context):
+        QDialog.__init__(self)
+        self.ui = Ui_Dialog()
+        self.setWindowFlags(Qt.FramelessWindowHint)
+        self.setAttribute(Qt.WA_TranslucentBackground)
+        self.resize(300, 200)
+        self.ui.setupUi(self)
+        self.ui.label.setText(context)

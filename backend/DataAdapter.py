@@ -1,13 +1,13 @@
 import sqlite3
-from Event import Event
-from Tweet import Tweet
-from Query import Query
-from User import User
+from backend.Event import Event
+from backend.Tweet import Tweet
+from backend.Query import Query
+from backend.User import User
 
 # dbname = 'TwitterDeck.db'
 class DataAdapter:
     def __init__(self, dbname):
-        self.conn = sqlite3.connect(dbname)
+        self.conn = sqlite3.connect(dbname, check_same_thread=False)
         self.cursor = self.conn.cursor()
 
     def __del__(self):

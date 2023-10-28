@@ -8,21 +8,16 @@ A Twitter Deck clone for digital humanitarian purpose
 4. python main.py
 
 ### Reminder of PyQt
-After building new UI by running 
+Building new UI after editing 
 ```
 pyside6-uic .\main.ui -o .\modules\ui_main.py
 pyside6-rcc .\resources.qrc -o ./resources_rc.qrc
+python update-ui.py 
 ```
-modify these two import statements
+Building new gRPC files after editing
 ```
-# from twitter_deck import TwitterDeck
-# import resources_rc
+cd protobufs/
+python -m grpc_tools.protoc -I proto --python_out=. --grpc_python_out=. .\proto\CrisisDeck.proto
 ```
-into the following two
-```
-from widgets import TwitterDeck
-from . resources_rc import *
-```
-
 
 
