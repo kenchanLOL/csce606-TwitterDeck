@@ -111,6 +111,34 @@ class DataAdapter:
             print("DB error:", e)
             return -1
 
+    def loadQueryByEvent(self, EventId):
+        try:
+            sql_query = 'SELECT * FROM Query WHERE EventID = ?'
+            self.cursor.execute(sql_query, (EventId, ))
+            results = self.cursor.fetchall()
+            queries = []
+            for result in results:
+                query = Query(result[0], result[1], result[2])
+                queries.append(query)
+            return queries
+        except sqlite3.Error as e:
+            print("DB error:", e)
+            return -1
+
+    def loadTweetIDByQuery(self, QueryId):
+        try:
+            sql_query = 'SELECT * FROM QueryTweet WHERE QueryID = ?'
+            self.cursor.execute(sql_query, (QueryId, ))
+            results = self.cursor.fetchall()
+            TweetIDs = []
+            for result in results:
+                TweetID = result[2]
+                TweetIDs.append(TweetID)
+            return TweetIDs
+        except sqlite3.Error as e:
+            print("DB error:", e)
+            return -1
+
     def searchTwitter(self, event, query):
         try:
             self.cursor.execute('SELECT * FROM Tweet')
