@@ -1,4 +1,4 @@
-from User import User
+from backend.User import User
 
 
 def login(name, password, dataAdapter):

@@ -22,9 +22,9 @@ class TweetsQuery(QFrame):
         self.label_search.setText("Query: ")
         self.label_search.setStyleSheet(self.stylesheet["label"])
         
-        self.text_search = QPlainTextEdit(self.frame_search)
+        self.text_search = QLineEdit(self.frame_search)
         self.text_search.setStyleSheet(self.stylesheet["text"])
-        self.text_search.setFixedHeight(40)
+        self.text_search.setMinimumHeight(40)
 
         self.btn_search = QPushButton(self.frame_search)
         self.btn_search.setText("\u21b5")
@@ -33,7 +33,7 @@ class TweetsQuery(QFrame):
 
         self.layout_search.addWidget(self.label_search, 1)
         self.layout_search.addWidget(self.text_search, 15)
-        self.layout_search.addWidget(self.btn_search, 2)
+        self.layout_search.addWidget(self.btn_search, 4)
         # tweets list
         self.layout_content = QVBoxLayout(self.frame_content)
         self.scroll_tweets = QScrollArea(self.frame_content)

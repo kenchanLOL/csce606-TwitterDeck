@@ -7,7 +7,7 @@ from backend.User import User
 # dbname = 'TwitterDeck.db'
 class DataAdapter:
     def __init__(self, dbname):
-        self.conn = sqlite3.connect(dbname)
+        self.conn = sqlite3.connect(dbname, check_same_thread=False)
         self.cursor = self.conn.cursor()
 
     def __del__(self):
