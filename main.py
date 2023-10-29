@@ -3,7 +3,7 @@ import os
 import platform
 import grpc
 import protobufs.CrisisDeck_pb2 as CrisisDeck_pb2
-from protobufs.CrisisDeck_pb2_grpc import CrisisDeckStub
+from protobufs.CrisisDeck_pb2_grpc import ServiceStub
 from datetime import date
 from PySide6.QtCore import *
 from PySide6.QtGui import *
@@ -22,7 +22,7 @@ class MainWindow(QMainWindow):
         # CREATE gRPC client
         # //////////////////////////////////////////////////////////////
         channel = grpc.insecure_channel("localhost:50051")
-        self.stub = CrisisDeckStub(channel)
+        self.stub = ServiceStub(channel)
 
         QMainWindow.__init__(self)
 
@@ -86,8 +86,6 @@ class MainWindow(QMainWindow):
         # EXTRA LEFT BOX
         def openCloseLeftBox():
             UIFunctions.toggleLeftBox(self, True)
-        for i in range(self.ui.management.table_event.rowCount()):
-            self.ui.management.table_event.findChild(QPushButton, f"btn_edit_event_{i}").clicked.connect(openCloseLeftBox)
         self.ui.extraCloseColumnBtn.clicked.connect(openCloseLeftBox)
 
         # EXTRA LEFT GROUP BOX

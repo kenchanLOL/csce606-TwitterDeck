@@ -42,6 +42,20 @@ class DataAdapter:
         except sqlite3.Error as e:
             print("DB error:", e)
             return -1
+    
+    def loadEventByUser(self, UserId):
+        try:
+            sql_query = 'SELECT * FROM DisasterEvent WHERE UserID = ?'
+            self.cursor.execute(sql_query, (UserId, ))
+            results = self.cursor.fetchall()
+            events = []
+            for result in results:
+                event = Event(result[0], result[1], result[2], result[3], result[4])
+                events.append(event)
+            return events
+        except sqlite3.Error as e:
+            print("DB error:", e)
+            return -1
 
     def saveEvent(self, event):
         try:

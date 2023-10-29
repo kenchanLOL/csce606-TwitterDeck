@@ -6,8 +6,8 @@ from PySide6.QtGui import *
 from PySide6.QtWidgets import *
 from modules.app_settings import Settings
 from widgets import CustomGrip
-from protobufs import CrisisDeck_pb2
 from modules.ui_dialog import Ui_Dialog
+from backend import backend_function
 class UIFunctions():
     # MAXIMIZE/RESTORE
     # ///////////////////////////////////////////////////////////////
@@ -333,37 +333,38 @@ class UIFunctions():
     def login(self):
         name  = self.ui.text_username.text()
         password = self.ui.text_password.text()
-        print(name, password)
-        user = CrisisDeck_pb2.User(
-            ID = -1,
-            name = name,
-            password = password,
-            content = ""
-        )
-        reply = self.stub.Login(user)
-        # print(reply.ID)
-        if reply.ID == 0:
-            print("here")
+        success, user = backend_function.Login(name, password, self.stub)
+        if not success:
             popUp = dialog("Login Failed")
             popUp.exec()
-            
-        # TODO: uplock btns
-        # TODO: jump to management page
+        else:
+            self.user = user
+            # TODO: uplock btns
+            self.ui.btn_widgets.setEnabled(True)
+            self.ui.btn_management.setEnabled(True)
+            self.ui.btn_deck.setEnabled(True)
+            # TODO: jump to management page
+            UIFunctions.setup_management(self)
+            self.ui.stackedWidget.setCurrentWidget(self.ui.management)
+
     
     def register(self):
+        pass
         name  = self.ui.text_username.text()
         password = self.ui.text_password.text()
         print(name, password)
-        user = CrisisDeck_pb2.User(
-            ID = -1,
-            name = name,
-            password = password,
-            content = ""
-        )
-        reply = self.stub.CreateUser(user)
-        print(reply) 
         # TODO: uplock btns
         # TODO: jump to management page
+
+    def setup_management(self):
+        events = backend_function.GetEventByUser(self.user, self.stub)
+        self.ui.management.setup_events(events)
+        
+        def openCloseLeftBox():
+            UIFunctions.toggleLeftBox(self, True)
+        for i in range(self.ui.management.table_event.rowCount()):
+            self.ui.management.table_event.findChild(QPushButton, f"btn_edit_event_{i}").clicked.connect(openCloseLeftBox)
+
 
     # END - GUI DEFINITIONS
 

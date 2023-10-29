@@ -1,26 +1,29 @@
 from concurrent import futures
 import grpc
+
+
 from protobufs import CrisisDeck_pb2_grpc, CrisisDeck_pb2
 from backend.DataAdapter import DataAdapter
-from backend.LoginControl import login
-# from ..backend.User import User
+from backend.User import User
+from backend.Event import Event
+from backend.Query import Query
+from backend.Tweet import Tweet
 
-class Server(CrisisDeck_pb2_grpc.CrisisDeckServicer):
+# python -m grpc_tools.protoc -I.\protobufs\ --python_out=.\protobufs\ --grpc_python_out=.\protobufs\ .\protobufs\CrisisDeck.proto
+
+class Server(CrisisDeck_pb2_grpc.ServiceServicer):
     def __init__(self):
         super().__init__()
         self.dataAdapter = DataAdapter("backend/TwitterDeck.db")
 
     def CreateUser(self, request, context):
-        print("Hello !")
-        reply = CrisisDeck_pb2.User()
-        reply.ID = 0
-        reply.name = request.name
-        reply.password = request.password
-        reply.content = "Hello World"
-        return reply
+        return CrisisDeck_pb2.User()
 
-    def Login(self, request, context):
-        user = login(request.name, request.password, self.dataAdapter)
+    def GetUser(self, request, context):
+        # user = login(request.name, request.password, self.dataAdapter)
+        # print(request)
+        user = self.dataAdapter.loadUser(request.name, request.password)
+        # print(user)
         reply = CrisisDeck_pb2.User()
         if user != None:
             reply.ID = user.ID
@@ -29,9 +32,20 @@ class Server(CrisisDeck_pb2_grpc.CrisisDeckServicer):
             reply.content = user.content if user.content else ""
         return reply
     
+    def GetEventByUser(self, request, context):
+        event_ls = self.dataAdapter.loadEventByUser(request.ID)
+        for e in event_ls:
+            event = CrisisDeck_pb2.Event()
+            event.ID = e.ID
+            event.location = e.location
+            event.time = e.time
+            event.content = e.content
+            yield event
+        
+    
 def serve():
     server = grpc.server(futures.ThreadPoolExecutor(max_workers = 10))
-    CrisisDeck_pb2_grpc.add_CrisisDeckServicer_to_server(Server(), server)
+    CrisisDeck_pb2_grpc.add_ServiceServicer_to_server(Server(), server)
     print("Listening to port 50051...")
     server.add_insecure_port('[::]:50051')
     server.start()
