@@ -1,5 +1,5 @@
 class Tweet:
-    def __init__(self, ID, location, time, content, personID):
+    def __init__(self, ID=None, location=None, time=None, content=None, personID=None):
         self.ID = ID
         self.location = location
         self.time = time

@@ -1,6 +1,6 @@
 syntax = "proto3";
 
-package userservice;
+
 
 service UserService {
     rpc CreateUser(CreateUserRequest) returns (CreateUserResponse);
@@ -17,35 +17,208 @@ message UserMessage {
 }
 
 message CreateUserRequest {
-    // ... 字段定义
+    // ...
 }
 
 message CreateUserResponse {
-    // ... 字段定义
+    // ...
 }
 
 message GetUserRequest {
-    int32 status = 1;    // 你可以根据需要选择适当的数据类型
+    int32 status = 1;
     bytes body = 2;
 }
 
 message GetUserResponse {
-    int32 status = 1;    // 你可以根据需要选择适当的数据类型
+    int32 status = 1;
     bytes body = 2;
 }
 
 message UpdateUserRequest {
-    // ... 字段定义
+    // ...
 }
 
 message UpdateUserResponse {
-    // ... 字段定义
+    // ...
 }
 
 message DeleteUserRequest {
-    // ... 字段定义
+    // ...
 }
 
 message DeleteUserResponse {
-    // ... 字段定义
+    // ...
+}
+
+
+
+service EventService {
+    rpc CreateEvent(CreateEventRequest) returns (CreateEventResponse);
+    rpc GetEvent(GetEventRequest) returns (GetEventResponse);
+    rpc UpdateEvent(UpdateEventRequest) returns (UpdateEventResponse);
+    rpc DeleteEvent(DeleteEventRequest) returns (DeleteEventResponse);
+}
+
+message EventMessage {
+    int32 ID = 1;
+    string location = 2;
+    string time = 3;
+    string content = 4;
+    int32 userID = 5;
+}
+
+message CreateEventRequest {
+    int32 status = 1;
+    bytes body = 2;
+}
+
+message CreateEventResponse {
+    int32 status = 1;
+    bytes body = 2;
+}
+
+message GetEventRequest {
+    int32 status = 1;
+    bytes body = 2;
+}
+
+message GetEventResponse {
+    int32 status = 1;
+    bytes body = 2;
+}
+
+message UpdateEventRequest {
+    int32 status = 1;
+    bytes body = 2;
+}
+
+message UpdateEventResponse {
+    int32 status = 1;
+    bytes body = 2;
+}
+
+message DeleteEventRequest {
+    int32 ID = 1;
+}
+
+message DeleteEventResponse {
+    // ...
+}
+
+
+
+service QueryService {
+    rpc CreateQuery(CreateQueryRequest) returns (CreateQueryResponse);
+    rpc GetQuery(GetQueryRequest) returns (GetQueryResponse);
+    rpc UpdateQuery(UpdateQueryRequest) returns (UpdateQueryResponse);
+    rpc DeleteQuery(DeleteQueryRequest) returns (DeleteQueryResponse);
+}
+
+message QueryMessage {
+    int32 ID = 1;
+    string content = 2;
+    int32 eventID = 3;
+}
+
+message CreateQueryRequest {
+    int32 status = 1;
+    bytes body = 2;
+}
+
+message CreateQueryResponse {
+    int32 status = 1;
+    bytes body = 2;
+}
+
+message GetQueryRequest {
+    int32 status = 1;
+    bytes body = 2;
+}
+
+message GetQueryResponse {
+    int32 status = 1;
+    bytes body = 2;
+}
+
+message UpdateQueryRequest {
+    int32 status = 1;
+    bytes body = 2;
+}
+
+message UpdateQueryResponse {
+    int32 status = 1;
+    bytes body = 2;
+}
+
+message DeleteQueryRequest {
+    int32 ID = 1;
+}
+
+message DeleteQueryResponse {
+    // ...
+}
+
+service TweetService {
+    rpc CreateTweet(CreateTweetRequest) returns (CreateTweetResponse);
+    rpc GetTweet(GetTweetRequest) returns (GetTweetResponse);
+    rpc UpdateTweet(UpdateTweetRequest) returns (UpdateTweetResponse);
+    rpc DeleteTweet(DeleteTweetRequest) returns (DeleteTweetResponse);
+    rpc SearchTweet(SearchTweetRequest) returns (SearchTweetResponse);
+}
+
+message TweetMessage {
+    int32 ID = 1;
+    string location = 2;
+    string time = 3;
+    string content = 4;
+    int32 personID = 5;
+}
+
+message CreateTweetRequest {
+    int32 status = 1;
+    bytes body = 2;
+}
+
+message CreateTweetResponse {
+    int32 status = 1;
+    bytes body = 2;
+}
+
+message GetTweetRequest {
+    int32 status = 1;
+    bytes body = 2;
+}
+
+message GetTweetResponse {
+    int32 status = 1;
+    bytes body = 2;
+}
+
+message UpdateTweetRequest {
+    int32 status = 1;
+    bytes body = 2;
+}
+
+message UpdateTweetResponse {
+    int32 status = 1;
+    bytes body = 2;
+}
+
+message DeleteTweetRequest {
+    int32 ID = 1;
+}
+
+message DeleteTweetResponse {
+    // ...
+}
+
+message SearchTweetRequest{
+    int32 status = 1;
+    bytes event = 2;
+    bytes query = 3;
+}
+
+message SearchTweetResponse{
+    int32 status = 1;
+    bytes TweetList = 2;
 }

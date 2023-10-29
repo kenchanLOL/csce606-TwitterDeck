@@ -1,8 +1,8 @@
 import sqlite3
-from Event import Event
-from Tweet import Tweet
-from Query import Query
-from User import User
+from backend.Event import Event
+from backend.Tweet import Tweet
+from backend.Query import Query
+from backend.User import User
 
 # dbname = 'TwitterDeck.db'
 class DataAdapter:
@@ -26,7 +26,22 @@ class DataAdapter:
                 return None
         except sqlite3.Error as e:
             print("DB error:", e)
-            return None
+            return -1
+
+    def loadEvent(self, id):
+        try:
+            sql_query = 'SELECT * FROM DisasterEvent WHERE EventID = ?'
+            self.cursor.execute(sql_query, (id, ))
+            result = self.cursor.fetchone()
+            last_inserted_id = self.cursor.lastrowid
+            if result is not None:
+                event = Event(result[0], result[1], result[2], result[3], result[4])
+                return event
+            else:
+                return None
+        except sqlite3.Error as e:
+            print("DB error:", e)
+            return -1
 
     def saveEvent(self, event):
         try:
@@ -37,7 +52,24 @@ class DataAdapter:
             return last_inserted_id
         except sqlite3.Error as e:
             print("DB error:", e)
-            return None
+            return -1
+
+    def updateEvent(self, event):
+        try:
+            data_to_update = (event.location, event.time, event.content, event.userID, event.ID)
+            sql_query = '''UPDATE DisasterEvent 
+                           SET EventLocation = ?, 
+                               EventTime = ?, 
+                               EventContent = ?, 
+                               UserID = ? 
+                           WHERE EventID = ?'''
+            self.cursor.execute(sql_query, data_to_update)
+            self.conn.commit()
+            rows_affected = self.cursor.rowcount
+            return rows_affected
+        except sqlite3.Error as e:
+            print("DB error:", e)
+            return -1
 
     def saveQuery(self, query):
         try:
@@ -48,10 +80,24 @@ class DataAdapter:
             return last_inserted_id
         except sqlite3.Error as e:
             print("DB error:", e)
-            return None
+            return -1
 
+    def loadQuery(self, id):
+        try:
+            sql_query = 'SELECT * FROM Query WHERE QueryID = ?'
+            self.cursor.execute(sql_query, (id, ))
+            result = self.cursor.fetchone()
+            last_inserted_id = self.cursor.lastrowid
+            if result is not None:
+                query = Query(result[0], result[1], result[2])
+                return query
+            else:
+                return None
+        except sqlite3.Error as e:
+            print("DB error:", e)
+            return -1
 
-    def loadTwitter(self, event, query):
+    def searchTwitter(self, event, query):
         try:
             self.cursor.execute('SELECT * FROM Tweet')
             rows = self.cursor.fetchall()
@@ -71,6 +117,6 @@ class DataAdapter:
             return tweet_list
         except sqlite3.Error as e:
             print("DB error:", e)
-            return None
+            return -1
 
 
