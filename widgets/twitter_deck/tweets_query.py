@@ -31,9 +31,15 @@ class TweetsQuery(QFrame):
         self.btn_search.setStyleSheet(self.stylesheet["btn"])
         self.btn_search.setFixedHeight(40)
 
+        self.btn_edit = QPushButton(self.frame_search)
+        self.btn_edit.setStyleSheet(self.stylesheet["btn"] + "; background-image: url(:/icons/images/icons/cil-options.png); background-repeat: no-repeat; background-position: center;")
+        self.btn_edit.setFixedHeight(40)
+
         self.layout_search.addWidget(self.label_search, 1)
         self.layout_search.addWidget(self.text_search, 15)
         self.layout_search.addWidget(self.btn_search, 4)
+        self.layout_search.addWidget(self.btn_edit, 4)
+
         # tweets list
         self.layout_content = QVBoxLayout(self.frame_content)
         self.scroll_tweets = QScrollArea(self.frame_content)

@@ -44,8 +44,12 @@ class TwitterDeck(QWidget):
             # print(i)
             tweet_query = TweetsQuery(self.stylesheet, tweet_list)
             tweet_query.setObjectName(f"tweet_query_{queryID}")
+            tweet_query.btn_edit.setObjectName(f"btn_edit_{queryID}")
+            tweet_query.btn_search.setObjectName(f"btn_search_{queryID}")
+
             self.layout_scroll.addWidget(tweet_query)
         self.btn_new_query = QPushButton(" + ")
+        self.btn_new_query.setObjectName("btn_new_query")
         self.btn_new_query.setStyleSheet("font: 50pt bold; padding-bottom:10px")
         self.layout_scroll.addWidget(self.btn_new_query)
         

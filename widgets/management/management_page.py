@@ -47,16 +47,10 @@ class ManagementPage(QWidget):
     
     def setup_events(self, events):
         self.table_event.setRowCount(0)
+        # print(events)
         for idx, event in enumerate(events):
             self.table_event.insertRow(self.table_event.rowCount())
-            # widget_btn1 = QWidget()
-            # layout_btn = QVBoxLayout(widget_btn1)
-            # btn1 = QPushButton()
-            # btn1.setText(f"Event {i}")
-            # btn1.setStyleSheet("font:22px; color:rgb(255,255,255); border-radius:10px; padding-bottom: 5px")
-            # btn1.setObjectName(f"btn_event_{i}")
-            # layout_btn.addWidget(btn1)
-            # self.table_event.setCellWidget(i, 0, widget_btn1)
+
             self.table_event.setItem(idx, 0, QTableWidgetItem(f"{event.ID}"))
             self.table_event.setItem(idx, 1, QTableWidgetItem(f"{event.location}"))
             self.table_event.setItem(idx, 2, QTableWidgetItem(f"{event.time}"))
@@ -68,7 +62,6 @@ class ManagementPage(QWidget):
             # btn2.setText("Edit")
             btn2.setStyleSheet("font:22px; color:rgb(255,255,255); border-radius:10px; padding-top: 5px; background-image: url(:/icons/images/icons/cil-loop-circular.png); background-repeat: no-repeat;")
             btn2.setObjectName(f"btn_edit_event_{event.ID}")
-                    # EXTRA LEFT BOX
 
             # btn2.clicked.connect(openCloseLeftBox(self, True))
             layout_btn.addWidget(btn2)

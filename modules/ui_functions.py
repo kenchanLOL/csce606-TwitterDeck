@@ -8,7 +8,6 @@ from modules.app_settings import Settings
 from widgets import CustomGrip
 from modules.ui_dialog import Ui_Dialog
 from backend import backend_function
-from functools import partial
 class UIFunctions():
     # MAXIMIZE/RESTORE
     # ///////////////////////////////////////////////////////////////
@@ -335,7 +334,7 @@ class UIFunctions():
     def login(self):
         name  = self.ui.text_username.text()
         password = self.ui.text_password.text()
-        success, user = backend_function.Login(name, password, self.stub)
+        success, user = backend_function.Login(name, password, self.userStub)
         if not success:
             popUp = dialog("Login Failed")
             popUp.exec()
@@ -359,7 +358,7 @@ class UIFunctions():
         # TODO: jump to management page
 
     def setup_management(self):
-        events = backend_function.GetEventByUser(self.user, self.stub)
+        events = backend_function.GetEventByUser(self.user.ID, self.eventStub)
         self.ui.management.setup_events(events)
         self.connect_event_btnClick()
         # def openCloseLeftBox():
@@ -368,16 +367,22 @@ class UIFunctions():
     def setup_deck(self, row_number, column_number):
         # self.ui.management.table_event.item()
         event_id = int(self.ui.management.table_event.item(row_number, 0).text())
-        tweets = backend_function.GetTweetsByEvent(event_id, self.stub)
+        Queries = backend_function.GetQueryByEvent(event_id, self.queryStub)
+        tweets = {}
+        for query in Queries:
+            tweets[query.ID] = backend_function.GetTweetByQuery(query.ID, self.tweetStub)
+        # tweets = backend_function.GetTweetsByEvent(event_id, self.eventStub)
         self.ui.deck.setupQuery(tweets)
-        UIFunctions.resetStyle(self, "btn_management")
+        self.connect_query_btnClick()
+        UIFunctions.resetStyle(self, "btn_deck")
         self.ui.btn_deck.setStyleSheet(UIFunctions.selectMenu(self.ui.btn_deck.styleSheet()))
 
 
     # TOGGLE BAR AND EVENT RELATED
     # ////////////////////////////////////////////////////////////////////////// 
     def toggleLeftBox_withEventID(self, eventID):
-        self.current_event = backend_function.GetEventByID(eventID, self.stub)
+        self.current_event = backend_function.GetEventByID(eventID, self.eventStub)
+        # TODO: display event attribute in toggle bar
         if eventID != -1:
             self.ui.extraLabel.setText("Event " + str(self.current_event.ID))
         else:
@@ -386,18 +391,28 @@ class UIFunctions():
     
     def updateEvent(self):
         UIFunctions.toggleLeftBox(self, True)
+    
     # TOGGLE BAR AND QUERY RELATED
     # ////////////////////////////////////////////////////////////////////////// 
-    def toggleLeftBox_withID(self, eventID):
-        self.current_event = backend_function.GetEventByID(eventID, self.stub)
-        if eventID != -1:
-            self.ui.extraLabel.setText("Event " + str(self.current_event.ID))
+    def toggleLeftBox_withQueryID(self, queryID):
+        # TODO: link with backend function
+        # self.current_query = backend_function.GetQueryByID(queryID, self.stub)
+        self.current_query = queryID
+        # TODO: display event attribute in toggle bar
+        if queryID != -1:
+            # self.ui.extraLabel.setText("Query " + str(self.current_event.ID))
+            self.ui.extraLabel.setText("Query " + str(self.current_query))
         else:
-            self.ui.extraLabel.setText("New Event")
+            self.ui.extraLabel.setText("New Query")
         UIFunctions.toggleLeftBox(self, True)
-    
-    def updateEvent(self):
-        UIFunctions.toggleLeftBox(self, True)
+
+    def search(self, text, queryID):
+        print(f"searching {text} in queryID {queryID}")
+        # event = Event()
+        # backend_function.searchTweet(self, text, queryID)
+
+    # def updateEvent(self):
+    #     UIFunctions.toggleLeftBox(self, True)
         # pass
         
     # def add_evnets(self):

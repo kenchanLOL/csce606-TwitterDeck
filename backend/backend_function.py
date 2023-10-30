@@ -6,11 +6,9 @@ from backend.User import User
 from backend.Event import Event
 from backend.Query import Query
 from backend.Tweet import Tweet
-import picklefrom backend.Tweet import Tweet
-
-
+from backend.Tweet import Tweet
 from protobufs import CrisisDeck_pb2, CrisisDeck_pb2_grpc
-
+import pickle
 
 def Login(name, password, userStub):
     user = User(name=name, password=password)
@@ -18,16 +16,16 @@ def Login(name, password, userStub):
     serialized_user = user_message.SerializeToString()
 
     response = userStub.GetUser(gRPC_pb2.GetUserRequest(status=Status.STATUS_OK, body=serialized_user))
-
+    # print(response)
     if response.status == Status.STATUS_OK:
         user_message = gRPC_pb2.UserMessage()
         user_message.ParseFromString(response.body)
         user.ID = user_message.ID
         user.content = user_message.content
-        return user
+        return True, user
     else:
         print("not found")
-        return None
+        return False, None
 
 
 def GetEventByUser(userID, eventStub):
@@ -147,10 +145,10 @@ def GetQueryByEvent(eventID, queryStub):
         return None
 
 
-def GetTweetByQuery(queryID, eventStub):
+def GetTweetByQuery(queryID, tweetStub):
     query = Query(ID=queryID)
     serialized_query = pickle.dumps(query)
-    response = eventStub.GetTweetByQuery(
+    response = tweetStub.GetTweetByQuery(
         gRPC_pb2.GetTweetByQueryRequest(status=Status.STATUS_OK, body=serialized_query))
     if response.status == Status.STATUS_OK:
         tweets = pickle.loads(response.TweetList)
@@ -158,7 +156,7 @@ def GetTweetByQuery(queryID, eventStub):
     else:
         print("database error")
         return None
-
+# TODO: 
 def searchTweet(event, query, tweetStub):
     query_message = gRPC_pb2.QueryMessage(ID=query.ID, content=query.content, eventID=query.eventID)
     serialized_query = query_message.SerializeToString()
@@ -173,19 +171,21 @@ def searchTweet(event, query, tweetStub):
     else:
         print("database error")
         return None
-def GetTweetsByEvent(eventID, stub):
-    eventID = CrisisDeck_pb2.EventID(ID = eventID)
-    replies = stub.GetTweetsByEvent(eventID)
-    tweets = {}
-    for tweet in replies:
-        tweets[tweet.QueryID] = tweets.get(tweet.QueryID, []) + [Tweet(tweet.ID, tweet.location, tweet.time, tweet.content, tweet.personID)]
-    return tweets
+    
 
-def GetEventByID(eventID, stub):
-    if eventID == -1:
-        event = Event()
-    else:
-        eventID = CrisisDeck_pb2.EventID(ID = eventID)
-        reply = stub.GetEvent(eventID)
-        event = Event(reply.ID, reply.location, reply.time, reply.content)
-    return event
+# def GetEventByID(eventID, stub):
+#     if eventID == -1:
+#         event = Event()
+#     else:
+#         eventID = CrisisDeck_pb2.EventID(ID = eventID)
+#         reply = stub.GetEvent(eventID)
+#         event = Event(reply.ID, reply.location, reply.time, reply.content)
+#     return event
+# /////////////////////////////////////////////////////
+#  TODO:
+# 1. GetQueryByID
+# Input: queryID
+# Output: Event object (with customized filter) 
+# 2. searchTweet (Changes needed)
+# Input: text, queryID
+# Output: Tweet list

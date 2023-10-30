@@ -2,8 +2,8 @@ import sys
 import os
 import platform
 import grpc
-import protobufs.CrisisDeck_pb2 as CrisisDeck_pb2
-from protobufs.CrisisDeck_pb2_grpc import ServiceStub
+import protobufs.gRPC_pb2 as gRPC_pb2
+from protobufs.gRPC_pb2_grpc import UserServiceStub, EventServiceStub, QueryServiceStub, TweetServiceStub
 from datetime import date
 from PySide6.QtCore import *
 from PySide6.QtGui import *
@@ -22,7 +22,10 @@ class MainWindow(QMainWindow):
         # CREATE gRPC client
         # //////////////////////////////////////////////////////////////
         channel = grpc.insecure_channel("localhost:50051")
-        self.stub = ServiceStub(channel)
+        self.userStub = UserServiceStub(channel)
+        self.eventStub = EventServiceStub(channel)
+        self.queryStub = QueryServiceStub(channel)
+        self.tweetStub = TweetServiceStub(channel)
 
         QMainWindow.__init__(self)
 
@@ -164,7 +167,6 @@ class MainWindow(QMainWindow):
             UIFunctions.resetStyle(self, btnName) # RESET ANOTHERS BUTTONS SELECTED
             btn.setStyleSheet(UIFunctions.selectMenu(btn.styleSheet())) # SELECT MENU
 
-
         # PRINT BTN NAME
         print(f'Button "{btnName}" pressed!')
 
@@ -234,9 +236,32 @@ class MainWindow(QMainWindow):
         else:
             btnID = int(btnName.split('_')[-1])
         UIFunctions.toggleLeftBox_withEventID(self, btnID)
+        self.ui.btn_apply_event.dou
+    def connect_query_btnClick(self):
+        for btn in self.ui.deck.scrollArea.findChildren(QPushButton):
+            if btn.objectName() ==  "btn_new_query" or "btn_edit" in btn.objectName():
+                btn.clicked.connect(self.query_btnClick)
+            else:
+                btn.clicked.connect(self.search_btnClick)
 
+    def query_btnClick(self):
+        btn = self.sender()
+        btnName = btn.objectName()
+        if btnName == "btn_new_query":
+            btnID = -1
+        else:
+            btnID = int(btnName.split('_')[-1])
+        UIFunctions.toggleLeftBox_withQueryID(self, btnID)
     
-    
+    def search_btnClick(self):
+        btn = self.sender()
+        btnName = btn.objectName()
+        queryID = int(btnName.split('_')[-1])
+        tweet_query = self.ui.deck.scrollArea.findChild(QWidget, f"tweet_query_{queryID}")
+        text = tweet_query.text_search.text()
+        UIFunctions.search(self, text, queryID)
+
+
 
     def setThemeHack(self):
         Settings.BTN_LEFT_BOX_COLOR = "background-color: #495474;"
