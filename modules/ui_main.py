@@ -1041,6 +1041,28 @@ class Ui_MainWindow(object):
 
         self.verticalLayout_11.addItem(self.verticalSpacer_6)
 
+        self.btn_submit = QPushButton(self.extraTopMenu)
+        self.btn_submit.setObjectName(u"btn_submit")
+        self.btn_submit.setMinimumSize(QSize(0, 45))
+        self.btn_submit.setStyleSheet(u"QPushButton {\n"
+"	padding-right: 50px;\n"
+"	border: 2px solid rgb(52, 59, 72);\n"
+"	border-radius: 20px;	\n"
+"	background-color: rgb(52, 59, 72);\n"
+"	text-align:Center;\n"
+"	font: bold;\n"
+"}\n"
+"QPushButton:hover {\n"
+"	background-color: rgb(57, 65, 80);\n"
+"	border: 2px solid rgb(61, 70, 86);\n"
+"}\n"
+"QPushButton:pressed {	\n"
+"	background-color: rgb(35, 40, 49);\n"
+"	border: 2px solid rgb(43, 50, 61);\n"
+"}")
+
+        self.verticalLayout_11.addWidget(self.btn_submit)
+
 
         self.verticalLayout_12.addWidget(self.extraTopMenu)
 
@@ -2482,6 +2504,7 @@ class Ui_MainWindow(object):
         self.grp_engagement.setTitle("")
         self.label_60.setText(QCoreApplication.translate("MainWindow", u"Min Rewteet:", None))
         self.label_61.setText(QCoreApplication.translate("MainWindow", u"Min Fav: ", None))
+        self.btn_submit.setText(QCoreApplication.translate("MainWindow", u"Submit", None))
         self.titleRightInfo.setText(QCoreApplication.translate("MainWindow", u"Crisis Deck- A twitter deck specific for crisis event", None))
 #if QT_CONFIG(tooltip)
         self.settingsTopBtn.setToolTip(QCoreApplication.translate("MainWindow", u"Settings", None))

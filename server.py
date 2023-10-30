@@ -41,7 +41,30 @@ class Server(CrisisDeck_pb2_grpc.ServiceServicer):
             event.time = e.time
             event.content = e.content
             yield event
-        
+    
+    def GetEvent(self, request, context):
+        event = self.dataAdapter.loadEvent(request.ID)
+        reply = CrisisDeck_pb2.Event()
+        reply.ID = event.ID
+        reply.location = event.location
+        reply.time = event.time
+        reply.content = event.content
+        return reply
+    
+    def GetTweetsByEvent(self, request, context):
+        tweet_dict = self.dataAdapter.loadTweetsByEventID(request.ID)
+        # print(tweet_dict)
+        for query_id, tweets in tweet_dict.items():
+            for t in tweets:
+                # print(query_id, t.ID)
+                tweet = CrisisDeck_pb2.Tweet()
+                tweet.ID = str(t.ID)
+                tweet.location = t.location if t.location else ""
+                tweet.time = t.time if t.time else ""
+                tweet.content = t.content
+                tweet.personID = t.personID if t.time else -1
+                tweet.QueryID = query_id
+                yield tweet        
     
 def serve():
     server = grpc.server(futures.ThreadPoolExecutor(max_workers = 10))

@@ -88,10 +88,12 @@ class MainWindow(QMainWindow):
             UIFunctions.toggleLeftBox(self, True)
         self.ui.extraCloseColumnBtn.clicked.connect(openCloseLeftBox)
 
-        # EXTRA LEFT GROUP BOX
+
+        # EXTRA LEFT GROUP BOX BUTTON
         self.ui.btn_content.clicked.connect(self.openCloseLeftGroupBox)
         self.ui.btn_location.clicked.connect(self.openCloseLeftGroupBox)
         self.ui.btn_engagement.clicked.connect(self.openCloseLeftGroupBox)
+        self.ui.btn_submit.clicked.connect(lambda: UIFunctions.updateEvent(self))
 
 
         # EXTRA RIGHT BOX
@@ -106,8 +108,7 @@ class MainWindow(QMainWindow):
         # MANAGEMENT STACK
         # ///////////////////////////////////////////////////////////////
         self.ui.management.table_event.doubleClicked.connect(self.management_buttonClick)
-
-
+        self.ui.management.btn_add_event.clicked.connect(self.event_btnClick)
 
         # SHOW APP
         # ///////////////////////////////////////////////////////////////
@@ -159,7 +160,6 @@ class MainWindow(QMainWindow):
             UIFunctions.resetStyle(self, btnName) # RESET ANOTHERS BUTTONS SELECTED
             btn.setStyleSheet(UIFunctions.selectMenu(btn.styleSheet())) # SELECT MENU
         if btnName == "btn_management":
-            print("Save BTN clicked!")
             self.ui.stackedWidget.setCurrentWidget(self.ui.management) # SET PAGE
             UIFunctions.resetStyle(self, btnName) # RESET ANOTHERS BUTTONS SELECTED
             btn.setStyleSheet(UIFunctions.selectMenu(btn.styleSheet())) # SELECT MENU
@@ -211,13 +211,32 @@ class MainWindow(QMainWindow):
     def management_buttonClick(self):
         table = self.sender()
         # print(btn
-        for idx in table.selectionModel().selectedIndexes():
-            row_number = idx.row()
-            column_number = idx.column()
-            # print(row_number, column_number)
-        if column_number == 0:
-            self.ui.stackedWidget.setCurrentWidget(self.ui.deck)
+        idx = table.selectionModel().selectedIndexes()[0]
+        row_number = idx.row()
+        column_number = idx.column()
 
+            # print(row_number, column_number)
+        # if column_number == 0:
+        UIFunctions.setup_deck(self, row_number, column_number)
+        self.ui.stackedWidget.setCurrentWidget(self.ui.deck)
+
+    def connect_event_btnClick(self):
+        # for i in range(self.ui.management.table_event.rowCount()):
+            # self.ui.management.table_event.findChild(QPushButton, f"btn_edit_event_{i}").clicked.connect(openCloseLeftBox)
+        for btn in self.ui.management.table_event.findChildren(QPushButton):
+            btn.clicked.connect(self.event_btnClick)
+    
+    def event_btnClick(self):
+        btn = self.sender()
+        btnName = btn.objectName()
+        if btnName == "btn_add_event":
+            btnID = -1
+        else:
+            btnID = int(btnName.split('_')[-1])
+        UIFunctions.toggleLeftBox_withEventID(self, btnID)
+
+    
+    
 
     def setThemeHack(self):
         Settings.BTN_LEFT_BOX_COLOR = "background-color: #495474;"

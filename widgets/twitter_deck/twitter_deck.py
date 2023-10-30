@@ -10,13 +10,13 @@ class TwitterDeck(QWidget):
             "text": "background-color: rgb(33, 37, 43); color:rgb(255, 255, 255); font-size:22px; border-radius:10px",
             "btn": "background-color: rgb(33, 37, 43); color:rgb(255, 255, 255); border-radius:10px"
         }
-        data_temp = {
-            "username":"user1",
-            "body":"RT @debbiegibson & #TeamDeb for @bizarro_chile #HITPARADE & @Blondieclub ! #chile #santiago http://t.co/A… "
-        }
-        tweets_list = [[data_temp] * i for i in range(3,10)]
-        self.data = tweets_list
-        self.query_list = []
+        # data_temp = {
+        #     "username":"user1",
+        #     "body":"RT @debbiegibson & #TeamDeb for @bizarro_chile #HITPARADE & @Blondieclub ! #chile #santiago http://t.co/A… "
+        # }
+        # tweets_list = [[data_temp] * i for i in range(3,10)]
+        # self.data = tweets_list
+        self.query_list = {}
         self.setupUi()
 
     def setupUi(self):
@@ -29,14 +29,28 @@ class TwitterDeck(QWidget):
         self.layout_scroll = QHBoxLayout(self.widget_scroll)
         self.scrollArea.setWidget(self.widget_scroll)
         self.scrollArea.setHorizontalScrollBarPolicy(Qt.ScrollBarAsNeeded)
-        self.setupQuery()
+        # self.setupQuery()
         self.layout_content.addWidget(self.scrollArea)
         self.layout_deck.addWidget(self.frame_content) 
 
-    def setupQuery(self):
-        for i in range(len(self.data)):
+    def setupQuery(self, data):
+        self.query_list = data
+        # delete existing child
+        for child in self.widget_scroll.findChildren(TweetsQuery):
+            child.deleteLater()
+        for child in self.widget_scroll.findChildren(QPushButton):
+            child.deleteLater()
+        for queryID, tweet_list in self.query_list.items():
             # print(i)
-            tweet_query = TweetsQuery(self.stylesheet, self.data[i])
-            tweet_query.setObjectName(f"tweet_query_{i}")
+            tweet_query = TweetsQuery(self.stylesheet, tweet_list)
+            tweet_query.setObjectName(f"tweet_query_{queryID}")
             self.layout_scroll.addWidget(tweet_query)
-            self.query_list.append(tweet_query)
+        self.btn_new_query = QPushButton(" + ")
+        self.btn_new_query.setStyleSheet("font: 50pt bold; padding-bottom:10px")
+        self.layout_scroll.addWidget(self.btn_new_query)
+        
+    # def addQuery(self, query):
+    #     tweet_query = TweetsQuery(self.stylesheet, [])
+    #     tweet_query.setObjectName(f"tweet_query_{queryID}")
+    #     self.layout_scroll.addWidget(tweet_query)
+            # self.query_list.append(tweet_query)

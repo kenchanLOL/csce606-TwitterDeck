@@ -8,6 +8,7 @@ from modules.app_settings import Settings
 from widgets import CustomGrip
 from modules.ui_dialog import Ui_Dialog
 from backend import backend_function
+from functools import partial
 class UIFunctions():
     # MAXIMIZE/RESTORE
     # ///////////////////////////////////////////////////////////////
@@ -329,6 +330,7 @@ class UIFunctions():
             self.top_grip.setGeometry(0, 0, self.width(), 10)
             self.bottom_grip.setGeometry(0, self.height() - 10, self.width(), 10)
 
+    #  LOGIN AND SETUP
     # ///////////////////////////////////////////////////////////////
     def login(self):
         name  = self.ui.text_username.text()
@@ -339,31 +341,67 @@ class UIFunctions():
             popUp.exec()
         else:
             self.user = user
-            # TODO: uplock btns
+            # uplock btns
             self.ui.btn_widgets.setEnabled(True)
             self.ui.btn_management.setEnabled(True)
             self.ui.btn_deck.setEnabled(True)
-            # TODO: jump to management page
+            # jump to management page
             UIFunctions.setup_management(self)
             self.ui.stackedWidget.setCurrentWidget(self.ui.management)
 
     
     def register(self):
         pass
-        name  = self.ui.text_username.text()
-        password = self.ui.text_password.text()
-        print(name, password)
+        # name  = self.ui.text_username.text()
+        # password = self.ui.text_password.text()
+        # print(name, password)
         # TODO: uplock btns
         # TODO: jump to management page
 
     def setup_management(self):
         events = backend_function.GetEventByUser(self.user, self.stub)
         self.ui.management.setup_events(events)
+        self.connect_event_btnClick()
+        # def openCloseLeftBox():
+        #     UIFunctions.toggleLeftBox(self, True)
+
+    def setup_deck(self, row_number, column_number):
+        # self.ui.management.table_event.item()
+        event_id = int(self.ui.management.table_event.item(row_number, 0).text())
+        tweets = backend_function.GetTweetsByEvent(event_id, self.stub)
+        self.ui.deck.setupQuery(tweets)
+        UIFunctions.resetStyle(self, "btn_management")
+        self.ui.btn_deck.setStyleSheet(UIFunctions.selectMenu(self.ui.btn_deck.styleSheet()))
+
+
+    # TOGGLE BAR AND EVENT RELATED
+    # ////////////////////////////////////////////////////////////////////////// 
+    def toggleLeftBox_withEventID(self, eventID):
+        self.current_event = backend_function.GetEventByID(eventID, self.stub)
+        if eventID != -1:
+            self.ui.extraLabel.setText("Event " + str(self.current_event.ID))
+        else:
+            self.ui.extraLabel.setText("New Event")
+        UIFunctions.toggleLeftBox(self, True)
+    
+    def updateEvent(self):
+        UIFunctions.toggleLeftBox(self, True)
+    # TOGGLE BAR AND QUERY RELATED
+    # ////////////////////////////////////////////////////////////////////////// 
+    def toggleLeftBox_withID(self, eventID):
+        self.current_event = backend_function.GetEventByID(eventID, self.stub)
+        if eventID != -1:
+            self.ui.extraLabel.setText("Event " + str(self.current_event.ID))
+        else:
+            self.ui.extraLabel.setText("New Event")
+        UIFunctions.toggleLeftBox(self, True)
+    
+    def updateEvent(self):
+        UIFunctions.toggleLeftBox(self, True)
+        # pass
         
-        def openCloseLeftBox():
-            UIFunctions.toggleLeftBox(self, True)
-        for i in range(self.ui.management.table_event.rowCount()):
-            self.ui.management.table_event.findChild(QPushButton, f"btn_edit_event_{i}").clicked.connect(openCloseLeftBox)
+    # def add_evnets(self):
+    #     pass
 
 
     # END - GUI DEFINITIONS

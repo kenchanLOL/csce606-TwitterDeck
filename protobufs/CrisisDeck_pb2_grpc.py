@@ -104,6 +104,11 @@ class ServiceStub(object):
                 request_serializer=CrisisDeck__pb2.Filters.SerializeToString,
                 response_deserializer=CrisisDeck__pb2.Tweet.FromString,
                 )
+        self.GetTweetsByEvent = channel.unary_stream(
+                '/Service/GetTweetsByEvent',
+                request_serializer=CrisisDeck__pb2.TweetID.SerializeToString,
+                response_deserializer=CrisisDeck__pb2.Tweet.FromString,
+                )
 
 
 class ServiceServicer(object):
@@ -217,6 +222,12 @@ class ServiceServicer(object):
         context.set_details('Method not implemented!')
         raise NotImplementedError('Method not implemented!')
 
+    def GetTweetsByEvent(self, request, context):
+        """Missing associated documentation comment in .proto file."""
+        context.set_code(grpc.StatusCode.UNIMPLEMENTED)
+        context.set_details('Method not implemented!')
+        raise NotImplementedError('Method not implemented!')
+
 
 def add_ServiceServicer_to_server(servicer, server):
     rpc_method_handlers = {
@@ -308,6 +319,11 @@ def add_ServiceServicer_to_server(servicer, server):
             'SearchTweet': grpc.unary_stream_rpc_method_handler(
                     servicer.SearchTweet,
                     request_deserializer=CrisisDeck__pb2.Filters.FromString,
+                    response_serializer=CrisisDeck__pb2.Tweet.SerializeToString,
+            ),
+            'GetTweetsByEvent': grpc.unary_stream_rpc_method_handler(
+                    servicer.GetTweetsByEvent,
+                    request_deserializer=CrisisDeck__pb2.TweetID.FromString,
                     response_serializer=CrisisDeck__pb2.Tweet.SerializeToString,
             ),
     }
@@ -622,6 +638,23 @@ class Service(object):
             metadata=None):
         return grpc.experimental.unary_stream(request, target, '/Service/SearchTweet',
             CrisisDeck__pb2.Filters.SerializeToString,
+            CrisisDeck__pb2.Tweet.FromString,
+            options, channel_credentials,
+            insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
+
+    @staticmethod
+    def GetTweetsByEvent(request,
+            target,
+            options=(),
+            channel_credentials=None,
+            call_credentials=None,
+            insecure=False,
+            compression=None,
+            wait_for_ready=None,
+            timeout=None,
+            metadata=None):
+        return grpc.experimental.unary_stream(request, target, '/Service/GetTweetsByEvent',
+            CrisisDeck__pb2.TweetID.SerializeToString,
             CrisisDeck__pb2.Tweet.FromString,
             options, channel_credentials,
             insecure, call_credentials, compression, wait_for_ready, timeout, metadata)

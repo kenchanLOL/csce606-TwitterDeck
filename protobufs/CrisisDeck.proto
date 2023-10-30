@@ -22,6 +22,7 @@ service Service {
     rpc UpdateTweet(Tweet) returns (Tweet);
     rpc DeleteTweet(TweetID) returns (Empty);
     rpc SearchTweet(Filters) returns (stream Tweet);
+    rpc GetTweetsByEvent(TweetID) returns (stream Tweet);
 }
 message Empty{}
 
@@ -59,11 +60,12 @@ message QueryID{
 }
 
 message Tweet {
-    int32 ID = 1;
+    string ID = 1;
     string location = 2;
     string time = 3;
     string content = 4;
     int32 personID = 5;
+    int32 QueryID = 6;
 }
 
 message TweetID{
