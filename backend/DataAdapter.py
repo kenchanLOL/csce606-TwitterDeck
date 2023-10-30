@@ -125,6 +125,21 @@ class DataAdapter:
             print("DB error:", e)
             return -1
 
+    def loadTweet(self, id):
+        try:
+            sql_query = 'SELECT * FROM Tweet WHERE TweetID = ?'
+            self.cursor.execute(sql_query, (id, ))
+            result = self.cursor.fetchone()
+            last_inserted_id = self.cursor.lastrowid
+            if result is not None:
+                tweet = Tweet(result[0], result[1], result[2], result[3], result[4])
+                return tweet
+            else:
+                return None
+        except sqlite3.Error as e:
+            print("DB error:", e)
+            return -1
+
     def loadTweetIDByQuery(self, QueryId):
         try:
             sql_query = 'SELECT * FROM QueryTweet WHERE QueryID = ?'

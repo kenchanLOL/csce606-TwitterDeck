@@ -1,8 +1,8 @@
 from concurrent import futures
 import pickle
 import grpc
-import gRPC_pb2
-import gRPC_pb2_grpc
+from protobufs import gRPC_pb2
+from protobufs import gRPC_pb2_grpc
 import Status
 from backend.DataAdapter import DataAdapter
 from backend.User import User
@@ -89,6 +89,14 @@ class EventService(gRPC_pb2_grpc.EventServiceServicer):
             serialized_event = event_message.SerializeToString()
             return gRPC_pb2.GetEventResponse(status=Status.STATUS_OK, body=serialized_event)
 
+    def GetEventByUser(self, request, context):
+        dataAdapter = DataAdapter("TwitterDeck.db")
+        user = pickle.loads(request.body)
+        events = dataAdapter.loadEventByUser(user.ID)
+        serialized_event_list = pickle.dumps(events)
+        return gRPC_pb2.GetEventByUserResponse(status=Status.STATUS_OK, EventList=serialized_event_list)
+
+
     def UpdateEvent(self, request, context):
         dataAdapter = DataAdapter("TwitterDeck.db")
 
@@ -107,6 +115,7 @@ class EventService(gRPC_pb2_grpc.EventServiceServicer):
 
     def DeleteEvent(self, request, context):
         return gRPC_pb2.DeleteEventResponse()
+
 
 class QueryService(gRPC_pb2_grpc.QueryServiceServicer):
 
@@ -145,6 +154,13 @@ class QueryService(gRPC_pb2_grpc.QueryServiceServicer):
             serialized_query = query_message.SerializeToString()
             return gRPC_pb2.GetQueryResponse(status=Status.STATUS_OK, body=serialized_query)
 
+    def GetQueryByEvent(self, request, context):
+        dataAdapter = DataAdapter("TwitterDeck.db")
+        event = pickle.loads(request.body)
+        queries = dataAdapter.loadQueryByEvent(event.ID)
+        serialized_query_list = pickle.dumps(queries)
+        return gRPC_pb2.GetQueryByEventResponse(status=Status.STATUS_OK, QueryList=serialized_query_list)
+
     def UpdateQuery(self, request, context):
         # Implement the logic for updating a query here
         return gRPC_pb2.UpdateQueryResponse()
@@ -166,6 +182,18 @@ class TweetService(gRPC_pb2_grpc.TweetServiceServicer):
 
     def DeleteTweet(self, request, context):
         return gRPC_pb2.DeleteTweetResponse()
+
+    def GetTweetByQuery(self, request, context):
+        dataAdapter = DataAdapter("TwitterDeck.db")
+        query = pickle.loads(request.body)
+        tweetIDs = dataAdapter.loadTweetIDByQuery(query.ID)
+        tweets = []
+        for tweetID in tweetIDs:
+            tweet = dataAdapter.loadTweet(tweetID)
+            tweets.append(tweet)
+        serialized_tweet_list = pickle.dumps(tweets)
+        return gRPC_pb2.GetTweetByQueryResponse(status=Status.STATUS_OK, TweetList=serialized_tweet_list)
+
 
     def SearchTweet(self, request, context):
         dataAdapter = DataAdapter("TwitterDeck.db")

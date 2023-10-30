@@ -2,7 +2,7 @@
 """Client and server classes corresponding to protobuf-defined services."""
 import grpc
 
-import gRPC_pb2 as gRPC__pb2
+import protobufs.gRPC_pb2 as gRPC__pb2
 
 
 class UserServiceStub(object):
@@ -194,6 +194,11 @@ class EventServiceStub(object):
                 request_serializer=gRPC__pb2.DeleteEventRequest.SerializeToString,
                 response_deserializer=gRPC__pb2.DeleteEventResponse.FromString,
                 )
+        self.GetEventByUser = channel.unary_unary(
+                '/EventService/GetEventByUser',
+                request_serializer=gRPC__pb2.GetEventByUserRequest.SerializeToString,
+                response_deserializer=gRPC__pb2.GetEventByUserResponse.FromString,
+                )
 
 
 class EventServiceServicer(object):
@@ -223,6 +228,12 @@ class EventServiceServicer(object):
         context.set_details('Method not implemented!')
         raise NotImplementedError('Method not implemented!')
 
+    def GetEventByUser(self, request, context):
+        """Missing associated documentation comment in .proto file."""
+        context.set_code(grpc.StatusCode.UNIMPLEMENTED)
+        context.set_details('Method not implemented!')
+        raise NotImplementedError('Method not implemented!')
+
 
 def add_EventServiceServicer_to_server(servicer, server):
     rpc_method_handlers = {
@@ -245,6 +256,11 @@ def add_EventServiceServicer_to_server(servicer, server):
                     servicer.DeleteEvent,
                     request_deserializer=gRPC__pb2.DeleteEventRequest.FromString,
                     response_serializer=gRPC__pb2.DeleteEventResponse.SerializeToString,
+            ),
+            'GetEventByUser': grpc.unary_unary_rpc_method_handler(
+                    servicer.GetEventByUser,
+                    request_deserializer=gRPC__pb2.GetEventByUserRequest.FromString,
+                    response_serializer=gRPC__pb2.GetEventByUserResponse.SerializeToString,
             ),
     }
     generic_handler = grpc.method_handlers_generic_handler(
@@ -324,6 +340,23 @@ class EventService(object):
             options, channel_credentials,
             insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
 
+    @staticmethod
+    def GetEventByUser(request,
+            target,
+            options=(),
+            channel_credentials=None,
+            call_credentials=None,
+            insecure=False,
+            compression=None,
+            wait_for_ready=None,
+            timeout=None,
+            metadata=None):
+        return grpc.experimental.unary_unary(request, target, '/EventService/GetEventByUser',
+            gRPC__pb2.GetEventByUserRequest.SerializeToString,
+            gRPC__pb2.GetEventByUserResponse.FromString,
+            options, channel_credentials,
+            insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
+
 
 class QueryServiceStub(object):
     """Missing associated documentation comment in .proto file."""
@@ -354,6 +387,11 @@ class QueryServiceStub(object):
                 request_serializer=gRPC__pb2.DeleteQueryRequest.SerializeToString,
                 response_deserializer=gRPC__pb2.DeleteQueryResponse.FromString,
                 )
+        self.GetQueryByEvent = channel.unary_unary(
+                '/QueryService/GetQueryByEvent',
+                request_serializer=gRPC__pb2.GetQueryByEventRequest.SerializeToString,
+                response_deserializer=gRPC__pb2.GetQueryByEventResponse.FromString,
+                )
 
 
 class QueryServiceServicer(object):
@@ -383,6 +421,12 @@ class QueryServiceServicer(object):
         context.set_details('Method not implemented!')
         raise NotImplementedError('Method not implemented!')
 
+    def GetQueryByEvent(self, request, context):
+        """Missing associated documentation comment in .proto file."""
+        context.set_code(grpc.StatusCode.UNIMPLEMENTED)
+        context.set_details('Method not implemented!')
+        raise NotImplementedError('Method not implemented!')
+
 
 def add_QueryServiceServicer_to_server(servicer, server):
     rpc_method_handlers = {
@@ -405,6 +449,11 @@ def add_QueryServiceServicer_to_server(servicer, server):
                     servicer.DeleteQuery,
                     request_deserializer=gRPC__pb2.DeleteQueryRequest.FromString,
                     response_serializer=gRPC__pb2.DeleteQueryResponse.SerializeToString,
+            ),
+            'GetQueryByEvent': grpc.unary_unary_rpc_method_handler(
+                    servicer.GetQueryByEvent,
+                    request_deserializer=gRPC__pb2.GetQueryByEventRequest.FromString,
+                    response_serializer=gRPC__pb2.GetQueryByEventResponse.SerializeToString,
             ),
     }
     generic_handler = grpc.method_handlers_generic_handler(
@@ -484,6 +533,23 @@ class QueryService(object):
             options, channel_credentials,
             insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
 
+    @staticmethod
+    def GetQueryByEvent(request,
+            target,
+            options=(),
+            channel_credentials=None,
+            call_credentials=None,
+            insecure=False,
+            compression=None,
+            wait_for_ready=None,
+            timeout=None,
+            metadata=None):
+        return grpc.experimental.unary_unary(request, target, '/QueryService/GetQueryByEvent',
+            gRPC__pb2.GetQueryByEventRequest.SerializeToString,
+            gRPC__pb2.GetQueryByEventResponse.FromString,
+            options, channel_credentials,
+            insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
+
 
 class TweetServiceStub(object):
     """Missing associated documentation comment in .proto file."""
@@ -518,6 +584,11 @@ class TweetServiceStub(object):
                 '/TweetService/SearchTweet',
                 request_serializer=gRPC__pb2.SearchTweetRequest.SerializeToString,
                 response_deserializer=gRPC__pb2.SearchTweetResponse.FromString,
+                )
+        self.GetTweetByQuery = channel.unary_unary(
+                '/TweetService/GetTweetByQuery',
+                request_serializer=gRPC__pb2.GetTweetByQueryRequest.SerializeToString,
+                response_deserializer=gRPC__pb2.GetTweetByQueryResponse.FromString,
                 )
 
 
@@ -554,6 +625,12 @@ class TweetServiceServicer(object):
         context.set_details('Method not implemented!')
         raise NotImplementedError('Method not implemented!')
 
+    def GetTweetByQuery(self, request, context):
+        """Missing associated documentation comment in .proto file."""
+        context.set_code(grpc.StatusCode.UNIMPLEMENTED)
+        context.set_details('Method not implemented!')
+        raise NotImplementedError('Method not implemented!')
+
 
 def add_TweetServiceServicer_to_server(servicer, server):
     rpc_method_handlers = {
@@ -581,6 +658,11 @@ def add_TweetServiceServicer_to_server(servicer, server):
                     servicer.SearchTweet,
                     request_deserializer=gRPC__pb2.SearchTweetRequest.FromString,
                     response_serializer=gRPC__pb2.SearchTweetResponse.SerializeToString,
+            ),
+            'GetTweetByQuery': grpc.unary_unary_rpc_method_handler(
+                    servicer.GetTweetByQuery,
+                    request_deserializer=gRPC__pb2.GetTweetByQueryRequest.FromString,
+                    response_serializer=gRPC__pb2.GetTweetByQueryResponse.SerializeToString,
             ),
     }
     generic_handler = grpc.method_handlers_generic_handler(
@@ -674,5 +756,22 @@ class TweetService(object):
         return grpc.experimental.unary_unary(request, target, '/TweetService/SearchTweet',
             gRPC__pb2.SearchTweetRequest.SerializeToString,
             gRPC__pb2.SearchTweetResponse.FromString,
+            options, channel_credentials,
+            insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
+
+    @staticmethod
+    def GetTweetByQuery(request,
+            target,
+            options=(),
+            channel_credentials=None,
+            call_credentials=None,
+            insecure=False,
+            compression=None,
+            wait_for_ready=None,
+            timeout=None,
+            metadata=None):
+        return grpc.experimental.unary_unary(request, target, '/TweetService/GetTweetByQuery',
+            gRPC__pb2.GetTweetByQueryRequest.SerializeToString,
+            gRPC__pb2.GetTweetByQueryResponse.FromString,
             options, channel_credentials,
             insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
