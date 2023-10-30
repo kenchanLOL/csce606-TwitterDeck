@@ -57,6 +57,7 @@ service EventService {
     rpc GetEvent(GetEventRequest) returns (GetEventResponse);
     rpc UpdateEvent(UpdateEventRequest) returns (UpdateEventResponse);
     rpc DeleteEvent(DeleteEventRequest) returns (DeleteEventResponse);
+    rpc GetEventByUser(GetEventByUserRequest) returns (GetEventByUserResponse);
 }
 
 message EventMessage {
@@ -87,6 +88,16 @@ message GetEventResponse {
     bytes body = 2;
 }
 
+message GetEventByUserRequest {
+    int32 status = 1;
+    bytes body = 2;
+}
+
+message GetEventByUserResponse {
+    int32 status = 1;
+    bytes EventList = 2;
+}
+
 message UpdateEventRequest {
     int32 status = 1;
     bytes body = 2;
@@ -112,6 +123,7 @@ service QueryService {
     rpc GetQuery(GetQueryRequest) returns (GetQueryResponse);
     rpc UpdateQuery(UpdateQueryRequest) returns (UpdateQueryResponse);
     rpc DeleteQuery(DeleteQueryRequest) returns (DeleteQueryResponse);
+    rpc GetQueryByEvent(GetQueryByEventRequest) returns (GetQueryByEventResponse);
 }
 
 message QueryMessage {
@@ -140,6 +152,16 @@ message GetQueryResponse {
     bytes body = 2;
 }
 
+message GetQueryByEventRequest {
+    int32 status = 1;
+    bytes body = 2;
+}
+
+message GetQueryByEventResponse {
+    int32 status = 1;
+    bytes QueryList = 2;
+}
+
 message UpdateQueryRequest {
     int32 status = 1;
     bytes body = 2;
@@ -164,6 +186,7 @@ service TweetService {
     rpc UpdateTweet(UpdateTweetRequest) returns (UpdateTweetResponse);
     rpc DeleteTweet(DeleteTweetRequest) returns (DeleteTweetResponse);
     rpc SearchTweet(SearchTweetRequest) returns (SearchTweetResponse);
+    rpc GetTweetByQuery(GetTweetByQueryRequest) returns (GetTweetByQueryResponse);
 }
 
 message TweetMessage {
@@ -210,6 +233,16 @@ message DeleteTweetRequest {
 
 message DeleteTweetResponse {
     // ...
+}
+
+message GetTweetByQueryRequest{
+    int32 status = 1;
+    bytes body = 2;
+}
+
+message GetTweetByQueryResponse{
+    int32 status = 1;
+    bytes TweetList = 2;
 }
 
 message SearchTweetRequest{
