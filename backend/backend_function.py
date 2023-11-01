@@ -183,9 +183,22 @@ def searchTweet(event, query, tweetStub):
 #     return event
 # /////////////////////////////////////////////////////
 #  TODO:
+# 0. New object design for event class
 # 1. GetQueryByID
 # Input: queryID
 # Output: Event object (with customized filter) 
-# 2. searchTweet (Changes needed)
+# 2. GetEventByID
+# Input: eventID
+# Output: Event object
+# 3. searchTweet (Changes needed)
 # Input: text, queryID
 # Output: Tweet list
+# 4. Create User
+# Input: user object
+# Output: user object
+# 5. Update Event
+# Input: config dict
+# Output: Event object
+# 6. Update Query
+# Input: config dict
+# Output: Event object

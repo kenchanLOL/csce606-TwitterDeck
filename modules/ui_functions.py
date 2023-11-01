@@ -203,7 +203,7 @@ class UIFunctions():
             else:
                 # RESET BTN
                 selected_btn.setStyleSheet(style.replace(color, ''))
-        print(selected_btn, selected_grp, other_grps)
+        # print(selected_btn, selected_grp, other_grps)
         UIFunctions.start_grp_animation(self, selected_grp, other_grps, selected_height, height_grps)
 
 
@@ -350,6 +350,8 @@ class UIFunctions():
 
     
     def register(self):
+        name  = self.ui.text_username.text()
+        password = self.ui.text_password.text()
         pass
         # name  = self.ui.text_username.text()
         # password = self.ui.text_password.text()
@@ -380,44 +382,70 @@ class UIFunctions():
 
     # TOGGLE BAR AND EVENT RELATED
     # ////////////////////////////////////////////////////////////////////////// 
-    def toggleLeftBox_withEventID(self, eventID):
-        self.current_event = backend_function.GetEventByID(eventID, self.eventStub)
-        # TODO: display event attribute in toggle bar
-        if eventID != -1:
-            self.ui.extraLabel.setText("Event " + str(self.current_event.ID))
-        else:
-            self.ui.extraLabel.setText("New Event")
+    def toggleLeftBox_withID(self, ID, isEvent):
+        if isEvent :
+            self.current_event = backend_function.LoadEvent(ID, self.eventStub)
+            # TODO: display event attribute in toggle bar
+            if ID != -1:
+                self.ui.extraLabel.setText("Event " + str(self.current_event.ID))
+                # self.ui.extraLabel.setText("Event " + str(eventID))
+            else:
+                self.ui.extraLabel.setText("New Event")
+            self.ui.btn_submit.clicked.connect(lambda: UIFunctions.updateEvent(self))
+
+        else: # is Query
+            # TODO: link with backend function
+            # self.current_query = backend_function.GetQueryByID(ID, self.stub)
+            self.current_query = ID
+            # TODO: display event attribute in toggle bar
+            if ID != -1:
+                # self.ui.extraLabel.setText("Query " + str(self.current_event.ID))
+                self.ui.extraLabel.setText("Query " + str(self.current_query))
+            else:
+                self.ui.extraLabel.setText("New Query")
+                # TODO: add new widget to scroll area
+            self.ui.btn_submit.clicked.connect(lambda: UIFunctions.updateQuery(self))
+        
         UIFunctions.toggleLeftBox(self, True)
-    
+        
     def updateEvent(self):
+        print("Update Event")
+        config = UIFunctions.readToggleLeftInfo(self)
+        # backend_function.UpdateEvent(config)
         UIFunctions.toggleLeftBox(self, True)
     
-    # TOGGLE BAR AND QUERY RELATED
-    # ////////////////////////////////////////////////////////////////////////// 
-    def toggleLeftBox_withQueryID(self, queryID):
-        # TODO: link with backend function
-        # self.current_query = backend_function.GetQueryByID(queryID, self.stub)
-        self.current_query = queryID
-        # TODO: display event attribute in toggle bar
-        if queryID != -1:
-            # self.ui.extraLabel.setText("Query " + str(self.current_event.ID))
-            self.ui.extraLabel.setText("Query " + str(self.current_query))
-        else:
-            self.ui.extraLabel.setText("New Query")
+    def updateQuery(self):
+        print("Update Query")
+        config = UIFunctions.readToggleLeftInfo(self)
+        # backend_function.UpdateQuery(config)
         UIFunctions.toggleLeftBox(self, True)
+    
+    def readToggleLeftInfo(self):
+        config = {}
+        # Content group
+        config["keyword"] = self.ui.text_keywords.text()
+        config["media_type"] = self.ui.box_media_type.currentText()
+        config["time_since"] = self.ui.time_since.time()
+        config["time_until"] = self.ui.time_until.time()
+        config["language"] = self.ui.box_lang.text()
+        config["repost"] = self.ui.btn_repost.isChecked()
+
+        # Location group
+        config["latitude"] = self.ui.text_latitude.text()
+        config["longitude"] = self.ui.text_longitude.text()
+        config["radius"] = self.ui.text_radius.text()
+        config["radius_unit"] = self.ui.box_radius_unit.currentText()
+
+        # Engagement group
+        config["min_retweet"] = self.ui.box_min_retweet.value()
+        config["min_fav"] = self.ui.box_min_fav.value()
+        print(config)
+        return config    
 
     def search(self, text, queryID):
         print(f"searching {text} in queryID {queryID}")
         # event = Event()
         # backend_function.searchTweet(self, text, queryID)
-
-    # def updateEvent(self):
-    #     UIFunctions.toggleLeftBox(self, True)
-        # pass
-        
-    # def add_evnets(self):
-    #     pass
-
 
     # END - GUI DEFINITIONS
 

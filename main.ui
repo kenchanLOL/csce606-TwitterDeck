@@ -1338,7 +1338,7 @@ Button */
                     </widget>
                    </item>
                    <item>
-                    <widget class="QLineEdit" name="lineEdit_2"/>
+                    <widget class="QLineEdit" name="text_keywords"/>
                    </item>
                   </layout>
                  </item>
@@ -1352,7 +1352,23 @@ Button */
                     </widget>
                    </item>
                    <item>
-                    <widget class="QComboBox" name="comboBox_2"/>
+                    <widget class="QComboBox" name="box_media_type">
+                     <item>
+                      <property name="text">
+                       <string>images</string>
+                      </property>
+                     </item>
+                     <item>
+                      <property name="text">
+                       <string>videos</string>
+                      </property>
+                     </item>
+                     <item>
+                      <property name="text">
+                       <string>links</string>
+                      </property>
+                     </item>
+                    </widget>
                    </item>
                   </layout>
                  </item>
@@ -1366,7 +1382,25 @@ Button */
                     </widget>
                    </item>
                    <item>
-                    <widget class="QDateTimeEdit" name="dateTimeEdit"/>
+                    <widget class="QDateTimeEdit" name="time_since">
+                     <property name="styleSheet">
+                      <string notr="true">QDateTimeEdit {
+	border: 2px solid rgb(33, 37, 43);
+	border-radius: 5px;	
+	background-color:  rgb(33, 37, 43);
+	text-align:Center;
+	font: &quot;Segoe UI&quot;;
+}
+QDateTimeEdit:hover {
+	border: 2px solid rgb(61, 70, 86);
+}
+QDateTimeEdit:pressed {	
+	border: 2px solid rgb(43, 50, 61);
+}
+
+</string>
+                     </property>
+                    </widget>
                    </item>
                   </layout>
                  </item>
@@ -1380,14 +1414,32 @@ Button */
                     </widget>
                    </item>
                    <item>
-                    <widget class="QDateTimeEdit" name="dateTimeEdit_2"/>
+                    <widget class="QDateTimeEdit" name="time_until">
+                     <property name="styleSheet">
+                      <string notr="true">QDateTimeEdit {
+	border: 2px solid rgb(33, 37, 43);
+	border-radius: 5px;	
+	background-color:  rgb(33, 37, 43);
+	text-align:Center;
+	font: &quot;Segoe UI&quot;;
+}
+QDateTimeEdit:hover {
+	background-color: rgb(57, 65, 80);
+	border: 2px solid rgb(61, 70, 86);
+}
+QDateTimeEdit:pressed {	
+	background-color: rgb(35, 40, 49);
+	border: 2px solid rgb(43, 50, 61);
+}</string>
+                     </property>
+                    </widget>
                    </item>
                   </layout>
                  </item>
                  <item>
                   <layout class="QHBoxLayout" name="horizontalLayout_32">
                    <item>
-                    <widget class="QLabel" name="label_11">
+                    <widget class="QLabel" name="box_lang">
                      <property name="text">
                       <string>Language:</string>
                      </property>
@@ -1399,7 +1451,7 @@ Button */
                   </layout>
                  </item>
                  <item>
-                  <widget class="QRadioButton" name="radioButton_2">
+                  <widget class="QRadioButton" name="btn_repost">
                    <property name="text">
                     <string>Repost</string>
                    </property>
@@ -1467,7 +1519,7 @@ Button */
                     </widget>
                    </item>
                    <item>
-                    <widget class="QLineEdit" name="lineEdit_3"/>
+                    <widget class="QLineEdit" name="text_latitude"/>
                    </item>
                   </layout>
                  </item>
@@ -1481,7 +1533,7 @@ Button */
                     </widget>
                    </item>
                    <item>
-                    <widget class="QLineEdit" name="lineEdit_6"/>
+                    <widget class="QLineEdit" name="text_longitude"/>
                    </item>
                   </layout>
                  </item>
@@ -1495,10 +1547,10 @@ Button */
                     </widget>
                    </item>
                    <item>
-                    <widget class="QLineEdit" name="lineEdit_7"/>
+                    <widget class="QLineEdit" name="text_radius"/>
                    </item>
                    <item>
-                    <widget class="QComboBox" name="comboBox_5"/>
+                    <widget class="QComboBox" name="box_radius_unit"/>
                    </item>
                   </layout>
                  </item>
@@ -1543,7 +1595,25 @@ Button */
                     </widget>
                    </item>
                    <item>
-                    <widget class="QSpinBox" name="spinBox"/>
+                    <widget class="QSpinBox" name="box_min_retweet">
+                     <property name="styleSheet">
+                      <string notr="true">QSpinBox {
+	border: 2px solid rgb(33, 37, 43);
+	border-radius: 5px;	
+	background-color:  rgb(33, 37, 43);
+	text-align:Center;
+	font: &quot;Segoe UI&quot;;
+}
+QSpinBox:hover {
+	border: 2px solid rgb(61, 70, 86);
+}
+QSpinBox:pressed {	
+	border: 2px solid rgb(43, 50, 61);
+}
+
+</string>
+                     </property>
+                    </widget>
                    </item>
                   </layout>
                  </item>
@@ -1557,7 +1627,25 @@ Button */
                     </widget>
                    </item>
                    <item>
-                    <widget class="QSpinBox" name="spinBox_2"/>
+                    <widget class="QSpinBox" name="box_min_fav">
+                     <property name="styleSheet">
+                      <string notr="true">QSpinBox {
+	border: 2px solid rgb(33, 37, 43);
+	border-radius: 5px;	
+	background-color:  rgb(33, 37, 43);
+	text-align:Center;
+	font: &quot;Segoe UI&quot;;
+}
+QSpinBox:hover {
+	border: 2px solid rgb(61, 70, 86);
+}
+QSpinBox:pressed {	
+	border: 2px solid rgb(43, 50, 61);
+}
+
+</string>
+                     </property>
+                    </widget>
                    </item>
                   </layout>
                  </item>
@@ -2008,7 +2096,7 @@ QPushButton:pressed {
                     <string notr="true">background: transparent;</string>
                    </property>
                    <property name="currentIndex">
-                    <number>0</number>
+                    <number>1</number>
                    </property>
                    <widget class="QWidget" name="home">
                     <property name="styleSheet">
@@ -2187,6 +2275,9 @@ background-repeat: no-repeat;
                             <property name="styleSheet">
                              <string notr="true">background-color: rgb(33, 37, 43);  font:22px;</string>
                             </property>
+                            <property name="echoMode">
+                             <enum>QLineEdit::Password</enum>
+                            </property>
                            </widget>
                           </item>
                          </layout>
@@ -2244,6 +2335,12 @@ QPushButton:pressed {
                             </property>
                             <property name="text">
                              <string>Login</string>
+                            </property>
+                            <property name="autoDefault">
+                             <bool>false</bool>
+                            </property>
+                            <property name="default">
+                             <bool>false</bool>
                             </property>
                            </widget>
                           </item>
@@ -3125,1382 +3222,6 @@ QPushButton:pressed {
                     </layout>
                    </widget>
                    <widget class="TwitterDeck" name="deck"/>
-                   <widget class="QWidget" name="deck_3">
-                    <layout class="QHBoxLayout" name="horizontalLayout_25">
-                     <item>
-                      <widget class="QStackedWidget" name="stackedWidget_2">
-                       <property name="currentIndex">
-                        <number>1</number>
-                       </property>
-                       <widget class="QWidget" name="event">
-                        <layout class="QVBoxLayout" name="verticalLayout_34">
-                         <item>
-                          <widget class="QFrame" name="frame_event">
-                           <layout class="QGridLayout" name="gridLayout_3">
-                            <item row="1" column="1">
-                             <widget class="QPlainTextEdit" name="text_location">
-                              <property name="maximumSize">
-                               <size>
-                                <width>16777215</width>
-                                <height>50</height>
-                               </size>
-                              </property>
-                              <property name="styleSheet">
-                               <string notr="true">background-color: rgb(33, 37, 43);</string>
-                              </property>
-                             </widget>
-                            </item>
-                            <item row="5" column="0">
-                             <widget class="QLabel" name="label_crisis_type">
-                              <property name="minimumSize">
-                               <size>
-                                <width>300</width>
-                                <height>0</height>
-                               </size>
-                              </property>
-                              <property name="text">
-                               <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:24pt; font-weight:600;&quot;&gt;Crisis Type:&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
-                              </property>
-                             </widget>
-                            </item>
-                            <item row="4" column="1">
-                             <widget class="QDateTimeEdit" name="tine_till">
-                              <property name="minimumSize">
-                               <size>
-                                <width>0</width>
-                                <height>40</height>
-                               </size>
-                              </property>
-                              <property name="styleSheet">
-                               <string notr="true">background-color: rgb(33, 37, 43);</string>
-                              </property>
-                             </widget>
-                            </item>
-                            <item row="3" column="0">
-                             <widget class="QLabel" name="label_since">
-                              <property name="minimumSize">
-                               <size>
-                                <width>300</width>
-                                <height>0</height>
-                               </size>
-                              </property>
-                              <property name="text">
-                               <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:24pt; font-weight:600;&quot;&gt;Since:&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
-                              </property>
-                             </widget>
-                            </item>
-                            <item row="2" column="1">
-                             <widget class="QPlainTextEdit" name="text_search">
-                              <property name="maximumSize">
-                               <size>
-                                <width>16777215</width>
-                                <height>50</height>
-                               </size>
-                              </property>
-                              <property name="styleSheet">
-                               <string notr="true">background-color: rgb(33, 37, 43);</string>
-                              </property>
-                             </widget>
-                            </item>
-                            <item row="4" column="0">
-                             <widget class="QLabel" name="label_till">
-                              <property name="minimumSize">
-                               <size>
-                                <width>300</width>
-                                <height>0</height>
-                               </size>
-                              </property>
-                              <property name="text">
-                               <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:24pt; font-weight:600;&quot;&gt;Till:&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
-                              </property>
-                             </widget>
-                            </item>
-                            <item row="3" column="1">
-                             <widget class="QDateTimeEdit" name="time_since">
-                              <property name="minimumSize">
-                               <size>
-                                <width>0</width>
-                                <height>40</height>
-                               </size>
-                              </property>
-                              <property name="styleSheet">
-                               <string notr="true">background-color: rgb(33, 37, 43);</string>
-                              </property>
-                             </widget>
-                            </item>
-                            <item row="5" column="1">
-                             <widget class="QComboBox" name="combo_type">
-                              <property name="styleSheet">
-                               <string notr="true">background-color: rgb(33, 37, 43);</string>
-                              </property>
-                              <item>
-                               <property name="text">
-                                <string>Earthquake</string>
-                               </property>
-                              </item>
-                              <item>
-                               <property name="text">
-                                <string>Fire</string>
-                               </property>
-                              </item>
-                              <item>
-                               <property name="text">
-                                <string>Typhoon</string>
-                               </property>
-                              </item>
-                              <item>
-                               <property name="text">
-                                <string>Volcanic Eruption</string>
-                               </property>
-                              </item>
-                              <item>
-                               <property name="text">
-                                <string>Flood</string>
-                               </property>
-                              </item>
-                             </widget>
-                            </item>
-                            <item row="2" column="0">
-                             <widget class="QLabel" name="label_Search">
-                              <property name="minimumSize">
-                               <size>
-                                <width>300</width>
-                                <height>0</height>
-                               </size>
-                              </property>
-                              <property name="text">
-                               <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:24pt; font-weight:600;&quot;&gt;Search:&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
-                              </property>
-                             </widget>
-                            </item>
-                            <item row="0" column="1">
-                             <widget class="QLabel" name="label_title">
-                              <property name="maximumSize">
-                               <size>
-                                <width>16777215</width>
-                                <height>100</height>
-                               </size>
-                              </property>
-                              <property name="font">
-                               <font>
-                                <family>Segoe UI</family>
-                                <pointsize>10</pointsize>
-                                <weight>50</weight>
-                                <italic>false</italic>
-                                <bold>false</bold>
-                               </font>
-                              </property>
-                              <property name="text">
-                               <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:36pt; font-weight:600;&quot;&gt;Crisis Event&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
-                              </property>
-                             </widget>
-                            </item>
-                            <item row="1" column="0">
-                             <widget class="QLabel" name="label_location">
-                              <property name="minimumSize">
-                               <size>
-                                <width>300</width>
-                                <height>0</height>
-                               </size>
-                              </property>
-                              <property name="text">
-                               <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:24pt; font-weight:600;&quot;&gt;Location:&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
-                              </property>
-                             </widget>
-                            </item>
-                            <item row="6" column="1">
-                             <widget class="QPushButton" name="btn_search">
-                              <property name="sizePolicy">
-                               <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
-                                <horstretch>0</horstretch>
-                                <verstretch>0</verstretch>
-                               </sizepolicy>
-                              </property>
-                              <property name="maximumSize">
-                               <size>
-                                <width>16777215</width>
-                                <height>40</height>
-                               </size>
-                              </property>
-                              <property name="font">
-                               <font>
-                                <family>22px</family>
-                                <pointsize>10</pointsize>
-                                <weight>75</weight>
-                                <italic>false</italic>
-                                <bold>true</bold>
-                               </font>
-                              </property>
-                              <property name="styleSheet">
-                               <string notr="true">background-color: rgb(33, 37, 43);
-font:bold, 22px</string>
-                              </property>
-                              <property name="text">
-                               <string>Search</string>
-                              </property>
-                             </widget>
-                            </item>
-                           </layout>
-                          </widget>
-                         </item>
-                        </layout>
-                       </widget>
-                       <widget class="QWidget" name="queries">
-                        <layout class="QHBoxLayout" name="horizontalLayout_27">
-                         <item>
-                          <widget class="QFrame" name="frame_6">
-                           <property name="sizePolicy">
-                            <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
-                             <horstretch>0</horstretch>
-                             <verstretch>0</verstretch>
-                            </sizepolicy>
-                           </property>
-                           <property name="minimumSize">
-                            <size>
-                             <width>0</width>
-                             <height>0</height>
-                            </size>
-                           </property>
-                           <layout class="QHBoxLayout" name="horizontalLayout_14">
-                            <item>
-                             <widget class="QFrame" name="query_1">
-                              <property name="minimumSize">
-                               <size>
-                                <width>0</width>
-                                <height>0</height>
-                               </size>
-                              </property>
-                              <layout class="QVBoxLayout" name="_1">
-                               <item>
-                                <widget class="QFrame" name="frame_q1">
-                                 <property name="sizePolicy">
-                                  <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
-                                   <horstretch>0</horstretch>
-                                   <verstretch>0</verstretch>
-                                  </sizepolicy>
-                                 </property>
-                                 <property name="maximumSize">
-                                  <size>
-                                   <width>16777215</width>
-                                   <height>50</height>
-                                  </size>
-                                 </property>
-                                 <layout class="QHBoxLayout" name="horizontalLayout_10">
-                                  <item>
-                                   <widget class="QLabel" name="label">
-                                    <property name="maximumSize">
-                                     <size>
-                                      <width>16777215</width>
-                                      <height>30</height>
-                                     </size>
-                                    </property>
-                                    <property name="styleSheet">
-                                     <string notr="true">font:bold 22px;</string>
-                                    </property>
-                                    <property name="text">
-                                     <string>Query: </string>
-                                    </property>
-                                   </widget>
-                                  </item>
-                                  <item>
-                                   <widget class="QPlainTextEdit" name="plainTextEdit_4">
-                                    <property name="minimumSize">
-                                     <size>
-                                      <width>0</width>
-                                      <height>40</height>
-                                     </size>
-                                    </property>
-                                    <property name="maximumSize">
-                                     <size>
-                                      <width>16777215</width>
-                                      <height>40</height>
-                                     </size>
-                                    </property>
-                                    <property name="styleSheet">
-                                     <string notr="true">background-color: rgb(33, 37, 43);</string>
-                                    </property>
-                                   </widget>
-                                  </item>
-                                  <item>
-                                   <widget class="QPushButton" name="btn_query_1">
-                                    <property name="minimumSize">
-                                     <size>
-                                      <width>70</width>
-                                      <height>0</height>
-                                     </size>
-                                    </property>
-                                    <property name="maximumSize">
-                                     <size>
-                                      <width>16777215</width>
-                                      <height>30</height>
-                                     </size>
-                                    </property>
-                                    <property name="styleSheet">
-                                     <string notr="true">background-color: rgb(33, 37, 43);</string>
-                                    </property>
-                                    <property name="text">
-                                     <string>↵</string>
-                                    </property>
-                                   </widget>
-                                  </item>
-                                  <item>
-                                   <widget class="QPushButton" name="btn_filter_1">
-                                    <property name="minimumSize">
-                                     <size>
-                                      <width>50</width>
-                                      <height>0</height>
-                                     </size>
-                                    </property>
-                                    <property name="maximumSize">
-                                     <size>
-                                      <width>16777215</width>
-                                      <height>30</height>
-                                     </size>
-                                    </property>
-                                    <property name="styleSheet">
-                                     <string notr="true">background-color: rgb(33, 37, 43);</string>
-                                    </property>
-                                    <property name="text">
-                                     <string>...</string>
-                                    </property>
-                                   </widget>
-                                  </item>
-                                 </layout>
-                                </widget>
-                               </item>
-                               <item>
-                                <widget class="QScrollArea" name="scrollArea_2">
-                                 <property name="maximumSize">
-                                  <size>
-                                   <width>450</width>
-                                   <height>16777215</height>
-                                  </size>
-                                 </property>
-                                 <property name="widgetResizable">
-                                  <bool>true</bool>
-                                 </property>
-                                 <widget class="QWidget" name="scrollAreaWidgetContents_2">
-                                  <property name="geometry">
-                                   <rect>
-                                    <x>0</x>
-                                    <y>0</y>
-                                    <width>336</width>
-                                    <height>556</height>
-                                   </rect>
-                                  </property>
-                                  <layout class="QVBoxLayout" name="verticalLayout_22">
-                                   <item>
-                                    <widget class="QTextEdit" name="textEdit_2">
-                                     <property name="minimumSize">
-                                      <size>
-                                       <width>0</width>
-                                       <height>130</height>
-                                      </size>
-                                     </property>
-                                     <property name="maximumSize">
-                                      <size>
-                                       <width>435</width>
-                                       <height>16777215</height>
-                                      </size>
-                                     </property>
-                                     <property name="styleSheet">
-                                      <string notr="true">background-color:rgb(255,255,255);border-radius: 10px;padding-top: 10px;</string>
-                                     </property>
-                                     <property name="html">
-                                      <string>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
-&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
-p, li { white-space: pre-wrap; }
-&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:'Segoe UI'; font-size:10pt; font-weight:400; font-style:normal;&quot;&gt;
-&lt;p style=&quot; margin-top:10px; margin-bottom:5px; margin-left:10px; margin-right:10px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;img src=&quot;twitter-avatar.jpg&quot; /&gt;&lt;span style=&quot; font-size:9pt; color:#000000;&quot;&gt; &lt;/span&gt;&lt;span style=&quot; font-size:9pt; font-weight:696; color:#000000;&quot;&gt;@Vallie&lt;/span&gt;&lt;span style=&quot; font-size:9pt; color:#000000;&quot;&gt; &lt;/span&gt;&lt;/p&gt;
-&lt;p style=&quot; margin-top:12px; margin-bottom:12px; margin-left:10px; margin-right:10px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:9pt; color:#000000;&quot;&gt;WATCH LIVE: U.S. Geological Survey briefing on major Chilean earthquake &lt;/span&gt;&lt;a href=&quot;http://t.co/6Kj1mkBCT3&quot;&gt;&lt;span style=&quot; font-size:9pt; text-decoration: underline; color:#1da1f2;&quot;&gt;http://t.co/6Kj1mkBCT3&lt;/span&gt;&lt;/a&gt;&lt;span style=&quot; font-size:9pt; color:#1da1f2;&quot;&gt; #ChileEarthquake &lt;/span&gt;&lt;/p&gt;
-&lt;p style=&quot; margin-top:10px; margin-bottom:0px; margin-left:10px; margin-right:10px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:9pt; color:#1da1f2;&quot;&gt;Like&lt;/span&gt;&lt;span style=&quot; font-size:9pt; color:#000000;&quot;&gt; &lt;/span&gt;&lt;span style=&quot; font-size:9pt; color:#1da1f2;&quot;&gt;Retweet&lt;/span&gt;&lt;span style=&quot; font-size:9pt; color:#000000;&quot;&gt; &lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
-                                     </property>
-                                    </widget>
-                                   </item>
-                                   <item>
-                                    <widget class="QTextEdit" name="textEdit_3">
-                                     <property name="minimumSize">
-                                      <size>
-                                       <width>0</width>
-                                       <height>130</height>
-                                      </size>
-                                     </property>
-                                     <property name="maximumSize">
-                                      <size>
-                                       <width>435</width>
-                                       <height>16777215</height>
-                                      </size>
-                                     </property>
-                                     <property name="styleSheet">
-                                      <string notr="true">background-color:rgb(255,255,255);border-radius: 10px;padding-top: 10px;</string>
-                                     </property>
-                                     <property name="html">
-                                      <string>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
-&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
-p, li { white-space: pre-wrap; }
-&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:'Segoe UI'; font-size:10pt; font-weight:400; font-style:normal;&quot;&gt;
-&lt;p style=&quot; margin-top:10px; margin-bottom:5px; margin-left:10px; margin-right:10px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;img src=&quot;twitter-avatar.jpg&quot; /&gt;&lt;span style=&quot; font-size:9pt;&quot;&gt; &lt;/span&gt;&lt;span style=&quot; font-size:9pt; font-weight:696; color:#000000;&quot;&gt;@Euphorian54&lt;/span&gt;&lt;span style=&quot; font-size:9pt;&quot;&gt; &lt;/span&gt;&lt;/p&gt;
-&lt;p style=&quot; margin-top:12px; margin-bottom:12px; margin-left:10px; margin-right:10px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:9pt; color:#000000;&quot;&gt;RT &lt;/span&gt;&lt;span style=&quot; font-size:9pt; font-weight:696; color:#000000;&quot;&gt;@debbiegibson&lt;/span&gt;&lt;span style=&quot; font-size:9pt; color:#000000;&quot;&gt; &amp;amp; &lt;/span&gt;&lt;span style=&quot; font-size:9pt; color:#1da1f2;&quot;&gt;#TeamDeb&lt;/span&gt;&lt;span style=&quot; font-size:9pt; color:#000000;&quot;&gt; for &lt;/span&gt;&lt;span style=&quot; font-size:9pt; color:#1da1f2;&quot;&gt;@bizarro_chile&lt;/span&gt;&lt;span style=&quot; font-size:9pt;&quot;&gt; &lt;/span&gt;&lt;span style=&quot; font-size:9pt; color:#1da1f2;&quot;&gt;#HITPARADE&lt;/span&gt;&lt;span style=&quot; font-size:9pt; color:#000000;&quot;&gt; &amp;amp; &lt;/span&gt;&lt;span style=&quot; font-size:9pt; color:#1da1f2;&quot;&gt;@Blondieclub&lt;/span&gt;&lt;span style=&quot; font-size:9pt; color:#000000;&quot;&gt; ! &lt;/span&gt;&lt;span style=&quot; font-size:9pt; color:#1da1f2;&quot;&gt;#chile&lt;/span&gt;&lt;span style=&quot; font-size:9pt;&quot;&gt; &lt;/span&gt;&lt;span style=&quot; font-size:9pt; color:#1da1f2;&quot;&gt;#santiago&lt;/span&gt;&lt;span style=&quot; font-size:9pt;&quot;&gt; &lt;/span&gt;&lt;a href=&quot;http://t.co/A…&quot;&gt;&lt;span style=&quot; font-size:9pt; text-decoration: underline; color:#1da1f2;&quot;&gt;http://t.co/A…&lt;/span&gt;&lt;/a&gt;&lt;span style=&quot; font-size:9pt;&quot;&gt; &lt;/span&gt;&lt;/p&gt;
-&lt;p style=&quot; margin-top:10px; margin-bottom:0px; margin-left:10px; margin-right:10px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:9pt; color:#1da1f2;&quot;&gt;Like&lt;/span&gt;&lt;span style=&quot; font-size:9pt;&quot;&gt; &lt;/span&gt;&lt;span style=&quot; font-size:9pt; color:#1da1f2;&quot;&gt;Retweet&lt;/span&gt;&lt;span style=&quot; font-size:9pt;&quot;&gt; &lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
-                                     </property>
-                                    </widget>
-                                   </item>
-                                   <item>
-                                    <widget class="QTextEdit" name="textEdit_6">
-                                     <property name="minimumSize">
-                                      <size>
-                                       <width>0</width>
-                                       <height>130</height>
-                                      </size>
-                                     </property>
-                                     <property name="maximumSize">
-                                      <size>
-                                       <width>435</width>
-                                       <height>16777215</height>
-                                      </size>
-                                     </property>
-                                     <property name="styleSheet">
-                                      <string notr="true">background-color:rgb(255,255,255);border-radius: 10px;padding-top: 10px;</string>
-                                     </property>
-                                     <property name="html">
-                                      <string>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
-&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
-p, li { white-space: pre-wrap; }
-&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:'Segoe UI'; font-size:10pt; font-weight:400; font-style:normal;&quot;&gt;
-&lt;p style=&quot; margin-top:10px; margin-bottom:5px; margin-left:10px; margin-right:10px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;img src=&quot;twitter-avatar.jpg&quot; /&gt;&lt;span style=&quot; font-size:9pt;&quot;&gt; &lt;/span&gt;&lt;span style=&quot; font-size:9pt; font-weight:696; color:#000000;&quot;&gt;@Euphorian54&lt;/span&gt;&lt;span style=&quot; font-size:9pt;&quot;&gt; &lt;/span&gt;&lt;/p&gt;
-&lt;p style=&quot; margin-top:12px; margin-bottom:12px; margin-left:10px; margin-right:10px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:9pt; color:#000000;&quot;&gt;RT &lt;/span&gt;&lt;span style=&quot; font-size:9pt; font-weight:696; color:#000000;&quot;&gt;@debbiegibson&lt;/span&gt;&lt;span style=&quot; font-size:9pt; color:#000000;&quot;&gt; &amp;amp; &lt;/span&gt;&lt;span style=&quot; font-size:9pt; color:#1da1f2;&quot;&gt;#TeamDeb&lt;/span&gt;&lt;span style=&quot; font-size:9pt; color:#000000;&quot;&gt; for &lt;/span&gt;&lt;span style=&quot; font-size:9pt; color:#1da1f2;&quot;&gt;@bizarro_chile&lt;/span&gt;&lt;span style=&quot; font-size:9pt;&quot;&gt; &lt;/span&gt;&lt;span style=&quot; font-size:9pt; color:#1da1f2;&quot;&gt;#HITPARADE&lt;/span&gt;&lt;span style=&quot; font-size:9pt; color:#000000;&quot;&gt; &amp;amp; &lt;/span&gt;&lt;span style=&quot; font-size:9pt; color:#1da1f2;&quot;&gt;@Blondieclub&lt;/span&gt;&lt;span style=&quot; font-size:9pt; color:#000000;&quot;&gt; ! &lt;/span&gt;&lt;span style=&quot; font-size:9pt; color:#1da1f2;&quot;&gt;#chile&lt;/span&gt;&lt;span style=&quot; font-size:9pt;&quot;&gt; &lt;/span&gt;&lt;span style=&quot; font-size:9pt; color:#1da1f2;&quot;&gt;#santiago&lt;/span&gt;&lt;span style=&quot; font-size:9pt;&quot;&gt; &lt;/span&gt;&lt;a href=&quot;http://t.co/A…&quot;&gt;&lt;span style=&quot; font-size:9pt; text-decoration: underline; color:#1da1f2;&quot;&gt;http://t.co/A…&lt;/span&gt;&lt;/a&gt;&lt;span style=&quot; font-size:9pt;&quot;&gt; &lt;/span&gt;&lt;/p&gt;
-&lt;p style=&quot; margin-top:10px; margin-bottom:0px; margin-left:10px; margin-right:10px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:9pt; color:#1da1f2;&quot;&gt;Like&lt;/span&gt;&lt;span style=&quot; font-size:9pt;&quot;&gt; &lt;/span&gt;&lt;span style=&quot; font-size:9pt; color:#1da1f2;&quot;&gt;Retweet&lt;/span&gt;&lt;span style=&quot; font-size:9pt;&quot;&gt; &lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
-                                     </property>
-                                    </widget>
-                                   </item>
-                                   <item>
-                                    <widget class="QTextEdit" name="textEdit_7">
-                                     <property name="minimumSize">
-                                      <size>
-                                       <width>0</width>
-                                       <height>130</height>
-                                      </size>
-                                     </property>
-                                     <property name="maximumSize">
-                                      <size>
-                                       <width>435</width>
-                                       <height>16777215</height>
-                                      </size>
-                                     </property>
-                                     <property name="styleSheet">
-                                      <string notr="true">background-color:rgb(255,255,255);border-radius: 10px;padding-top: 10px;</string>
-                                     </property>
-                                     <property name="html">
-                                      <string>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
-&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
-p, li { white-space: pre-wrap; }
-&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:'Segoe UI'; font-size:10pt; font-weight:400; font-style:normal;&quot;&gt;
-&lt;p style=&quot; margin-top:10px; margin-bottom:5px; margin-left:10px; margin-right:10px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;img src=&quot;twitter-avatar.jpg&quot; /&gt;&lt;span style=&quot; font-size:9pt; color:#000000;&quot;&gt; &lt;/span&gt;&lt;span style=&quot; font-size:9pt; font-weight:696; color:#000000;&quot;&gt;@Vallie&lt;/span&gt;&lt;span style=&quot; font-size:9pt; color:#000000;&quot;&gt; &lt;/span&gt;&lt;/p&gt;
-&lt;p style=&quot; margin-top:12px; margin-bottom:12px; margin-left:10px; margin-right:10px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:9pt; color:#000000;&quot;&gt;WATCH LIVE: U.S. Geological Survey briefing on major Chilean earthquake &lt;/span&gt;&lt;a href=&quot;http://t.co/6Kj1mkBCT3&quot;&gt;&lt;span style=&quot; font-size:9pt; text-decoration: underline; color:#1da1f2;&quot;&gt;http://t.co/6Kj1mkBCT3&lt;/span&gt;&lt;/a&gt;&lt;span style=&quot; font-size:9pt; color:#1da1f2;&quot;&gt; #ChileEarthquake &lt;/span&gt;&lt;/p&gt;
-&lt;p style=&quot; margin-top:10px; margin-bottom:0px; margin-left:10px; margin-right:10px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:9pt; color:#1da1f2;&quot;&gt;Like&lt;/span&gt;&lt;span style=&quot; font-size:9pt; color:#000000;&quot;&gt; &lt;/span&gt;&lt;span style=&quot; font-size:9pt; color:#1da1f2;&quot;&gt;Retweet&lt;/span&gt;&lt;span style=&quot; font-size:9pt; color:#000000;&quot;&gt; &lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
-                                     </property>
-                                    </widget>
-                                   </item>
-                                  </layout>
-                                 </widget>
-                                </widget>
-                               </item>
-                              </layout>
-                             </widget>
-                            </item>
-                            <item>
-                             <widget class="QFrame" name="query_2">
-                              <layout class="QVBoxLayout" name="_2">
-                               <item>
-                                <widget class="QFrame" name="frame_q2">
-                                 <property name="sizePolicy">
-                                  <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
-                                   <horstretch>0</horstretch>
-                                   <verstretch>0</verstretch>
-                                  </sizepolicy>
-                                 </property>
-                                 <property name="maximumSize">
-                                  <size>
-                                   <width>16777215</width>
-                                   <height>50</height>
-                                  </size>
-                                 </property>
-                                 <layout class="QHBoxLayout" name="horizontalLayout_13">
-                                  <item>
-                                   <widget class="QLabel" name="label_8">
-                                    <property name="maximumSize">
-                                     <size>
-                                      <width>16777215</width>
-                                      <height>30</height>
-                                     </size>
-                                    </property>
-                                    <property name="styleSheet">
-                                     <string notr="true">font:bold 22px;</string>
-                                    </property>
-                                    <property name="text">
-                                     <string>Query: </string>
-                                    </property>
-                                   </widget>
-                                  </item>
-                                  <item>
-                                   <widget class="QPlainTextEdit" name="text_query_2">
-                                    <property name="minimumSize">
-                                     <size>
-                                      <width>0</width>
-                                      <height>40</height>
-                                     </size>
-                                    </property>
-                                    <property name="maximumSize">
-                                     <size>
-                                      <width>16777215</width>
-                                      <height>16777215</height>
-                                     </size>
-                                    </property>
-                                    <property name="styleSheet">
-                                     <string notr="true">background-color: rgb(33, 37, 43);</string>
-                                    </property>
-                                   </widget>
-                                  </item>
-                                  <item>
-                                   <widget class="QPushButton" name="btn_query_2">
-                                    <property name="minimumSize">
-                                     <size>
-                                      <width>70</width>
-                                      <height>0</height>
-                                     </size>
-                                    </property>
-                                    <property name="maximumSize">
-                                     <size>
-                                      <width>16777215</width>
-                                      <height>30</height>
-                                     </size>
-                                    </property>
-                                    <property name="styleSheet">
-                                     <string notr="true">background-color: rgb(33, 37, 43);</string>
-                                    </property>
-                                    <property name="text">
-                                     <string>↵</string>
-                                    </property>
-                                   </widget>
-                                  </item>
-                                  <item>
-                                   <widget class="QPushButton" name="btn_filter_2">
-                                    <property name="minimumSize">
-                                     <size>
-                                      <width>50</width>
-                                      <height>0</height>
-                                     </size>
-                                    </property>
-                                    <property name="maximumSize">
-                                     <size>
-                                      <width>16777215</width>
-                                      <height>30</height>
-                                     </size>
-                                    </property>
-                                    <property name="styleSheet">
-                                     <string notr="true">background-color: rgb(33, 37, 43);</string>
-                                    </property>
-                                    <property name="text">
-                                     <string>...</string>
-                                    </property>
-                                   </widget>
-                                  </item>
-                                 </layout>
-                                </widget>
-                               </item>
-                               <item>
-                                <widget class="QScrollArea" name="scrollArea_4">
-                                 <property name="maximumSize">
-                                  <size>
-                                   <width>450</width>
-                                   <height>16777215</height>
-                                  </size>
-                                 </property>
-                                 <property name="widgetResizable">
-                                  <bool>true</bool>
-                                 </property>
-                                 <widget class="QWidget" name="scrollAreaWidgetContents_4">
-                                  <property name="geometry">
-                                   <rect>
-                                    <x>0</x>
-                                    <y>0</y>
-                                    <width>337</width>
-                                    <height>556</height>
-                                   </rect>
-                                  </property>
-                                  <layout class="QVBoxLayout" name="verticalLayout_23">
-                                   <item>
-                                    <widget class="QTextEdit" name="textEdit_8">
-                                     <property name="minimumSize">
-                                      <size>
-                                       <width>0</width>
-                                       <height>130</height>
-                                      </size>
-                                     </property>
-                                     <property name="maximumSize">
-                                      <size>
-                                       <width>435</width>
-                                       <height>16777215</height>
-                                      </size>
-                                     </property>
-                                     <property name="styleSheet">
-                                      <string notr="true">background-color:rgb(255,255,255);border-radius: 10px;padding-top: 10px;</string>
-                                     </property>
-                                     <property name="html">
-                                      <string>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
-&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
-p, li { white-space: pre-wrap; }
-&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:'Segoe UI'; font-size:10pt; font-weight:400; font-style:normal;&quot;&gt;
-&lt;p style=&quot; margin-top:10px; margin-bottom:5px; margin-left:10px; margin-right:10px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;img src=&quot;twitter-avatar.jpg&quot; /&gt;&lt;span style=&quot; font-size:9pt; color:#000000;&quot;&gt; &lt;/span&gt;&lt;span style=&quot; font-size:9pt; font-weight:696; color:#000000;&quot;&gt;@Vallie&lt;/span&gt;&lt;span style=&quot; font-size:9pt; color:#000000;&quot;&gt; &lt;/span&gt;&lt;/p&gt;
-&lt;p style=&quot; margin-top:12px; margin-bottom:12px; margin-left:10px; margin-right:10px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:9pt; color:#000000;&quot;&gt;WATCH LIVE: U.S. Geological Survey briefing on major Chilean earthquake &lt;/span&gt;&lt;a href=&quot;http://t.co/6Kj1mkBCT3&quot;&gt;&lt;span style=&quot; font-size:9pt; text-decoration: underline; color:#1da1f2;&quot;&gt;http://t.co/6Kj1mkBCT3&lt;/span&gt;&lt;/a&gt;&lt;span style=&quot; font-size:9pt; color:#1da1f2;&quot;&gt; #ChileEarthquake &lt;/span&gt;&lt;/p&gt;
-&lt;p style=&quot; margin-top:10px; margin-bottom:0px; margin-left:10px; margin-right:10px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:9pt; color:#1da1f2;&quot;&gt;Like&lt;/span&gt;&lt;span style=&quot; font-size:9pt; color:#000000;&quot;&gt; &lt;/span&gt;&lt;span style=&quot; font-size:9pt; color:#1da1f2;&quot;&gt;Retweet&lt;/span&gt;&lt;span style=&quot; font-size:9pt; color:#000000;&quot;&gt; &lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
-                                     </property>
-                                    </widget>
-                                   </item>
-                                   <item>
-                                    <widget class="QTextEdit" name="textEdit_9">
-                                     <property name="minimumSize">
-                                      <size>
-                                       <width>0</width>
-                                       <height>130</height>
-                                      </size>
-                                     </property>
-                                     <property name="maximumSize">
-                                      <size>
-                                       <width>435</width>
-                                       <height>16777215</height>
-                                      </size>
-                                     </property>
-                                     <property name="styleSheet">
-                                      <string notr="true">background-color:rgb(255,255,255);border-radius: 10px;padding-top: 10px;</string>
-                                     </property>
-                                     <property name="html">
-                                      <string>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
-&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
-p, li { white-space: pre-wrap; }
-&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:'Segoe UI'; font-size:10pt; font-weight:400; font-style:normal;&quot;&gt;
-&lt;p style=&quot; margin-top:10px; margin-bottom:5px; margin-left:10px; margin-right:10px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;img src=&quot;twitter-avatar.jpg&quot; /&gt;&lt;span style=&quot; font-size:9pt;&quot;&gt; &lt;/span&gt;&lt;span style=&quot; font-size:9pt; font-weight:696; color:#000000;&quot;&gt;@Euphorian54&lt;/span&gt;&lt;span style=&quot; font-size:9pt;&quot;&gt; &lt;/span&gt;&lt;/p&gt;
-&lt;p style=&quot; margin-top:12px; margin-bottom:12px; margin-left:10px; margin-right:10px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:9pt; color:#000000;&quot;&gt;RT &lt;/span&gt;&lt;span style=&quot; font-size:9pt; font-weight:696; color:#000000;&quot;&gt;@debbiegibson&lt;/span&gt;&lt;span style=&quot; font-size:9pt; color:#000000;&quot;&gt; &amp;amp; &lt;/span&gt;&lt;span style=&quot; font-size:9pt; color:#1da1f2;&quot;&gt;#TeamDeb&lt;/span&gt;&lt;span style=&quot; font-size:9pt; color:#000000;&quot;&gt; for &lt;/span&gt;&lt;span style=&quot; font-size:9pt; color:#1da1f2;&quot;&gt;@bizarro_chile&lt;/span&gt;&lt;span style=&quot; font-size:9pt;&quot;&gt; &lt;/span&gt;&lt;span style=&quot; font-size:9pt; color:#1da1f2;&quot;&gt;#HITPARADE&lt;/span&gt;&lt;span style=&quot; font-size:9pt; color:#000000;&quot;&gt; &amp;amp; &lt;/span&gt;&lt;span style=&quot; font-size:9pt; color:#1da1f2;&quot;&gt;@Blondieclub&lt;/span&gt;&lt;span style=&quot; font-size:9pt; color:#000000;&quot;&gt; ! &lt;/span&gt;&lt;span style=&quot; font-size:9pt; color:#1da1f2;&quot;&gt;#chile&lt;/span&gt;&lt;span style=&quot; font-size:9pt;&quot;&gt; &lt;/span&gt;&lt;span style=&quot; font-size:9pt; color:#1da1f2;&quot;&gt;#santiago&lt;/span&gt;&lt;span style=&quot; font-size:9pt;&quot;&gt; &lt;/span&gt;&lt;a href=&quot;http://t.co/A…&quot;&gt;&lt;span style=&quot; font-size:9pt; text-decoration: underline; color:#1da1f2;&quot;&gt;http://t.co/A…&lt;/span&gt;&lt;/a&gt;&lt;span style=&quot; font-size:9pt;&quot;&gt; &lt;/span&gt;&lt;/p&gt;
-&lt;p style=&quot; margin-top:10px; margin-bottom:0px; margin-left:10px; margin-right:10px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:9pt; color:#1da1f2;&quot;&gt;Like&lt;/span&gt;&lt;span style=&quot; font-size:9pt;&quot;&gt; &lt;/span&gt;&lt;span style=&quot; font-size:9pt; color:#1da1f2;&quot;&gt;Retweet&lt;/span&gt;&lt;span style=&quot; font-size:9pt;&quot;&gt; &lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
-                                     </property>
-                                    </widget>
-                                   </item>
-                                   <item>
-                                    <widget class="QTextEdit" name="textEdit_10">
-                                     <property name="minimumSize">
-                                      <size>
-                                       <width>0</width>
-                                       <height>130</height>
-                                      </size>
-                                     </property>
-                                     <property name="maximumSize">
-                                      <size>
-                                       <width>435</width>
-                                       <height>16777215</height>
-                                      </size>
-                                     </property>
-                                     <property name="styleSheet">
-                                      <string notr="true">background-color:rgb(255,255,255);border-radius: 10px;padding-top: 10px;</string>
-                                     </property>
-                                     <property name="html">
-                                      <string>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
-&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
-p, li { white-space: pre-wrap; }
-&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:'Segoe UI'; font-size:10pt; font-weight:400; font-style:normal;&quot;&gt;
-&lt;p style=&quot; margin-top:10px; margin-bottom:5px; margin-left:10px; margin-right:10px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;img src=&quot;twitter-avatar.jpg&quot; /&gt;&lt;span style=&quot; font-size:9pt;&quot;&gt; &lt;/span&gt;&lt;span style=&quot; font-size:9pt; font-weight:696; color:#000000;&quot;&gt;@Euphorian54&lt;/span&gt;&lt;span style=&quot; font-size:9pt;&quot;&gt; &lt;/span&gt;&lt;/p&gt;
-&lt;p style=&quot; margin-top:12px; margin-bottom:12px; margin-left:10px; margin-right:10px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:9pt; color:#000000;&quot;&gt;RT &lt;/span&gt;&lt;span style=&quot; font-size:9pt; font-weight:696; color:#000000;&quot;&gt;@debbiegibson&lt;/span&gt;&lt;span style=&quot; font-size:9pt; color:#000000;&quot;&gt; &amp;amp; &lt;/span&gt;&lt;span style=&quot; font-size:9pt; color:#1da1f2;&quot;&gt;#TeamDeb&lt;/span&gt;&lt;span style=&quot; font-size:9pt; color:#000000;&quot;&gt; for &lt;/span&gt;&lt;span style=&quot; font-size:9pt; color:#1da1f2;&quot;&gt;@bizarro_chile&lt;/span&gt;&lt;span style=&quot; font-size:9pt;&quot;&gt; &lt;/span&gt;&lt;span style=&quot; font-size:9pt; color:#1da1f2;&quot;&gt;#HITPARADE&lt;/span&gt;&lt;span style=&quot; font-size:9pt; color:#000000;&quot;&gt; &amp;amp; &lt;/span&gt;&lt;span style=&quot; font-size:9pt; color:#1da1f2;&quot;&gt;@Blondieclub&lt;/span&gt;&lt;span style=&quot; font-size:9pt; color:#000000;&quot;&gt; ! &lt;/span&gt;&lt;span style=&quot; font-size:9pt; color:#1da1f2;&quot;&gt;#chile&lt;/span&gt;&lt;span style=&quot; font-size:9pt;&quot;&gt; &lt;/span&gt;&lt;span style=&quot; font-size:9pt; color:#1da1f2;&quot;&gt;#santiago&lt;/span&gt;&lt;span style=&quot; font-size:9pt;&quot;&gt; &lt;/span&gt;&lt;a href=&quot;http://t.co/A…&quot;&gt;&lt;span style=&quot; font-size:9pt; text-decoration: underline; color:#1da1f2;&quot;&gt;http://t.co/A…&lt;/span&gt;&lt;/a&gt;&lt;span style=&quot; font-size:9pt;&quot;&gt; &lt;/span&gt;&lt;/p&gt;
-&lt;p style=&quot; margin-top:10px; margin-bottom:0px; margin-left:10px; margin-right:10px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:9pt; color:#1da1f2;&quot;&gt;Like&lt;/span&gt;&lt;span style=&quot; font-size:9pt;&quot;&gt; &lt;/span&gt;&lt;span style=&quot; font-size:9pt; color:#1da1f2;&quot;&gt;Retweet&lt;/span&gt;&lt;span style=&quot; font-size:9pt;&quot;&gt; &lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
-                                     </property>
-                                    </widget>
-                                   </item>
-                                   <item>
-                                    <widget class="QTextEdit" name="textEdit_11">
-                                     <property name="minimumSize">
-                                      <size>
-                                       <width>0</width>
-                                       <height>130</height>
-                                      </size>
-                                     </property>
-                                     <property name="maximumSize">
-                                      <size>
-                                       <width>435</width>
-                                       <height>16777215</height>
-                                      </size>
-                                     </property>
-                                     <property name="styleSheet">
-                                      <string notr="true">background-color:rgb(255,255,255);border-radius: 10px;padding-top: 10px;</string>
-                                     </property>
-                                     <property name="html">
-                                      <string>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
-&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
-p, li { white-space: pre-wrap; }
-&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:'Segoe UI'; font-size:10pt; font-weight:400; font-style:normal;&quot;&gt;
-&lt;p style=&quot; margin-top:10px; margin-bottom:5px; margin-left:10px; margin-right:10px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;img src=&quot;twitter-avatar.jpg&quot; /&gt;&lt;span style=&quot; font-size:9pt; color:#000000;&quot;&gt; &lt;/span&gt;&lt;span style=&quot; font-size:9pt; font-weight:696; color:#000000;&quot;&gt;@Vallie&lt;/span&gt;&lt;span style=&quot; font-size:9pt; color:#000000;&quot;&gt; &lt;/span&gt;&lt;/p&gt;
-&lt;p style=&quot; margin-top:12px; margin-bottom:12px; margin-left:10px; margin-right:10px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:9pt; color:#000000;&quot;&gt;WATCH LIVE: U.S. Geological Survey briefing on major Chilean earthquake &lt;/span&gt;&lt;a href=&quot;http://t.co/6Kj1mkBCT3&quot;&gt;&lt;span style=&quot; font-size:9pt; text-decoration: underline; color:#1da1f2;&quot;&gt;http://t.co/6Kj1mkBCT3&lt;/span&gt;&lt;/a&gt;&lt;span style=&quot; font-size:9pt; color:#1da1f2;&quot;&gt; #ChileEarthquake &lt;/span&gt;&lt;/p&gt;
-&lt;p style=&quot; margin-top:10px; margin-bottom:0px; margin-left:10px; margin-right:10px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:9pt; color:#1da1f2;&quot;&gt;Like&lt;/span&gt;&lt;span style=&quot; font-size:9pt; color:#000000;&quot;&gt; &lt;/span&gt;&lt;span style=&quot; font-size:9pt; color:#1da1f2;&quot;&gt;Retweet&lt;/span&gt;&lt;span style=&quot; font-size:9pt; color:#000000;&quot;&gt; &lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
-                                     </property>
-                                    </widget>
-                                   </item>
-                                  </layout>
-                                 </widget>
-                                </widget>
-                               </item>
-                              </layout>
-                             </widget>
-                            </item>
-                            <item>
-                             <widget class="QFrame" name="query_3">
-                              <layout class="QVBoxLayout" name="q_3">
-                               <item>
-                                <widget class="QFrame" name="frame_q3">
-                                 <property name="sizePolicy">
-                                  <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
-                                   <horstretch>0</horstretch>
-                                   <verstretch>0</verstretch>
-                                  </sizepolicy>
-                                 </property>
-                                 <property name="maximumSize">
-                                  <size>
-                                   <width>16777215</width>
-                                   <height>50</height>
-                                  </size>
-                                 </property>
-                                 <layout class="QHBoxLayout" name="horizontalLayout_16">
-                                  <item>
-                                   <widget class="QLabel" name="label_12">
-                                    <property name="maximumSize">
-                                     <size>
-                                      <width>16777215</width>
-                                      <height>30</height>
-                                     </size>
-                                    </property>
-                                    <property name="styleSheet">
-                                     <string notr="true">font:bold 22px;</string>
-                                    </property>
-                                    <property name="text">
-                                     <string>Query: </string>
-                                    </property>
-                                   </widget>
-                                  </item>
-                                  <item>
-                                   <widget class="QPlainTextEdit" name="text_query_3">
-                                    <property name="minimumSize">
-                                     <size>
-                                      <width>0</width>
-                                      <height>40</height>
-                                     </size>
-                                    </property>
-                                    <property name="maximumSize">
-                                     <size>
-                                      <width>16777215</width>
-                                      <height>16777215</height>
-                                     </size>
-                                    </property>
-                                    <property name="styleSheet">
-                                     <string notr="true">background-color: rgb(33, 37, 43);</string>
-                                    </property>
-                                   </widget>
-                                  </item>
-                                  <item>
-                                   <widget class="QPushButton" name="btn_query_3">
-                                    <property name="minimumSize">
-                                     <size>
-                                      <width>70</width>
-                                      <height>0</height>
-                                     </size>
-                                    </property>
-                                    <property name="maximumSize">
-                                     <size>
-                                      <width>16777215</width>
-                                      <height>30</height>
-                                     </size>
-                                    </property>
-                                    <property name="styleSheet">
-                                     <string notr="true">background-color: rgb(33, 37, 43);</string>
-                                    </property>
-                                    <property name="text">
-                                     <string>↵</string>
-                                    </property>
-                                   </widget>
-                                  </item>
-                                  <item>
-                                   <widget class="QPushButton" name="btn_filter_3">
-                                    <property name="minimumSize">
-                                     <size>
-                                      <width>50</width>
-                                      <height>0</height>
-                                     </size>
-                                    </property>
-                                    <property name="maximumSize">
-                                     <size>
-                                      <width>16777215</width>
-                                      <height>30</height>
-                                     </size>
-                                    </property>
-                                    <property name="styleSheet">
-                                     <string notr="true">background-color: rgb(33, 37, 43);</string>
-                                    </property>
-                                    <property name="text">
-                                     <string>...</string>
-                                    </property>
-                                   </widget>
-                                  </item>
-                                 </layout>
-                                </widget>
-                               </item>
-                               <item>
-                                <widget class="QScrollArea" name="scrollArea_6">
-                                 <property name="maximumSize">
-                                  <size>
-                                   <width>450</width>
-                                   <height>16777215</height>
-                                  </size>
-                                 </property>
-                                 <property name="widgetResizable">
-                                  <bool>true</bool>
-                                 </property>
-                                 <widget class="QWidget" name="scrollAreaWidgetContents_6">
-                                  <property name="geometry">
-                                   <rect>
-                                    <x>0</x>
-                                    <y>0</y>
-                                    <width>336</width>
-                                    <height>556</height>
-                                   </rect>
-                                  </property>
-                                  <layout class="QVBoxLayout" name="verticalLayout_29">
-                                   <item>
-                                    <widget class="QTextEdit" name="textEdit_16">
-                                     <property name="minimumSize">
-                                      <size>
-                                       <width>0</width>
-                                       <height>130</height>
-                                      </size>
-                                     </property>
-                                     <property name="maximumSize">
-                                      <size>
-                                       <width>435</width>
-                                       <height>16777215</height>
-                                      </size>
-                                     </property>
-                                     <property name="styleSheet">
-                                      <string notr="true">background-color:rgb(255,255,255);border-radius: 10px;padding-top: 10px;</string>
-                                     </property>
-                                     <property name="html">
-                                      <string>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
-&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
-p, li { white-space: pre-wrap; }
-&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:'Segoe UI'; font-size:10pt; font-weight:400; font-style:normal;&quot;&gt;
-&lt;p style=&quot; margin-top:10px; margin-bottom:5px; margin-left:10px; margin-right:10px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;img src=&quot;twitter-avatar.jpg&quot; /&gt;&lt;span style=&quot; font-size:9pt; color:#000000;&quot;&gt; &lt;/span&gt;&lt;span style=&quot; font-size:9pt; font-weight:696; color:#000000;&quot;&gt;@Vallie&lt;/span&gt;&lt;span style=&quot; font-size:9pt; color:#000000;&quot;&gt; &lt;/span&gt;&lt;/p&gt;
-&lt;p style=&quot; margin-top:12px; margin-bottom:12px; margin-left:10px; margin-right:10px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:9pt; color:#000000;&quot;&gt;WATCH LIVE: U.S. Geological Survey briefing on major Chilean earthquake &lt;/span&gt;&lt;a href=&quot;http://t.co/6Kj1mkBCT3&quot;&gt;&lt;span style=&quot; font-size:9pt; text-decoration: underline; color:#1da1f2;&quot;&gt;http://t.co/6Kj1mkBCT3&lt;/span&gt;&lt;/a&gt;&lt;span style=&quot; font-size:9pt; color:#1da1f2;&quot;&gt; #ChileEarthquake &lt;/span&gt;&lt;/p&gt;
-&lt;p style=&quot; margin-top:10px; margin-bottom:0px; margin-left:10px; margin-right:10px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:9pt; color:#1da1f2;&quot;&gt;Like&lt;/span&gt;&lt;span style=&quot; font-size:9pt; color:#000000;&quot;&gt; &lt;/span&gt;&lt;span style=&quot; font-size:9pt; color:#1da1f2;&quot;&gt;Retweet&lt;/span&gt;&lt;span style=&quot; font-size:9pt; color:#000000;&quot;&gt; &lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
-                                     </property>
-                                    </widget>
-                                   </item>
-                                   <item>
-                                    <widget class="QTextEdit" name="textEdit_17">
-                                     <property name="minimumSize">
-                                      <size>
-                                       <width>0</width>
-                                       <height>130</height>
-                                      </size>
-                                     </property>
-                                     <property name="maximumSize">
-                                      <size>
-                                       <width>435</width>
-                                       <height>16777215</height>
-                                      </size>
-                                     </property>
-                                     <property name="styleSheet">
-                                      <string notr="true">background-color:rgb(255,255,255);border-radius: 10px;padding-top: 10px;</string>
-                                     </property>
-                                     <property name="html">
-                                      <string>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
-&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
-p, li { white-space: pre-wrap; }
-&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:'Segoe UI'; font-size:10pt; font-weight:400; font-style:normal;&quot;&gt;
-&lt;p style=&quot; margin-top:10px; margin-bottom:5px; margin-left:10px; margin-right:10px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;img src=&quot;twitter-avatar.jpg&quot; /&gt;&lt;span style=&quot; font-size:9pt;&quot;&gt; &lt;/span&gt;&lt;span style=&quot; font-size:9pt; font-weight:696; color:#000000;&quot;&gt;@Euphorian54&lt;/span&gt;&lt;span style=&quot; font-size:9pt;&quot;&gt; &lt;/span&gt;&lt;/p&gt;
-&lt;p style=&quot; margin-top:12px; margin-bottom:12px; margin-left:10px; margin-right:10px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:9pt; color:#000000;&quot;&gt;RT &lt;/span&gt;&lt;span style=&quot; font-size:9pt; font-weight:696; color:#000000;&quot;&gt;@debbiegibson&lt;/span&gt;&lt;span style=&quot; font-size:9pt; color:#000000;&quot;&gt; &amp;amp; &lt;/span&gt;&lt;span style=&quot; font-size:9pt; color:#1da1f2;&quot;&gt;#TeamDeb&lt;/span&gt;&lt;span style=&quot; font-size:9pt; color:#000000;&quot;&gt; for &lt;/span&gt;&lt;span style=&quot; font-size:9pt; color:#1da1f2;&quot;&gt;@bizarro_chile&lt;/span&gt;&lt;span style=&quot; font-size:9pt;&quot;&gt; &lt;/span&gt;&lt;span style=&quot; font-size:9pt; color:#1da1f2;&quot;&gt;#HITPARADE&lt;/span&gt;&lt;span style=&quot; font-size:9pt; color:#000000;&quot;&gt; &amp;amp; &lt;/span&gt;&lt;span style=&quot; font-size:9pt; color:#1da1f2;&quot;&gt;@Blondieclub&lt;/span&gt;&lt;span style=&quot; font-size:9pt; color:#000000;&quot;&gt; ! &lt;/span&gt;&lt;span style=&quot; font-size:9pt; color:#1da1f2;&quot;&gt;#chile&lt;/span&gt;&lt;span style=&quot; font-size:9pt;&quot;&gt; &lt;/span&gt;&lt;span style=&quot; font-size:9pt; color:#1da1f2;&quot;&gt;#santiago&lt;/span&gt;&lt;span style=&quot; font-size:9pt;&quot;&gt; &lt;/span&gt;&lt;a href=&quot;http://t.co/A…&quot;&gt;&lt;span style=&quot; font-size:9pt; text-decoration: underline; color:#1da1f2;&quot;&gt;http://t.co/A…&lt;/span&gt;&lt;/a&gt;&lt;span style=&quot; font-size:9pt;&quot;&gt; &lt;/span&gt;&lt;/p&gt;
-&lt;p style=&quot; margin-top:10px; margin-bottom:0px; margin-left:10px; margin-right:10px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:9pt; color:#1da1f2;&quot;&gt;Like&lt;/span&gt;&lt;span style=&quot; font-size:9pt;&quot;&gt; &lt;/span&gt;&lt;span style=&quot; font-size:9pt; color:#1da1f2;&quot;&gt;Retweet&lt;/span&gt;&lt;span style=&quot; font-size:9pt;&quot;&gt; &lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
-                                     </property>
-                                    </widget>
-                                   </item>
-                                   <item>
-                                    <widget class="QTextEdit" name="textEdit_18">
-                                     <property name="minimumSize">
-                                      <size>
-                                       <width>0</width>
-                                       <height>130</height>
-                                      </size>
-                                     </property>
-                                     <property name="maximumSize">
-                                      <size>
-                                       <width>435</width>
-                                       <height>16777215</height>
-                                      </size>
-                                     </property>
-                                     <property name="styleSheet">
-                                      <string notr="true">background-color:rgb(255,255,255);border-radius: 10px;padding-top: 10px;</string>
-                                     </property>
-                                     <property name="html">
-                                      <string>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
-&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
-p, li { white-space: pre-wrap; }
-&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:'Segoe UI'; font-size:10pt; font-weight:400; font-style:normal;&quot;&gt;
-&lt;p style=&quot; margin-top:10px; margin-bottom:5px; margin-left:10px; margin-right:10px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;img src=&quot;twitter-avatar.jpg&quot; /&gt;&lt;span style=&quot; font-size:9pt;&quot;&gt; &lt;/span&gt;&lt;span style=&quot; font-size:9pt; font-weight:696; color:#000000;&quot;&gt;@Euphorian54&lt;/span&gt;&lt;span style=&quot; font-size:9pt;&quot;&gt; &lt;/span&gt;&lt;/p&gt;
-&lt;p style=&quot; margin-top:12px; margin-bottom:12px; margin-left:10px; margin-right:10px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:9pt; color:#000000;&quot;&gt;RT &lt;/span&gt;&lt;span style=&quot; font-size:9pt; font-weight:696; color:#000000;&quot;&gt;@debbiegibson&lt;/span&gt;&lt;span style=&quot; font-size:9pt; color:#000000;&quot;&gt; &amp;amp; &lt;/span&gt;&lt;span style=&quot; font-size:9pt; color:#1da1f2;&quot;&gt;#TeamDeb&lt;/span&gt;&lt;span style=&quot; font-size:9pt; color:#000000;&quot;&gt; for &lt;/span&gt;&lt;span style=&quot; font-size:9pt; color:#1da1f2;&quot;&gt;@bizarro_chile&lt;/span&gt;&lt;span style=&quot; font-size:9pt;&quot;&gt; &lt;/span&gt;&lt;span style=&quot; font-size:9pt; color:#1da1f2;&quot;&gt;#HITPARADE&lt;/span&gt;&lt;span style=&quot; font-size:9pt; color:#000000;&quot;&gt; &amp;amp; &lt;/span&gt;&lt;span style=&quot; font-size:9pt; color:#1da1f2;&quot;&gt;@Blondieclub&lt;/span&gt;&lt;span style=&quot; font-size:9pt; color:#000000;&quot;&gt; ! &lt;/span&gt;&lt;span style=&quot; font-size:9pt; color:#1da1f2;&quot;&gt;#chile&lt;/span&gt;&lt;span style=&quot; font-size:9pt;&quot;&gt; &lt;/span&gt;&lt;span style=&quot; font-size:9pt; color:#1da1f2;&quot;&gt;#santiago&lt;/span&gt;&lt;span style=&quot; font-size:9pt;&quot;&gt; &lt;/span&gt;&lt;a href=&quot;http://t.co/A…&quot;&gt;&lt;span style=&quot; font-size:9pt; text-decoration: underline; color:#1da1f2;&quot;&gt;http://t.co/A…&lt;/span&gt;&lt;/a&gt;&lt;span style=&quot; font-size:9pt;&quot;&gt; &lt;/span&gt;&lt;/p&gt;
-&lt;p style=&quot; margin-top:10px; margin-bottom:0px; margin-left:10px; margin-right:10px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:9pt; color:#1da1f2;&quot;&gt;Like&lt;/span&gt;&lt;span style=&quot; font-size:9pt;&quot;&gt; &lt;/span&gt;&lt;span style=&quot; font-size:9pt; color:#1da1f2;&quot;&gt;Retweet&lt;/span&gt;&lt;span style=&quot; font-size:9pt;&quot;&gt; &lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
-                                     </property>
-                                    </widget>
-                                   </item>
-                                   <item>
-                                    <widget class="QTextEdit" name="textEdit_19">
-                                     <property name="minimumSize">
-                                      <size>
-                                       <width>0</width>
-                                       <height>130</height>
-                                      </size>
-                                     </property>
-                                     <property name="maximumSize">
-                                      <size>
-                                       <width>435</width>
-                                       <height>16777215</height>
-                                      </size>
-                                     </property>
-                                     <property name="styleSheet">
-                                      <string notr="true">background-color:rgb(255,255,255);border-radius: 10px;padding-top: 10px;</string>
-                                     </property>
-                                     <property name="html">
-                                      <string>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
-&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
-p, li { white-space: pre-wrap; }
-&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:'Segoe UI'; font-size:10pt; font-weight:400; font-style:normal;&quot;&gt;
-&lt;p style=&quot; margin-top:10px; margin-bottom:5px; margin-left:10px; margin-right:10px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;img src=&quot;twitter-avatar.jpg&quot; /&gt;&lt;span style=&quot; font-size:9pt; color:#000000;&quot;&gt; &lt;/span&gt;&lt;span style=&quot; font-size:9pt; font-weight:696; color:#000000;&quot;&gt;@Vallie&lt;/span&gt;&lt;span style=&quot; font-size:9pt; color:#000000;&quot;&gt; &lt;/span&gt;&lt;/p&gt;
-&lt;p style=&quot; margin-top:12px; margin-bottom:12px; margin-left:10px; margin-right:10px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:9pt; color:#000000;&quot;&gt;WATCH LIVE: U.S. Geological Survey briefing on major Chilean earthquake &lt;/span&gt;&lt;a href=&quot;http://t.co/6Kj1mkBCT3&quot;&gt;&lt;span style=&quot; font-size:9pt; text-decoration: underline; color:#1da1f2;&quot;&gt;http://t.co/6Kj1mkBCT3&lt;/span&gt;&lt;/a&gt;&lt;span style=&quot; font-size:9pt; color:#1da1f2;&quot;&gt; #ChileEarthquake &lt;/span&gt;&lt;/p&gt;
-&lt;p style=&quot; margin-top:10px; margin-bottom:0px; margin-left:10px; margin-right:10px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:9pt; color:#1da1f2;&quot;&gt;Like&lt;/span&gt;&lt;span style=&quot; font-size:9pt; color:#000000;&quot;&gt; &lt;/span&gt;&lt;span style=&quot; font-size:9pt; color:#1da1f2;&quot;&gt;Retweet&lt;/span&gt;&lt;span style=&quot; font-size:9pt; color:#000000;&quot;&gt; &lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
-                                     </property>
-                                    </widget>
-                                   </item>
-                                  </layout>
-                                 </widget>
-                                </widget>
-                               </item>
-                              </layout>
-                             </widget>
-                            </item>
-                           </layout>
-                          </widget>
-                         </item>
-                        </layout>
-                       </widget>
-                       <widget class="QWidget" name="filter">
-                        <layout class="QHBoxLayout" name="horizontalLayout_26">
-                         <item>
-                          <widget class="QFrame" name="frame_filter">
-                           <layout class="QHBoxLayout" name="horizontalLayout_22">
-                            <item>
-                             <widget class="QFrame" name="query_filter">
-                              <property name="minimumSize">
-                               <size>
-                                <width>0</width>
-                                <height>0</height>
-                               </size>
-                              </property>
-                              <layout class="QVBoxLayout" name="_3">
-                               <item>
-                                <widget class="QFrame" name="frame_4">
-                                 <property name="sizePolicy">
-                                  <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
-                                   <horstretch>0</horstretch>
-                                   <verstretch>0</verstretch>
-                                  </sizepolicy>
-                                 </property>
-                                 <property name="maximumSize">
-                                  <size>
-                                   <width>16777215</width>
-                                   <height>50</height>
-                                  </size>
-                                 </property>
-                                 <layout class="QHBoxLayout" name="horizontalLayout_17">
-                                  <item>
-                                   <widget class="QLabel" name="label_13">
-                                    <property name="maximumSize">
-                                     <size>
-                                      <width>16777215</width>
-                                      <height>30</height>
-                                     </size>
-                                    </property>
-                                    <property name="styleSheet">
-                                     <string notr="true">font:bold 22px;</string>
-                                    </property>
-                                    <property name="text">
-                                     <string>Query: </string>
-                                    </property>
-                                   </widget>
-                                  </item>
-                                  <item>
-                                   <widget class="QPlainTextEdit" name="plainTextEdit_8">
-                                    <property name="maximumSize">
-                                     <size>
-                                      <width>16777215</width>
-                                      <height>30</height>
-                                     </size>
-                                    </property>
-                                    <property name="styleSheet">
-                                     <string notr="true">background-color: rgb(33, 37, 43);</string>
-                                    </property>
-                                   </widget>
-                                  </item>
-                                 </layout>
-                                </widget>
-                               </item>
-                               <item>
-                                <widget class="QScrollArea" name="scrollArea_3">
-                                 <property name="maximumSize">
-                                  <size>
-                                   <width>500</width>
-                                   <height>16777215</height>
-                                  </size>
-                                 </property>
-                                 <property name="widgetResizable">
-                                  <bool>true</bool>
-                                 </property>
-                                 <widget class="QWidget" name="scrollAreaWidgetContents_3">
-                                  <property name="geometry">
-                                   <rect>
-                                    <x>0</x>
-                                    <y>0</y>
-                                    <width>490</width>
-                                    <height>556</height>
-                                   </rect>
-                                  </property>
-                                  <layout class="QVBoxLayout" name="verticalLayout_24">
-                                   <item>
-                                    <widget class="QTextEdit" name="textEdit_4">
-                                     <property name="minimumSize">
-                                      <size>
-                                       <width>0</width>
-                                       <height>130</height>
-                                      </size>
-                                     </property>
-                                     <property name="maximumSize">
-                                      <size>
-                                       <width>435</width>
-                                       <height>16777215</height>
-                                      </size>
-                                     </property>
-                                     <property name="styleSheet">
-                                      <string notr="true">background-color:rgb(255,255,255);border-radius: 10px;padding-top: 10px;</string>
-                                     </property>
-                                     <property name="html">
-                                      <string>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
-&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
-p, li { white-space: pre-wrap; }
-&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:'Segoe UI'; font-size:10pt; font-weight:400; font-style:normal;&quot;&gt;
-&lt;p style=&quot; margin-top:10px; margin-bottom:5px; margin-left:10px; margin-right:10px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;img src=&quot;twitter-avatar.jpg&quot; /&gt;&lt;span style=&quot; font-size:9pt; color:#000000;&quot;&gt; &lt;/span&gt;&lt;span style=&quot; font-size:9pt; font-weight:696; color:#000000;&quot;&gt;@Vallie&lt;/span&gt;&lt;span style=&quot; font-size:9pt; color:#000000;&quot;&gt; &lt;/span&gt;&lt;/p&gt;
-&lt;p style=&quot; margin-top:12px; margin-bottom:12px; margin-left:10px; margin-right:10px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:9pt; color:#000000;&quot;&gt;WATCH LIVE: U.S. Geological Survey briefing on major Chilean earthquake &lt;/span&gt;&lt;a href=&quot;http://t.co/6Kj1mkBCT3&quot;&gt;&lt;span style=&quot; font-size:9pt; text-decoration: underline; color:#1da1f2;&quot;&gt;http://t.co/6Kj1mkBCT3&lt;/span&gt;&lt;/a&gt;&lt;span style=&quot; font-size:9pt; color:#1da1f2;&quot;&gt; #ChileEarthquake &lt;/span&gt;&lt;/p&gt;
-&lt;p style=&quot; margin-top:10px; margin-bottom:0px; margin-left:10px; margin-right:10px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:9pt; color:#1da1f2;&quot;&gt;Like&lt;/span&gt;&lt;span style=&quot; font-size:9pt; color:#000000;&quot;&gt; &lt;/span&gt;&lt;span style=&quot; font-size:9pt; color:#1da1f2;&quot;&gt;Retweet&lt;/span&gt;&lt;span style=&quot; font-size:9pt; color:#000000;&quot;&gt; &lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
-                                     </property>
-                                    </widget>
-                                   </item>
-                                   <item>
-                                    <widget class="QTextEdit" name="textEdit_5">
-                                     <property name="minimumSize">
-                                      <size>
-                                       <width>0</width>
-                                       <height>130</height>
-                                      </size>
-                                     </property>
-                                     <property name="maximumSize">
-                                      <size>
-                                       <width>435</width>
-                                       <height>16777215</height>
-                                      </size>
-                                     </property>
-                                     <property name="styleSheet">
-                                      <string notr="true">background-color:rgb(255,255,255);border-radius: 10px;padding-top: 10px;</string>
-                                     </property>
-                                     <property name="html">
-                                      <string>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
-&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
-p, li { white-space: pre-wrap; }
-&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:'Segoe UI'; font-size:10pt; font-weight:400; font-style:normal;&quot;&gt;
-&lt;p style=&quot; margin-top:10px; margin-bottom:5px; margin-left:10px; margin-right:10px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;img src=&quot;twitter-avatar.jpg&quot; /&gt;&lt;span style=&quot; font-size:9pt;&quot;&gt; &lt;/span&gt;&lt;span style=&quot; font-size:9pt; font-weight:696; color:#000000;&quot;&gt;@Euphorian54&lt;/span&gt;&lt;span style=&quot; font-size:9pt;&quot;&gt; &lt;/span&gt;&lt;/p&gt;
-&lt;p style=&quot; margin-top:12px; margin-bottom:12px; margin-left:10px; margin-right:10px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:9pt; color:#000000;&quot;&gt;RT &lt;/span&gt;&lt;span style=&quot; font-size:9pt; font-weight:696; color:#000000;&quot;&gt;@debbiegibson&lt;/span&gt;&lt;span style=&quot; font-size:9pt; color:#000000;&quot;&gt; &amp;amp; &lt;/span&gt;&lt;span style=&quot; font-size:9pt; color:#1da1f2;&quot;&gt;#TeamDeb&lt;/span&gt;&lt;span style=&quot; font-size:9pt; color:#000000;&quot;&gt; for &lt;/span&gt;&lt;span style=&quot; font-size:9pt; color:#1da1f2;&quot;&gt;@bizarro_chile&lt;/span&gt;&lt;span style=&quot; font-size:9pt;&quot;&gt; &lt;/span&gt;&lt;span style=&quot; font-size:9pt; color:#1da1f2;&quot;&gt;#HITPARADE&lt;/span&gt;&lt;span style=&quot; font-size:9pt; color:#000000;&quot;&gt; &amp;amp; &lt;/span&gt;&lt;span style=&quot; font-size:9pt; color:#1da1f2;&quot;&gt;@Blondieclub&lt;/span&gt;&lt;span style=&quot; font-size:9pt; color:#000000;&quot;&gt; ! &lt;/span&gt;&lt;span style=&quot; font-size:9pt; color:#1da1f2;&quot;&gt;#chile&lt;/span&gt;&lt;span style=&quot; font-size:9pt;&quot;&gt; &lt;/span&gt;&lt;span style=&quot; font-size:9pt; color:#1da1f2;&quot;&gt;#santiago&lt;/span&gt;&lt;span style=&quot; font-size:9pt;&quot;&gt; &lt;/span&gt;&lt;a href=&quot;http://t.co/A…&quot;&gt;&lt;span style=&quot; font-size:9pt; text-decoration: underline; color:#1da1f2;&quot;&gt;http://t.co/A…&lt;/span&gt;&lt;/a&gt;&lt;span style=&quot; font-size:9pt;&quot;&gt; &lt;/span&gt;&lt;/p&gt;
-&lt;p style=&quot; margin-top:10px; margin-bottom:0px; margin-left:10px; margin-right:10px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:9pt; color:#1da1f2;&quot;&gt;Like&lt;/span&gt;&lt;span style=&quot; font-size:9pt;&quot;&gt; &lt;/span&gt;&lt;span style=&quot; font-size:9pt; color:#1da1f2;&quot;&gt;Retweet&lt;/span&gt;&lt;span style=&quot; font-size:9pt;&quot;&gt; &lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
-                                     </property>
-                                    </widget>
-                                   </item>
-                                   <item>
-                                    <widget class="QTextEdit" name="textEdit_20">
-                                     <property name="minimumSize">
-                                      <size>
-                                       <width>0</width>
-                                       <height>130</height>
-                                      </size>
-                                     </property>
-                                     <property name="maximumSize">
-                                      <size>
-                                       <width>435</width>
-                                       <height>16777215</height>
-                                      </size>
-                                     </property>
-                                     <property name="styleSheet">
-                                      <string notr="true">background-color:rgb(255,255,255);border-radius: 10px;padding-top: 10px;</string>
-                                     </property>
-                                     <property name="html">
-                                      <string>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
-&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
-p, li { white-space: pre-wrap; }
-&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:'Segoe UI'; font-size:10pt; font-weight:400; font-style:normal;&quot;&gt;
-&lt;p style=&quot; margin-top:10px; margin-bottom:5px; margin-left:10px; margin-right:10px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;img src=&quot;twitter-avatar.jpg&quot; /&gt;&lt;span style=&quot; font-size:9pt;&quot;&gt; &lt;/span&gt;&lt;span style=&quot; font-size:9pt; font-weight:696; color:#000000;&quot;&gt;@Euphorian54&lt;/span&gt;&lt;span style=&quot; font-size:9pt;&quot;&gt; &lt;/span&gt;&lt;/p&gt;
-&lt;p style=&quot; margin-top:12px; margin-bottom:12px; margin-left:10px; margin-right:10px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:9pt; color:#000000;&quot;&gt;RT &lt;/span&gt;&lt;span style=&quot; font-size:9pt; font-weight:696; color:#000000;&quot;&gt;@debbiegibson&lt;/span&gt;&lt;span style=&quot; font-size:9pt; color:#000000;&quot;&gt; &amp;amp; &lt;/span&gt;&lt;span style=&quot; font-size:9pt; color:#1da1f2;&quot;&gt;#TeamDeb&lt;/span&gt;&lt;span style=&quot; font-size:9pt; color:#000000;&quot;&gt; for &lt;/span&gt;&lt;span style=&quot; font-size:9pt; color:#1da1f2;&quot;&gt;@bizarro_chile&lt;/span&gt;&lt;span style=&quot; font-size:9pt;&quot;&gt; &lt;/span&gt;&lt;span style=&quot; font-size:9pt; color:#1da1f2;&quot;&gt;#HITPARADE&lt;/span&gt;&lt;span style=&quot; font-size:9pt; color:#000000;&quot;&gt; &amp;amp; &lt;/span&gt;&lt;span style=&quot; font-size:9pt; color:#1da1f2;&quot;&gt;@Blondieclub&lt;/span&gt;&lt;span style=&quot; font-size:9pt; color:#000000;&quot;&gt; ! &lt;/span&gt;&lt;span style=&quot; font-size:9pt; color:#1da1f2;&quot;&gt;#chile&lt;/span&gt;&lt;span style=&quot; font-size:9pt;&quot;&gt; &lt;/span&gt;&lt;span style=&quot; font-size:9pt; color:#1da1f2;&quot;&gt;#santiago&lt;/span&gt;&lt;span style=&quot; font-size:9pt;&quot;&gt; &lt;/span&gt;&lt;a href=&quot;http://t.co/A…&quot;&gt;&lt;span style=&quot; font-size:9pt; text-decoration: underline; color:#1da1f2;&quot;&gt;http://t.co/A…&lt;/span&gt;&lt;/a&gt;&lt;span style=&quot; font-size:9pt;&quot;&gt; &lt;/span&gt;&lt;/p&gt;
-&lt;p style=&quot; margin-top:10px; margin-bottom:0px; margin-left:10px; margin-right:10px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:9pt; color:#1da1f2;&quot;&gt;Like&lt;/span&gt;&lt;span style=&quot; font-size:9pt;&quot;&gt; &lt;/span&gt;&lt;span style=&quot; font-size:9pt; color:#1da1f2;&quot;&gt;Retweet&lt;/span&gt;&lt;span style=&quot; font-size:9pt;&quot;&gt; &lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
-                                     </property>
-                                    </widget>
-                                   </item>
-                                   <item>
-                                    <widget class="QTextEdit" name="textEdit_21">
-                                     <property name="minimumSize">
-                                      <size>
-                                       <width>0</width>
-                                       <height>130</height>
-                                      </size>
-                                     </property>
-                                     <property name="maximumSize">
-                                      <size>
-                                       <width>435</width>
-                                       <height>16777215</height>
-                                      </size>
-                                     </property>
-                                     <property name="styleSheet">
-                                      <string notr="true">background-color:rgb(255,255,255);border-radius: 10px;padding-top: 10px;</string>
-                                     </property>
-                                     <property name="html">
-                                      <string>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
-&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
-p, li { white-space: pre-wrap; }
-&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:'Segoe UI'; font-size:10pt; font-weight:400; font-style:normal;&quot;&gt;
-&lt;p style=&quot; margin-top:10px; margin-bottom:5px; margin-left:10px; margin-right:10px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;img src=&quot;twitter-avatar.jpg&quot; /&gt;&lt;span style=&quot; font-size:9pt; color:#000000;&quot;&gt; &lt;/span&gt;&lt;span style=&quot; font-size:9pt; font-weight:696; color:#000000;&quot;&gt;@Vallie&lt;/span&gt;&lt;span style=&quot; font-size:9pt; color:#000000;&quot;&gt; &lt;/span&gt;&lt;/p&gt;
-&lt;p style=&quot; margin-top:12px; margin-bottom:12px; margin-left:10px; margin-right:10px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:9pt; color:#000000;&quot;&gt;WATCH LIVE: U.S. Geological Survey briefing on major Chilean earthquake &lt;/span&gt;&lt;a href=&quot;http://t.co/6Kj1mkBCT3&quot;&gt;&lt;span style=&quot; font-size:9pt; text-decoration: underline; color:#1da1f2;&quot;&gt;http://t.co/6Kj1mkBCT3&lt;/span&gt;&lt;/a&gt;&lt;span style=&quot; font-size:9pt; color:#1da1f2;&quot;&gt; #ChileEarthquake &lt;/span&gt;&lt;/p&gt;
-&lt;p style=&quot; margin-top:10px; margin-bottom:0px; margin-left:10px; margin-right:10px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:9pt; color:#1da1f2;&quot;&gt;Like&lt;/span&gt;&lt;span style=&quot; font-size:9pt; color:#000000;&quot;&gt; &lt;/span&gt;&lt;span style=&quot; font-size:9pt; color:#1da1f2;&quot;&gt;Retweet&lt;/span&gt;&lt;span style=&quot; font-size:9pt; color:#000000;&quot;&gt; &lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
-                                     </property>
-                                    </widget>
-                                   </item>
-                                  </layout>
-                                 </widget>
-                                </widget>
-                               </item>
-                              </layout>
-                             </widget>
-                            </item>
-                            <item>
-                             <layout class="QVBoxLayout" name="layout_filter">
-                              <item>
-                               <widget class="QGroupBox" name="group_content">
-                                <property name="maximumSize">
-                                 <size>
-                                  <width>16777215</width>
-                                  <height>150</height>
-                                 </size>
-                                </property>
-                                <property name="title">
-                                 <string>GroupBox</string>
-                                </property>
-                                <layout class="QVBoxLayout" name="verticalLayout_25">
-                                 <item>
-                                  <layout class="QHBoxLayout" name="horizontalLayout_18">
-                                   <item>
-                                    <widget class="QLabel" name="label_14">
-                                     <property name="styleSheet">
-                                      <string notr="true">font: bold 20px</string>
-                                     </property>
-                                     <property name="text">
-                                      <string>Include</string>
-                                     </property>
-                                    </widget>
-                                   </item>
-                                   <item>
-                                    <widget class="QPlainTextEdit" name="text_filter_include">
-                                     <property name="maximumSize">
-                                      <size>
-                                       <width>16777215</width>
-                                       <height>40</height>
-                                      </size>
-                                     </property>
-                                     <property name="styleSheet">
-                                      <string notr="true">background-color: rgb(33, 37, 43);</string>
-                                     </property>
-                                    </widget>
-                                   </item>
-                                  </layout>
-                                 </item>
-                                 <item>
-                                  <layout class="QHBoxLayout" name="horizontalLayout_19">
-                                   <item>
-                                    <widget class="QLabel" name="label_15">
-                                     <property name="styleSheet">
-                                      <string notr="true">font: bold 20px</string>
-                                     </property>
-                                     <property name="text">
-                                      <string>Exclude</string>
-                                     </property>
-                                    </widget>
-                                   </item>
-                                   <item>
-                                    <widget class="QPlainTextEdit" name="text_filter_exclue">
-                                     <property name="maximumSize">
-                                      <size>
-                                       <width>16777215</width>
-                                       <height>40</height>
-                                      </size>
-                                     </property>
-                                     <property name="styleSheet">
-                                      <string notr="true">background-color: rgb(33, 37, 43);</string>
-                                     </property>
-                                    </widget>
-                                   </item>
-                                  </layout>
-                                 </item>
-                                 <item>
-                                  <widget class="QRadioButton" name="radio_filter_retweet">
-                                   <property name="styleSheet">
-                                    <string notr="true">font: bold 20px</string>
-                                   </property>
-                                   <property name="text">
-                                    <string>Retweet</string>
-                                   </property>
-                                  </widget>
-                                 </item>
-                                </layout>
-                               </widget>
-                              </item>
-                              <item>
-                               <widget class="QGroupBox" name="group_user">
-                                <property name="maximumSize">
-                                 <size>
-                                  <width>16777215</width>
-                                  <height>150</height>
-                                 </size>
-                                </property>
-                                <property name="title">
-                                 <string>GroupBox</string>
-                                </property>
-                                <layout class="QVBoxLayout" name="verticalLayout_28">
-                                 <item>
-                                  <layout class="QHBoxLayout" name="horizontalLayout_21">
-                                   <item>
-                                    <widget class="QLabel" name="label_16">
-                                     <property name="styleSheet">
-                                      <string notr="true">font: bold 20px</string>
-                                     </property>
-                                     <property name="text">
-                                      <string>Follower Range</string>
-                                     </property>
-                                    </widget>
-                                   </item>
-                                   <item>
-                                    <widget class="QSpinBox" name="spin_filter_follow_lo">
-                                     <property name="styleSheet">
-                                      <string notr="true">background-color: rgb(33, 37, 43);</string>
-                                     </property>
-                                    </widget>
-                                   </item>
-                                   <item>
-                                    <widget class="QSpinBox" name="spin_filter_follow_hi">
-                                     <property name="styleSheet">
-                                      <string notr="true">background-color: rgb(33, 37, 43);</string>
-                                     </property>
-                                    </widget>
-                                   </item>
-                                  </layout>
-                                 </item>
-                                 <item>
-                                  <layout class="QHBoxLayout" name="horizontalLayout_20">
-                                   <item>
-                                    <widget class="QLabel" name="label_17">
-                                     <property name="styleSheet">
-                                      <string notr="true">font: bold 20px</string>
-                                     </property>
-                                     <property name="text">
-                                      <string>ID:</string>
-                                     </property>
-                                    </widget>
-                                   </item>
-                                   <item>
-                                    <widget class="QPlainTextEdit" name="text_filter_tweet_id">
-                                     <property name="maximumSize">
-                                      <size>
-                                       <width>16777215</width>
-                                       <height>40</height>
-                                      </size>
-                                     </property>
-                                     <property name="styleSheet">
-                                      <string notr="true">background-color: rgb(33, 37, 43);</string>
-                                     </property>
-                                    </widget>
-                                   </item>
-                                  </layout>
-                                 </item>
-                                </layout>
-                               </widget>
-                              </item>
-                              <item>
-                               <spacer name="verticalSpacer_2">
-                                <property name="orientation">
-                                 <enum>Qt::Vertical</enum>
-                                </property>
-                                <property name="sizeHint" stdset="0">
-                                 <size>
-                                  <width>20</width>
-                                  <height>40</height>
-                                 </size>
-                                </property>
-                               </spacer>
-                              </item>
-                              <item>
-                               <widget class="QPushButton" name="btn_filter">
-                                <property name="minimumSize">
-                                 <size>
-                                  <width>0</width>
-                                  <height>30</height>
-                                 </size>
-                                </property>
-                                <property name="styleSheet">
-                                 <string notr="true">background-color: rgb(33, 37, 43);</string>
-                                </property>
-                                <property name="text">
-                                 <string>Filter</string>
-                                </property>
-                               </widget>
-                              </item>
-                              <item>
-                               <widget class="QPushButton" name="btn_apply">
-                                <property name="minimumSize">
-                                 <size>
-                                  <width>0</width>
-                                  <height>30</height>
-                                 </size>
-                                </property>
-                                <property name="styleSheet">
-                                 <string notr="true">background-color: rgb(33, 37, 43);</string>
-                                </property>
-                                <property name="text">
-                                 <string>Apply</string>
-                                </property>
-                               </widget>
-                              </item>
-                             </layout>
-                            </item>
-                           </layout>
-                          </widget>
-                         </item>
-                        </layout>
-                       </widget>
-                      </widget>
-                     </item>
-                    </layout>
-                   </widget>
                    <widget class="ManagementPage" name="management"/>
                   </widget>
                  </item>

@@ -21,8 +21,8 @@ from PySide6.QtWidgets import (QAbstractItemView, QAbstractScrollArea, QApplicat
     QLabel, QLineEdit, QMainWindow, QPlainTextEdit,
     QPushButton, QRadioButton, QScrollArea, QScrollBar,
     QSizePolicy, QSlider, QSpacerItem, QSpinBox,
-    QStackedWidget, QTableWidget, QTableWidgetItem, QTextEdit,
-    QVBoxLayout, QWidget)
+    QStackedWidget, QTableWidget, QTableWidgetItem, QVBoxLayout,
+    QWidget)
 
 from widgets import ManagementPage
 from widgets import TwitterDeck
@@ -846,10 +846,10 @@ class Ui_MainWindow(object):
 
         self.horizontalLayout_28.addWidget(self.label_6)
 
-        self.lineEdit_2 = QLineEdit(self.grp_content)
-        self.lineEdit_2.setObjectName(u"lineEdit_2")
+        self.text_keywords = QLineEdit(self.grp_content)
+        self.text_keywords.setObjectName(u"text_keywords")
 
-        self.horizontalLayout_28.addWidget(self.lineEdit_2)
+        self.horizontalLayout_28.addWidget(self.text_keywords)
 
 
         self.verticalLayout_10.addLayout(self.horizontalLayout_28)
@@ -861,10 +861,13 @@ class Ui_MainWindow(object):
 
         self.horizontalLayout_29.addWidget(self.label_7)
 
-        self.comboBox_2 = QComboBox(self.grp_content)
-        self.comboBox_2.setObjectName(u"comboBox_2")
+        self.box_media_type = QComboBox(self.grp_content)
+        self.box_media_type.addItem("")
+        self.box_media_type.addItem("")
+        self.box_media_type.addItem("")
+        self.box_media_type.setObjectName(u"box_media_type")
 
-        self.horizontalLayout_29.addWidget(self.comboBox_2)
+        self.horizontalLayout_29.addWidget(self.box_media_type)
 
 
         self.verticalLayout_10.addLayout(self.horizontalLayout_29)
@@ -876,10 +879,25 @@ class Ui_MainWindow(object):
 
         self.horizontalLayout_30.addWidget(self.label_9)
 
-        self.dateTimeEdit = QDateTimeEdit(self.grp_content)
-        self.dateTimeEdit.setObjectName(u"dateTimeEdit")
+        self.time_since = QDateTimeEdit(self.grp_content)
+        self.time_since.setObjectName(u"time_since")
+        self.time_since.setStyleSheet(u"QDateTimeEdit {\n"
+"	border: 2px solid rgb(33, 37, 43);\n"
+"	border-radius: 5px;	\n"
+"	background-color:  rgb(33, 37, 43);\n"
+"	text-align:Center;\n"
+"	font: \"Segoe UI\";\n"
+"}\n"
+"QDateTimeEdit:hover {\n"
+"	border: 2px solid rgb(61, 70, 86);\n"
+"}\n"
+"QDateTimeEdit:pressed {	\n"
+"	border: 2px solid rgb(43, 50, 61);\n"
+"}\n"
+"\n"
+"")
 
-        self.horizontalLayout_30.addWidget(self.dateTimeEdit)
+        self.horizontalLayout_30.addWidget(self.time_since)
 
 
         self.verticalLayout_10.addLayout(self.horizontalLayout_30)
@@ -891,20 +909,35 @@ class Ui_MainWindow(object):
 
         self.horizontalLayout_31.addWidget(self.label_10)
 
-        self.dateTimeEdit_2 = QDateTimeEdit(self.grp_content)
-        self.dateTimeEdit_2.setObjectName(u"dateTimeEdit_2")
+        self.time_until = QDateTimeEdit(self.grp_content)
+        self.time_until.setObjectName(u"time_until")
+        self.time_until.setStyleSheet(u"QDateTimeEdit {\n"
+"	border: 2px solid rgb(33, 37, 43);\n"
+"	border-radius: 5px;	\n"
+"	background-color:  rgb(33, 37, 43);\n"
+"	text-align:Center;\n"
+"	font: \"Segoe UI\";\n"
+"}\n"
+"QDateTimeEdit:hover {\n"
+"	background-color: rgb(57, 65, 80);\n"
+"	border: 2px solid rgb(61, 70, 86);\n"
+"}\n"
+"QDateTimeEdit:pressed {	\n"
+"	background-color: rgb(35, 40, 49);\n"
+"	border: 2px solid rgb(43, 50, 61);\n"
+"}")
 
-        self.horizontalLayout_31.addWidget(self.dateTimeEdit_2)
+        self.horizontalLayout_31.addWidget(self.time_until)
 
 
         self.verticalLayout_10.addLayout(self.horizontalLayout_31)
 
         self.horizontalLayout_32 = QHBoxLayout()
         self.horizontalLayout_32.setObjectName(u"horizontalLayout_32")
-        self.label_11 = QLabel(self.grp_content)
-        self.label_11.setObjectName(u"label_11")
+        self.box_lang = QLabel(self.grp_content)
+        self.box_lang.setObjectName(u"box_lang")
 
-        self.horizontalLayout_32.addWidget(self.label_11)
+        self.horizontalLayout_32.addWidget(self.box_lang)
 
         self.comboBox_3 = QComboBox(self.grp_content)
         self.comboBox_3.setObjectName(u"comboBox_3")
@@ -914,10 +947,10 @@ class Ui_MainWindow(object):
 
         self.verticalLayout_10.addLayout(self.horizontalLayout_32)
 
-        self.radioButton_2 = QRadioButton(self.grp_content)
-        self.radioButton_2.setObjectName(u"radioButton_2")
+        self.btn_repost = QRadioButton(self.grp_content)
+        self.btn_repost.setObjectName(u"btn_repost")
 
-        self.verticalLayout_10.addWidget(self.radioButton_2)
+        self.verticalLayout_10.addWidget(self.btn_repost)
 
 
         self.verticalLayout_11.addWidget(self.grp_content)
@@ -946,10 +979,10 @@ class Ui_MainWindow(object):
 
         self.horizontalLayout_33.addWidget(self.label_18)
 
-        self.lineEdit_3 = QLineEdit(self.grp_location)
-        self.lineEdit_3.setObjectName(u"lineEdit_3")
+        self.text_latitude = QLineEdit(self.grp_location)
+        self.text_latitude.setObjectName(u"text_latitude")
 
-        self.horizontalLayout_33.addWidget(self.lineEdit_3)
+        self.horizontalLayout_33.addWidget(self.text_latitude)
 
 
         self.verticalLayout_20.addLayout(self.horizontalLayout_33)
@@ -961,10 +994,10 @@ class Ui_MainWindow(object):
 
         self.horizontalLayout_34.addWidget(self.label_19)
 
-        self.lineEdit_6 = QLineEdit(self.grp_location)
-        self.lineEdit_6.setObjectName(u"lineEdit_6")
+        self.text_longitude = QLineEdit(self.grp_location)
+        self.text_longitude.setObjectName(u"text_longitude")
 
-        self.horizontalLayout_34.addWidget(self.lineEdit_6)
+        self.horizontalLayout_34.addWidget(self.text_longitude)
 
 
         self.verticalLayout_20.addLayout(self.horizontalLayout_34)
@@ -976,15 +1009,15 @@ class Ui_MainWindow(object):
 
         self.horizontalLayout_37.addWidget(self.label_22)
 
-        self.lineEdit_7 = QLineEdit(self.grp_location)
-        self.lineEdit_7.setObjectName(u"lineEdit_7")
+        self.text_radius = QLineEdit(self.grp_location)
+        self.text_radius.setObjectName(u"text_radius")
 
-        self.horizontalLayout_37.addWidget(self.lineEdit_7)
+        self.horizontalLayout_37.addWidget(self.text_radius)
 
-        self.comboBox_5 = QComboBox(self.grp_location)
-        self.comboBox_5.setObjectName(u"comboBox_5")
+        self.box_radius_unit = QComboBox(self.grp_location)
+        self.box_radius_unit.setObjectName(u"box_radius_unit")
 
-        self.horizontalLayout_37.addWidget(self.comboBox_5)
+        self.horizontalLayout_37.addWidget(self.box_radius_unit)
 
 
         self.verticalLayout_20.addLayout(self.horizontalLayout_37)
@@ -1011,10 +1044,25 @@ class Ui_MainWindow(object):
 
         self.horizontalLayout_75.addWidget(self.label_60)
 
-        self.spinBox = QSpinBox(self.grp_engagement)
-        self.spinBox.setObjectName(u"spinBox")
+        self.box_min_retweet = QSpinBox(self.grp_engagement)
+        self.box_min_retweet.setObjectName(u"box_min_retweet")
+        self.box_min_retweet.setStyleSheet(u"QSpinBox {\n"
+"	border: 2px solid rgb(33, 37, 43);\n"
+"	border-radius: 5px;	\n"
+"	background-color:  rgb(33, 37, 43);\n"
+"	text-align:Center;\n"
+"	font: \"Segoe UI\";\n"
+"}\n"
+"QSpinBox:hover {\n"
+"	border: 2px solid rgb(61, 70, 86);\n"
+"}\n"
+"QSpinBox:pressed {	\n"
+"	border: 2px solid rgb(43, 50, 61);\n"
+"}\n"
+"\n"
+"")
 
-        self.horizontalLayout_75.addWidget(self.spinBox)
+        self.horizontalLayout_75.addWidget(self.box_min_retweet)
 
 
         self.verticalLayout_41.addLayout(self.horizontalLayout_75)
@@ -1026,10 +1074,25 @@ class Ui_MainWindow(object):
 
         self.horizontalLayout_76.addWidget(self.label_61)
 
-        self.spinBox_2 = QSpinBox(self.grp_engagement)
-        self.spinBox_2.setObjectName(u"spinBox_2")
+        self.box_min_fav = QSpinBox(self.grp_engagement)
+        self.box_min_fav.setObjectName(u"box_min_fav")
+        self.box_min_fav.setStyleSheet(u"QSpinBox {\n"
+"	border: 2px solid rgb(33, 37, 43);\n"
+"	border-radius: 5px;	\n"
+"	background-color:  rgb(33, 37, 43);\n"
+"	text-align:Center;\n"
+"	font: \"Segoe UI\";\n"
+"}\n"
+"QSpinBox:hover {\n"
+"	border: 2px solid rgb(61, 70, 86);\n"
+"}\n"
+"QSpinBox:pressed {	\n"
+"	border: 2px solid rgb(43, 50, 61);\n"
+"}\n"
+"\n"
+"")
 
-        self.horizontalLayout_76.addWidget(self.spinBox_2)
+        self.horizontalLayout_76.addWidget(self.box_min_fav)
 
 
         self.verticalLayout_41.addLayout(self.horizontalLayout_76)
@@ -1293,6 +1356,7 @@ class Ui_MainWindow(object):
         self.text_password.setObjectName(u"text_password")
         self.text_password.setMinimumSize(QSize(0, 50))
         self.text_password.setStyleSheet(u"background-color: rgb(33, 37, 43);  font:22px;")
+        self.text_password.setEchoMode(QLineEdit.Password)
 
         self.horizontalLayout_15.addWidget(self.text_password)
 
@@ -1328,6 +1392,7 @@ class Ui_MainWindow(object):
 "	background-color: rgb(35, 40, 49);\n"
 "	border: 2px solid rgb(43, 50, 61);\n"
 "}")
+        self.btn_login.setAutoDefault(False)
 
         self.horizontalLayout_24.addWidget(self.btn_login)
 
@@ -1505,7 +1570,7 @@ class Ui_MainWindow(object):
         self.scrollArea.setWidgetResizable(True)
         self.scrollAreaWidgetContents = QWidget()
         self.scrollAreaWidgetContents.setObjectName(u"scrollAreaWidgetContents")
-        self.scrollAreaWidgetContents.setGeometry(QRect(0, 0, 218, 218))
+        self.scrollAreaWidgetContents.setGeometry(QRect(0, 0, 343, 218))
         self.scrollAreaWidgetContents.setStyleSheet(u" QScrollBar:vertical {\n"
 "	border: none;\n"
 "    background: rgb(52, 59, 72);\n"
@@ -1701,629 +1766,6 @@ class Ui_MainWindow(object):
         self.deck = TwitterDeck()
         self.deck.setObjectName(u"deck")
         self.stackedWidget.addWidget(self.deck)
-        self.deck_3 = QWidget()
-        self.deck_3.setObjectName(u"deck_3")
-        self.horizontalLayout_25 = QHBoxLayout(self.deck_3)
-        self.horizontalLayout_25.setObjectName(u"horizontalLayout_25")
-        self.stackedWidget_2 = QStackedWidget(self.deck_3)
-        self.stackedWidget_2.setObjectName(u"stackedWidget_2")
-        self.event = QWidget()
-        self.event.setObjectName(u"event")
-        self.verticalLayout_34 = QVBoxLayout(self.event)
-        self.verticalLayout_34.setObjectName(u"verticalLayout_34")
-        self.frame_event = QFrame(self.event)
-        self.frame_event.setObjectName(u"frame_event")
-        self.gridLayout_3 = QGridLayout(self.frame_event)
-        self.gridLayout_3.setObjectName(u"gridLayout_3")
-        self.text_location = QPlainTextEdit(self.frame_event)
-        self.text_location.setObjectName(u"text_location")
-        self.text_location.setMaximumSize(QSize(16777215, 50))
-        self.text_location.setStyleSheet(u"background-color: rgb(33, 37, 43);")
-
-        self.gridLayout_3.addWidget(self.text_location, 1, 1, 1, 1)
-
-        self.label_crisis_type = QLabel(self.frame_event)
-        self.label_crisis_type.setObjectName(u"label_crisis_type")
-        self.label_crisis_type.setMinimumSize(QSize(300, 0))
-
-        self.gridLayout_3.addWidget(self.label_crisis_type, 5, 0, 1, 1)
-
-        self.tine_till = QDateTimeEdit(self.frame_event)
-        self.tine_till.setObjectName(u"tine_till")
-        self.tine_till.setMinimumSize(QSize(0, 40))
-        self.tine_till.setStyleSheet(u"background-color: rgb(33, 37, 43);")
-
-        self.gridLayout_3.addWidget(self.tine_till, 4, 1, 1, 1)
-
-        self.label_since = QLabel(self.frame_event)
-        self.label_since.setObjectName(u"label_since")
-        self.label_since.setMinimumSize(QSize(300, 0))
-
-        self.gridLayout_3.addWidget(self.label_since, 3, 0, 1, 1)
-
-        self.text_search = QPlainTextEdit(self.frame_event)
-        self.text_search.setObjectName(u"text_search")
-        self.text_search.setMaximumSize(QSize(16777215, 50))
-        self.text_search.setStyleSheet(u"background-color: rgb(33, 37, 43);")
-
-        self.gridLayout_3.addWidget(self.text_search, 2, 1, 1, 1)
-
-        self.label_till = QLabel(self.frame_event)
-        self.label_till.setObjectName(u"label_till")
-        self.label_till.setMinimumSize(QSize(300, 0))
-
-        self.gridLayout_3.addWidget(self.label_till, 4, 0, 1, 1)
-
-        self.time_since = QDateTimeEdit(self.frame_event)
-        self.time_since.setObjectName(u"time_since")
-        self.time_since.setMinimumSize(QSize(0, 40))
-        self.time_since.setStyleSheet(u"background-color: rgb(33, 37, 43);")
-
-        self.gridLayout_3.addWidget(self.time_since, 3, 1, 1, 1)
-
-        self.combo_type = QComboBox(self.frame_event)
-        self.combo_type.addItem("")
-        self.combo_type.addItem("")
-        self.combo_type.addItem("")
-        self.combo_type.addItem("")
-        self.combo_type.addItem("")
-        self.combo_type.setObjectName(u"combo_type")
-        self.combo_type.setStyleSheet(u"background-color: rgb(33, 37, 43);")
-
-        self.gridLayout_3.addWidget(self.combo_type, 5, 1, 1, 1)
-
-        self.label_Search = QLabel(self.frame_event)
-        self.label_Search.setObjectName(u"label_Search")
-        self.label_Search.setMinimumSize(QSize(300, 0))
-
-        self.gridLayout_3.addWidget(self.label_Search, 2, 0, 1, 1)
-
-        self.label_title = QLabel(self.frame_event)
-        self.label_title.setObjectName(u"label_title")
-        self.label_title.setMaximumSize(QSize(16777215, 100))
-        self.label_title.setFont(font)
-
-        self.gridLayout_3.addWidget(self.label_title, 0, 1, 1, 1)
-
-        self.label_location = QLabel(self.frame_event)
-        self.label_location.setObjectName(u"label_location")
-        self.label_location.setMinimumSize(QSize(300, 0))
-
-        self.gridLayout_3.addWidget(self.label_location, 1, 0, 1, 1)
-
-        self.btn_search = QPushButton(self.frame_event)
-        self.btn_search.setObjectName(u"btn_search")
-        sizePolicy5 = QSizePolicy(QSizePolicy.Preferred, QSizePolicy.Preferred)
-        sizePolicy5.setHorizontalStretch(0)
-        sizePolicy5.setVerticalStretch(0)
-        sizePolicy5.setHeightForWidth(self.btn_search.sizePolicy().hasHeightForWidth())
-        self.btn_search.setSizePolicy(sizePolicy5)
-        self.btn_search.setMaximumSize(QSize(16777215, 40))
-        font4 = QFont()
-        font4.setFamilies([u"22px"])
-        font4.setPointSize(10)
-        font4.setBold(True)
-        font4.setItalic(False)
-        self.btn_search.setFont(font4)
-        self.btn_search.setStyleSheet(u"background-color: rgb(33, 37, 43);\n"
-"font:bold, 22px")
-
-        self.gridLayout_3.addWidget(self.btn_search, 6, 1, 1, 1)
-
-
-        self.verticalLayout_34.addWidget(self.frame_event)
-
-        self.stackedWidget_2.addWidget(self.event)
-        self.queries = QWidget()
-        self.queries.setObjectName(u"queries")
-        self.horizontalLayout_27 = QHBoxLayout(self.queries)
-        self.horizontalLayout_27.setObjectName(u"horizontalLayout_27")
-        self.frame_6 = QFrame(self.queries)
-        self.frame_6.setObjectName(u"frame_6")
-        sizePolicy4.setHeightForWidth(self.frame_6.sizePolicy().hasHeightForWidth())
-        self.frame_6.setSizePolicy(sizePolicy4)
-        self.frame_6.setMinimumSize(QSize(0, 0))
-        self.horizontalLayout_14 = QHBoxLayout(self.frame_6)
-        self.horizontalLayout_14.setObjectName(u"horizontalLayout_14")
-        self.query_1 = QFrame(self.frame_6)
-        self.query_1.setObjectName(u"query_1")
-        self.query_1.setMinimumSize(QSize(0, 0))
-        self._1 = QVBoxLayout(self.query_1)
-        self._1.setObjectName(u"_1")
-        self.frame_q1 = QFrame(self.query_1)
-        self.frame_q1.setObjectName(u"frame_q1")
-        sizePolicy5.setHeightForWidth(self.frame_q1.sizePolicy().hasHeightForWidth())
-        self.frame_q1.setSizePolicy(sizePolicy5)
-        self.frame_q1.setMaximumSize(QSize(16777215, 50))
-        self.horizontalLayout_10 = QHBoxLayout(self.frame_q1)
-        self.horizontalLayout_10.setObjectName(u"horizontalLayout_10")
-        self.label = QLabel(self.frame_q1)
-        self.label.setObjectName(u"label")
-        self.label.setMaximumSize(QSize(16777215, 30))
-        self.label.setStyleSheet(u"font:bold 22px;")
-
-        self.horizontalLayout_10.addWidget(self.label)
-
-        self.plainTextEdit_4 = QPlainTextEdit(self.frame_q1)
-        self.plainTextEdit_4.setObjectName(u"plainTextEdit_4")
-        self.plainTextEdit_4.setMinimumSize(QSize(0, 40))
-        self.plainTextEdit_4.setMaximumSize(QSize(16777215, 40))
-        self.plainTextEdit_4.setStyleSheet(u"background-color: rgb(33, 37, 43);")
-
-        self.horizontalLayout_10.addWidget(self.plainTextEdit_4)
-
-        self.btn_query_1 = QPushButton(self.frame_q1)
-        self.btn_query_1.setObjectName(u"btn_query_1")
-        self.btn_query_1.setMinimumSize(QSize(70, 0))
-        self.btn_query_1.setMaximumSize(QSize(16777215, 30))
-        self.btn_query_1.setStyleSheet(u"background-color: rgb(33, 37, 43);")
-
-        self.horizontalLayout_10.addWidget(self.btn_query_1)
-
-        self.btn_filter_1 = QPushButton(self.frame_q1)
-        self.btn_filter_1.setObjectName(u"btn_filter_1")
-        self.btn_filter_1.setMinimumSize(QSize(50, 0))
-        self.btn_filter_1.setMaximumSize(QSize(16777215, 30))
-        self.btn_filter_1.setStyleSheet(u"background-color: rgb(33, 37, 43);")
-
-        self.horizontalLayout_10.addWidget(self.btn_filter_1)
-
-
-        self._1.addWidget(self.frame_q1)
-
-        self.scrollArea_2 = QScrollArea(self.query_1)
-        self.scrollArea_2.setObjectName(u"scrollArea_2")
-        self.scrollArea_2.setMaximumSize(QSize(450, 16777215))
-        self.scrollArea_2.setWidgetResizable(True)
-        self.scrollAreaWidgetContents_2 = QWidget()
-        self.scrollAreaWidgetContents_2.setObjectName(u"scrollAreaWidgetContents_2")
-        self.scrollAreaWidgetContents_2.setGeometry(QRect(0, 0, 107, 556))
-        self.verticalLayout_22 = QVBoxLayout(self.scrollAreaWidgetContents_2)
-        self.verticalLayout_22.setObjectName(u"verticalLayout_22")
-        self.textEdit_2 = QTextEdit(self.scrollAreaWidgetContents_2)
-        self.textEdit_2.setObjectName(u"textEdit_2")
-        self.textEdit_2.setMinimumSize(QSize(0, 130))
-        self.textEdit_2.setMaximumSize(QSize(435, 16777215))
-        self.textEdit_2.setStyleSheet(u"background-color:rgb(255,255,255);border-radius: 10px;padding-top: 10px;")
-
-        self.verticalLayout_22.addWidget(self.textEdit_2)
-
-        self.textEdit_3 = QTextEdit(self.scrollAreaWidgetContents_2)
-        self.textEdit_3.setObjectName(u"textEdit_3")
-        self.textEdit_3.setMinimumSize(QSize(0, 130))
-        self.textEdit_3.setMaximumSize(QSize(435, 16777215))
-        self.textEdit_3.setStyleSheet(u"background-color:rgb(255,255,255);border-radius: 10px;padding-top: 10px;")
-
-        self.verticalLayout_22.addWidget(self.textEdit_3)
-
-        self.textEdit_6 = QTextEdit(self.scrollAreaWidgetContents_2)
-        self.textEdit_6.setObjectName(u"textEdit_6")
-        self.textEdit_6.setMinimumSize(QSize(0, 130))
-        self.textEdit_6.setMaximumSize(QSize(435, 16777215))
-        self.textEdit_6.setStyleSheet(u"background-color:rgb(255,255,255);border-radius: 10px;padding-top: 10px;")
-
-        self.verticalLayout_22.addWidget(self.textEdit_6)
-
-        self.textEdit_7 = QTextEdit(self.scrollAreaWidgetContents_2)
-        self.textEdit_7.setObjectName(u"textEdit_7")
-        self.textEdit_7.setMinimumSize(QSize(0, 130))
-        self.textEdit_7.setMaximumSize(QSize(435, 16777215))
-        self.textEdit_7.setStyleSheet(u"background-color:rgb(255,255,255);border-radius: 10px;padding-top: 10px;")
-
-        self.verticalLayout_22.addWidget(self.textEdit_7)
-
-        self.scrollArea_2.setWidget(self.scrollAreaWidgetContents_2)
-
-        self._1.addWidget(self.scrollArea_2)
-
-
-        self.horizontalLayout_14.addWidget(self.query_1)
-
-        self.query_2 = QFrame(self.frame_6)
-        self.query_2.setObjectName(u"query_2")
-        self._2 = QVBoxLayout(self.query_2)
-        self._2.setObjectName(u"_2")
-        self.frame_q2 = QFrame(self.query_2)
-        self.frame_q2.setObjectName(u"frame_q2")
-        sizePolicy5.setHeightForWidth(self.frame_q2.sizePolicy().hasHeightForWidth())
-        self.frame_q2.setSizePolicy(sizePolicy5)
-        self.frame_q2.setMaximumSize(QSize(16777215, 50))
-        self.horizontalLayout_13 = QHBoxLayout(self.frame_q2)
-        self.horizontalLayout_13.setObjectName(u"horizontalLayout_13")
-        self.label_8 = QLabel(self.frame_q2)
-        self.label_8.setObjectName(u"label_8")
-        self.label_8.setMaximumSize(QSize(16777215, 30))
-        self.label_8.setStyleSheet(u"font:bold 22px;")
-
-        self.horizontalLayout_13.addWidget(self.label_8)
-
-        self.text_query_2 = QPlainTextEdit(self.frame_q2)
-        self.text_query_2.setObjectName(u"text_query_2")
-        self.text_query_2.setMinimumSize(QSize(0, 40))
-        self.text_query_2.setMaximumSize(QSize(16777215, 16777215))
-        self.text_query_2.setStyleSheet(u"background-color: rgb(33, 37, 43);")
-
-        self.horizontalLayout_13.addWidget(self.text_query_2)
-
-        self.btn_query_2 = QPushButton(self.frame_q2)
-        self.btn_query_2.setObjectName(u"btn_query_2")
-        self.btn_query_2.setMinimumSize(QSize(70, 0))
-        self.btn_query_2.setMaximumSize(QSize(16777215, 30))
-        self.btn_query_2.setStyleSheet(u"background-color: rgb(33, 37, 43);")
-
-        self.horizontalLayout_13.addWidget(self.btn_query_2)
-
-        self.btn_filter_2 = QPushButton(self.frame_q2)
-        self.btn_filter_2.setObjectName(u"btn_filter_2")
-        self.btn_filter_2.setMinimumSize(QSize(50, 0))
-        self.btn_filter_2.setMaximumSize(QSize(16777215, 30))
-        self.btn_filter_2.setStyleSheet(u"background-color: rgb(33, 37, 43);")
-
-        self.horizontalLayout_13.addWidget(self.btn_filter_2)
-
-
-        self._2.addWidget(self.frame_q2)
-
-        self.scrollArea_4 = QScrollArea(self.query_2)
-        self.scrollArea_4.setObjectName(u"scrollArea_4")
-        self.scrollArea_4.setMaximumSize(QSize(450, 16777215))
-        self.scrollArea_4.setWidgetResizable(True)
-        self.scrollAreaWidgetContents_4 = QWidget()
-        self.scrollAreaWidgetContents_4.setObjectName(u"scrollAreaWidgetContents_4")
-        self.scrollAreaWidgetContents_4.setGeometry(QRect(0, 0, 107, 556))
-        self.verticalLayout_23 = QVBoxLayout(self.scrollAreaWidgetContents_4)
-        self.verticalLayout_23.setObjectName(u"verticalLayout_23")
-        self.textEdit_8 = QTextEdit(self.scrollAreaWidgetContents_4)
-        self.textEdit_8.setObjectName(u"textEdit_8")
-        self.textEdit_8.setMinimumSize(QSize(0, 130))
-        self.textEdit_8.setMaximumSize(QSize(435, 16777215))
-        self.textEdit_8.setStyleSheet(u"background-color:rgb(255,255,255);border-radius: 10px;padding-top: 10px;")
-
-        self.verticalLayout_23.addWidget(self.textEdit_8)
-
-        self.textEdit_9 = QTextEdit(self.scrollAreaWidgetContents_4)
-        self.textEdit_9.setObjectName(u"textEdit_9")
-        self.textEdit_9.setMinimumSize(QSize(0, 130))
-        self.textEdit_9.setMaximumSize(QSize(435, 16777215))
-        self.textEdit_9.setStyleSheet(u"background-color:rgb(255,255,255);border-radius: 10px;padding-top: 10px;")
-
-        self.verticalLayout_23.addWidget(self.textEdit_9)
-
-        self.textEdit_10 = QTextEdit(self.scrollAreaWidgetContents_4)
-        self.textEdit_10.setObjectName(u"textEdit_10")
-        self.textEdit_10.setMinimumSize(QSize(0, 130))
-        self.textEdit_10.setMaximumSize(QSize(435, 16777215))
-        self.textEdit_10.setStyleSheet(u"background-color:rgb(255,255,255);border-radius: 10px;padding-top: 10px;")
-
-        self.verticalLayout_23.addWidget(self.textEdit_10)
-
-        self.textEdit_11 = QTextEdit(self.scrollAreaWidgetContents_4)
-        self.textEdit_11.setObjectName(u"textEdit_11")
-        self.textEdit_11.setMinimumSize(QSize(0, 130))
-        self.textEdit_11.setMaximumSize(QSize(435, 16777215))
-        self.textEdit_11.setStyleSheet(u"background-color:rgb(255,255,255);border-radius: 10px;padding-top: 10px;")
-
-        self.verticalLayout_23.addWidget(self.textEdit_11)
-
-        self.scrollArea_4.setWidget(self.scrollAreaWidgetContents_4)
-
-        self._2.addWidget(self.scrollArea_4)
-
-
-        self.horizontalLayout_14.addWidget(self.query_2)
-
-        self.query_3 = QFrame(self.frame_6)
-        self.query_3.setObjectName(u"query_3")
-        self.q_3 = QVBoxLayout(self.query_3)
-        self.q_3.setObjectName(u"q_3")
-        self.frame_q3 = QFrame(self.query_3)
-        self.frame_q3.setObjectName(u"frame_q3")
-        sizePolicy5.setHeightForWidth(self.frame_q3.sizePolicy().hasHeightForWidth())
-        self.frame_q3.setSizePolicy(sizePolicy5)
-        self.frame_q3.setMaximumSize(QSize(16777215, 50))
-        self.horizontalLayout_16 = QHBoxLayout(self.frame_q3)
-        self.horizontalLayout_16.setObjectName(u"horizontalLayout_16")
-        self.label_12 = QLabel(self.frame_q3)
-        self.label_12.setObjectName(u"label_12")
-        self.label_12.setMaximumSize(QSize(16777215, 30))
-        self.label_12.setStyleSheet(u"font:bold 22px;")
-
-        self.horizontalLayout_16.addWidget(self.label_12)
-
-        self.text_query_3 = QPlainTextEdit(self.frame_q3)
-        self.text_query_3.setObjectName(u"text_query_3")
-        self.text_query_3.setMinimumSize(QSize(0, 40))
-        self.text_query_3.setMaximumSize(QSize(16777215, 16777215))
-        self.text_query_3.setStyleSheet(u"background-color: rgb(33, 37, 43);")
-
-        self.horizontalLayout_16.addWidget(self.text_query_3)
-
-        self.btn_query_3 = QPushButton(self.frame_q3)
-        self.btn_query_3.setObjectName(u"btn_query_3")
-        self.btn_query_3.setMinimumSize(QSize(70, 0))
-        self.btn_query_3.setMaximumSize(QSize(16777215, 30))
-        self.btn_query_3.setStyleSheet(u"background-color: rgb(33, 37, 43);")
-
-        self.horizontalLayout_16.addWidget(self.btn_query_3)
-
-        self.btn_filter_3 = QPushButton(self.frame_q3)
-        self.btn_filter_3.setObjectName(u"btn_filter_3")
-        self.btn_filter_3.setMinimumSize(QSize(50, 0))
-        self.btn_filter_3.setMaximumSize(QSize(16777215, 30))
-        self.btn_filter_3.setStyleSheet(u"background-color: rgb(33, 37, 43);")
-
-        self.horizontalLayout_16.addWidget(self.btn_filter_3)
-
-
-        self.q_3.addWidget(self.frame_q3)
-
-        self.scrollArea_6 = QScrollArea(self.query_3)
-        self.scrollArea_6.setObjectName(u"scrollArea_6")
-        self.scrollArea_6.setMaximumSize(QSize(450, 16777215))
-        self.scrollArea_6.setWidgetResizable(True)
-        self.scrollAreaWidgetContents_6 = QWidget()
-        self.scrollAreaWidgetContents_6.setObjectName(u"scrollAreaWidgetContents_6")
-        self.scrollAreaWidgetContents_6.setGeometry(QRect(0, 0, 107, 556))
-        self.verticalLayout_29 = QVBoxLayout(self.scrollAreaWidgetContents_6)
-        self.verticalLayout_29.setObjectName(u"verticalLayout_29")
-        self.textEdit_16 = QTextEdit(self.scrollAreaWidgetContents_6)
-        self.textEdit_16.setObjectName(u"textEdit_16")
-        self.textEdit_16.setMinimumSize(QSize(0, 130))
-        self.textEdit_16.setMaximumSize(QSize(435, 16777215))
-        self.textEdit_16.setStyleSheet(u"background-color:rgb(255,255,255);border-radius: 10px;padding-top: 10px;")
-
-        self.verticalLayout_29.addWidget(self.textEdit_16)
-
-        self.textEdit_17 = QTextEdit(self.scrollAreaWidgetContents_6)
-        self.textEdit_17.setObjectName(u"textEdit_17")
-        self.textEdit_17.setMinimumSize(QSize(0, 130))
-        self.textEdit_17.setMaximumSize(QSize(435, 16777215))
-        self.textEdit_17.setStyleSheet(u"background-color:rgb(255,255,255);border-radius: 10px;padding-top: 10px;")
-
-        self.verticalLayout_29.addWidget(self.textEdit_17)
-
-        self.textEdit_18 = QTextEdit(self.scrollAreaWidgetContents_6)
-        self.textEdit_18.setObjectName(u"textEdit_18")
-        self.textEdit_18.setMinimumSize(QSize(0, 130))
-        self.textEdit_18.setMaximumSize(QSize(435, 16777215))
-        self.textEdit_18.setStyleSheet(u"background-color:rgb(255,255,255);border-radius: 10px;padding-top: 10px;")
-
-        self.verticalLayout_29.addWidget(self.textEdit_18)
-
-        self.textEdit_19 = QTextEdit(self.scrollAreaWidgetContents_6)
-        self.textEdit_19.setObjectName(u"textEdit_19")
-        self.textEdit_19.setMinimumSize(QSize(0, 130))
-        self.textEdit_19.setMaximumSize(QSize(435, 16777215))
-        self.textEdit_19.setStyleSheet(u"background-color:rgb(255,255,255);border-radius: 10px;padding-top: 10px;")
-
-        self.verticalLayout_29.addWidget(self.textEdit_19)
-
-        self.scrollArea_6.setWidget(self.scrollAreaWidgetContents_6)
-
-        self.q_3.addWidget(self.scrollArea_6)
-
-
-        self.horizontalLayout_14.addWidget(self.query_3)
-
-
-        self.horizontalLayout_27.addWidget(self.frame_6)
-
-        self.stackedWidget_2.addWidget(self.queries)
-        self.filter = QWidget()
-        self.filter.setObjectName(u"filter")
-        self.horizontalLayout_26 = QHBoxLayout(self.filter)
-        self.horizontalLayout_26.setObjectName(u"horizontalLayout_26")
-        self.frame_filter = QFrame(self.filter)
-        self.frame_filter.setObjectName(u"frame_filter")
-        self.horizontalLayout_22 = QHBoxLayout(self.frame_filter)
-        self.horizontalLayout_22.setObjectName(u"horizontalLayout_22")
-        self.query_filter = QFrame(self.frame_filter)
-        self.query_filter.setObjectName(u"query_filter")
-        self.query_filter.setMinimumSize(QSize(0, 0))
-        self._3 = QVBoxLayout(self.query_filter)
-        self._3.setObjectName(u"_3")
-        self.frame_4 = QFrame(self.query_filter)
-        self.frame_4.setObjectName(u"frame_4")
-        sizePolicy5.setHeightForWidth(self.frame_4.sizePolicy().hasHeightForWidth())
-        self.frame_4.setSizePolicy(sizePolicy5)
-        self.frame_4.setMaximumSize(QSize(16777215, 50))
-        self.horizontalLayout_17 = QHBoxLayout(self.frame_4)
-        self.horizontalLayout_17.setObjectName(u"horizontalLayout_17")
-        self.label_13 = QLabel(self.frame_4)
-        self.label_13.setObjectName(u"label_13")
-        self.label_13.setMaximumSize(QSize(16777215, 30))
-        self.label_13.setStyleSheet(u"font:bold 22px;")
-
-        self.horizontalLayout_17.addWidget(self.label_13)
-
-        self.plainTextEdit_8 = QPlainTextEdit(self.frame_4)
-        self.plainTextEdit_8.setObjectName(u"plainTextEdit_8")
-        self.plainTextEdit_8.setMaximumSize(QSize(16777215, 30))
-        self.plainTextEdit_8.setStyleSheet(u"background-color: rgb(33, 37, 43);")
-
-        self.horizontalLayout_17.addWidget(self.plainTextEdit_8)
-
-
-        self._3.addWidget(self.frame_4)
-
-        self.scrollArea_3 = QScrollArea(self.query_filter)
-        self.scrollArea_3.setObjectName(u"scrollArea_3")
-        self.scrollArea_3.setMaximumSize(QSize(500, 16777215))
-        self.scrollArea_3.setWidgetResizable(True)
-        self.scrollAreaWidgetContents_3 = QWidget()
-        self.scrollAreaWidgetContents_3.setObjectName(u"scrollAreaWidgetContents_3")
-        self.scrollAreaWidgetContents_3.setGeometry(QRect(0, 0, 107, 556))
-        self.verticalLayout_24 = QVBoxLayout(self.scrollAreaWidgetContents_3)
-        self.verticalLayout_24.setObjectName(u"verticalLayout_24")
-        self.textEdit_4 = QTextEdit(self.scrollAreaWidgetContents_3)
-        self.textEdit_4.setObjectName(u"textEdit_4")
-        self.textEdit_4.setMinimumSize(QSize(0, 130))
-        self.textEdit_4.setMaximumSize(QSize(435, 16777215))
-        self.textEdit_4.setStyleSheet(u"background-color:rgb(255,255,255);border-radius: 10px;padding-top: 10px;")
-
-        self.verticalLayout_24.addWidget(self.textEdit_4)
-
-        self.textEdit_5 = QTextEdit(self.scrollAreaWidgetContents_3)
-        self.textEdit_5.setObjectName(u"textEdit_5")
-        self.textEdit_5.setMinimumSize(QSize(0, 130))
-        self.textEdit_5.setMaximumSize(QSize(435, 16777215))
-        self.textEdit_5.setStyleSheet(u"background-color:rgb(255,255,255);border-radius: 10px;padding-top: 10px;")
-
-        self.verticalLayout_24.addWidget(self.textEdit_5)
-
-        self.textEdit_20 = QTextEdit(self.scrollAreaWidgetContents_3)
-        self.textEdit_20.setObjectName(u"textEdit_20")
-        self.textEdit_20.setMinimumSize(QSize(0, 130))
-        self.textEdit_20.setMaximumSize(QSize(435, 16777215))
-        self.textEdit_20.setStyleSheet(u"background-color:rgb(255,255,255);border-radius: 10px;padding-top: 10px;")
-
-        self.verticalLayout_24.addWidget(self.textEdit_20)
-
-        self.textEdit_21 = QTextEdit(self.scrollAreaWidgetContents_3)
-        self.textEdit_21.setObjectName(u"textEdit_21")
-        self.textEdit_21.setMinimumSize(QSize(0, 130))
-        self.textEdit_21.setMaximumSize(QSize(435, 16777215))
-        self.textEdit_21.setStyleSheet(u"background-color:rgb(255,255,255);border-radius: 10px;padding-top: 10px;")
-
-        self.verticalLayout_24.addWidget(self.textEdit_21)
-
-        self.scrollArea_3.setWidget(self.scrollAreaWidgetContents_3)
-
-        self._3.addWidget(self.scrollArea_3)
-
-
-        self.horizontalLayout_22.addWidget(self.query_filter)
-
-        self.layout_filter = QVBoxLayout()
-        self.layout_filter.setObjectName(u"layout_filter")
-        self.group_content = QGroupBox(self.frame_filter)
-        self.group_content.setObjectName(u"group_content")
-        self.group_content.setMaximumSize(QSize(16777215, 150))
-        self.verticalLayout_25 = QVBoxLayout(self.group_content)
-        self.verticalLayout_25.setObjectName(u"verticalLayout_25")
-        self.horizontalLayout_18 = QHBoxLayout()
-        self.horizontalLayout_18.setObjectName(u"horizontalLayout_18")
-        self.label_14 = QLabel(self.group_content)
-        self.label_14.setObjectName(u"label_14")
-        self.label_14.setStyleSheet(u"font: bold 20px")
-
-        self.horizontalLayout_18.addWidget(self.label_14)
-
-        self.text_filter_include = QPlainTextEdit(self.group_content)
-        self.text_filter_include.setObjectName(u"text_filter_include")
-        self.text_filter_include.setMaximumSize(QSize(16777215, 40))
-        self.text_filter_include.setStyleSheet(u"background-color: rgb(33, 37, 43);")
-
-        self.horizontalLayout_18.addWidget(self.text_filter_include)
-
-
-        self.verticalLayout_25.addLayout(self.horizontalLayout_18)
-
-        self.horizontalLayout_19 = QHBoxLayout()
-        self.horizontalLayout_19.setObjectName(u"horizontalLayout_19")
-        self.label_15 = QLabel(self.group_content)
-        self.label_15.setObjectName(u"label_15")
-        self.label_15.setStyleSheet(u"font: bold 20px")
-
-        self.horizontalLayout_19.addWidget(self.label_15)
-
-        self.text_filter_exclue = QPlainTextEdit(self.group_content)
-        self.text_filter_exclue.setObjectName(u"text_filter_exclue")
-        self.text_filter_exclue.setMaximumSize(QSize(16777215, 40))
-        self.text_filter_exclue.setStyleSheet(u"background-color: rgb(33, 37, 43);")
-
-        self.horizontalLayout_19.addWidget(self.text_filter_exclue)
-
-
-        self.verticalLayout_25.addLayout(self.horizontalLayout_19)
-
-        self.radio_filter_retweet = QRadioButton(self.group_content)
-        self.radio_filter_retweet.setObjectName(u"radio_filter_retweet")
-        self.radio_filter_retweet.setStyleSheet(u"font: bold 20px")
-
-        self.verticalLayout_25.addWidget(self.radio_filter_retweet)
-
-
-        self.layout_filter.addWidget(self.group_content)
-
-        self.group_user = QGroupBox(self.frame_filter)
-        self.group_user.setObjectName(u"group_user")
-        self.group_user.setMaximumSize(QSize(16777215, 150))
-        self.verticalLayout_28 = QVBoxLayout(self.group_user)
-        self.verticalLayout_28.setObjectName(u"verticalLayout_28")
-        self.horizontalLayout_21 = QHBoxLayout()
-        self.horizontalLayout_21.setObjectName(u"horizontalLayout_21")
-        self.label_16 = QLabel(self.group_user)
-        self.label_16.setObjectName(u"label_16")
-        self.label_16.setStyleSheet(u"font: bold 20px")
-
-        self.horizontalLayout_21.addWidget(self.label_16)
-
-        self.spin_filter_follow_lo = QSpinBox(self.group_user)
-        self.spin_filter_follow_lo.setObjectName(u"spin_filter_follow_lo")
-        self.spin_filter_follow_lo.setStyleSheet(u"background-color: rgb(33, 37, 43);")
-
-        self.horizontalLayout_21.addWidget(self.spin_filter_follow_lo)
-
-        self.spin_filter_follow_hi = QSpinBox(self.group_user)
-        self.spin_filter_follow_hi.setObjectName(u"spin_filter_follow_hi")
-        self.spin_filter_follow_hi.setStyleSheet(u"background-color: rgb(33, 37, 43);")
-
-        self.horizontalLayout_21.addWidget(self.spin_filter_follow_hi)
-
-
-        self.verticalLayout_28.addLayout(self.horizontalLayout_21)
-
-        self.horizontalLayout_20 = QHBoxLayout()
-        self.horizontalLayout_20.setObjectName(u"horizontalLayout_20")
-        self.label_17 = QLabel(self.group_user)
-        self.label_17.setObjectName(u"label_17")
-        self.label_17.setStyleSheet(u"font: bold 20px")
-
-        self.horizontalLayout_20.addWidget(self.label_17)
-
-        self.text_filter_tweet_id = QPlainTextEdit(self.group_user)
-        self.text_filter_tweet_id.setObjectName(u"text_filter_tweet_id")
-        self.text_filter_tweet_id.setMaximumSize(QSize(16777215, 40))
-        self.text_filter_tweet_id.setStyleSheet(u"background-color: rgb(33, 37, 43);")
-
-        self.horizontalLayout_20.addWidget(self.text_filter_tweet_id)
-
-
-        self.verticalLayout_28.addLayout(self.horizontalLayout_20)
-
-
-        self.layout_filter.addWidget(self.group_user)
-
-        self.verticalSpacer_2 = QSpacerItem(20, 40, QSizePolicy.Minimum, QSizePolicy.Expanding)
-
-        self.layout_filter.addItem(self.verticalSpacer_2)
-
-        self.btn_filter = QPushButton(self.frame_filter)
-        self.btn_filter.setObjectName(u"btn_filter")
-        self.btn_filter.setMinimumSize(QSize(0, 30))
-        self.btn_filter.setStyleSheet(u"background-color: rgb(33, 37, 43);")
-
-        self.layout_filter.addWidget(self.btn_filter)
-
-        self.btn_apply = QPushButton(self.frame_filter)
-        self.btn_apply.setObjectName(u"btn_apply")
-        self.btn_apply.setMinimumSize(QSize(0, 30))
-        self.btn_apply.setStyleSheet(u"background-color: rgb(33, 37, 43);")
-
-        self.layout_filter.addWidget(self.btn_apply)
-
-
-        self.horizontalLayout_22.addLayout(self.layout_filter)
-
-
-        self.horizontalLayout_26.addWidget(self.frame_filter)
-
-        self.stackedWidget_2.addWidget(self.filter)
-
-        self.horizontalLayout_25.addWidget(self.stackedWidget_2)
-
-        self.stackedWidget.addWidget(self.deck_3)
         self.management = ManagementPage()
         self.management.setObjectName(u"management")
         self.stackedWidget.addWidget(self.management)
@@ -2428,11 +1870,11 @@ class Ui_MainWindow(object):
         self.creditsLabel = QLabel(self.bottomBar)
         self.creditsLabel.setObjectName(u"creditsLabel")
         self.creditsLabel.setMaximumSize(QSize(16777215, 16))
-        font5 = QFont()
-        font5.setFamilies([u"Segoe UI"])
-        font5.setBold(False)
-        font5.setItalic(False)
-        self.creditsLabel.setFont(font5)
+        font4 = QFont()
+        font4.setFamilies([u"Segoe UI"])
+        font4.setBold(False)
+        font4.setItalic(False)
+        self.creditsLabel.setFont(font4)
         self.creditsLabel.setAlignment(Qt.AlignLeading|Qt.AlignLeft|Qt.AlignVCenter)
 
         self.horizontalLayout_5.addWidget(self.creditsLabel)
@@ -2465,8 +1907,8 @@ class Ui_MainWindow(object):
 
         self.retranslateUi(MainWindow)
 
-        self.stackedWidget.setCurrentIndex(0)
-        self.stackedWidget_2.setCurrentIndex(2)
+        self.stackedWidget.setCurrentIndex(1)
+        self.btn_login.setDefault(False)
 
 
         QMetaObject.connectSlotsByName(MainWindow)
@@ -2491,10 +1933,14 @@ class Ui_MainWindow(object):
         self.grp_content.setTitle("")
         self.label_6.setText(QCoreApplication.translate("MainWindow", u"Keywords:", None))
         self.label_7.setText(QCoreApplication.translate("MainWindow", u"Media Type: ", None))
+        self.box_media_type.setItemText(0, QCoreApplication.translate("MainWindow", u"images", None))
+        self.box_media_type.setItemText(1, QCoreApplication.translate("MainWindow", u"videos", None))
+        self.box_media_type.setItemText(2, QCoreApplication.translate("MainWindow", u"links", None))
+
         self.label_9.setText(QCoreApplication.translate("MainWindow", u"Since:", None))
         self.label_10.setText(QCoreApplication.translate("MainWindow", u"Until", None))
-        self.label_11.setText(QCoreApplication.translate("MainWindow", u"Language:", None))
-        self.radioButton_2.setText(QCoreApplication.translate("MainWindow", u"Repost", None))
+        self.box_lang.setText(QCoreApplication.translate("MainWindow", u"Language:", None))
+        self.btn_repost.setText(QCoreApplication.translate("MainWindow", u"Repost", None))
         self.btn_location.setText(QCoreApplication.translate("MainWindow", u"Location", None))
         self.grp_location.setTitle("")
         self.label_18.setText(QCoreApplication.translate("MainWindow", u"latitude", None))
@@ -2592,174 +2038,6 @@ class Ui_MainWindow(object):
         ___qtablewidgetitem23.setText(QCoreApplication.translate("MainWindow", u"Line", None));
         self.tableWidget.setSortingEnabled(__sortingEnabled)
 
-        self.label_crisis_type.setText(QCoreApplication.translate("MainWindow", u"<html><head/><body><p><span style=\" font-size:24pt; font-weight:600;\">Crisis Type:</span></p></body></html>", None))
-        self.label_since.setText(QCoreApplication.translate("MainWindow", u"<html><head/><body><p><span style=\" font-size:24pt; font-weight:600;\">Since:</span></p></body></html>", None))
-        self.label_till.setText(QCoreApplication.translate("MainWindow", u"<html><head/><body><p><span style=\" font-size:24pt; font-weight:600;\">Till:</span></p></body></html>", None))
-        self.combo_type.setItemText(0, QCoreApplication.translate("MainWindow", u"Earthquake", None))
-        self.combo_type.setItemText(1, QCoreApplication.translate("MainWindow", u"Fire", None))
-        self.combo_type.setItemText(2, QCoreApplication.translate("MainWindow", u"Typhoon", None))
-        self.combo_type.setItemText(3, QCoreApplication.translate("MainWindow", u"Volcanic Eruption", None))
-        self.combo_type.setItemText(4, QCoreApplication.translate("MainWindow", u"Flood", None))
-
-        self.label_Search.setText(QCoreApplication.translate("MainWindow", u"<html><head/><body><p><span style=\" font-size:24pt; font-weight:600;\">Search:</span></p></body></html>", None))
-        self.label_title.setText(QCoreApplication.translate("MainWindow", u"<html><head/><body><p><span style=\" font-size:36pt; font-weight:600;\">Crisis Event</span></p></body></html>", None))
-        self.label_location.setText(QCoreApplication.translate("MainWindow", u"<html><head/><body><p><span style=\" font-size:24pt; font-weight:600;\">Location:</span></p></body></html>", None))
-        self.btn_search.setText(QCoreApplication.translate("MainWindow", u"Search", None))
-        self.label.setText(QCoreApplication.translate("MainWindow", u"Query: ", None))
-        self.btn_query_1.setText(QCoreApplication.translate("MainWindow", u"\u21b5", None))
-        self.btn_filter_1.setText(QCoreApplication.translate("MainWindow", u"...", None))
-        self.textEdit_2.setHtml(QCoreApplication.translate("MainWindow", u"<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
-"<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css\">\n"
-"p, li { white-space: pre-wrap; }\n"
-"</style></head><body style=\" font-family:'Segoe UI'; font-size:10pt; font-weight:400; font-style:normal;\">\n"
-"<p style=\" margin-top:10px; margin-bottom:5px; margin-left:10px; margin-right:10px; -qt-block-indent:0; text-indent:0px;\"><img src=\"twitter-avatar.jpg\" /><span style=\" font-size:9pt; color:#000000;\"> </span><span style=\" font-size:9pt; font-weight:696; color:#000000;\">@Vallie</span><span style=\" font-size:9pt; color:#000000;\"> </span></p>\n"
-"<p style=\" margin-top:12px; margin-bottom:12px; margin-left:10px; margin-right:10px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-size:9pt; color:#000000;\">WATCH LIVE: U.S. Geological Survey briefing on major Chilean earthquake </span><a href=\"http://t.co/6Kj1mkBCT3\"><span style=\" font-size:9pt; text-decoration: u"
-                        "nderline; color:#1da1f2;\">http://t.co/6Kj1mkBCT3</span></a><span style=\" font-size:9pt; color:#1da1f2;\"> #ChileEarthquake </span></p>\n"
-"<p style=\" margin-top:10px; margin-bottom:0px; margin-left:10px; margin-right:10px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-size:9pt; color:#1da1f2;\">Like</span><span style=\" font-size:9pt; color:#000000;\"> </span><span style=\" font-size:9pt; color:#1da1f2;\">Retweet</span><span style=\" font-size:9pt; color:#000000;\"> </span></p></body></html>", None))
-        self.textEdit_3.setHtml(QCoreApplication.translate("MainWindow", u"<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
-"<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css\">\n"
-"p, li { white-space: pre-wrap; }\n"
-"</style></head><body style=\" font-family:'Segoe UI'; font-size:10pt; font-weight:400; font-style:normal;\">\n"
-"<p style=\" margin-top:10px; margin-bottom:5px; margin-left:10px; margin-right:10px; -qt-block-indent:0; text-indent:0px;\"><img src=\"twitter-avatar.jpg\" /><span style=\" font-size:9pt;\"> </span><span style=\" font-size:9pt; font-weight:696; color:#000000;\">@Euphorian54</span><span style=\" font-size:9pt;\"> </span></p>\n"
-"<p style=\" margin-top:12px; margin-bottom:12px; margin-left:10px; margin-right:10px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-size:9pt; color:#000000;\">RT </span><span style=\" font-size:9pt; font-weight:696; color:#000000;\">@debbiegibson</span><span style=\" font-size:9pt; color:#000000;\"> &amp; </span><span style=\" font-size:9pt; co"
-                        "lor:#1da1f2;\">#TeamDeb</span><span style=\" font-size:9pt; color:#000000;\"> for </span><span style=\" font-size:9pt; color:#1da1f2;\">@bizarro_chile</span><span style=\" font-size:9pt;\"> </span><span style=\" font-size:9pt; color:#1da1f2;\">#HITPARADE</span><span style=\" font-size:9pt; color:#000000;\"> &amp; </span><span style=\" font-size:9pt; color:#1da1f2;\">@Blondieclub</span><span style=\" font-size:9pt; color:#000000;\"> ! </span><span style=\" font-size:9pt; color:#1da1f2;\">#chile</span><span style=\" font-size:9pt;\"> </span><span style=\" font-size:9pt; color:#1da1f2;\">#santiago</span><span style=\" font-size:9pt;\"> </span><a href=\"http://t.co/A\u2026\"><span style=\" font-size:9pt; text-decoration: underline; color:#1da1f2;\">http://t.co/A\u2026</span></a><span style=\" font-size:9pt;\"> </span></p>\n"
-"<p style=\" margin-top:10px; margin-bottom:0px; margin-left:10px; margin-right:10px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-size:9pt; color:#1da1f2;\">Like</span><span sty"
-                        "le=\" font-size:9pt;\"> </span><span style=\" font-size:9pt; color:#1da1f2;\">Retweet</span><span style=\" font-size:9pt;\"> </span></p></body></html>", None))
-        self.textEdit_6.setHtml(QCoreApplication.translate("MainWindow", u"<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
-"<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css\">\n"
-"p, li { white-space: pre-wrap; }\n"
-"</style></head><body style=\" font-family:'Segoe UI'; font-size:10pt; font-weight:400; font-style:normal;\">\n"
-"<p style=\" margin-top:10px; margin-bottom:5px; margin-left:10px; margin-right:10px; -qt-block-indent:0; text-indent:0px;\"><img src=\"twitter-avatar.jpg\" /><span style=\" font-size:9pt;\"> </span><span style=\" font-size:9pt; font-weight:696; color:#000000;\">@Euphorian54</span><span style=\" font-size:9pt;\"> </span></p>\n"
-"<p style=\" margin-top:12px; margin-bottom:12px; margin-left:10px; margin-right:10px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-size:9pt; color:#000000;\">RT </span><span style=\" font-size:9pt; font-weight:696; color:#000000;\">@debbiegibson</span><span style=\" font-size:9pt; color:#000000;\"> &amp; </span><span style=\" font-size:9pt; co"
-                        "lor:#1da1f2;\">#TeamDeb</span><span style=\" font-size:9pt; color:#000000;\"> for </span><span style=\" font-size:9pt; color:#1da1f2;\">@bizarro_chile</span><span style=\" font-size:9pt;\"> </span><span style=\" font-size:9pt; color:#1da1f2;\">#HITPARADE</span><span style=\" font-size:9pt; color:#000000;\"> &amp; </span><span style=\" font-size:9pt; color:#1da1f2;\">@Blondieclub</span><span style=\" font-size:9pt; color:#000000;\"> ! </span><span style=\" font-size:9pt; color:#1da1f2;\">#chile</span><span style=\" font-size:9pt;\"> </span><span style=\" font-size:9pt; color:#1da1f2;\">#santiago</span><span style=\" font-size:9pt;\"> </span><a href=\"http://t.co/A\u2026\"><span style=\" font-size:9pt; text-decoration: underline; color:#1da1f2;\">http://t.co/A\u2026</span></a><span style=\" font-size:9pt;\"> </span></p>\n"
-"<p style=\" margin-top:10px; margin-bottom:0px; margin-left:10px; margin-right:10px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-size:9pt; color:#1da1f2;\">Like</span><span sty"
-                        "le=\" font-size:9pt;\"> </span><span style=\" font-size:9pt; color:#1da1f2;\">Retweet</span><span style=\" font-size:9pt;\"> </span></p></body></html>", None))
-        self.textEdit_7.setHtml(QCoreApplication.translate("MainWindow", u"<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
-"<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css\">\n"
-"p, li { white-space: pre-wrap; }\n"
-"</style></head><body style=\" font-family:'Segoe UI'; font-size:10pt; font-weight:400; font-style:normal;\">\n"
-"<p style=\" margin-top:10px; margin-bottom:5px; margin-left:10px; margin-right:10px; -qt-block-indent:0; text-indent:0px;\"><img src=\"twitter-avatar.jpg\" /><span style=\" font-size:9pt; color:#000000;\"> </span><span style=\" font-size:9pt; font-weight:696; color:#000000;\">@Vallie</span><span style=\" font-size:9pt; color:#000000;\"> </span></p>\n"
-"<p style=\" margin-top:12px; margin-bottom:12px; margin-left:10px; margin-right:10px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-size:9pt; color:#000000;\">WATCH LIVE: U.S. Geological Survey briefing on major Chilean earthquake </span><a href=\"http://t.co/6Kj1mkBCT3\"><span style=\" font-size:9pt; text-decoration: u"
-                        "nderline; color:#1da1f2;\">http://t.co/6Kj1mkBCT3</span></a><span style=\" font-size:9pt; color:#1da1f2;\"> #ChileEarthquake </span></p>\n"
-"<p style=\" margin-top:10px; margin-bottom:0px; margin-left:10px; margin-right:10px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-size:9pt; color:#1da1f2;\">Like</span><span style=\" font-size:9pt; color:#000000;\"> </span><span style=\" font-size:9pt; color:#1da1f2;\">Retweet</span><span style=\" font-size:9pt; color:#000000;\"> </span></p></body></html>", None))
-        self.label_8.setText(QCoreApplication.translate("MainWindow", u"Query: ", None))
-        self.btn_query_2.setText(QCoreApplication.translate("MainWindow", u"\u21b5", None))
-        self.btn_filter_2.setText(QCoreApplication.translate("MainWindow", u"...", None))
-        self.textEdit_8.setHtml(QCoreApplication.translate("MainWindow", u"<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
-"<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css\">\n"
-"p, li { white-space: pre-wrap; }\n"
-"</style></head><body style=\" font-family:'Segoe UI'; font-size:10pt; font-weight:400; font-style:normal;\">\n"
-"<p style=\" margin-top:10px; margin-bottom:5px; margin-left:10px; margin-right:10px; -qt-block-indent:0; text-indent:0px;\"><img src=\"twitter-avatar.jpg\" /><span style=\" font-size:9pt; color:#000000;\"> </span><span style=\" font-size:9pt; font-weight:696; color:#000000;\">@Vallie</span><span style=\" font-size:9pt; color:#000000;\"> </span></p>\n"
-"<p style=\" margin-top:12px; margin-bottom:12px; margin-left:10px; margin-right:10px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-size:9pt; color:#000000;\">WATCH LIVE: U.S. Geological Survey briefing on major Chilean earthquake </span><a href=\"http://t.co/6Kj1mkBCT3\"><span style=\" font-size:9pt; text-decoration: u"
-                        "nderline; color:#1da1f2;\">http://t.co/6Kj1mkBCT3</span></a><span style=\" font-size:9pt; color:#1da1f2;\"> #ChileEarthquake </span></p>\n"
-"<p style=\" margin-top:10px; margin-bottom:0px; margin-left:10px; margin-right:10px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-size:9pt; color:#1da1f2;\">Like</span><span style=\" font-size:9pt; color:#000000;\"> </span><span style=\" font-size:9pt; color:#1da1f2;\">Retweet</span><span style=\" font-size:9pt; color:#000000;\"> </span></p></body></html>", None))
-        self.textEdit_9.setHtml(QCoreApplication.translate("MainWindow", u"<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
-"<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css\">\n"
-"p, li { white-space: pre-wrap; }\n"
-"</style></head><body style=\" font-family:'Segoe UI'; font-size:10pt; font-weight:400; font-style:normal;\">\n"
-"<p style=\" margin-top:10px; margin-bottom:5px; margin-left:10px; margin-right:10px; -qt-block-indent:0; text-indent:0px;\"><img src=\"twitter-avatar.jpg\" /><span style=\" font-size:9pt;\"> </span><span style=\" font-size:9pt; font-weight:696; color:#000000;\">@Euphorian54</span><span style=\" font-size:9pt;\"> </span></p>\n"
-"<p style=\" margin-top:12px; margin-bottom:12px; margin-left:10px; margin-right:10px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-size:9pt; color:#000000;\">RT </span><span style=\" font-size:9pt; font-weight:696; color:#000000;\">@debbiegibson</span><span style=\" font-size:9pt; color:#000000;\"> &amp; </span><span style=\" font-size:9pt; co"
-                        "lor:#1da1f2;\">#TeamDeb</span><span style=\" font-size:9pt; color:#000000;\"> for </span><span style=\" font-size:9pt; color:#1da1f2;\">@bizarro_chile</span><span style=\" font-size:9pt;\"> </span><span style=\" font-size:9pt; color:#1da1f2;\">#HITPARADE</span><span style=\" font-size:9pt; color:#000000;\"> &amp; </span><span style=\" font-size:9pt; color:#1da1f2;\">@Blondieclub</span><span style=\" font-size:9pt; color:#000000;\"> ! </span><span style=\" font-size:9pt; color:#1da1f2;\">#chile</span><span style=\" font-size:9pt;\"> </span><span style=\" font-size:9pt; color:#1da1f2;\">#santiago</span><span style=\" font-size:9pt;\"> </span><a href=\"http://t.co/A\u2026\"><span style=\" font-size:9pt; text-decoration: underline; color:#1da1f2;\">http://t.co/A\u2026</span></a><span style=\" font-size:9pt;\"> </span></p>\n"
-"<p style=\" margin-top:10px; margin-bottom:0px; margin-left:10px; margin-right:10px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-size:9pt; color:#1da1f2;\">Like</span><span sty"
-                        "le=\" font-size:9pt;\"> </span><span style=\" font-size:9pt; color:#1da1f2;\">Retweet</span><span style=\" font-size:9pt;\"> </span></p></body></html>", None))
-        self.textEdit_10.setHtml(QCoreApplication.translate("MainWindow", u"<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
-"<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css\">\n"
-"p, li { white-space: pre-wrap; }\n"
-"</style></head><body style=\" font-family:'Segoe UI'; font-size:10pt; font-weight:400; font-style:normal;\">\n"
-"<p style=\" margin-top:10px; margin-bottom:5px; margin-left:10px; margin-right:10px; -qt-block-indent:0; text-indent:0px;\"><img src=\"twitter-avatar.jpg\" /><span style=\" font-size:9pt;\"> </span><span style=\" font-size:9pt; font-weight:696; color:#000000;\">@Euphorian54</span><span style=\" font-size:9pt;\"> </span></p>\n"
-"<p style=\" margin-top:12px; margin-bottom:12px; margin-left:10px; margin-right:10px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-size:9pt; color:#000000;\">RT </span><span style=\" font-size:9pt; font-weight:696; color:#000000;\">@debbiegibson</span><span style=\" font-size:9pt; color:#000000;\"> &amp; </span><span style=\" font-size:9pt; co"
-                        "lor:#1da1f2;\">#TeamDeb</span><span style=\" font-size:9pt; color:#000000;\"> for </span><span style=\" font-size:9pt; color:#1da1f2;\">@bizarro_chile</span><span style=\" font-size:9pt;\"> </span><span style=\" font-size:9pt; color:#1da1f2;\">#HITPARADE</span><span style=\" font-size:9pt; color:#000000;\"> &amp; </span><span style=\" font-size:9pt; color:#1da1f2;\">@Blondieclub</span><span style=\" font-size:9pt; color:#000000;\"> ! </span><span style=\" font-size:9pt; color:#1da1f2;\">#chile</span><span style=\" font-size:9pt;\"> </span><span style=\" font-size:9pt; color:#1da1f2;\">#santiago</span><span style=\" font-size:9pt;\"> </span><a href=\"http://t.co/A\u2026\"><span style=\" font-size:9pt; text-decoration: underline; color:#1da1f2;\">http://t.co/A\u2026</span></a><span style=\" font-size:9pt;\"> </span></p>\n"
-"<p style=\" margin-top:10px; margin-bottom:0px; margin-left:10px; margin-right:10px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-size:9pt; color:#1da1f2;\">Like</span><span sty"
-                        "le=\" font-size:9pt;\"> </span><span style=\" font-size:9pt; color:#1da1f2;\">Retweet</span><span style=\" font-size:9pt;\"> </span></p></body></html>", None))
-        self.textEdit_11.setHtml(QCoreApplication.translate("MainWindow", u"<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
-"<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css\">\n"
-"p, li { white-space: pre-wrap; }\n"
-"</style></head><body style=\" font-family:'Segoe UI'; font-size:10pt; font-weight:400; font-style:normal;\">\n"
-"<p style=\" margin-top:10px; margin-bottom:5px; margin-left:10px; margin-right:10px; -qt-block-indent:0; text-indent:0px;\"><img src=\"twitter-avatar.jpg\" /><span style=\" font-size:9pt; color:#000000;\"> </span><span style=\" font-size:9pt; font-weight:696; color:#000000;\">@Vallie</span><span style=\" font-size:9pt; color:#000000;\"> </span></p>\n"
-"<p style=\" margin-top:12px; margin-bottom:12px; margin-left:10px; margin-right:10px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-size:9pt; color:#000000;\">WATCH LIVE: U.S. Geological Survey briefing on major Chilean earthquake </span><a href=\"http://t.co/6Kj1mkBCT3\"><span style=\" font-size:9pt; text-decoration: u"
-                        "nderline; color:#1da1f2;\">http://t.co/6Kj1mkBCT3</span></a><span style=\" font-size:9pt; color:#1da1f2;\"> #ChileEarthquake </span></p>\n"
-"<p style=\" margin-top:10px; margin-bottom:0px; margin-left:10px; margin-right:10px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-size:9pt; color:#1da1f2;\">Like</span><span style=\" font-size:9pt; color:#000000;\"> </span><span style=\" font-size:9pt; color:#1da1f2;\">Retweet</span><span style=\" font-size:9pt; color:#000000;\"> </span></p></body></html>", None))
-        self.label_12.setText(QCoreApplication.translate("MainWindow", u"Query: ", None))
-        self.btn_query_3.setText(QCoreApplication.translate("MainWindow", u"\u21b5", None))
-        self.btn_filter_3.setText(QCoreApplication.translate("MainWindow", u"...", None))
-        self.textEdit_16.setHtml(QCoreApplication.translate("MainWindow", u"<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
-"<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css\">\n"
-"p, li { white-space: pre-wrap; }\n"
-"</style></head><body style=\" font-family:'Segoe UI'; font-size:10pt; font-weight:400; font-style:normal;\">\n"
-"<p style=\" margin-top:10px; margin-bottom:5px; margin-left:10px; margin-right:10px; -qt-block-indent:0; text-indent:0px;\"><img src=\"twitter-avatar.jpg\" /><span style=\" font-size:9pt; color:#000000;\"> </span><span style=\" font-size:9pt; font-weight:696; color:#000000;\">@Vallie</span><span style=\" font-size:9pt; color:#000000;\"> </span></p>\n"
-"<p style=\" margin-top:12px; margin-bottom:12px; margin-left:10px; margin-right:10px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-size:9pt; color:#000000;\">WATCH LIVE: U.S. Geological Survey briefing on major Chilean earthquake </span><a href=\"http://t.co/6Kj1mkBCT3\"><span style=\" font-size:9pt; text-decoration: u"
-                        "nderline; color:#1da1f2;\">http://t.co/6Kj1mkBCT3</span></a><span style=\" font-size:9pt; color:#1da1f2;\"> #ChileEarthquake </span></p>\n"
-"<p style=\" margin-top:10px; margin-bottom:0px; margin-left:10px; margin-right:10px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-size:9pt; color:#1da1f2;\">Like</span><span style=\" font-size:9pt; color:#000000;\"> </span><span style=\" font-size:9pt; color:#1da1f2;\">Retweet</span><span style=\" font-size:9pt; color:#000000;\"> </span></p></body></html>", None))
-        self.textEdit_17.setHtml(QCoreApplication.translate("MainWindow", u"<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
-"<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css\">\n"
-"p, li { white-space: pre-wrap; }\n"
-"</style></head><body style=\" font-family:'Segoe UI'; font-size:10pt; font-weight:400; font-style:normal;\">\n"
-"<p style=\" margin-top:10px; margin-bottom:5px; margin-left:10px; margin-right:10px; -qt-block-indent:0; text-indent:0px;\"><img src=\"twitter-avatar.jpg\" /><span style=\" font-size:9pt;\"> </span><span style=\" font-size:9pt; font-weight:696; color:#000000;\">@Euphorian54</span><span style=\" font-size:9pt;\"> </span></p>\n"
-"<p style=\" margin-top:12px; margin-bottom:12px; margin-left:10px; margin-right:10px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-size:9pt; color:#000000;\">RT </span><span style=\" font-size:9pt; font-weight:696; color:#000000;\">@debbiegibson</span><span style=\" font-size:9pt; color:#000000;\"> &amp; </span><span style=\" font-size:9pt; co"
-                        "lor:#1da1f2;\">#TeamDeb</span><span style=\" font-size:9pt; color:#000000;\"> for </span><span style=\" font-size:9pt; color:#1da1f2;\">@bizarro_chile</span><span style=\" font-size:9pt;\"> </span><span style=\" font-size:9pt; color:#1da1f2;\">#HITPARADE</span><span style=\" font-size:9pt; color:#000000;\"> &amp; </span><span style=\" font-size:9pt; color:#1da1f2;\">@Blondieclub</span><span style=\" font-size:9pt; color:#000000;\"> ! </span><span style=\" font-size:9pt; color:#1da1f2;\">#chile</span><span style=\" font-size:9pt;\"> </span><span style=\" font-size:9pt; color:#1da1f2;\">#santiago</span><span style=\" font-size:9pt;\"> </span><a href=\"http://t.co/A\u2026\"><span style=\" font-size:9pt; text-decoration: underline; color:#1da1f2;\">http://t.co/A\u2026</span></a><span style=\" font-size:9pt;\"> </span></p>\n"
-"<p style=\" margin-top:10px; margin-bottom:0px; margin-left:10px; margin-right:10px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-size:9pt; color:#1da1f2;\">Like</span><span sty"
-                        "le=\" font-size:9pt;\"> </span><span style=\" font-size:9pt; color:#1da1f2;\">Retweet</span><span style=\" font-size:9pt;\"> </span></p></body></html>", None))
-        self.textEdit_18.setHtml(QCoreApplication.translate("MainWindow", u"<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
-"<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css\">\n"
-"p, li { white-space: pre-wrap; }\n"
-"</style></head><body style=\" font-family:'Segoe UI'; font-size:10pt; font-weight:400; font-style:normal;\">\n"
-"<p style=\" margin-top:10px; margin-bottom:5px; margin-left:10px; margin-right:10px; -qt-block-indent:0; text-indent:0px;\"><img src=\"twitter-avatar.jpg\" /><span style=\" font-size:9pt;\"> </span><span style=\" font-size:9pt; font-weight:696; color:#000000;\">@Euphorian54</span><span style=\" font-size:9pt;\"> </span></p>\n"
-"<p style=\" margin-top:12px; margin-bottom:12px; margin-left:10px; margin-right:10px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-size:9pt; color:#000000;\">RT </span><span style=\" font-size:9pt; font-weight:696; color:#000000;\">@debbiegibson</span><span style=\" font-size:9pt; color:#000000;\"> &amp; </span><span style=\" font-size:9pt; co"
-                        "lor:#1da1f2;\">#TeamDeb</span><span style=\" font-size:9pt; color:#000000;\"> for </span><span style=\" font-size:9pt; color:#1da1f2;\">@bizarro_chile</span><span style=\" font-size:9pt;\"> </span><span style=\" font-size:9pt; color:#1da1f2;\">#HITPARADE</span><span style=\" font-size:9pt; color:#000000;\"> &amp; </span><span style=\" font-size:9pt; color:#1da1f2;\">@Blondieclub</span><span style=\" font-size:9pt; color:#000000;\"> ! </span><span style=\" font-size:9pt; color:#1da1f2;\">#chile</span><span style=\" font-size:9pt;\"> </span><span style=\" font-size:9pt; color:#1da1f2;\">#santiago</span><span style=\" font-size:9pt;\"> </span><a href=\"http://t.co/A\u2026\"><span style=\" font-size:9pt; text-decoration: underline; color:#1da1f2;\">http://t.co/A\u2026</span></a><span style=\" font-size:9pt;\"> </span></p>\n"
-"<p style=\" margin-top:10px; margin-bottom:0px; margin-left:10px; margin-right:10px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-size:9pt; color:#1da1f2;\">Like</span><span sty"
-                        "le=\" font-size:9pt;\"> </span><span style=\" font-size:9pt; color:#1da1f2;\">Retweet</span><span style=\" font-size:9pt;\"> </span></p></body></html>", None))
-        self.textEdit_19.setHtml(QCoreApplication.translate("MainWindow", u"<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
-"<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css\">\n"
-"p, li { white-space: pre-wrap; }\n"
-"</style></head><body style=\" font-family:'Segoe UI'; font-size:10pt; font-weight:400; font-style:normal;\">\n"
-"<p style=\" margin-top:10px; margin-bottom:5px; margin-left:10px; margin-right:10px; -qt-block-indent:0; text-indent:0px;\"><img src=\"twitter-avatar.jpg\" /><span style=\" font-size:9pt; color:#000000;\"> </span><span style=\" font-size:9pt; font-weight:696; color:#000000;\">@Vallie</span><span style=\" font-size:9pt; color:#000000;\"> </span></p>\n"
-"<p style=\" margin-top:12px; margin-bottom:12px; margin-left:10px; margin-right:10px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-size:9pt; color:#000000;\">WATCH LIVE: U.S. Geological Survey briefing on major Chilean earthquake </span><a href=\"http://t.co/6Kj1mkBCT3\"><span style=\" font-size:9pt; text-decoration: u"
-                        "nderline; color:#1da1f2;\">http://t.co/6Kj1mkBCT3</span></a><span style=\" font-size:9pt; color:#1da1f2;\"> #ChileEarthquake </span></p>\n"
-"<p style=\" margin-top:10px; margin-bottom:0px; margin-left:10px; margin-right:10px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-size:9pt; color:#1da1f2;\">Like</span><span style=\" font-size:9pt; color:#000000;\"> </span><span style=\" font-size:9pt; color:#1da1f2;\">Retweet</span><span style=\" font-size:9pt; color:#000000;\"> </span></p></body></html>", None))
-        self.label_13.setText(QCoreApplication.translate("MainWindow", u"Query: ", None))
-        self.textEdit_4.setHtml(QCoreApplication.translate("MainWindow", u"<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
-"<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css\">\n"
-"p, li { white-space: pre-wrap; }\n"
-"</style></head><body style=\" font-family:'Segoe UI'; font-size:10pt; font-weight:400; font-style:normal;\">\n"
-"<p style=\" margin-top:10px; margin-bottom:5px; margin-left:10px; margin-right:10px; -qt-block-indent:0; text-indent:0px;\"><img src=\"twitter-avatar.jpg\" /><span style=\" font-size:9pt; color:#000000;\"> </span><span style=\" font-size:9pt; font-weight:696; color:#000000;\">@Vallie</span><span style=\" font-size:9pt; color:#000000;\"> </span></p>\n"
-"<p style=\" margin-top:12px; margin-bottom:12px; margin-left:10px; margin-right:10px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-size:9pt; color:#000000;\">WATCH LIVE: U.S. Geological Survey briefing on major Chilean earthquake </span><a href=\"http://t.co/6Kj1mkBCT3\"><span style=\" font-size:9pt; text-decoration: u"
-                        "nderline; color:#1da1f2;\">http://t.co/6Kj1mkBCT3</span></a><span style=\" font-size:9pt; color:#1da1f2;\"> #ChileEarthquake </span></p>\n"
-"<p style=\" margin-top:10px; margin-bottom:0px; margin-left:10px; margin-right:10px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-size:9pt; color:#1da1f2;\">Like</span><span style=\" font-size:9pt; color:#000000;\"> </span><span style=\" font-size:9pt; color:#1da1f2;\">Retweet</span><span style=\" font-size:9pt; color:#000000;\"> </span></p></body></html>", None))
-        self.textEdit_5.setHtml(QCoreApplication.translate("MainWindow", u"<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
-"<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css\">\n"
-"p, li { white-space: pre-wrap; }\n"
-"</style></head><body style=\" font-family:'Segoe UI'; font-size:10pt; font-weight:400; font-style:normal;\">\n"
-"<p style=\" margin-top:10px; margin-bottom:5px; margin-left:10px; margin-right:10px; -qt-block-indent:0; text-indent:0px;\"><img src=\"twitter-avatar.jpg\" /><span style=\" font-size:9pt;\"> </span><span style=\" font-size:9pt; font-weight:696; color:#000000;\">@Euphorian54</span><span style=\" font-size:9pt;\"> </span></p>\n"
-"<p style=\" margin-top:12px; margin-bottom:12px; margin-left:10px; margin-right:10px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-size:9pt; color:#000000;\">RT </span><span style=\" font-size:9pt; font-weight:696; color:#000000;\">@debbiegibson</span><span style=\" font-size:9pt; color:#000000;\"> &amp; </span><span style=\" font-size:9pt; co"
-                        "lor:#1da1f2;\">#TeamDeb</span><span style=\" font-size:9pt; color:#000000;\"> for </span><span style=\" font-size:9pt; color:#1da1f2;\">@bizarro_chile</span><span style=\" font-size:9pt;\"> </span><span style=\" font-size:9pt; color:#1da1f2;\">#HITPARADE</span><span style=\" font-size:9pt; color:#000000;\"> &amp; </span><span style=\" font-size:9pt; color:#1da1f2;\">@Blondieclub</span><span style=\" font-size:9pt; color:#000000;\"> ! </span><span style=\" font-size:9pt; color:#1da1f2;\">#chile</span><span style=\" font-size:9pt;\"> </span><span style=\" font-size:9pt; color:#1da1f2;\">#santiago</span><span style=\" font-size:9pt;\"> </span><a href=\"http://t.co/A\u2026\"><span style=\" font-size:9pt; text-decoration: underline; color:#1da1f2;\">http://t.co/A\u2026</span></a><span style=\" font-size:9pt;\"> </span></p>\n"
-"<p style=\" margin-top:10px; margin-bottom:0px; margin-left:10px; margin-right:10px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-size:9pt; color:#1da1f2;\">Like</span><span sty"
-                        "le=\" font-size:9pt;\"> </span><span style=\" font-size:9pt; color:#1da1f2;\">Retweet</span><span style=\" font-size:9pt;\"> </span></p></body></html>", None))
-        self.textEdit_20.setHtml(QCoreApplication.translate("MainWindow", u"<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
-"<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css\">\n"
-"p, li { white-space: pre-wrap; }\n"
-"</style></head><body style=\" font-family:'Segoe UI'; font-size:10pt; font-weight:400; font-style:normal;\">\n"
-"<p style=\" margin-top:10px; margin-bottom:5px; margin-left:10px; margin-right:10px; -qt-block-indent:0; text-indent:0px;\"><img src=\"twitter-avatar.jpg\" /><span style=\" font-size:9pt;\"> </span><span style=\" font-size:9pt; font-weight:696; color:#000000;\">@Euphorian54</span><span style=\" font-size:9pt;\"> </span></p>\n"
-"<p style=\" margin-top:12px; margin-bottom:12px; margin-left:10px; margin-right:10px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-size:9pt; color:#000000;\">RT </span><span style=\" font-size:9pt; font-weight:696; color:#000000;\">@debbiegibson</span><span style=\" font-size:9pt; color:#000000;\"> &amp; </span><span style=\" font-size:9pt; co"
-                        "lor:#1da1f2;\">#TeamDeb</span><span style=\" font-size:9pt; color:#000000;\"> for </span><span style=\" font-size:9pt; color:#1da1f2;\">@bizarro_chile</span><span style=\" font-size:9pt;\"> </span><span style=\" font-size:9pt; color:#1da1f2;\">#HITPARADE</span><span style=\" font-size:9pt; color:#000000;\"> &amp; </span><span style=\" font-size:9pt; color:#1da1f2;\">@Blondieclub</span><span style=\" font-size:9pt; color:#000000;\"> ! </span><span style=\" font-size:9pt; color:#1da1f2;\">#chile</span><span style=\" font-size:9pt;\"> </span><span style=\" font-size:9pt; color:#1da1f2;\">#santiago</span><span style=\" font-size:9pt;\"> </span><a href=\"http://t.co/A\u2026\"><span style=\" font-size:9pt; text-decoration: underline; color:#1da1f2;\">http://t.co/A\u2026</span></a><span style=\" font-size:9pt;\"> </span></p>\n"
-"<p style=\" margin-top:10px; margin-bottom:0px; margin-left:10px; margin-right:10px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-size:9pt; color:#1da1f2;\">Like</span><span sty"
-                        "le=\" font-size:9pt;\"> </span><span style=\" font-size:9pt; color:#1da1f2;\">Retweet</span><span style=\" font-size:9pt;\"> </span></p></body></html>", None))
-        self.textEdit_21.setHtml(QCoreApplication.translate("MainWindow", u"<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
-"<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css\">\n"
-"p, li { white-space: pre-wrap; }\n"
-"</style></head><body style=\" font-family:'Segoe UI'; font-size:10pt; font-weight:400; font-style:normal;\">\n"
-"<p style=\" margin-top:10px; margin-bottom:5px; margin-left:10px; margin-right:10px; -qt-block-indent:0; text-indent:0px;\"><img src=\"twitter-avatar.jpg\" /><span style=\" font-size:9pt; color:#000000;\"> </span><span style=\" font-size:9pt; font-weight:696; color:#000000;\">@Vallie</span><span style=\" font-size:9pt; color:#000000;\"> </span></p>\n"
-"<p style=\" margin-top:12px; margin-bottom:12px; margin-left:10px; margin-right:10px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-size:9pt; color:#000000;\">WATCH LIVE: U.S. Geological Survey briefing on major Chilean earthquake </span><a href=\"http://t.co/6Kj1mkBCT3\"><span style=\" font-size:9pt; text-decoration: u"
-                        "nderline; color:#1da1f2;\">http://t.co/6Kj1mkBCT3</span></a><span style=\" font-size:9pt; color:#1da1f2;\"> #ChileEarthquake </span></p>\n"
-"<p style=\" margin-top:10px; margin-bottom:0px; margin-left:10px; margin-right:10px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-size:9pt; color:#1da1f2;\">Like</span><span style=\" font-size:9pt; color:#000000;\"> </span><span style=\" font-size:9pt; color:#1da1f2;\">Retweet</span><span style=\" font-size:9pt; color:#000000;\"> </span></p></body></html>", None))
-        self.group_content.setTitle(QCoreApplication.translate("MainWindow", u"GroupBox", None))
-        self.label_14.setText(QCoreApplication.translate("MainWindow", u"Include", None))
-        self.label_15.setText(QCoreApplication.translate("MainWindow", u"Exclude", None))
-        self.radio_filter_retweet.setText(QCoreApplication.translate("MainWindow", u"Retweet", None))
-        self.group_user.setTitle(QCoreApplication.translate("MainWindow", u"GroupBox", None))
-        self.label_16.setText(QCoreApplication.translate("MainWindow", u"Follower Range", None))
-        self.label_17.setText(QCoreApplication.translate("MainWindow", u"ID:", None))
-        self.btn_filter.setText(QCoreApplication.translate("MainWindow", u"Filter", None))
-        self.btn_apply.setText(QCoreApplication.translate("MainWindow", u"Apply", None))
         self.btn_message.setText(QCoreApplication.translate("MainWindow", u"Message", None))
         self.btn_print.setText(QCoreApplication.translate("MainWindow", u"Print", None))
         self.btn_logout.setText(QCoreApplication.translate("MainWindow", u"Logout", None))

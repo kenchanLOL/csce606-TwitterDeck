@@ -78,14 +78,6 @@ class MainWindow(QMainWindow):
         self.ui.btn_deck.clicked.connect(self.buttonClick)
         self.ui.btn_management.clicked.connect(self.buttonClick)
 
-        # DECK STACK
-        # self.ui.btn_login.clicked.connect(self.deck_buttonClick)
-        # self.ui.btn_search.clicked.connect(self.deck_buttonClick)
-        # self.ui.btn_query_1.clicked.connect(self.deck_buttonClick)
-        # self.ui.btn_query_2.clicked.connect(self.deck_buttonClick)
-        # self.ui.btn_query_3.clicked.connect(self.deck_buttonClick)
-        # self.ui.btn_apply.clicked.connect(self.deck_buttonClick)
-
         # EXTRA LEFT BOX
         def openCloseLeftBox():
             UIFunctions.toggleLeftBox(self, True)
@@ -96,7 +88,7 @@ class MainWindow(QMainWindow):
         self.ui.btn_content.clicked.connect(self.openCloseLeftGroupBox)
         self.ui.btn_location.clicked.connect(self.openCloseLeftGroupBox)
         self.ui.btn_engagement.clicked.connect(self.openCloseLeftGroupBox)
-        self.ui.btn_submit.clicked.connect(lambda: UIFunctions.updateEvent(self))
+        # self.ui.btn_submit.clicked.connect(lambda: UIFunctions.updateEvent(self))
 
 
         # EXTRA RIGHT BOX
@@ -174,8 +166,8 @@ class MainWindow(QMainWindow):
         btn = self.sender()
         btnName = btn.objectName()
         # NAVIGATE TO DECK
-        if btnName == "btn_login_login":
-            self.ui.stackedWidget.setCurrentWidget(self.ui.deck)
+        # if btnName == "btn_login_login":
+        #     self.ui.stackedWidget.setCurrentWidget(self.ui.deck)
 
         # SHOW QUERIES
         if btnName == "btn_search":
@@ -235,8 +227,8 @@ class MainWindow(QMainWindow):
             btnID = -1
         else:
             btnID = int(btnName.split('_')[-1])
-        UIFunctions.toggleLeftBox_withEventID(self, btnID)
-        self.ui.btn_apply_event.dou
+        UIFunctions.toggleLeftBox_withID(self, btnID, isEvent=True)
+
     def connect_query_btnClick(self):
         for btn in self.ui.deck.scrollArea.findChildren(QPushButton):
             if btn.objectName() ==  "btn_new_query" or "btn_edit" in btn.objectName():
@@ -251,8 +243,8 @@ class MainWindow(QMainWindow):
             btnID = -1
         else:
             btnID = int(btnName.split('_')[-1])
-        UIFunctions.toggleLeftBox_withQueryID(self, btnID)
-    
+        UIFunctions.toggleLeftBox_withID(self, btnID, isEvent=False)
+        
     def search_btnClick(self):
         btn = self.sender()
         btnName = btn.objectName()
@@ -260,8 +252,6 @@ class MainWindow(QMainWindow):
         tweet_query = self.ui.deck.scrollArea.findChild(QWidget, f"tweet_query_{queryID}")
         text = tweet_query.text_search.text()
         UIFunctions.search(self, text, queryID)
-
-
 
     def setThemeHack(self):
         Settings.BTN_LEFT_BOX_COLOR = "background-color: #495474;"

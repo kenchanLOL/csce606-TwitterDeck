@@ -5,12 +5,12 @@ A Twitter Deck clone for digital humanitarian purpose
 1. conda create -y -n crisisdeck python=3.8
 2. conda activate crisisdeck
 3. pip install -r requirements.txt
+4. python server.py
 4. python main.py
 
 ### Reminder of PyQt
-Building new UI after editing 
+Building new UI/resources after editing 
 ```
-pyside6-uic .\main.ui -o .\modules\ui_main.py
 pyside6-rcc .\resources.qrc -o ./resources_rc.qrc
 python update-ui.py 
 ```
