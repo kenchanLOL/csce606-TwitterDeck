@@ -9,32 +9,38 @@ from backend.Tweet import Tweet
 from backend.Tweet import Tweet
 from protobufs import CrisisDeck_pb2, CrisisDeck_pb2_grpc
 import pickle
+import json
 
 def Login(name, password, userStub):
     user = User(name=name, password=password)
-    user_message = gRPC_pb2.UserMessage(ID=user.ID, name=user.name, password=user.password, content=user.content)
-    serialized_user = user_message.SerializeToString()
-
-    response = userStub.GetUser(gRPC_pb2.GetUserRequest(status=Status.STATUS_OK, body=serialized_user))
+    serialized_user = pickle.dumps(user)
+    response = userStub.GetUser(gRPC_pb2.Request(status=Status.STATUS_OK, body=serialized_user))
     # print(response)
     if response.status == Status.STATUS_OK:
-        user_message = gRPC_pb2.UserMessage()
-        user_message.ParseFromString(response.body)
-        user.ID = user_message.ID
-        user.content = user_message.content
+        user = pickle.loads(response.body)
         return True, user
     else:
         print("not found")
         return False, None
+
+def CreateUser(user, userStub):
+    serialized_user = pickle.dumps(user)
+    response = userStub.CreateUser(gRPC_pb2.Request(status=Status.STATUS_OK, body=serialized_user))
+    if response.status == Status.STATUS_OK:
+        res_user = pickle.loads(response.body)
+        return res_user
+    else:
+        print("database error")
+        return None
 
 
 def GetEventByUser(userID, eventStub):
     events = []
     user = User(ID=userID)
     serialized_user = pickle.dumps(user)
-    response = eventStub.GetEventByUser(gRPC_pb2.GetEventByUserRequest(status=Status.STATUS_OK, body=serialized_user))
+    response = eventStub.GetEventByUser(gRPC_pb2.Request(status=Status.STATUS_OK, body=serialized_user))
     if response.status == Status.STATUS_OK:
-        events = pickle.loads(response.EventList)
+        events = pickle.loads(response.body)
         return events
     else:
         print("database error")
@@ -42,17 +48,10 @@ def GetEventByUser(userID, eventStub):
 
 
 def CreateEvent(event, eventStub):
-    event_message = gRPC_pb2.EventMessage(ID=event.ID, location=event.location, time=event.time,
-                                          content=event.content, userID=event.userID)
-    serialized_event = event_message.SerializeToString()
-
-    response = eventStub.CreateEvent(gRPC_pb2.CreateEventRequest(status=Status.STATUS_OK, body=serialized_event))
-
+    serialized_event = pickle.dumps(event)
+    response = eventStub.CreateEvent(gRPC_pb2.Request(status=Status.STATUS_OK, body=serialized_event))
     if response.status == Status.STATUS_OK:
-        event_message = gRPC_pb2.EventMessage()
-        event_message.ParseFromString(response.body)
-        res_event = Event(ID=event_message.ID, location=event_message.location, time=event_message.time,
-                          content=event_message.content, userID=event_message.userID)
+        res_event = pickle.loads(response.body)
         return res_event
     else:
         print("database error")
@@ -61,16 +60,10 @@ def CreateEvent(event, eventStub):
 
 def LoadEvent(id, eventStub):
     event = Event(ID=id)
-    event_message = gRPC_pb2.EventMessage(ID=event.ID, location=event.location, time=event.time,
-                                          content=event.content, userID=event.userID)
-    serialized_event = event_message.SerializeToString()
-
-    response = eventStub.GetEvent(gRPC_pb2.GetEventRequest(status=Status.STATUS_OK, body=serialized_event))
+    serialized_event = pickle.dumps(event)
+    response = eventStub.GetEvent(gRPC_pb2.Request(status=Status.STATUS_OK, body=serialized_event))
     if response.status == Status.STATUS_OK:
-        event_message = gRPC_pb2.EventMessage()
-        event_message.ParseFromString(response.body)
-        res_event = Event(ID=event_message.ID, location=event_message.location, time=event_message.time,
-                          content=event_message.content, userID=event_message.userID)
+        res_event = pickle.loads(response.body)
         return res_event
     elif response.status == Status.NOT_FOUND:
         print("not found")
@@ -80,12 +73,28 @@ def LoadEvent(id, eventStub):
         return None
 
 
-def UpdateEvent(event, eventStub):
-    event_message = gRPC_pb2.EventMessage(ID=event.ID, location=event.location, time=event.time,
-                                          content=event.content, userID=event.userID)
-    serialized_event = event_message.SerializeToString()
-
-    response = eventStub.UpdateEvent(gRPC_pb2.UpdateEventRequest(status=Status.STATUS_OK, body=serialized_event))
+def UpdateEvent(id, config, eventStub):
+    event = Event(ID=id, since=config["time_since"], until=config["time_until"], repost=int(config["repost"]))
+    if config["keyword"] != "":
+        event.keyword=config["keyword"]
+    if config["media_type"] != "":
+        event.mediaType=config["media_type"]
+    if config["language"] != "":
+        event.language=config["language"]
+    if config["latitude"] != "":
+        event.latitude=float(config["latitude"])
+    if config["longitude"] != "":
+        event.longitude=float(config["longitude"])
+    if config["radius"] != "":
+        event.radius=float(config["radius"])
+    if config["radius_unit"] != "":
+        event.radiusUnit=config["radius_unit"]
+    if config["min_retweet"] != -1:
+        event.minRetweet=config["min_retweet"]
+    if config["min_fav"] != -1:
+        event.minFac=config["min_fav"]
+    serialized_event = pickle.dumps(event)
+    response = eventStub.UpdateEvent(gRPC_pb2.Request(status=Status.STATUS_OK, body=serialized_event))
     if response.status == Status.STATUS_OK:
         print("updated")
         return 1
@@ -98,16 +107,10 @@ def UpdateEvent(event, eventStub):
 
 
 def CreateQuery(query, queryStub):
-    query = Query(content="injuries", eventID=10)
-    query_message = gRPC_pb2.QueryMessage(ID=query.ID, content=query.content, eventID=query.eventID)
-    serialized_query = query_message.SerializeToString()
-
-    response = queryStub.CreateQuery(gRPC_pb2.CreateQueryRequest(status=Status.STATUS_OK, body=serialized_query))
-
+    serialized_query = pickle.dumps(query)
+    response = queryStub.CreateQuery(gRPC_pb2.Request(status=Status.STATUS_OK, body=serialized_query))
     if response.status == Status.STATUS_OK:
-        query_message = gRPC_pb2.QueryMessage()
-        query_message.ParseFromString(response.body)
-        res_query = Query(ID=query_message.ID, content=query_message.content, eventID=query_message.eventID)
+        res_query = pickle.loads(response.body)
         return res_query
     else:
         print("database error")
@@ -115,15 +118,11 @@ def CreateQuery(query, queryStub):
 
 
 def LoadQuery(id, queryStub):
-    query = Query(ID=49)
-    query_message = gRPC_pb2.QueryMessage(ID=query.ID, content=query.content, eventID=query.eventID)
-    serialized_query = query_message.SerializeToString()
-
-    response = queryStub.GetQuery(gRPC_pb2.GetQueryRequest(status=Status.STATUS_OK, body=serialized_query))
+    query = Query(ID=id)
+    serialized_query = pickle.dumps(query)
+    response = queryStub.GetQuery(gRPC_pb2.Request(status=Status.STATUS_OK, body=serialized_query))
     if response.status == Status.STATUS_OK:
-        query_message = gRPC_pb2.QueryMessage()
-        query_message.ParseFromString(response.body)
-        res_query = Query(ID=query_message.ID, content=query_message.content, eventID=query_message.eventID)
+        res_query = pickle.loads(response.body)
         return res_query
     elif response.status == Status.NOT_FOUND:
         print("not found")
@@ -133,12 +132,29 @@ def LoadQuery(id, queryStub):
         return None
 
 
-def GetQueryByEvent(eventID, queryStub):
-    event = User(ID=eventID)
-    serialized_event = pickle.dumps(event)
-    response = queryStub.GetQueryByEvent(gRPC_pb2.GetQueryByEventRequest(status=Status.STATUS_OK, body=serialized_event))
+def UpdateQuery(id, config, queryStub):
+    config_str = json.dumps(config)
+    query = Query(ID=id, content=config_str)
+    serialized_query = pickle.dumps(query)
+    response = queryStub.UpdateQuery(gRPC_pb2.Request(status=Status.STATUS_OK, body=serialized_query))
     if response.status == Status.STATUS_OK:
-        queries = pickle.loads(response.QueryList)
+        print("updated")
+        return 1
+    elif response.status == Status.NOT_FOUND:
+        print("not found")
+        return 0
+    else:
+        print("database error")
+        return -1
+
+
+
+def GetQueryByEvent(eventID, queryStub):
+    event = Event(ID=eventID)
+    serialized_event = pickle.dumps(event)
+    response = queryStub.GetQueryByEvent(gRPC_pb2.Request(status=Status.STATUS_OK, body=serialized_event))
+    if response.status == Status.STATUS_OK:
+        queries = pickle.loads(response.body)
         return queries
     else:
         print("database error")
@@ -149,9 +165,9 @@ def GetTweetByQuery(queryID, tweetStub):
     query = Query(ID=queryID)
     serialized_query = pickle.dumps(query)
     response = tweetStub.GetTweetByQuery(
-        gRPC_pb2.GetTweetByQueryRequest(status=Status.STATUS_OK, body=serialized_query))
+        gRPC_pb2.Request(status=Status.STATUS_OK, body=serialized_query))
     if response.status == Status.STATUS_OK:
-        tweets = pickle.loads(response.TweetList)
+        tweets = pickle.loads(response.body)
         return tweets
     else:
         print("database error")
@@ -166,7 +182,7 @@ def searchTweet(event, query, tweetStub):
     response = tweetStub.SearchTweet(gRPC_pb2.SearchTweetRequest(status=Status.STATUS_OK, event=serialized_event,
                                                                  query=serialized_query))
     if response.status == Status.STATUS_OK:
-        tweet_list = pickle.loads(response.TweetList)
+        tweet_list = pickle.loads(response.body)
         return tweet_list
     else:
         print("database error")
@@ -183,11 +199,11 @@ def searchTweet(event, query, tweetStub):
 #     return event
 # /////////////////////////////////////////////////////
 #  TODO:
-# 0. New object design for event class
-# 1. GetQueryByID
+# √0. New object design for event class
+# √1. GetQueryByID
 # Input: queryID
 # Output: Event object (with customized filter) 
-# 2. GetEventByID
+# √2. GetEventByID
 # Input: eventID
 # Output: Event object
 # 3. searchTweet (Changes needed)
@@ -196,9 +212,9 @@ def searchTweet(event, query, tweetStub):
 # 4. Create User
 # Input: user object
 # Output: user object
-# 5. Update Event
+# √5. Update Event
 # Input: config dict
 # Output: Event object
-# 6. Update Query
+# √6. Update Query
 # Input: config dict
 # Output: Event object
