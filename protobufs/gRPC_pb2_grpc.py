@@ -16,23 +16,23 @@ class UserServiceStub(object):
         """
         self.CreateUser = channel.unary_unary(
                 '/UserService/CreateUser',
-                request_serializer=gRPC__pb2.CreateUserRequest.SerializeToString,
-                response_deserializer=gRPC__pb2.CreateUserResponse.FromString,
+                request_serializer=gRPC__pb2.Request.SerializeToString,
+                response_deserializer=gRPC__pb2.Response.FromString,
                 )
         self.GetUser = channel.unary_unary(
                 '/UserService/GetUser',
-                request_serializer=gRPC__pb2.GetUserRequest.SerializeToString,
-                response_deserializer=gRPC__pb2.GetUserResponse.FromString,
+                request_serializer=gRPC__pb2.Request.SerializeToString,
+                response_deserializer=gRPC__pb2.Response.FromString,
                 )
         self.UpdateUser = channel.unary_unary(
                 '/UserService/UpdateUser',
-                request_serializer=gRPC__pb2.UpdateUserRequest.SerializeToString,
-                response_deserializer=gRPC__pb2.UpdateUserResponse.FromString,
+                request_serializer=gRPC__pb2.Request.SerializeToString,
+                response_deserializer=gRPC__pb2.Response.FromString,
                 )
         self.DeleteUser = channel.unary_unary(
                 '/UserService/DeleteUser',
-                request_serializer=gRPC__pb2.DeleteUserRequest.SerializeToString,
-                response_deserializer=gRPC__pb2.DeleteUserResponse.FromString,
+                request_serializer=gRPC__pb2.Request.SerializeToString,
+                response_deserializer=gRPC__pb2.Response.FromString,
                 )
 
 
@@ -68,23 +68,23 @@ def add_UserServiceServicer_to_server(servicer, server):
     rpc_method_handlers = {
             'CreateUser': grpc.unary_unary_rpc_method_handler(
                     servicer.CreateUser,
-                    request_deserializer=gRPC__pb2.CreateUserRequest.FromString,
-                    response_serializer=gRPC__pb2.CreateUserResponse.SerializeToString,
+                    request_deserializer=gRPC__pb2.Request.FromString,
+                    response_serializer=gRPC__pb2.Response.SerializeToString,
             ),
             'GetUser': grpc.unary_unary_rpc_method_handler(
                     servicer.GetUser,
-                    request_deserializer=gRPC__pb2.GetUserRequest.FromString,
-                    response_serializer=gRPC__pb2.GetUserResponse.SerializeToString,
+                    request_deserializer=gRPC__pb2.Request.FromString,
+                    response_serializer=gRPC__pb2.Response.SerializeToString,
             ),
             'UpdateUser': grpc.unary_unary_rpc_method_handler(
                     servicer.UpdateUser,
-                    request_deserializer=gRPC__pb2.UpdateUserRequest.FromString,
-                    response_serializer=gRPC__pb2.UpdateUserResponse.SerializeToString,
+                    request_deserializer=gRPC__pb2.Request.FromString,
+                    response_serializer=gRPC__pb2.Response.SerializeToString,
             ),
             'DeleteUser': grpc.unary_unary_rpc_method_handler(
                     servicer.DeleteUser,
-                    request_deserializer=gRPC__pb2.DeleteUserRequest.FromString,
-                    response_serializer=gRPC__pb2.DeleteUserResponse.SerializeToString,
+                    request_deserializer=gRPC__pb2.Request.FromString,
+                    response_serializer=gRPC__pb2.Response.SerializeToString,
             ),
     }
     generic_handler = grpc.method_handlers_generic_handler(
@@ -108,8 +108,8 @@ class UserService(object):
             timeout=None,
             metadata=None):
         return grpc.experimental.unary_unary(request, target, '/UserService/CreateUser',
-            gRPC__pb2.CreateUserRequest.SerializeToString,
-            gRPC__pb2.CreateUserResponse.FromString,
+            gRPC__pb2.Request.SerializeToString,
+            gRPC__pb2.Response.FromString,
             options, channel_credentials,
             insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
 
@@ -125,8 +125,8 @@ class UserService(object):
             timeout=None,
             metadata=None):
         return grpc.experimental.unary_unary(request, target, '/UserService/GetUser',
-            gRPC__pb2.GetUserRequest.SerializeToString,
-            gRPC__pb2.GetUserResponse.FromString,
+            gRPC__pb2.Request.SerializeToString,
+            gRPC__pb2.Response.FromString,
             options, channel_credentials,
             insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
 
@@ -142,8 +142,8 @@ class UserService(object):
             timeout=None,
             metadata=None):
         return grpc.experimental.unary_unary(request, target, '/UserService/UpdateUser',
-            gRPC__pb2.UpdateUserRequest.SerializeToString,
-            gRPC__pb2.UpdateUserResponse.FromString,
+            gRPC__pb2.Request.SerializeToString,
+            gRPC__pb2.Response.FromString,
             options, channel_credentials,
             insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
 
@@ -159,8 +159,8 @@ class UserService(object):
             timeout=None,
             metadata=None):
         return grpc.experimental.unary_unary(request, target, '/UserService/DeleteUser',
-            gRPC__pb2.DeleteUserRequest.SerializeToString,
-            gRPC__pb2.DeleteUserResponse.FromString,
+            gRPC__pb2.Request.SerializeToString,
+            gRPC__pb2.Response.FromString,
             options, channel_credentials,
             insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
 
@@ -176,28 +176,28 @@ class EventServiceStub(object):
         """
         self.CreateEvent = channel.unary_unary(
                 '/EventService/CreateEvent',
-                request_serializer=gRPC__pb2.CreateEventRequest.SerializeToString,
-                response_deserializer=gRPC__pb2.CreateEventResponse.FromString,
+                request_serializer=gRPC__pb2.Request.SerializeToString,
+                response_deserializer=gRPC__pb2.Response.FromString,
                 )
         self.GetEvent = channel.unary_unary(
                 '/EventService/GetEvent',
-                request_serializer=gRPC__pb2.GetEventRequest.SerializeToString,
-                response_deserializer=gRPC__pb2.GetEventResponse.FromString,
+                request_serializer=gRPC__pb2.Request.SerializeToString,
+                response_deserializer=gRPC__pb2.Response.FromString,
                 )
         self.UpdateEvent = channel.unary_unary(
                 '/EventService/UpdateEvent',
-                request_serializer=gRPC__pb2.UpdateEventRequest.SerializeToString,
-                response_deserializer=gRPC__pb2.UpdateEventResponse.FromString,
+                request_serializer=gRPC__pb2.Request.SerializeToString,
+                response_deserializer=gRPC__pb2.Response.FromString,
                 )
         self.DeleteEvent = channel.unary_unary(
                 '/EventService/DeleteEvent',
-                request_serializer=gRPC__pb2.DeleteEventRequest.SerializeToString,
-                response_deserializer=gRPC__pb2.DeleteEventResponse.FromString,
+                request_serializer=gRPC__pb2.Request.SerializeToString,
+                response_deserializer=gRPC__pb2.Response.FromString,
                 )
         self.GetEventByUser = channel.unary_unary(
                 '/EventService/GetEventByUser',
-                request_serializer=gRPC__pb2.GetEventByUserRequest.SerializeToString,
-                response_deserializer=gRPC__pb2.GetEventByUserResponse.FromString,
+                request_serializer=gRPC__pb2.Request.SerializeToString,
+                response_deserializer=gRPC__pb2.Response.FromString,
                 )
 
 
@@ -239,28 +239,28 @@ def add_EventServiceServicer_to_server(servicer, server):
     rpc_method_handlers = {
             'CreateEvent': grpc.unary_unary_rpc_method_handler(
                     servicer.CreateEvent,
-                    request_deserializer=gRPC__pb2.CreateEventRequest.FromString,
-                    response_serializer=gRPC__pb2.CreateEventResponse.SerializeToString,
+                    request_deserializer=gRPC__pb2.Request.FromString,
+                    response_serializer=gRPC__pb2.Response.SerializeToString,
             ),
             'GetEvent': grpc.unary_unary_rpc_method_handler(
                     servicer.GetEvent,
-                    request_deserializer=gRPC__pb2.GetEventRequest.FromString,
-                    response_serializer=gRPC__pb2.GetEventResponse.SerializeToString,
+                    request_deserializer=gRPC__pb2.Request.FromString,
+                    response_serializer=gRPC__pb2.Response.SerializeToString,
             ),
             'UpdateEvent': grpc.unary_unary_rpc_method_handler(
                     servicer.UpdateEvent,
-                    request_deserializer=gRPC__pb2.UpdateEventRequest.FromString,
-                    response_serializer=gRPC__pb2.UpdateEventResponse.SerializeToString,
+                    request_deserializer=gRPC__pb2.Request.FromString,
+                    response_serializer=gRPC__pb2.Response.SerializeToString,
             ),
             'DeleteEvent': grpc.unary_unary_rpc_method_handler(
                     servicer.DeleteEvent,
-                    request_deserializer=gRPC__pb2.DeleteEventRequest.FromString,
-                    response_serializer=gRPC__pb2.DeleteEventResponse.SerializeToString,
+                    request_deserializer=gRPC__pb2.Request.FromString,
+                    response_serializer=gRPC__pb2.Response.SerializeToString,
             ),
             'GetEventByUser': grpc.unary_unary_rpc_method_handler(
                     servicer.GetEventByUser,
-                    request_deserializer=gRPC__pb2.GetEventByUserRequest.FromString,
-                    response_serializer=gRPC__pb2.GetEventByUserResponse.SerializeToString,
+                    request_deserializer=gRPC__pb2.Request.FromString,
+                    response_serializer=gRPC__pb2.Response.SerializeToString,
             ),
     }
     generic_handler = grpc.method_handlers_generic_handler(
@@ -284,8 +284,8 @@ class EventService(object):
             timeout=None,
             metadata=None):
         return grpc.experimental.unary_unary(request, target, '/EventService/CreateEvent',
-            gRPC__pb2.CreateEventRequest.SerializeToString,
-            gRPC__pb2.CreateEventResponse.FromString,
+            gRPC__pb2.Request.SerializeToString,
+            gRPC__pb2.Response.FromString,
             options, channel_credentials,
             insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
 
@@ -301,8 +301,8 @@ class EventService(object):
             timeout=None,
             metadata=None):
         return grpc.experimental.unary_unary(request, target, '/EventService/GetEvent',
-            gRPC__pb2.GetEventRequest.SerializeToString,
-            gRPC__pb2.GetEventResponse.FromString,
+            gRPC__pb2.Request.SerializeToString,
+            gRPC__pb2.Response.FromString,
             options, channel_credentials,
             insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
 
@@ -318,8 +318,8 @@ class EventService(object):
             timeout=None,
             metadata=None):
         return grpc.experimental.unary_unary(request, target, '/EventService/UpdateEvent',
-            gRPC__pb2.UpdateEventRequest.SerializeToString,
-            gRPC__pb2.UpdateEventResponse.FromString,
+            gRPC__pb2.Request.SerializeToString,
+            gRPC__pb2.Response.FromString,
             options, channel_credentials,
             insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
 
@@ -335,8 +335,8 @@ class EventService(object):
             timeout=None,
             metadata=None):
         return grpc.experimental.unary_unary(request, target, '/EventService/DeleteEvent',
-            gRPC__pb2.DeleteEventRequest.SerializeToString,
-            gRPC__pb2.DeleteEventResponse.FromString,
+            gRPC__pb2.Request.SerializeToString,
+            gRPC__pb2.Response.FromString,
             options, channel_credentials,
             insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
 
@@ -352,8 +352,8 @@ class EventService(object):
             timeout=None,
             metadata=None):
         return grpc.experimental.unary_unary(request, target, '/EventService/GetEventByUser',
-            gRPC__pb2.GetEventByUserRequest.SerializeToString,
-            gRPC__pb2.GetEventByUserResponse.FromString,
+            gRPC__pb2.Request.SerializeToString,
+            gRPC__pb2.Response.FromString,
             options, channel_credentials,
             insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
 
@@ -369,28 +369,28 @@ class QueryServiceStub(object):
         """
         self.CreateQuery = channel.unary_unary(
                 '/QueryService/CreateQuery',
-                request_serializer=gRPC__pb2.CreateQueryRequest.SerializeToString,
-                response_deserializer=gRPC__pb2.CreateQueryResponse.FromString,
+                request_serializer=gRPC__pb2.Request.SerializeToString,
+                response_deserializer=gRPC__pb2.Response.FromString,
                 )
         self.GetQuery = channel.unary_unary(
                 '/QueryService/GetQuery',
-                request_serializer=gRPC__pb2.GetQueryRequest.SerializeToString,
-                response_deserializer=gRPC__pb2.GetQueryResponse.FromString,
+                request_serializer=gRPC__pb2.Request.SerializeToString,
+                response_deserializer=gRPC__pb2.Response.FromString,
                 )
         self.UpdateQuery = channel.unary_unary(
                 '/QueryService/UpdateQuery',
-                request_serializer=gRPC__pb2.UpdateQueryRequest.SerializeToString,
-                response_deserializer=gRPC__pb2.UpdateQueryResponse.FromString,
+                request_serializer=gRPC__pb2.Request.SerializeToString,
+                response_deserializer=gRPC__pb2.Response.FromString,
                 )
         self.DeleteQuery = channel.unary_unary(
                 '/QueryService/DeleteQuery',
-                request_serializer=gRPC__pb2.DeleteQueryRequest.SerializeToString,
-                response_deserializer=gRPC__pb2.DeleteQueryResponse.FromString,
+                request_serializer=gRPC__pb2.Request.SerializeToString,
+                response_deserializer=gRPC__pb2.Response.FromString,
                 )
         self.GetQueryByEvent = channel.unary_unary(
                 '/QueryService/GetQueryByEvent',
-                request_serializer=gRPC__pb2.GetQueryByEventRequest.SerializeToString,
-                response_deserializer=gRPC__pb2.GetQueryByEventResponse.FromString,
+                request_serializer=gRPC__pb2.Request.SerializeToString,
+                response_deserializer=gRPC__pb2.Response.FromString,
                 )
 
 
@@ -432,28 +432,28 @@ def add_QueryServiceServicer_to_server(servicer, server):
     rpc_method_handlers = {
             'CreateQuery': grpc.unary_unary_rpc_method_handler(
                     servicer.CreateQuery,
-                    request_deserializer=gRPC__pb2.CreateQueryRequest.FromString,
-                    response_serializer=gRPC__pb2.CreateQueryResponse.SerializeToString,
+                    request_deserializer=gRPC__pb2.Request.FromString,
+                    response_serializer=gRPC__pb2.Response.SerializeToString,
             ),
             'GetQuery': grpc.unary_unary_rpc_method_handler(
                     servicer.GetQuery,
-                    request_deserializer=gRPC__pb2.GetQueryRequest.FromString,
-                    response_serializer=gRPC__pb2.GetQueryResponse.SerializeToString,
+                    request_deserializer=gRPC__pb2.Request.FromString,
+                    response_serializer=gRPC__pb2.Response.SerializeToString,
             ),
             'UpdateQuery': grpc.unary_unary_rpc_method_handler(
                     servicer.UpdateQuery,
-                    request_deserializer=gRPC__pb2.UpdateQueryRequest.FromString,
-                    response_serializer=gRPC__pb2.UpdateQueryResponse.SerializeToString,
+                    request_deserializer=gRPC__pb2.Request.FromString,
+                    response_serializer=gRPC__pb2.Response.SerializeToString,
             ),
             'DeleteQuery': grpc.unary_unary_rpc_method_handler(
                     servicer.DeleteQuery,
-                    request_deserializer=gRPC__pb2.DeleteQueryRequest.FromString,
-                    response_serializer=gRPC__pb2.DeleteQueryResponse.SerializeToString,
+                    request_deserializer=gRPC__pb2.Request.FromString,
+                    response_serializer=gRPC__pb2.Response.SerializeToString,
             ),
             'GetQueryByEvent': grpc.unary_unary_rpc_method_handler(
                     servicer.GetQueryByEvent,
-                    request_deserializer=gRPC__pb2.GetQueryByEventRequest.FromString,
-                    response_serializer=gRPC__pb2.GetQueryByEventResponse.SerializeToString,
+                    request_deserializer=gRPC__pb2.Request.FromString,
+                    response_serializer=gRPC__pb2.Response.SerializeToString,
             ),
     }
     generic_handler = grpc.method_handlers_generic_handler(
@@ -477,8 +477,8 @@ class QueryService(object):
             timeout=None,
             metadata=None):
         return grpc.experimental.unary_unary(request, target, '/QueryService/CreateQuery',
-            gRPC__pb2.CreateQueryRequest.SerializeToString,
-            gRPC__pb2.CreateQueryResponse.FromString,
+            gRPC__pb2.Request.SerializeToString,
+            gRPC__pb2.Response.FromString,
             options, channel_credentials,
             insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
 
@@ -494,8 +494,8 @@ class QueryService(object):
             timeout=None,
             metadata=None):
         return grpc.experimental.unary_unary(request, target, '/QueryService/GetQuery',
-            gRPC__pb2.GetQueryRequest.SerializeToString,
-            gRPC__pb2.GetQueryResponse.FromString,
+            gRPC__pb2.Request.SerializeToString,
+            gRPC__pb2.Response.FromString,
             options, channel_credentials,
             insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
 
@@ -511,8 +511,8 @@ class QueryService(object):
             timeout=None,
             metadata=None):
         return grpc.experimental.unary_unary(request, target, '/QueryService/UpdateQuery',
-            gRPC__pb2.UpdateQueryRequest.SerializeToString,
-            gRPC__pb2.UpdateQueryResponse.FromString,
+            gRPC__pb2.Request.SerializeToString,
+            gRPC__pb2.Response.FromString,
             options, channel_credentials,
             insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
 
@@ -528,8 +528,8 @@ class QueryService(object):
             timeout=None,
             metadata=None):
         return grpc.experimental.unary_unary(request, target, '/QueryService/DeleteQuery',
-            gRPC__pb2.DeleteQueryRequest.SerializeToString,
-            gRPC__pb2.DeleteQueryResponse.FromString,
+            gRPC__pb2.Request.SerializeToString,
+            gRPC__pb2.Response.FromString,
             options, channel_credentials,
             insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
 
@@ -545,8 +545,8 @@ class QueryService(object):
             timeout=None,
             metadata=None):
         return grpc.experimental.unary_unary(request, target, '/QueryService/GetQueryByEvent',
-            gRPC__pb2.GetQueryByEventRequest.SerializeToString,
-            gRPC__pb2.GetQueryByEventResponse.FromString,
+            gRPC__pb2.Request.SerializeToString,
+            gRPC__pb2.Response.FromString,
             options, channel_credentials,
             insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
 
@@ -562,33 +562,33 @@ class TweetServiceStub(object):
         """
         self.CreateTweet = channel.unary_unary(
                 '/TweetService/CreateTweet',
-                request_serializer=gRPC__pb2.CreateTweetRequest.SerializeToString,
-                response_deserializer=gRPC__pb2.CreateTweetResponse.FromString,
+                request_serializer=gRPC__pb2.Request.SerializeToString,
+                response_deserializer=gRPC__pb2.Response.FromString,
                 )
         self.GetTweet = channel.unary_unary(
                 '/TweetService/GetTweet',
-                request_serializer=gRPC__pb2.GetTweetRequest.SerializeToString,
-                response_deserializer=gRPC__pb2.GetTweetResponse.FromString,
+                request_serializer=gRPC__pb2.Request.SerializeToString,
+                response_deserializer=gRPC__pb2.Response.FromString,
                 )
         self.UpdateTweet = channel.unary_unary(
                 '/TweetService/UpdateTweet',
-                request_serializer=gRPC__pb2.UpdateTweetRequest.SerializeToString,
-                response_deserializer=gRPC__pb2.UpdateTweetResponse.FromString,
+                request_serializer=gRPC__pb2.Request.SerializeToString,
+                response_deserializer=gRPC__pb2.Response.FromString,
                 )
         self.DeleteTweet = channel.unary_unary(
                 '/TweetService/DeleteTweet',
-                request_serializer=gRPC__pb2.DeleteTweetRequest.SerializeToString,
-                response_deserializer=gRPC__pb2.DeleteTweetResponse.FromString,
+                request_serializer=gRPC__pb2.Request.SerializeToString,
+                response_deserializer=gRPC__pb2.Response.FromString,
                 )
         self.SearchTweet = channel.unary_unary(
                 '/TweetService/SearchTweet',
                 request_serializer=gRPC__pb2.SearchTweetRequest.SerializeToString,
-                response_deserializer=gRPC__pb2.SearchTweetResponse.FromString,
+                response_deserializer=gRPC__pb2.Response.FromString,
                 )
         self.GetTweetByQuery = channel.unary_unary(
                 '/TweetService/GetTweetByQuery',
-                request_serializer=gRPC__pb2.GetTweetByQueryRequest.SerializeToString,
-                response_deserializer=gRPC__pb2.GetTweetByQueryResponse.FromString,
+                request_serializer=gRPC__pb2.Request.SerializeToString,
+                response_deserializer=gRPC__pb2.Response.FromString,
                 )
 
 
@@ -636,33 +636,33 @@ def add_TweetServiceServicer_to_server(servicer, server):
     rpc_method_handlers = {
             'CreateTweet': grpc.unary_unary_rpc_method_handler(
                     servicer.CreateTweet,
-                    request_deserializer=gRPC__pb2.CreateTweetRequest.FromString,
-                    response_serializer=gRPC__pb2.CreateTweetResponse.SerializeToString,
+                    request_deserializer=gRPC__pb2.Request.FromString,
+                    response_serializer=gRPC__pb2.Response.SerializeToString,
             ),
             'GetTweet': grpc.unary_unary_rpc_method_handler(
                     servicer.GetTweet,
-                    request_deserializer=gRPC__pb2.GetTweetRequest.FromString,
-                    response_serializer=gRPC__pb2.GetTweetResponse.SerializeToString,
+                    request_deserializer=gRPC__pb2.Request.FromString,
+                    response_serializer=gRPC__pb2.Response.SerializeToString,
             ),
             'UpdateTweet': grpc.unary_unary_rpc_method_handler(
                     servicer.UpdateTweet,
-                    request_deserializer=gRPC__pb2.UpdateTweetRequest.FromString,
-                    response_serializer=gRPC__pb2.UpdateTweetResponse.SerializeToString,
+                    request_deserializer=gRPC__pb2.Request.FromString,
+                    response_serializer=gRPC__pb2.Response.SerializeToString,
             ),
             'DeleteTweet': grpc.unary_unary_rpc_method_handler(
                     servicer.DeleteTweet,
-                    request_deserializer=gRPC__pb2.DeleteTweetRequest.FromString,
-                    response_serializer=gRPC__pb2.DeleteTweetResponse.SerializeToString,
+                    request_deserializer=gRPC__pb2.Request.FromString,
+                    response_serializer=gRPC__pb2.Response.SerializeToString,
             ),
             'SearchTweet': grpc.unary_unary_rpc_method_handler(
                     servicer.SearchTweet,
                     request_deserializer=gRPC__pb2.SearchTweetRequest.FromString,
-                    response_serializer=gRPC__pb2.SearchTweetResponse.SerializeToString,
+                    response_serializer=gRPC__pb2.Response.SerializeToString,
             ),
             'GetTweetByQuery': grpc.unary_unary_rpc_method_handler(
                     servicer.GetTweetByQuery,
-                    request_deserializer=gRPC__pb2.GetTweetByQueryRequest.FromString,
-                    response_serializer=gRPC__pb2.GetTweetByQueryResponse.SerializeToString,
+                    request_deserializer=gRPC__pb2.Request.FromString,
+                    response_serializer=gRPC__pb2.Response.SerializeToString,
             ),
     }
     generic_handler = grpc.method_handlers_generic_handler(
@@ -686,8 +686,8 @@ class TweetService(object):
             timeout=None,
             metadata=None):
         return grpc.experimental.unary_unary(request, target, '/TweetService/CreateTweet',
-            gRPC__pb2.CreateTweetRequest.SerializeToString,
-            gRPC__pb2.CreateTweetResponse.FromString,
+            gRPC__pb2.Request.SerializeToString,
+            gRPC__pb2.Response.FromString,
             options, channel_credentials,
             insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
 
@@ -703,8 +703,8 @@ class TweetService(object):
             timeout=None,
             metadata=None):
         return grpc.experimental.unary_unary(request, target, '/TweetService/GetTweet',
-            gRPC__pb2.GetTweetRequest.SerializeToString,
-            gRPC__pb2.GetTweetResponse.FromString,
+            gRPC__pb2.Request.SerializeToString,
+            gRPC__pb2.Response.FromString,
             options, channel_credentials,
             insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
 
@@ -720,8 +720,8 @@ class TweetService(object):
             timeout=None,
             metadata=None):
         return grpc.experimental.unary_unary(request, target, '/TweetService/UpdateTweet',
-            gRPC__pb2.UpdateTweetRequest.SerializeToString,
-            gRPC__pb2.UpdateTweetResponse.FromString,
+            gRPC__pb2.Request.SerializeToString,
+            gRPC__pb2.Response.FromString,
             options, channel_credentials,
             insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
 
@@ -737,8 +737,8 @@ class TweetService(object):
             timeout=None,
             metadata=None):
         return grpc.experimental.unary_unary(request, target, '/TweetService/DeleteTweet',
-            gRPC__pb2.DeleteTweetRequest.SerializeToString,
-            gRPC__pb2.DeleteTweetResponse.FromString,
+            gRPC__pb2.Request.SerializeToString,
+            gRPC__pb2.Response.FromString,
             options, channel_credentials,
             insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
 
@@ -755,7 +755,7 @@ class TweetService(object):
             metadata=None):
         return grpc.experimental.unary_unary(request, target, '/TweetService/SearchTweet',
             gRPC__pb2.SearchTweetRequest.SerializeToString,
-            gRPC__pb2.SearchTweetResponse.FromString,
+            gRPC__pb2.Response.FromString,
             options, channel_credentials,
             insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
 
@@ -771,7 +771,7 @@ class TweetService(object):
             timeout=None,
             metadata=None):
         return grpc.experimental.unary_unary(request, target, '/TweetService/GetTweetByQuery',
-            gRPC__pb2.GetTweetByQueryRequest.SerializeToString,
-            gRPC__pb2.GetTweetByQueryResponse.FromString,
+            gRPC__pb2.Request.SerializeToString,
+            gRPC__pb2.Response.FromString,
             options, channel_credentials,
             insecure, call_credentials, compression, wait_for_ready, timeout, metadata)

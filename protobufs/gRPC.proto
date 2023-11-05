@@ -1,12 +1,20 @@
 syntax = "proto3";
 
+message Request {
+    int32 status = 1;
+    bytes body = 2;
+}
 
+message Response {
+    int32 status = 1;
+    bytes body = 2;
+}
 
 service UserService {
-    rpc CreateUser(CreateUserRequest) returns (CreateUserResponse);
-    rpc GetUser(GetUserRequest) returns (GetUserResponse);
-    rpc UpdateUser(UpdateUserRequest) returns (UpdateUserResponse);
-    rpc DeleteUser(DeleteUserRequest) returns (DeleteUserResponse);
+    rpc CreateUser(Request) returns (Response);
+    rpc GetUser(Request) returns (Response);
+    rpc UpdateUser(Request) returns (Response);
+    rpc DeleteUser(Request) returns (Response);
 }
 
 message UserMessage {
@@ -16,114 +24,38 @@ message UserMessage {
     string content = 4;
 }
 
-message CreateUserRequest {
-    // ...
-}
-
-message CreateUserResponse {
-    // ...
-}
-
-message GetUserRequest {
-    int32 status = 1;
-    bytes body = 2;
-}
-
-message GetUserResponse {
-    int32 status = 1;
-    bytes body = 2;
-}
-
-message UpdateUserRequest {
-    // ...
-}
-
-message UpdateUserResponse {
-    // ...
-}
-
-message DeleteUserRequest {
-    // ...
-}
-
-message DeleteUserResponse {
-    // ...
-}
-
-
 
 service EventService {
-    rpc CreateEvent(CreateEventRequest) returns (CreateEventResponse);
-    rpc GetEvent(GetEventRequest) returns (GetEventResponse);
-    rpc UpdateEvent(UpdateEventRequest) returns (UpdateEventResponse);
-    rpc DeleteEvent(DeleteEventRequest) returns (DeleteEventResponse);
-    rpc GetEventByUser(GetEventByUserRequest) returns (GetEventByUserResponse);
+    rpc CreateEvent(Request) returns (Response);
+    rpc GetEvent(Request) returns (Response);
+    rpc UpdateEvent(Request) returns (Response);
+    rpc DeleteEvent(Request) returns (Response);
+    rpc GetEventByUser(Request) returns (Response);
 }
 
 message EventMessage {
     int32 ID = 1;
-    string location = 2;
-    string time = 3;
-    string content = 4;
-    int32 userID = 5;
+    string keyword = 2;
+    int32 userID = 3;
+    string mediaType = 4;
+    string since = 5;
+    string until = 6;
+    string language = 7;
+    bool repost = 8;
+    float latitude = 9;
+    float longitude = 10;
+    float radius = 11;
+    string radiusUnit = 12;
+    int32 minRetweet = 13;
+    int32 minFac = 14;
 }
-
-message CreateEventRequest {
-    int32 status = 1;
-    bytes body = 2;
-}
-
-message CreateEventResponse {
-    int32 status = 1;
-    bytes body = 2;
-}
-
-message GetEventRequest {
-    int32 status = 1;
-    bytes body = 2;
-}
-
-message GetEventResponse {
-    int32 status = 1;
-    bytes body = 2;
-}
-
-message GetEventByUserRequest {
-    int32 status = 1;
-    bytes body = 2;
-}
-
-message GetEventByUserResponse {
-    int32 status = 1;
-    bytes EventList = 2;
-}
-
-message UpdateEventRequest {
-    int32 status = 1;
-    bytes body = 2;
-}
-
-message UpdateEventResponse {
-    int32 status = 1;
-    bytes body = 2;
-}
-
-message DeleteEventRequest {
-    int32 ID = 1;
-}
-
-message DeleteEventResponse {
-    // ...
-}
-
-
 
 service QueryService {
-    rpc CreateQuery(CreateQueryRequest) returns (CreateQueryResponse);
-    rpc GetQuery(GetQueryRequest) returns (GetQueryResponse);
-    rpc UpdateQuery(UpdateQueryRequest) returns (UpdateQueryResponse);
-    rpc DeleteQuery(DeleteQueryRequest) returns (DeleteQueryResponse);
-    rpc GetQueryByEvent(GetQueryByEventRequest) returns (GetQueryByEventResponse);
+    rpc CreateQuery(Request) returns (Response);
+    rpc GetQuery(Request) returns (Response);
+    rpc UpdateQuery(Request) returns (Response);
+    rpc DeleteQuery(Request) returns (Response);
+    rpc GetQueryByEvent(Request) returns (Response);
 }
 
 message QueryMessage {
@@ -132,61 +64,13 @@ message QueryMessage {
     int32 eventID = 3;
 }
 
-message CreateQueryRequest {
-    int32 status = 1;
-    bytes body = 2;
-}
-
-message CreateQueryResponse {
-    int32 status = 1;
-    bytes body = 2;
-}
-
-message GetQueryRequest {
-    int32 status = 1;
-    bytes body = 2;
-}
-
-message GetQueryResponse {
-    int32 status = 1;
-    bytes body = 2;
-}
-
-message GetQueryByEventRequest {
-    int32 status = 1;
-    bytes body = 2;
-}
-
-message GetQueryByEventResponse {
-    int32 status = 1;
-    bytes QueryList = 2;
-}
-
-message UpdateQueryRequest {
-    int32 status = 1;
-    bytes body = 2;
-}
-
-message UpdateQueryResponse {
-    int32 status = 1;
-    bytes body = 2;
-}
-
-message DeleteQueryRequest {
-    int32 ID = 1;
-}
-
-message DeleteQueryResponse {
-    // ...
-}
-
 service TweetService {
-    rpc CreateTweet(CreateTweetRequest) returns (CreateTweetResponse);
-    rpc GetTweet(GetTweetRequest) returns (GetTweetResponse);
-    rpc UpdateTweet(UpdateTweetRequest) returns (UpdateTweetResponse);
-    rpc DeleteTweet(DeleteTweetRequest) returns (DeleteTweetResponse);
-    rpc SearchTweet(SearchTweetRequest) returns (SearchTweetResponse);
-    rpc GetTweetByQuery(GetTweetByQueryRequest) returns (GetTweetByQueryResponse);
+    rpc CreateTweet(Request) returns (Response);
+    rpc GetTweet(Request) returns (Response);
+    rpc UpdateTweet(Request) returns (Response);
+    rpc DeleteTweet(Request) returns (Response);
+    rpc SearchTweet(SearchTweetRequest) returns (Response);
+    rpc GetTweetByQuery(Request) returns (Response);
 }
 
 message TweetMessage {
@@ -195,54 +79,6 @@ message TweetMessage {
     string time = 3;
     string content = 4;
     int32 personID = 5;
-}
-
-message CreateTweetRequest {
-    int32 status = 1;
-    bytes body = 2;
-}
-
-message CreateTweetResponse {
-    int32 status = 1;
-    bytes body = 2;
-}
-
-message GetTweetRequest {
-    int32 status = 1;
-    bytes body = 2;
-}
-
-message GetTweetResponse {
-    int32 status = 1;
-    bytes body = 2;
-}
-
-message UpdateTweetRequest {
-    int32 status = 1;
-    bytes body = 2;
-}
-
-message UpdateTweetResponse {
-    int32 status = 1;
-    bytes body = 2;
-}
-
-message DeleteTweetRequest {
-    int32 ID = 1;
-}
-
-message DeleteTweetResponse {
-    // ...
-}
-
-message GetTweetByQueryRequest{
-    int32 status = 1;
-    bytes body = 2;
-}
-
-message GetTweetByQueryResponse{
-    int32 status = 1;
-    bytes TweetList = 2;
 }
 
 message SearchTweetRequest{
