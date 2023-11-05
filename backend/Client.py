@@ -8,6 +8,7 @@ from backend.Query import Query
 from backend.Tweet import Tweet
 import pickle
 from backend import backend_function
+import json
 
 def run():
     with grpc.insecure_channel('localhost:50051') as channel:
@@ -15,37 +16,107 @@ def run():
         eventStub = gRPC_pb2_grpc.EventServiceStub(channel)
         queryStub = gRPC_pb2_grpc.QueryServiceStub(channel)
         tweetStub = gRPC_pb2_grpc.TweetServiceStub(channel)
-        '''
+
+        #login
         result = backend_function.Login("admin", "password", userStub)
+        print(result[1].ID)
+
+        #create user
+        user = User(name="12123", password="aaaa8888")
+        result = backend_function.CreateUser(user, userStub)
         print(result.ID)
 
-        event1 = Event(location="Texas, USA", time="2022-12", content="Earthquake", userID=1)
+        '''
+        #create event
+        event1 = Event(keyword="111 Eearthquake", userID=1, mediaType='A', since='2004-05-04T17:00:00',
+                       until='2004-05-04T17:02:00', language="English", repost=1, latitude=30.5, longitude=135.2,
+                       radius=10.3, radiusUnit="km", minRetweet=10, minFac=20)
         result = backend_function.CreateEvent(event1, eventStub)
+        id = result.ID
         print(result.ID)
+        '''
 
-        event2 = backend_function.LoadEvent(3, eventStub)
-        print(event2.ID, event2.location, event2.time, event2.userID, event2.content)
+        #load event
+        event2 = backend_function.LoadEvent(26, eventStub)
+        instance_attributes = vars(event2)
+        for attribute in instance_attributes:
+            print(f"{attribute}: {instance_attributes[attribute]}")
 
-        event3 = Event(ID=15, location="Texas, USA", time="2018-12", content="Earthquake", userID=1)
-        result = backend_function.UpdateEvent(event3, eventStub)
+        #update event
+        config={}
+        config["keyword"] = "222 Volcano"
+        config["media_type"] = "B"
+        config["time_since"] = "2004-05-04T18:00:00"
+        config["time_until"] = "2004-05-04T19:00:00"
+        config["language"] = "Spanish"
+        config["repost"] = False
+        config["latitude"] = "10.5"
+        config["longitude"] = "100.33"
+        config["radius"] = "22.33"
+        config["radius_unit"] = "miles"
+        config["min_retweet"] = 2
+        config["min_fav"] = 5
+        result = backend_function.UpdateEvent(27, config, eventStub)
         print(result)
 
-        query1 = Query(content="injuries", eventID=10)
+        #get event by user
+        events = backend_function.GetEventByUser(1, eventStub)
+        for event in events:
+            instance_attributes = vars(event)
+            for attribute in instance_attributes:
+                print(f"{attribute}: {instance_attributes[attribute]}")
+
+        '''
+        # create query
+        config={}
+        config["keyword"] = "333 Volcano"
+        config["media_type"] = "C"
+        config["time_since"] = "2004-05-04T12:00:00"
+        config["time_until"] = "2004-05-04T15:00:00"
+        config["language"] = "Chinese"
+        config["repost"] = False
+        config["latitude"] = "20.5"
+        config["longitude"] = "80.33"
+        config["radius"] = "1221.33"
+        config["radius_unit"] = "m"
+        config["min_retweet"] = 20
+        config["min_fav"] = 50
+        config_str = json.dumps(config)
+        query1 = Query(content=config_str, eventID=28)
         result = backend_function.CreateQuery(query1, queryStub)
         print(result.ID)
+        '''
 
-        query2 = backend_function.LoadQuery(49, queryStub)
-        print(query2.ID, query2.content, query2.eventID)
+        # update query
+        config={}
+        config["keyword"] = "444 Volcano"
+        config["media_type"] = ""
+        config["time_since"] = "2004-05-04T10:00:00"
+        config["time_until"] = "2004-05-04T13:00:00"
+        config["language"] = "English"
+        config["repost"] = True
+        config["latitude"] = ""
+        config["longitude"] = ""
+        config["radius"] = ""
+        config["radius_unit"] = ""
+        config["min_retweet"] = 20
+        config["min_fav"] = 50
+        result = backend_function.UpdateQuery(57, config, queryStub)
+        print(result)
 
+        #get query by id
+        event = backend_function.LoadQuery(57, queryStub)
+        print(event)
+        instance_attributes = vars(event)
+        for attribute in instance_attributes:
+            print(f"{attribute}: {instance_attributes[attribute]}")
+
+        '''
         query3 = Query(ID=45, content="earthquake", eventID=6)
         event4 = Event(ID=6, location="Chile", time="2014-04", content="Earthquake", userID=1)
         results = backend_function.searchTweet(event4, query3, tweetStub)
         for result in results:
             print(result)
-        '''
-        events = backend_function.GetEventByUser(1, eventStub)
-        for event in events:
-            print(event.ID, event.content, event.location, event.time)
 
         queries = backend_function.GetQueryByEvent(3, queryStub)
         for query in queries:
@@ -54,7 +125,7 @@ def run():
         tweets = backend_function.GetTweetByQuery(41, tweetStub)
         for tweet in tweets:
             print(tweet.ID, tweet.content)
-
+        '''
 
         # 创建用户
         # response = stub.CreateUser(gRPC_pb2.CreateUserRequest())
