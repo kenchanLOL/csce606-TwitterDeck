@@ -411,13 +411,13 @@ class UIFunctions():
     def updateEvent(self):
         print("Update Event")
         config = UIFunctions.readToggleLeftInfo(self)
-        # backend_function.UpdateEvent(config)
+        # backend_function.UpdateEvent(config) # eventID
         UIFunctions.toggleLeftBox(self, True)
     
     def updateQuery(self):
         print("Update Query")
         config = UIFunctions.readToggleLeftInfo(self)
-        # backend_function.UpdateQuery(config)
+        # backend_function.UpdateQuery(config) # queryID
         UIFunctions.toggleLeftBox(self, True)
     
     def readToggleLeftInfo(self):
@@ -425,9 +425,9 @@ class UIFunctions():
         # Content group
         config["keyword"] = self.ui.text_keywords.text()
         config["media_type"] = self.ui.box_media_type.currentText()
-        config["time_since"] = self.ui.time_since.time()
-        config["time_until"] = self.ui.time_until.time()
-        config["language"] = self.ui.box_lang.text()
+        config["time_since"] = self.ui.time_since.dateTime().toString(Qt.ISODate)
+        config["time_until"] = self.ui.time_since.dateTime().toString(Qt.ISODate)
+        config["language"] = self.ui.box_lang.currentText()
         config["repost"] = self.ui.btn_repost.isChecked()
 
         # Location group

@@ -1355,6 +1355,11 @@ Button */
                     <widget class="QComboBox" name="box_media_type">
                      <item>
                       <property name="text">
+                       <string/>
+                      </property>
+                     </item>
+                     <item>
+                      <property name="text">
                        <string>images</string>
                       </property>
                      </item>
@@ -1439,14 +1444,25 @@ QDateTimeEdit:pressed {
                  <item>
                   <layout class="QHBoxLayout" name="horizontalLayout_32">
                    <item>
-                    <widget class="QLabel" name="box_lang">
+                    <widget class="QLabel" name="label_lang">
                      <property name="text">
                       <string>Language:</string>
                      </property>
                     </widget>
                    </item>
                    <item>
-                    <widget class="QComboBox" name="comboBox_3"/>
+                    <widget class="QComboBox" name="box_lang">
+                     <item>
+                      <property name="text">
+                       <string/>
+                      </property>
+                     </item>
+                     <item>
+                      <property name="text">
+                       <string>EN</string>
+                      </property>
+                     </item>
+                    </widget>
                    </item>
                   </layout>
                  </item>
@@ -1550,7 +1566,23 @@ QDateTimeEdit:pressed {
                     <widget class="QLineEdit" name="text_radius"/>
                    </item>
                    <item>
-                    <widget class="QComboBox" name="box_radius_unit"/>
+                    <widget class="QComboBox" name="box_radius_unit">
+                     <item>
+                      <property name="text">
+                       <string/>
+                      </property>
+                     </item>
+                     <item>
+                      <property name="text">
+                       <string>mi</string>
+                      </property>
+                     </item>
+                     <item>
+                      <property name="text">
+                       <string>km</string>
+                      </property>
+                     </item>
+                    </widget>
                    </item>
                   </layout>
                  </item>
@@ -1613,6 +1645,12 @@ QSpinBox:pressed {
 
 </string>
                      </property>
+                     <property name="minimum">
+                      <number>-1</number>
+                     </property>
+                     <property name="value">
+                      <number>-1</number>
+                     </property>
                     </widget>
                    </item>
                   </layout>
@@ -1644,6 +1682,12 @@ QSpinBox:pressed {
 }
 
 </string>
+                     </property>
+                     <property name="minimum">
+                      <number>-1</number>
+                     </property>
+                     <property name="value">
+                      <number>-1</number>
                      </property>
                     </widget>
                    </item>

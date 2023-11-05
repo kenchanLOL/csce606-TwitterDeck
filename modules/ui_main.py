@@ -865,6 +865,7 @@ class Ui_MainWindow(object):
         self.box_media_type.addItem("")
         self.box_media_type.addItem("")
         self.box_media_type.addItem("")
+        self.box_media_type.addItem("")
         self.box_media_type.setObjectName(u"box_media_type")
 
         self.horizontalLayout_29.addWidget(self.box_media_type)
@@ -934,15 +935,17 @@ class Ui_MainWindow(object):
 
         self.horizontalLayout_32 = QHBoxLayout()
         self.horizontalLayout_32.setObjectName(u"horizontalLayout_32")
-        self.box_lang = QLabel(self.grp_content)
+        self.label_lang = QLabel(self.grp_content)
+        self.label_lang.setObjectName(u"label_lang")
+
+        self.horizontalLayout_32.addWidget(self.label_lang)
+
+        self.box_lang = QComboBox(self.grp_content)
+        self.box_lang.addItem("")
+        self.box_lang.addItem("")
         self.box_lang.setObjectName(u"box_lang")
 
         self.horizontalLayout_32.addWidget(self.box_lang)
-
-        self.comboBox_3 = QComboBox(self.grp_content)
-        self.comboBox_3.setObjectName(u"comboBox_3")
-
-        self.horizontalLayout_32.addWidget(self.comboBox_3)
 
 
         self.verticalLayout_10.addLayout(self.horizontalLayout_32)
@@ -1015,6 +1018,9 @@ class Ui_MainWindow(object):
         self.horizontalLayout_37.addWidget(self.text_radius)
 
         self.box_radius_unit = QComboBox(self.grp_location)
+        self.box_radius_unit.addItem("")
+        self.box_radius_unit.addItem("")
+        self.box_radius_unit.addItem("")
         self.box_radius_unit.setObjectName(u"box_radius_unit")
 
         self.horizontalLayout_37.addWidget(self.box_radius_unit)
@@ -1061,6 +1067,8 @@ class Ui_MainWindow(object):
 "}\n"
 "\n"
 "")
+        self.box_min_retweet.setMinimum(-1)
+        self.box_min_retweet.setValue(-1)
 
         self.horizontalLayout_75.addWidget(self.box_min_retweet)
 
@@ -1091,6 +1099,8 @@ class Ui_MainWindow(object):
 "}\n"
 "\n"
 "")
+        self.box_min_fav.setMinimum(-1)
+        self.box_min_fav.setValue(-1)
 
         self.horizontalLayout_76.addWidget(self.box_min_fav)
 
@@ -1933,19 +1943,27 @@ class Ui_MainWindow(object):
         self.grp_content.setTitle("")
         self.label_6.setText(QCoreApplication.translate("MainWindow", u"Keywords:", None))
         self.label_7.setText(QCoreApplication.translate("MainWindow", u"Media Type: ", None))
-        self.box_media_type.setItemText(0, QCoreApplication.translate("MainWindow", u"images", None))
-        self.box_media_type.setItemText(1, QCoreApplication.translate("MainWindow", u"videos", None))
-        self.box_media_type.setItemText(2, QCoreApplication.translate("MainWindow", u"links", None))
+        self.box_media_type.setItemText(0, "")
+        self.box_media_type.setItemText(1, QCoreApplication.translate("MainWindow", u"images", None))
+        self.box_media_type.setItemText(2, QCoreApplication.translate("MainWindow", u"videos", None))
+        self.box_media_type.setItemText(3, QCoreApplication.translate("MainWindow", u"links", None))
 
         self.label_9.setText(QCoreApplication.translate("MainWindow", u"Since:", None))
         self.label_10.setText(QCoreApplication.translate("MainWindow", u"Until", None))
-        self.box_lang.setText(QCoreApplication.translate("MainWindow", u"Language:", None))
+        self.label_lang.setText(QCoreApplication.translate("MainWindow", u"Language:", None))
+        self.box_lang.setItemText(0, "")
+        self.box_lang.setItemText(1, QCoreApplication.translate("MainWindow", u"EN", None))
+
         self.btn_repost.setText(QCoreApplication.translate("MainWindow", u"Repost", None))
         self.btn_location.setText(QCoreApplication.translate("MainWindow", u"Location", None))
         self.grp_location.setTitle("")
         self.label_18.setText(QCoreApplication.translate("MainWindow", u"latitude", None))
         self.label_19.setText(QCoreApplication.translate("MainWindow", u"longitude", None))
         self.label_22.setText(QCoreApplication.translate("MainWindow", u"radius", None))
+        self.box_radius_unit.setItemText(0, "")
+        self.box_radius_unit.setItemText(1, QCoreApplication.translate("MainWindow", u"mi", None))
+        self.box_radius_unit.setItemText(2, QCoreApplication.translate("MainWindow", u"km", None))
+
         self.btn_engagement.setText(QCoreApplication.translate("MainWindow", u"Engagement", None))
         self.grp_engagement.setTitle("")
         self.label_60.setText(QCoreApplication.translate("MainWindow", u"Min Rewteet:", None))
