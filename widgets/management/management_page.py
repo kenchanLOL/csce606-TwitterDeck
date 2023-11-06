@@ -31,11 +31,11 @@ class ManagementPage(QWidget):
         self.table_event.verticalHeader().setDefaultSectionSize(50)
         self.table_event.horizontalHeader().setStretchLastSection(True)
         self.table_event.verticalHeader().setVisible(False)
-        self.table_event.setHorizontalHeaderLabels(["EventID", "Location", "Time", "Content", ""])
+        self.table_event.setHorizontalHeaderLabels(["EventID", "Keyword", "Since", "Untill", ""])
         self.table_event.setColumnWidth(0,100)
         self.table_event.setColumnWidth(1,200)
         self.table_event.setColumnWidth(2,200)
-        self.table_event.setColumnWidth(3,400)
+        self.table_event.setColumnWidth(3,200)
                                         
         # self.setup_events()
         self.layout_page.addWidget(self.frame_event)
@@ -52,9 +52,9 @@ class ManagementPage(QWidget):
             self.table_event.insertRow(self.table_event.rowCount())
 
             self.table_event.setItem(idx, 0, QTableWidgetItem(f"{event.ID}"))
-            self.table_event.setItem(idx, 1, QTableWidgetItem(f"{event.location}"))
-            self.table_event.setItem(idx, 2, QTableWidgetItem(f"{event.time}"))
-            self.table_event.setItem(idx, 3, QTableWidgetItem(f"{event.content}"))
+            self.table_event.setItem(idx, 1, QTableWidgetItem(f"{event.keyword}"))
+            self.table_event.setItem(idx, 2, QTableWidgetItem(f"{event.since}"))
+            self.table_event.setItem(idx, 3, QTableWidgetItem(f"{event.until}"))
 
             widget_btn2 = QWidget()
             layout_btn = QVBoxLayout(widget_btn2)

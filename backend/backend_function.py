@@ -218,3 +218,12 @@ def searchTweet(event, query, tweetStub):
 # √6. Update Query
 # Input: config dict
 # Output: Event object
+# 7. Create Event
+# Input: config dict
+# Output: Event object
+# 8. Create Query
+# Input: config dict
+# Output: Event object
+# 9. Load Query
+# Input: ID 
+# Output: Event object

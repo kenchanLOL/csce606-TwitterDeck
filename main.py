@@ -208,10 +208,11 @@ class MainWindow(QMainWindow):
         idx = table.selectionModel().selectedIndexes()[0]
         row_number = idx.row()
         column_number = idx.column()
-
+        event_id = int(self.ui.management.table_event.item(row_number, 0).text())
             # print(row_number, column_number)
         # if column_number == 0:
-        UIFunctions.setup_deck(self, row_number, column_number)
+
+        UIFunctions.setup_deck(self, event_id)
         self.ui.stackedWidget.setCurrentWidget(self.ui.deck)
 
     def connect_event_btnClick(self):
@@ -271,6 +272,15 @@ class MainWindow(QMainWindow):
         self.ui.horizontalScrollBar.setStyleSheet("background-color: #6272a4;")
         self.ui.verticalScrollBar.setStyleSheet("background-color: #6272a4;")
         self.ui.commandLinkButton.setStyleSheet("color: #ff79c6;")
+
+        self.ui.text_latitude.setText()
+        self.ui.text_longitude.setText()
+        self.ui.text_radius.setText()
+        self.ui.box_radius_unit.setCurrentText()
+
+        self.ui.box_min_retweet.setValue()
+        self.ui.box_min_fav.setValue()
+
 if __name__ == "__main__":
     app = QApplication(sys.argv)
     app.setWindowIcon(QIcon("icon.ico"))

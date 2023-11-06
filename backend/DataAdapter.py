@@ -52,12 +52,12 @@ class DataAdapter:
                               until=result[5], language=result[6], repost=result[7], latitude=result[8],
                               longitude=result[9], radius=result[10], radiusUnit=result[11], minRetweet=result[12],
                               minFac=result[13])
-                if result[4] is not None:
-                    date_time_since = datetime.fromtimestamp(result[4])
-                    event.since = date_time_since.strftime('%Y-%m-%dT%H:%M:%S')
-                if result[5] is not None:
-                    date_time_until = datetime.fromtimestamp(result[5])
-                    event.until = date_time_until.strftime('%Y-%m-%dT%H:%M:%S')
+                # if result[4] is not None:
+                    # date_time_since = datetime.fromtimestamp(result[4])
+                    # event.since = datetime.strptime(result[4], '%Y-%m-%d %H:%M:%S')
+                # if result[5] is not None:
+                    # date_time_until = datetime.fromtimestamp(result[5])
+                    # event.until = datetime.strptime(result[5], '%Y-%m-%d %H:%M:%S')
                 return event
             else:
                 return None
@@ -77,11 +77,11 @@ class DataAdapter:
                               longitude=result[9], radius=result[10], radiusUnit=result[11], minRetweet=result[12],
                               minFac=result[13])
                 if result[4] is not None:
-                    date_time_since = datetime.fromtimestamp(result[4])
-                    event.since = date_time_since.strftime('%Y-%m-%dT%H:%M:%S')
+                    # date_time_since = datetime.fromtimestamp(result[4])
+                    event.since = datetime.strptime(result[4], '%Y-%m-%d %H:%M:%S')
                 if result[5] is not None:
-                    date_time_until = datetime.fromtimestamp(result[5])
-                    event.until = date_time_until.strftime('%Y-%m-%dT%H:%M:%S')
+                    # date_time_until = datetime.fromtimestamp(result[5])
+                    event.until = datetime.strptime(result[5], '%Y-%m-%d %H:%M:%S')
                 events.append(event)
             return events
         except sqlite3.Error as e:
@@ -90,11 +90,11 @@ class DataAdapter:
 
     def saveEvent(self, event):
         try:
-            date_time_since = datetime.fromisoformat(event.since)
-            date_time_until = datetime.fromisoformat(event.until)
-            unix_timestamp_since = int(time.mktime(date_time_since.timetuple()))
-            unix_timestamp_until = int(time.mktime(date_time_until.timetuple()))
-            data_to_insert = (event.keyword, event.userID, event.mediaType,  unix_timestamp_since, unix_timestamp_until, event.language,
+            date_time_since = datetime.strptime(event.since, "%Y-%m-%d %H:%M:%S")
+            date_time_until = datetime.strptime(event.until, "%Y-%m-%d %H:%M:%S")
+            # unix_timestamp_since = int(time.mktime(date_time_since.timetuple()))
+            # unix_timestamp_until = int(time.mktime(date_time_until.timetuple()))
+            data_to_insert = (event.keyword, event.userID, event.mediaType,  date_time_since, date_time_until, event.language,
                               event.repost, event.latitude, event.longitude, event.radius, event.radiusUnit,
                               event.minRetweet, event.minFac)
             self.cursor.execute("INSERT INTO DisasterEvent (KeyWord, UserID, MediaType, Since, Until, Language, Repost, Latitude, Longitude, Radius, RadiusUnit, MinRetweet, MinFac) "
@@ -108,11 +108,11 @@ class DataAdapter:
 
     def updateEvent(self, event):
         try:
-            date_time_since = datetime.fromisoformat(event.since)
-            date_time_until = datetime.fromisoformat(event.until)
-            unix_timestamp_since = int(time.mktime(date_time_since.timetuple()))
-            unix_timestamp_until = int(time.mktime(date_time_until.timetuple()))
-            data_to_update = (unix_timestamp_since, unix_timestamp_until, event.ID)
+            date_time_since = datetime.strptime(event.since, "%Y-%m-%d %H:%M:%S")
+            date_time_until = datetime.strptime(event.until, "%Y-%m-%d %H:%M:%S")
+            # unix_timestamp_since = int(time.mktime(date_time_since.timetuple()))
+            # unix_timestamp_until = int(time.mktime(date_time_until.timetuple()))
+            data_to_update = (date_time_since, date_time_until, event.ID)
             self.cursor.execute("UPDATE DisasterEvent SET Since = ?, Until = ? WHERE EventID = ?", data_to_update)
             if event.keyword is not None:
                 data_to_update = (event.keyword, event.ID)
