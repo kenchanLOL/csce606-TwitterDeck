@@ -28,3 +28,6 @@ replay_pid*
 # main_backup.py
 **/*_backup*.py
 widgets/test.py
+
+chromedriver-win64/
+accounts.db
