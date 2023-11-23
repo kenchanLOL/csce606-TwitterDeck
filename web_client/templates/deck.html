@@ -1,0 +1,312 @@
+{# templates/deck.html #}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.13.0/css/all.css">
+
+<title>Query Panel</title>
+<style>
+    body { font-family: Arial, sans-serif; }
+    header { display:flex; align-items: center; justify-content: space-between; background: #333; color: white; padding: 10px; }
+    h1 { margin: 0; }
+    main { padding: 20px; display: flex; }
+    section { flex-grow: 1; }
+    /*  Twitter Deck */
+    .scroll-container {
+        display: flex; /* Establishes a flex container */
+        overflow-x: auto; /* Enables horizontal scrolling */
+        padding: 20px;
+        gap: 40px ;
+        height: 750px;
+        justify-content: flex-start;
+        align-items: flex-start;
+    }
+
+    .query-container {
+        /* display: flex;
+        align-items: center;
+        justify-content: space-between; */
+        display:flex ;
+        flex-direction: column;
+        background-color: #f4f4f4;
+        border-radius: 5px;
+        padding: 20px;
+        /* width: 400px; */
+        margin: auto; /* Centering the container */
+        box-shadow: 0 2px 10px rgba(0,0,0,0.1); /* subtle shadow for depth */
+        height: 700px; 
+        overflow-y: auto; 
+        min-width: 500px;
+    }
+    .query-header {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        font-size: 1.2em;
+        margin-bottom: 20px;
+    }
+    .query-header input[type="text"] {
+        flex-grow: 1;
+        margin: 0px 10px;
+        display: block;
+        width: 80%; /* Adjust the width as needed */
+        padding: 8px;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+    }
+    .query-button{
+        margin-left: 5px;
+    }
+    .tweet {
+        /* display: inline-block; */
+        background-color: #ffffff;
+        border-radius: 5px;
+        padding: 10px;
+        margin-bottom: 10px; /* Space between tweets */
+        box-shadow: 0 1px 3px rgba(0,0,0,0.1); /* subtle shadow for depth */
+        box-sizing: border-box;
+        /* min-width: 0px; */
+    }
+    .tweet-header {
+        font-weight: bold; /* Style as needed */
+    }
+    .tweet-content {
+        margin-top: 5px;
+        word-wrap: break-word;
+        overflow-wrap: break-word;
+        /* overflow-x: auto; */
+        /* text-overflow: ellipsis; Show ellipsis for overflowed content */
+        display: block; /* Ensure text-overflow works */
+        /* white-space: nowrap; Keep content on a single line to work with text-overflow */
+    }
+    /* Buttons */
+    .button { 
+        display: inline-block;
+        padding: 5px 20px; 
+        border-radius: 5px;
+        background: #5c6bc0; 
+        color: white; 
+        text-align: center;  
+        cursor: pointer; }
+    .button:hover{
+        background: #7986cb;
+    }
+    .button-return{
+        margin: 0 0;
+        padding: 10px 15px;
+        border-radius: 20px;
+    }
+
+    .add-query-button {
+        padding: 0 0;
+        font-size: 24px; /* Larger font size for the plus icon */
+
+        height: 50px; /* Height of the button */
+        line-height: 50px; /* Centers the plus icon vertically */
+        text-align: center; /* Centers the plus icon horizontally */
+        background-color: #5c6bc0;
+        border-radius: 10%; /* Makes the button circular */
+        color: white;
+        cursor: pointer;
+        display: inline-block; /* Aligns with other query containers */
+        margin-right: 20px; /* Space after the button */
+        min-width: 50px;
+    }
+    /* For Toggle Bar */
+    aside { background:#666; color:white; width: 0; overflow: hidden; transition: width 0.5s; margin-left: 20px; box-sizing: border-box;}
+    .input-group { max-height: 0; overflow: hidden; transition: max-height 0.5s ease-out, padding 0.5s linear;}
+    .input-group.active { max-height: 500px;}
+    .input-group label { display: block; margin-top: 10px; margin-left: 10px; margin-bottom: 10px; font-weight: bold;}
+    .input-group input[type="text"],
+    .input-group input[type="range"],
+    .input-group select,
+    .input-group input[type="datetime-local"] {
+        display: block;
+        width: 80%; /* Adjust the width as needed */
+        padding: 8px;
+        margin-left: 10px;
+        margin-bottom: 10px;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+    }
+    .input-group input[type="checkbox"] {
+        margin-left: 15px;
+        margin-bottom: 10px;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+    }
+    .flex-container {
+        display: flex;
+    }
+
+    .section-header {
+        padding: 10px;
+        background: #5c6bc0;
+        cursor: pointer;
+        border: 1px solid #ddd;
+    }
+
+  /* Add additional styling as needed */
+</style>
+</head>
+
+<body>
+    <header>
+    <h1>Crisis Deck - A social monitoring tool for tracking real-time crisis humanitarian information.</h1>
+    <div  class="button button-return" onclick="goBack()"> <i class="fas fa-arrow-left"></i> Return </div>
+    </header>
+    <main>
+        <section>
+            <div class="scroll-container">
+                {% for tweets in all_tweets %}
+                    <div class="query-container">
+                    <div class="query-header">Query:
+                        <input type="text" id="query_input", name="query_input"></input>
+                        <div  class="button query-button"><i class="fas fa-arrow-right"></i> </div>
+                        <div  class="button query-button"><i class="fas fa-list"></i></i> </div>
+                    </div>
+                <!-- Single tweet/message -->
+                    {% for tweet in tweets.tweets %}
+                        <div class="tweet">
+                            <div class="tweet-header">{{tweet.ID}}</div>
+                            <div class="tweet-content">{{tweet.content}}</div>
+                        </div>
+                    {% endfor %}
+                    </div>
+                {% endfor %}
+                <!-- Repeat for each tweet/message -->
+                <!-- <div class="tweet">
+                    <div class="tweet-header">@1690579674</div>
+                    <div class="tweet-content">RT @heyuopp: California USA Rancho Cucamonga http://t.co/TSPViWMZWs BREAKING NEWS 400 Earthquake Powerful Earthquake Slams San Francisco </div>
+                </div>
+                
+                <div class="tweet">
+                    <div class="tweet-header">@6585222</div>
+                    <div class="tweet-content">RT @GoodBelly: California Winemakers Cleaning up After Quake http://t.co/798bYeBWTV via @Reverb</div>
+                </div>
+                </div> -->
+        
+                <div class="button add-query-button" onclick="addQueryContainer()">
+                    <i class="fas fa-plus"></i>
+                </div>
+            </div>
+        </section>
+        <aside id="sidebar">
+            <div class="section-header">Content</div>
+            <div class="input-group" id="content-section">
+            <label style="padding-left: 10px;" for="keyword-filter">Keywords:</label>
+            <input type="text" id="keyword-filter" name="keyword-filter">
+    
+            <label style="padding-left: 10px;" for="media-type-select">Media Type:</label>
+            <select id="media-type-select" name="media-type-select">
+                <option value="Images"> Images</option>
+                <option value="Videos"> Videos</option>
+                <option value="Links"> Links</option>
+            </select>
+    
+            <label style="padding-left: 10px;" for="since-date">Since:</label>
+            <input  type="datetime-local" id="since-date" name="since-date">
+    
+            <label style="padding-left: 10px;" for="until-date">Until:</label>
+            <input type="datetime-local" id="until-date" name="until-date">
+    
+            <label style="padding-left: 10px;" for="language-select">Language:</label>
+            <select id="lang-select" name="lang-select">
+                <option value="English"> English</option>
+            </select>
+    
+            <label style="padding-left: 10px;" for="repost-checkbox">Repost:</label>
+            <input type="checkbox" id="repost-checkbox" name="repost-checkbox">
+            </div>
+    
+            <div class="section-header">Location</div>
+            <div class="input-group" id="location-section">
+            <label style="padding-left: 10px;" for="latitude-filter">latitude:</label>
+            <input type="text" id="latitude-filter" name="latitude-filter">
+    
+            <label style="padding-left: 10px;" for="longtitude-filter">longtitude:</label>
+            <input type="text" id="longtitude-filter" name="longtitude-filter">
+    
+            <div class="flex-container">
+                <label for="radius-filter">radius:</label>
+                <input type="text" id="radius-filter" name="radius-filter">
+                <select id="radius-select" name="radius-select">
+                <option value="mile">mile</option>
+                <option value="km">km</option>
+                </select>
+            </div>
+            </div>
+            
+            <div class="section-header">Engagement</div>
+            <div class="input-group" id="engagement-section">
+            <div class="flex-container">
+                <label for="retweet-range">Min Retweet:</label>
+                <span style="margin-top: 10px; font-weight: bold;" id="retweet-value">0</span>
+            </div>
+            <input type="range" id="retweet-range" name="retweet-range" min="0" max="1000" step="10">
+            
+            <div class="flex-container">
+                <label for="favourite-range">Min Favourite:</label>
+                <span style="margin-top: 10px; font-weight: bold;" id="favourite-value">0</span>
+            </div>
+            <input type="range" id="favourite-range" name="favourite-range" min="0" max="1000" step="10">
+            </div>
+    
+            <div style="margin: 10px; display: block; border-radius: 15%; margin-inline: 30%;" id="submit-filter" class="button"><i class="fas fa-check"></i></div>
+        </aside>
+    </main>
+
+</body>
+
+<script>
+    // Inspect Button
+    document.addEventListener("DOMContentLoaded", (event) => {
+        const inspectButtons = document.querySelectorAll('.query-button');
+        inspectButtons.forEach(button => {
+            button.addEventListener("click", function(event) {
+                const iconClass = button.querySelector('i').classList;
+                if (iconClass.contains('fa-list')){
+                    var sidebar = document.getElementById('sidebar');
+                    if (sidebar.style.width >= 'calc(220px + 20px)') {
+                        sidebar.style.width = '0px';
+                    } else {
+                        sidebar.style.width = 'calc(220px + 20px)';
+                    }
+                } else if (iconClass.contains('fa-arrow-right')) {
+                    console.log('Arrow button clicked');
+                    // Call a function to handle arrow button click
+                }
+            });
+        });
+    });
+
+    // Toggle Bar
+    function toggleSection(sectionId) {
+    // Get all input-group elements
+    var allSections = document.querySelectorAll('.input-group');
+    
+    // Loop through them and remove 'active' class
+    allSections.forEach(function(section) {
+        if (section.id !== sectionId) {
+        section.classList.remove('active');
+        }
+    });
+
+    var section = document.getElementById(sectionId);
+    section.classList.toggle('active');
+    }
+
+    var headers = document.querySelectorAll('.section-header');
+    headers.forEach(function(header) {
+    header.addEventListener('click', function() {
+        // The corresponding section ID is the header text with '-section' appended
+        var sectionId = header.textContent.trim().toLowerCase().replace(' ', '-') + '-section';
+        toggleSection(sectionId);
+    });
+    });
+
+</script>
+
+</html>
