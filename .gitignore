@@ -31,3 +31,6 @@ widgets/test.py
 
 chromedriver-win64/
 accounts.db
+protobufs1/
+.vscode1
+__pycache__1
