@@ -3,14 +3,10 @@
 __pycache__/
 .git/
 .pyc
+.vscode
 # Log file
 *.log
 
-# BlueJ files
-*.ctxt
-
-# Mobile Tools for Java (J2ME)
-.mtj.tmp/
 
 # Package Files #
 *.jar
@@ -21,16 +17,11 @@ __pycache__/
 *.tar.gz
 *.rar
 
-# virtual machine crash logs, see http://www.java.com/en/download/help/error_hotspot.xml
-hs_err_pid*
-replay_pid*
-
 # main_backup.py
 **/*_backup*.py
-widgets/test.py
-
-chromedriver-win64/
 accounts.db
-protobufs1/
-.vscode1
-__pycache__1
+worker1.txt
+twitter_scrapper1.ipynb
+protobufs/
+backend/v1/
+frontend/desktop_v1/
