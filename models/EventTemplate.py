@@ -16,3 +16,21 @@ class EventTemplate:
         self.radiusUnit = radiusUnit
         self.minRetweet = minRetweet
         self.minFac = minFac
+
+    def to_dict(self):
+        return {
+            "ID": self.ID,
+            "Keyword": self.keyword,
+            "UserID": self.userID,
+            "MediaType": self.mediaType,
+            "Since": self.since.isoformat(),
+            "Until": self.until.isoformat(),
+            "Language": self.language,
+            "Repost": self.repost,
+            "Latitude": self.latitude,
+            "Longitude": self.longitude,
+            "Radius": self.radius,
+            "RadiusUnit": self.radiusUnit,
+            "MinRetweet": self.minRetweet,
+            "MinFac": self.minFac
+        }
