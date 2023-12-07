@@ -8,6 +8,9 @@ import requests
 from http.server import SimpleHTTPRequestHandler, HTTPServer
 from langchain.embeddings import HuggingFaceInferenceAPIEmbeddings
 from langchain.vectorstores.redis import Redis
+from MongoDataAdapter import MongoDataAdapter
+from RedisDataAdapter import RedisDataAdapter
+
 # from langchain.docstore.document import Document
 
 from backend.models import Tweet
@@ -50,6 +53,9 @@ class NLPService(SimpleHTTPRequestHandler):
         embeddings = embeddings
     )
 
+    url = "mongodb+srv://xutianyi:nqw9TdLszitw28UR@cluster0.al3scwp.mongodb.net/"
+    mongoDataAdapter = MongoDataAdapter(url)
+
     def __init__(self, request: bytes, client_address: Tuple[str, int], server: socketserver.BaseServer):
         super().__init__(request, client_address, server)
     
@@ -80,9 +86,13 @@ class NLPService(SimpleHTTPRequestHandler):
                 # }
                 # response = requests.request("GET", url = "", data=json.dumps(payload), headers = headers)
                 # tweets.append(response.body)
+                tweet = self.mongoDataAdapter.readTweet(int(tweet_id))
+                tweets.append(tweet)
+                tweets_dict = [tweet.to_dict() for tweet in tweets]
+
             
             payload = json.dumps({
-                "tweets":tweets
+                "tweets":tweets_dict
             })
 
             # if content_type == "application/json":
