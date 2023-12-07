@@ -4,7 +4,7 @@ grpcio-tools
 # Sweet==1.8
 Jinja2==3.1.2
 requests
-langchain
+langchain #latest one from github not pip -> embedding url
 redis
 redisvl
 boto3
