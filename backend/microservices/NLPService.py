@@ -10,6 +10,9 @@ from backend.microservices.RedisDataAdapter import RedisDataAdapter
 from http.server import SimpleHTTPRequestHandler, HTTPServer
 from langchain.embeddings import HuggingFaceInferenceAPIEmbeddings
 from langchain.vectorstores.redis import Redis
+from MongoDataAdapter import MongoDataAdapter
+from RedisDataAdapter import RedisDataAdapter
+
 # from langchain.docstore.document import Document
 
 from backend.models import Tweet

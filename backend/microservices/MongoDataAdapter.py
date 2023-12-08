@@ -167,7 +167,23 @@ class MongoDataAdapter:
         try:
             result = self.Tweet_collection.find_one({"_id": id})
             if result is not None:
-                tweet = Tweet(result)
+                tweet = Tweet(
+                    ID=result.get('_id'),
+                    id_str=result.get('id_str'),
+                    url=result.get('url'),
+                    date=result.get('date'),
+                    user=result.get('user'),
+                    lang=result.get('lang'),
+                    rawContent=result.get('rawContent'),
+                    replyCount=result.get('replyCount'),
+                    retweetCount=result.get('retweetCount'),
+                    likeCount=result.get('likeCount'),
+                    quoteCount=result.get('quoteCount'),
+                    conversationId=result.get('conversationId'),
+                    hashtags=result.get('hashtags'),
+                    viewCount=result.get('viewCount'),
+                    place=result.get('place'),
+                    coordinates=result.get('coordinates'))
                 return tweet
             else:
                 return None
