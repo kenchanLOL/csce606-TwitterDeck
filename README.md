@@ -20,4 +20,20 @@ cd protobufs/
 python -m grpc_tools.protoc -I proto --python_out=. --grpc_python_out=. .\proto\CrisisDeck.proto
 ```
 
+### Server
+activate all the services, gateways amd registry
+```
+python -m backend.Registry
+python -m backend.Gateway
+python -m backend.microservices.NLPService
+python -m backend.microservices.DeckService
+```
+
+### Client
+desktop
+```
+python -m frontend.desktop.main
+```
+
+
 
