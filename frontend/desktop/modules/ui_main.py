@@ -24,9 +24,9 @@ from PySide6.QtWidgets import (QAbstractItemView, QAbstractScrollArea, QApplicat
     QStackedWidget, QTableWidget, QTableWidgetItem, QVBoxLayout,
     QWidget)
 
-from widgets import ManagementPage
-from widgets import TwitterDeck
-import resources_rc
+from frontend.desktop.widgets import ManagementPage
+from frontend.desktop.widgets import TwitterDeck
+import frontend.desktop.resources_rc
 
 class Ui_MainWindow(object):
     def setupUi(self, MainWindow):

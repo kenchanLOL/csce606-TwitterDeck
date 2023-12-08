@@ -6,7 +6,7 @@ class TweetsBlock(QTextEdit):
     def __init__(self, data):
         super().__init__()
         self.setReadOnly(True)
-        self.username = data.personID
+        self.userID = data.userID
         self.content = data.content
         self.html_head = """
             <html>
@@ -40,7 +40,7 @@ class TweetsBlock(QTextEdit):
 </body>
 </html>"""
         self.styleSheets = "background-color:rgb(255,255,255);border-radius: 10px;padding-top: 10px;"
-        self.setHtml(self.html_head + self.html_body.format(username=self.username, content=self.content))
+        self.setHtml(self.html_head + self.html_body.format(username=self.userID, content=self.content))
         self.setStyleSheet(self.styleSheets)
         self.setMinimumHeight(150)
 

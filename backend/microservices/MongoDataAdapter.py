@@ -1,9 +1,9 @@
 from pymongo import MongoClient
 from bson.objectid import ObjectId
-from models.ClientUser import ClientUser
-from models.EventTemplate import EventTemplate
-from models.Query import Query
-from models.Tweet import Tweet
+from backend.models.ClientUser import ClientUser
+from backend.models.EventTemplate import EventTemplate
+from backend.models.Query import Query
+from backend.models.Tweet import Tweet
 
 
 class MongoDataAdapter:
@@ -53,7 +53,7 @@ class MongoDataAdapter:
             event_id = ObjectId(id)
             result = self.Event_template_collection.find_one({"_id": event_id})
             if result is not None:
-                eventTemplate = EventTemplate(ID=id, keyword=result['KeyWord'], mediaType=result['MediaType'],
+                eventTemplate = EventTemplate(ID=id, keyword=result['Keyword'], mediaType=result['MediaType'],
                                               since=result['Since'], until=result['Until'], language=result['Language'],
                                               repost=result['Repost'], latitude=result['Latitude'],
                                               longitude=result['Longitude'], radius=result['Radius'],
@@ -69,7 +69,7 @@ class MongoDataAdapter:
     def createEventTemplate(self, eventTemplate):
         try:
             data_to_insert = {
-                "KeyWord": eventTemplate.keyword,
+                "Keyword": eventTemplate.keyword,
                 "UserID": eventTemplate.userID,
                 "MediaType": eventTemplate.mediaType,
                 "Since": eventTemplate.since,
@@ -99,7 +99,7 @@ class MongoDataAdapter:
 
             data_to_update = {
                 "$set": {
-                    "KeyWord": eventTemplate.keyword,
+                    "Keyword": eventTemplate.keyword,
                     "UserID": eventTemplate.userID,
                     "MediaType": eventTemplate.mediaType,
                     "Since": eventTemplate.since,

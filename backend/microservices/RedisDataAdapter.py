@@ -1,5 +1,5 @@
 import redis
-from models.TweetInRedis import TweetInRedis
+from backend.models.TweetInRedis import TweetInRedis
 
 class RedisDataAdapter:
     def __init__(self, host, port, password, ssl=False, decode_responses=False):
@@ -17,11 +17,14 @@ class RedisDataAdapter:
     # Tweet CRUD
     def readTweet(self, tweetID):
         try:
-            key = "tweet:" + tweetID
-            if self.redis_client.exists(key):
-                result = self.redis_client.hgetall(key)
-                decoded_result = {key.decode('utf-8'): value.decode('utf-8') for key, value in result.items()}
-                tweetInRedis = TweetInRedis(ID=decoded_result['id'], content=decoded_result['content'], userID=decoded_result['user_id'])
+            redis_key = "doc:tweets:" + tweetID
+            if self.redis_client.exists(redis_key):
+                result = self.redis_client.hgetall(redis_key)
+                decoded_result = {}
+                for key, value in result.items():
+                    if key.decode('utf-8') != "content_vector":
+                        decoded_result[key.decode('utf-8')] = value.decode('utf-8')
+                tweetInRedis = TweetInRedis(ID=redis_key, tweetID=decoded_result["tweet_id"], content=decoded_result['content'], userID=decoded_result['user_id'])
                 return tweetInRedis
             else:
                 print('None')
@@ -33,7 +36,7 @@ class RedisDataAdapter:
     def createTweet(self, TweetInRedis):
         try:
             tweet_id = TweetInRedis.ID
-            key = 'tweet:' + tweet_id
+            key = 'doc:tweets:' + tweet_id
             if not self.redis_client.exists(key):
                 self.redis_client.hset(key, 'id', tweet_id)
                 self.redis_client.hset(key, 'content', TweetInRedis.content)
@@ -96,13 +99,29 @@ class RedisDataAdapter:
             print("DB error:", e)
             return -1
 
-    def createQueryTweet(self, QueryID, TweetID):
+    def createQueryTweet(self, QueryID, TweetIDs):
         try:
             key = "query:" + QueryID
-            self.redis_client.sadd(key, TweetID)
+            for id in TweetIDs:
+                self.redis_client.sadd(key, id)
             return 0
         except Exception as e:
             print("DB error:", e)
             return -1
 
+    def updateQueryTweet(self, QueryID, newTweetIDs):
+        try:
+            key = "query:" + QueryID
+
+            # Remove the existing set of TweetIDs for this QueryID
+            self.redis_client.delete(key)
+
+            # Add the new set of TweetIDs
+            for tweet_id in newTweetIDs:
+                self.redis_client.sadd(key, tweet_id)
+
+            return 0  # Indicate success
+        except Exception as e:
+            print("DB error:", e)
+            return -1  # Indicate failure
 

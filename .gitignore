@@ -25,3 +25,4 @@ twitter_scrapper1.ipynb
 protobufs/
 backend/v1/
 frontend/desktop_v1/
+**/*_render*.html

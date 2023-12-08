@@ -11,10 +11,10 @@ from PySide6.QtWidgets import *
 # https://twitter.com/search-advanced
 # IMPORT / GUI AND MODULES AND widgets
 # ///////////////////////////////////////////////////////////////
-from modules.ui_main import Ui_MainWindow
-from modules.ui_functions import UIFunctions 
-from modules.app_settings import Settings
-from widgets import *
+from frontend.desktop.modules.ui_main import Ui_MainWindow
+from frontend.desktop.modules.ui_functions import UIFunctions 
+from frontend.desktop.modules.app_settings import Settings
+from frontend.desktop.widgets import *
 os.environ["QT_FONT_DPI"] = "96" # FIX Problem for High DPI and Scale above 100%
 
 class MainWindow(QMainWindow):
@@ -27,6 +27,12 @@ class MainWindow(QMainWindow):
         self.queryStub = QueryServiceStub(channel)
         self.tweetStub = TweetServiceStub(channel)
 
+        self.url = "http://localhost:8000/"
+        self.headers = {
+            'Accept': 'application/json',
+            'Content-Type': 'application/json'
+        }
+        self.queries_dict = {}
         QMainWindow.__init__(self)
 
         # SET AS GLOBAL self.ui
@@ -208,7 +214,7 @@ class MainWindow(QMainWindow):
         idx = table.selectionModel().selectedIndexes()[0]
         row_number = idx.row()
         column_number = idx.column()
-        event_id = int(self.ui.management.table_event.item(row_number, 0).text())
+        event_id = self.ui.management.table_event.item(row_number, 0).text()
             # print(row_number, column_number)
         # if column_number == 0:
 
@@ -227,7 +233,7 @@ class MainWindow(QMainWindow):
         if btnName == "btn_add_event":
             btnID = -1
         else:
-            btnID = int(btnName.split('_')[-1])
+            btnID = btnName.split('_')[-1]
         UIFunctions.toggleLeftBox_withID(self, btnID, isEvent=True)
 
     def connect_query_btnClick(self):
@@ -243,13 +249,13 @@ class MainWindow(QMainWindow):
         if btnName == "btn_new_query":
             btnID = -1
         else:
-            btnID = int(btnName.split('_')[-1])
+            btnID = btnName.split('_')[-1]
         UIFunctions.toggleLeftBox_withID(self, btnID, isEvent=False)
         
     def search_btnClick(self):
         btn = self.sender()
         btnName = btn.objectName()
-        queryID = int(btnName.split('_')[-1])
+        queryID = btnName.split('_')[-1]
         tweet_query = self.ui.deck.scrollArea.findChild(QWidget, f"tweet_query_{queryID}")
         text = tweet_query.text_search.text()
         UIFunctions.search(self, text, queryID)

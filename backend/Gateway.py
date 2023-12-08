@@ -6,7 +6,10 @@ import requests
 
 class APIGateway(SimpleHTTPRequestHandler):
     registry_url = "http://localhost:8003"
+    url_redirect = {
+        "login": "templates/home.html",
     
+    }
     def get_service_url(self, service_name):
         # Query the registry for the service URL
         try:
@@ -33,7 +36,7 @@ class APIGateway(SimpleHTTPRequestHandler):
         try:
             response = requests.request(self.command, service_url, data = body)
             response_body = response.content
-
+            # print("Response:", response_body)
             # Determine the desired response format from the client's Accept header
             accept_header = self.headers.get('Accept')
             if accept_header == 'application/json':
@@ -41,15 +44,21 @@ class APIGateway(SimpleHTTPRequestHandler):
                 self.send_response(200)
                 self.send_header('Content-type', 'application/json')
                 self.end_headers()
-                json_response = json.dumps({'response': response_body.decode()})
-                self.wfile.write(json_response.encode())
+                # json_response = json.dumps(response_body.decode())
+                # self.wfile.write(json_response.encode())
+                self.wfile.write(response_body)
             elif accept_header == 'text/html':
                 # Convert response to HTML
+                if self.path in self.url_redirects:
+                    template = self.url_redirect[self.path]
                 self.send_response(200)
                 self.send_header('Content-type', 'text/html')
                 self.end_headers()
-                render_response = requests.request("GET", service_url)
-                html_response = render_response.text
+                response = requests.request("GET", service_url)
+                body = json.loads(requests.text)
+
+                
+                # html_response = response.text
                 html_response = html.escape(response_body.decode())
                 self.wfile.write(f"<html><body>{html_response}</body></html>".encode())
             else:
@@ -69,18 +78,24 @@ class APIGateway(SimpleHTTPRequestHandler):
         service_url = self.get_service_url(self.path)
         if service_url:
             self.forward_request(service_url)
-        # if path.startswith("/service1"):
-        #     service_url = self.get_service_url("service1")
-        #     if service_url:
-        #         self.forward_request(service_url, path)
-        #     else:
-        #         self.send_error(500, "Service URL not found for service1")
-        # elif path.startswith("/service2"):
-        #     service_url = self.get_service_url("service2")
-        #     if service_url:
-        #         self.forward_request(service_url, path)
-        #     else:
-        #         self.send_error(500, "Service URL not found for service2")
+        else:
+            self.send_error(404, "Service not found")
+
+    def do_POST(self):
+        # Example routing based on path
+        # path = self.path
+        service_url = self.get_service_url(self.path)
+        if service_url:
+            self.forward_request(service_url)
+        else:
+            self.send_error(404, "Service not found")
+
+    def do_PUT(self):
+        # Example routing based on path
+        # path = self.path
+        service_url = self.get_service_url(self.path)
+        if service_url:
+            self.forward_request(service_url)
         else:
             self.send_error(404, "Service not found")
 

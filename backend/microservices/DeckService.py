@@ -1,12 +1,14 @@
 import json
 import http.server
 import socketserver
-from MongoDataAdapter import MongoDataAdapter
-from RedisDataAdapter import RedisDataAdapter
-from models.ClientUser import ClientUser
-from models.EventTemplate import EventTemplate
-from models.Query import Query
-from models.Tweet import Tweet
+import requests
+
+from backend.microservices.MongoDataAdapter import MongoDataAdapter
+from backend.microservices.RedisDataAdapter import RedisDataAdapter
+from backend.models.ClientUser import ClientUser
+from backend.models.EventTemplate import EventTemplate
+from backend.models.Query import Query
+from backend.models.TweetInRedis import TweetInRedis
 from datetime import datetime
 
 '''
@@ -23,15 +25,15 @@ get tweet by query GET /queries/{queryId}/tweets
 
 
 class DeckService(http.server.SimpleHTTPRequestHandler):
-    def __init__(self, *args, **kwargs):
-        url = "mongodb+srv://xutianyi:nqw9TdLszitw28UR@cluster0.al3scwp.mongodb.net/"
-        self.mongoDataAdapter = MongoDataAdapter(url)
-        self.redisDataAdapter = RedisDataAdapter(
-            host='redis-12311.c11.us-east-1-2.ec2.cloud.redislabs.com',
-            port=12311,
-            password='ff7O5S04jRHY1JXUYLzdbwsRGt1YiYc8'
-        )
-        super().__init__(*args, **kwargs)
+    url = "mongodb+srv://xutianyi:nqw9TdLszitw28UR@cluster0.al3scwp.mongodb.net/"
+    mongoDataAdapter = MongoDataAdapter(url)
+    redisDataAdapter = RedisDataAdapter(
+        host='redis-12311.c11.us-east-1-2.ec2.cloud.redislabs.com',
+        port=12311,
+        password='ff7O5S04jRHY1JXUYLzdbwsRGt1YiYc8'
+    )
+    # def __init__(self, *args, **kwargs):
+    #         super().__init__(*args, **kwargs)
 
     def do_GET(self):
         path_parts = self.path.split('/')
@@ -39,21 +41,23 @@ class DeckService(http.server.SimpleHTTPRequestHandler):
         if len(path_parts) < 2:
             self.send_error(404, "Not Found")
             return
-        if path_parts[1] == "client_users" and len(path_parts) == 4 and path_parts[3] == "events":
-            self.handle_get_events_by_client_user(path_parts[2])
-        elif path_parts[1] == "events" and len(path_parts) == 4 and path_parts[3] == "queries":
-            self.handle_get_queries_by_event(path_parts[2])
-        elif path_parts[1] == "queries" and len(path_parts) == 4 and path_parts[3] == "tweets":
-            self.handle_get_tweets_by_query(path_parts[2])
+        if self.path == "/user_events":
+        # if path_parts[1] == "client_users" and len(path_parts) == 4 and path_parts[3] == "events":
+            self.handle_get_events_by_client_user()
+        elif self.path == "/event_queries":
+        # elif path_parts[1] == "events" and len(path_parts) == 4 and path_parts[3] == "queries":
+            self.handle_get_queries_by_event()
+        elif self.path == "/query_tweets":
+        # elif path_parts[1] == "queries" and len(path_parts) == 4 and path_parts[3] == "tweets":
+            self.handle_get_tweets_by_query()
+        elif self.path == "/events":
+            self.handle_get_event_by_id()
+        elif self.path == "/queries":
+            self.handle_get_query_by_id()
         else:
             self.send_error(404, "Not Found")
 
     def do_POST(self):
-        path_parts = self.path.split('/')
-
-        if len(path_parts) < 2:
-            self.send_error(404, "Not Found")
-            return
 
         if self.path == "/login":
             self.handle_login()
@@ -67,19 +71,47 @@ class DeckService(http.server.SimpleHTTPRequestHandler):
             self.send_error(404, "Not Found")
 
     def do_PUT(self):
-        path_parts = self.path.split('/')
-        if len(path_parts) < 3:
-            self.send_error(404, "Not Found")
-            return
-
-        if path_parts[1] == "events" and len(path_parts) == 3:
-            self.handle_update_event(path_parts[2])
-        elif path_parts[1] == "queries" and len(path_parts) == 3:
-            self.handle_update_query(path_parts[2])
+        if self.path == "/events":
+        # if path_parts[1] == "events" and len(path_parts) == 3:
+            self.handle_update_event()
+        elif self.path == "/queries":
+        # elif path_parts[1] == "queries" and len(path_parts) == 3:
+            self.handle_update_query()
         else:
             self.send_error(404, "Not Found")
 
-    def handle_get_events_by_client_user(self, path):
+################################################################################################    
+    def handle_get_event_by_id(self):
+        content_length = int(self.headers['Content-Length'])
+        request_body = self.rfile.read(content_length)
+        data = json.loads(request_body)
+        event = self.mongoDataAdapter.readEventTemplate(data.get('ID'))
+        json_data = json.dumps(event.to_dict())
+        self.send_response(201)
+        self.send_header('Content-type', 'application/json')
+        self.end_headers()
+        self.wfile.write(json_data.encode('utf-8'))
+
+    def handle_get_query_by_id(self):
+        content_length = int(self.headers['Content-Length'])
+        request_body = self.rfile.read(content_length)
+        data = json.loads(request_body)
+        event = self.mongoDataAdapter.readEventTemplate(data.get('eventID'))
+        query = self.mongoDataAdapter.readQuery(data.get('queryID'))
+        query_content = json.loads(query.content)
+        # merge 
+        # for key, value in query_content.items():
+        #     event[key] = value
+        event.update_from_dict(query_content)
+
+        json_data = json.dumps(event.to_dict())
+        self.send_response(201)
+        self.send_header('Content-type', 'application/json')
+        self.end_headers()
+        self.wfile.write(json_data.encode('utf-8'))
+
+
+    def handle_get_events_by_client_user(self):
         content_length = int(self.headers['Content-Length'])
         request_body = self.rfile.read(content_length)
         data = json.loads(request_body)
@@ -102,15 +134,17 @@ class DeckService(http.server.SimpleHTTPRequestHandler):
         else:
             self.send_error(404, 'Record not found')
 
-    def handle_get_queries_by_event(self, path):
+    def handle_get_queries_by_event(self):
         content_length = int(self.headers['Content-Length'])
         request_body = self.rfile.read(content_length)
         data = json.loads(request_body)
 
         ids = self.redisDataAdapter.readEventQuery(data.get('ID'))
-        print(ids)
+        # print(ids)
         queries = []
         for id in ids:
+            # if id == -1:
+            #     continue
             query = self.mongoDataAdapter.readQuery(id)
             if query == -1:
                 self.send_error(500, "Internal Server Error")
@@ -126,8 +160,30 @@ class DeckService(http.server.SimpleHTTPRequestHandler):
         else:
             self.send_error(404, 'Record not found')
 
-    def handle_get_tweets_by_query(self, path):
-        return 0
+    def handle_get_tweets_by_query(self):
+        content_length = int(self.headers['Content-Length'])
+        request_body = self.rfile.read(content_length)
+        data = json.loads(request_body)
+
+        ids = self.redisDataAdapter.readQueryTweet(data.get('ID'))   
+        tweets = []     
+        for id in ids:
+            tweet = self.redisDataAdapter.readTweet(id)
+            if tweet == -1:
+                self.send_error(500, "Internal Server Error")
+            elif tweet is not None:
+                tweets.append(tweet)
+        tweets_dict = [tweet.to_dict() for tweet in tweets]
+        if len(tweets_dict) > 0:
+            json_data = json.dumps(tweets_dict)
+            self.send_response(201)
+            self.send_header('Content-type', 'application/json')
+            self.end_headers()
+            self.wfile.write(json_data.encode('utf-8'))
+        else:
+            self.send_error(404, 'Record not found')
+            
+        # return 0
 
     def handle_login(self):
         content_length = int(self.headers['Content-Length'])
@@ -169,7 +225,7 @@ class DeckService(http.server.SimpleHTTPRequestHandler):
         request_body = self.rfile.read(content_length)
         data = json.loads(request_body)
         event_template = EventTemplate(
-            keyword=data.get('KeyWord'),
+            keyword=data.get('Keyword'),
             userID=data.get('UserID'),
             mediaType=data.get('MediaType'),
             since=datetime.fromisoformat(data.get('Since')),
@@ -185,11 +241,11 @@ class DeckService(http.server.SimpleHTTPRequestHandler):
         )
 
         result = self.mongoDataAdapter.createEventTemplate(event_template)
-
         if result == -1:
             self.send_error(500, "Internal Server Error")
         else:
             self.redisDataAdapter.createUserEvent(data.get('UserID'), result)
+
             self.send_response(201)
             self.send_header('Content-type', 'application/json')
             self.end_headers()
@@ -214,13 +270,13 @@ class DeckService(http.server.SimpleHTTPRequestHandler):
             response = {'ID': result}
             self.wfile.write(json.dumps(response).encode('utf-8'))
 
-    def handle_update_event(self, path):
+    def handle_update_event(self):
         content_length = int(self.headers['Content-Length'])
         request_body = self.rfile.read(content_length)
         data = json.loads(request_body)
         event_template = EventTemplate(
             ID=data.get('ID'),
-            keyword=data.get('KeyWord'),
+            keyword=data.get('Keyword'),
             userID=data.get('UserID'),
             mediaType=data.get('MediaType'),
             since=datetime.fromisoformat(data.get('Since')),
@@ -246,14 +302,15 @@ class DeckService(http.server.SimpleHTTPRequestHandler):
             self.send_header('Content-type', 'application/json')
             self.end_headers()
 
-    def handle_update_query(self, path):
+    def handle_update_query(self):
         content_length = int(self.headers['Content-Length'])
         request_body = self.rfile.read(content_length)
         data = json.loads(request_body)
         query = Query(ID=data.get('ID'), content=data.get('QueryContent'))
 
         result = self.mongoDataAdapter.updateQuery(query)
-
+        if "Tweets" in data:
+            self.redisDataAdapter.updateQueryTweet(query.ID, data.get("Tweets"))
         if result == -1:
             self.send_error(500, "Internal Server Error")
         elif result == 0:
@@ -265,14 +322,21 @@ class DeckService(http.server.SimpleHTTPRequestHandler):
 
 
 def register():
-    print('register')
+    # print('register')
+    services = ["/login", "/user_events", "/event_queries", "/query_tweets", "/events", "/queries"]
+    # for service in services:
+    payload = {
+        "name": services,
+        "url" : "http://localhost:8011"
+    }
+    requests.request("POST", url="http://localhost:8003/register", data=json.dumps(payload))
 
 
-def run(server_class=socketserver.TCPServer, handler_class=DeckService, port=5050):
+def run(server_class=socketserver.TCPServer, handler_class=DeckService, port=8011):
         server_address = ('', port)
         httpd = server_class(server_address, handler_class)
         register()
-        print(f"Starting ProductInfo service at port {port}")
+        print(f"Deck service running on port {port}")
         httpd.serve_forever()
 
 

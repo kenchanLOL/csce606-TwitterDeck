@@ -42,11 +42,11 @@ class RegistryHandler(http.server.SimpleHTTPRequestHandler):
             self.send_error(HTTPStatus.NOT_FOUND, "Page not found")
 
     def do_POST(self):
-        print(self.path)
         if self.path == '/register':
             try:
                 data = self.parse_json_body()
-                self.registry_dict[data['name']] = data['url']
+                for name in data['name']:
+                    self.registry_dict[name] = data['url']
                 self.send_response(HTTPStatus.CREATED)
                 self.end_headers()
                 self.wfile.write(json.dumps({"status":"Success"}).encode("utf-8"))

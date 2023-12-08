@@ -1,14 +1,23 @@
 # MAIN FILE
 # ///////////////////////////////////////////////////////////////
 # from main import *
+import requests
+import json
+
 from PySide6.QtCore import *
 from PySide6.QtGui import *
 from PySide6.QtWidgets import *
-from modules.app_settings import Settings
-from widgets import CustomGrip
-from modules.ui_dialog import Ui_Dialog
-from backend import backend_function
-from backend.Event import Event
+from frontend.desktop.modules.app_settings import Settings
+from frontend.desktop.widgets import CustomGrip
+from frontend.desktop.modules.ui_dialog import Ui_Dialog
+from backend.v1 import backend_function
+from backend.v1.Event import Event
+
+from backend.models.ClientUser import ClientUser
+from backend.models.EventTemplate import EventTemplate
+from backend.models.Query import Query
+from backend.models.TweetInRedis import TweetInRedis
+
 from datetime import datetime
 class UIFunctions():
     # MAXIMIZE/RESTORE
@@ -334,9 +343,27 @@ class UIFunctions():
     #  LOGIN AND SETUP
     # ///////////////////////////////////////////////////////////////
     def login(self):
+
         name  = self.ui.text_username.text()
         password = self.ui.text_password.text()
-        success, user = backend_function.Login(name, password, self.userStub)
+
+        # success, user = backend_function.Login(name, password, self.userStub)
+        url = self.url + "login"
+        payload = json.dumps({
+        "UserName": name,
+        "UserPassword": password
+        })
+        response = requests.request("POST", url, headers=self.headers, data=payload)
+        try:
+            response = json.loads(response.text)
+            user = ClientUser(
+                ID = response["ID"],
+                name = response["name"],
+                password = response["password"],
+            )
+            success = True
+        except Exception:
+            success = False
         if not success:
             popUp = dialog("Login Failed")
             popUp.exec()
@@ -362,19 +389,116 @@ class UIFunctions():
         # TODO: jump to management page
 
     def setup_management(self):
-        events = backend_function.GetEventByUser(self.user.ID, self.eventStub)
+        # events = backend_function.GetEventByUser(self.user.ID, self.eventStub)
+        url = self.url + "user_events"
+        payload = json.dumps({
+            "ID": self.user.ID,
+        })
+        response = requests.request("GET", url, headers=self.headers, data=payload)
+        events = []
+        try:
+            # print(response.text)
+            response = json.loads(response.text)
+            for i in range(len(response)):
+                event = response[i]
+                events.append(EventTemplate(
+                    ID=event.get('ID', -1),
+                    keyword=event.get('Keyword', ""),
+                    userID=event.get('UserID'),
+                    mediaType=event.get('MediaType'),
+                    since=datetime.fromisoformat(event.get('Since')),
+                    until=datetime.fromisoformat(event.get('Until')),
+                    language=event.get('Language'),
+                    repost=event.get('Repost'),
+                    latitude=event.get('Latitude'),
+                    longitude=event.get('Longitude'),
+                    radius=event.get('Radius'),
+                    radiusUnit=event.get('RadiusUnit'),
+                    minRetweet=event.get('MinRetweet'),
+                    minFac=event.get('MinFac')
+                ))
+        except Exception:
+            print("err")
         self.ui.management.setup_events(events)
         self.connect_event_btnClick()
         # def openCloseLeftBox():
         #     UIFunctions.toggleLeftBox(self, True)
 
     def setup_deck(self, event_id):
-        self.current_event = backend_function.LoadEvent(event_id, self.eventStub)
-        Queries = backend_function.GetQueryByEvent(event_id, self.queryStub)
-        tweets = {}
-        for query in Queries:
-            tweets[query.ID] = backend_function.GetTweetByQuery(query.ID, self.tweetStub)
-        self.ui.deck.setupQuery(tweets)
+        # self.current_event = backend_function.LoadEvent(event_id, self.eventStub)
+        url = self.url+"events"
+        payload = json.dumps({
+            "ID": event_id
+        })
+        response = requests.request("GET", url, headers=self.headers, data=payload)
+        try:
+            # print(response.text)
+            event = json.loads(response.text)
+            # for i in range(len(response)):
+                # event = response[i]
+            self.current_event = EventTemplate(
+                ID=event.get('ID', -1),
+                keyword=event.get('Keyword', ""),
+                userID=event.get('UserID'),
+                mediaType=event.get('MediaType'),
+                since=datetime.fromisoformat(event.get('Since')),
+                until=datetime.fromisoformat(event.get('Until')),
+                language=event.get('Language'),
+                repost=event.get('Repost'),
+                latitude=event.get('Latitude'),
+                longitude=event.get('Longitude'),
+                radius=event.get('Radius'),
+                radiusUnit=event.get('RadiusUnit'),
+                minRetweet=event.get('MinRetweet'),
+                minFac=event.get('MinFac')
+            )
+        except Exception:
+            print("err")
+
+        # Queries = backend_function.GetQueryByEvent(event_id, self.queryStub)
+        url = self.url+"event_queries"
+        payload = json.dumps({
+            "ID": event_id,
+            
+        })
+        # 656d73f7ac59c1bc5fdd1db3
+        # 656d73b1e085c924081dad9b
+
+        # 9f522a08daaf44c189570c1b4569e247
+
+        # 91c6cb87144246608fd3fe78ada4c9e9
+
+        # bd85f33d6a004b54ae08414409b63e80
+
+        # a4731a0a967440fcab16b2fcd0fbc995
+
+        # 02ae4929185a4ca3ab5c029b6dfcddd1
+        response = requests.request("GET", url, headers=self.headers, data=payload)
+        queries = json.loads(response.text)
+
+        self.queries_dict = {}
+        for query in queries:
+            query = Query(
+                ID = query.get('ID'),
+                content =  query.get("QueryContent"),
+                eventID =  query.get("EventID")
+            )
+            self.queries_dict[query.ID] = [query]
+
+            # tweets[query.ID] = backend_function.GetTweetByQuery(query.ID, self.tweetStub)
+            url = self.url+"query_tweets"
+            payload = json.dumps({
+                "ID": query.ID
+            })
+            response = requests.request("GET", url, headers=self.headers, data=payload)
+            tweets = json.loads(response.text)
+            for tweet in tweets:
+                self.queries_dict[query.ID].append(
+                    TweetInRedis(ID = tweet.get('ID'), tweetID=tweet.get("tweetID"), content = tweet.get('content'), userID = tweet.get('userID'))
+                )
+
+
+        self.ui.deck.setupQuery(self.queries_dict)
         self.connect_query_btnClick()
         UIFunctions.resetStyle(self, "btn_deck")
         self.ui.btn_deck.setStyleSheet(UIFunctions.selectMenu(self.ui.btn_deck.styleSheet()))
@@ -386,7 +510,36 @@ class UIFunctions():
         if isEvent :
             # TODO: display event attribute in toggle bar
             if ID != -1:
-                self.current_event = backend_function.LoadEvent(ID, self.eventStub)
+                # self.current_event = backend_function.LoadEvent(ID, self.eventStub)
+                url = self.url+"events"
+                payload = json.dumps({
+                    "ID": ID
+                })
+                response = requests.request("GET", url, headers=self.headers, data=payload)
+                try:
+                    # print(response.text)
+                    event = json.loads(response.text)
+                    # for i in range(len(response)):
+                        # event = response[i]
+                    self.current_event = EventTemplate(
+                        ID=event.get('ID', -1),
+                        keyword=event.get('Keyword', ""),
+                        userID=event.get('UserID'),
+                        mediaType=event.get('MediaType'),
+                        since=datetime.fromisoformat(event.get('Since')),
+                        until=datetime.fromisoformat(event.get('Until')),
+                        language=event.get('Language'),
+                        repost=event.get('Repost'),
+                        latitude=event.get('Latitude'),
+                        longitude=event.get('Longitude'),
+                        radius=event.get('Radius'),
+                        radiusUnit=event.get('RadiusUnit'),
+                        minRetweet=event.get('MinRetweet'),
+                        minFac=event.get('MinFac')
+                    )
+                except Exception:
+                    print("err")
+
                 self.ui.extraLabel.setText("Event " + str(self.current_event.ID))
                 # self.ui.extraLabel.setText("Event " + str(eventID))
             else:
@@ -397,15 +550,72 @@ class UIFunctions():
 
         else: # is Query
             # TODO: display event attribute in toggle bar
-            # self.current_query = ID
+
             if ID != -1:
-                self.current_query = backend_function.LoadQuery(ID, self.queryStub)
+                # self.current_query = backend_function.LoadQuery(ID, self.queryStub)
+                url = self.url+"queries"
+                payload = json.dumps({
+                    "eventID": self.current_event.ID,
+                    "queryID": ID,
+                })
+                response = requests.request("GET", url, headers=self.headers, data=payload)
+                try:
+                    # print(response.text)
+                    event = json.loads(response.text)
+                    # for i in range(len(response)):
+                        # event = response[i]
+                    self.current_query = EventTemplate(
+                        ID=event.get('ID', -1),
+                        keyword=event.get('Keyword', ""),
+                        userID=event.get('UserID'),
+                        mediaType=event.get('MediaType'),
+                        since=datetime.fromisoformat(event.get('Since')),
+                        until=datetime.fromisoformat(event.get('Until')),
+                        language=event.get('Language'),
+                        repost=event.get('Repost'),
+                        latitude=event.get('Latitude'),
+                        longitude=event.get('Longitude'),
+                        radius=event.get('Radius'),
+                        radiusUnit=event.get('RadiusUnit'),
+                        minRetweet=event.get('MinRetweet'),
+                        minFac=event.get('MinFac')
+                    )
+                except Exception:
+                    print("err")
+
                 self.current_query.ID = ID
                 self.ui.extraLabel.setText("Query " + str(self.current_query.ID))
             else:
-                self.current_query = Event()
+                # self.current_query = Event()
+                url = self.url+"events"
+                payload = json.dumps({
+                    "ID": self.current_event.ID
+                })
+                response = requests.request("GET", url, headers=self.headers, data=payload)
+                try:
+                    # print(response.text)
+                    event = json.loads(response.text)
+                    # for i in range(len(response)):
+                        # event = response[i]
+                    self.current_query = EventTemplate(
+                        ID=event.get('ID', -1),
+                        keyword=event.get('Keyword', ""),
+                        userID=event.get('UserID'),
+                        mediaType=event.get('MediaType'),
+                        since=datetime.fromisoformat(event.get('Since')),
+                        until=datetime.fromisoformat(event.get('Until')),
+                        language=event.get('Language'),
+                        repost=event.get('Repost'),
+                        latitude=event.get('Latitude'),
+                        longitude=event.get('Longitude'),
+                        radius=event.get('Radius'),
+                        radiusUnit=event.get('RadiusUnit'),
+                        minRetweet=event.get('MinRetweet'),
+                        minFac=event.get('MinFac')
+                    )
+                except Exception:
+                    print("err")
                 self.ui.extraLabel.setText("New Query")
-                # TODO: add new widget to scroll area
             UIFunctions.setToggleLeftInfo(self, self.current_query)
             self.ui.btn_submit.clicked.connect(lambda: UIFunctions.updateQuery(self))
         
@@ -414,10 +624,37 @@ class UIFunctions():
     def updateEvent(self):
         print("Update Event")
         config = UIFunctions.readToggleLeftInfo(self)
-        if self.current_event.ID != -1:
-            backend_function.UpdateEvent(self.current_event.ID, config, self.eventStub)
+        url = self.url+"events"
+        event_template = EventTemplate()
+        event_template.update_from_dict(config)
+        event_template.userID = self.user.ID
+        if self.current_event.ID is not None:
+            # backend_function.UpdateEvent(self.current_event.ID, config, self.eventStub)
+            event_template.ID = self.current_event.ID
+            payload = json.dumps(event_template.to_dict())
+            repsonse = requests.request("PUT", url, data=payload) 
+            # search = self.url+"nlp/sementic_search"
         else:
-            backend_function.CreateEvent(config)
+            # backend_function.CreateEvent(config)
+            payload = json.dumps(event_template.to_dict())
+            repsonse = requests.request("POST", url, data=payload) 
+            event_template.ID = json.loads(repsonse.text).get("ID")
+            url = self.url+"queries"
+            payload = json.dumps({
+                "QueryContent": str(event_template.to_dict()),
+                "EventID": event_template.ID
+            })
+
+            repsonse = requests.request("POST", url, data=payload) 
+            queryID = json.loads(repsonse.text).get("ID")
+            query = Query(
+                ID = queryID,
+                content = str(event_template.to_dict()),
+                eventID = event_template.ID
+            )
+            self.queries_dict[query.ID] = [query]
+
+            # UIFunctions.search(self, event_template.keyword, queryID, rendering=True)
         UIFunctions.toggleLeftBox(self, True)
         UIFunctions.setup_management(self)
 
@@ -425,10 +662,22 @@ class UIFunctions():
     def updateQuery(self):
         print("Update Query")
         config = UIFunctions.readToggleLeftInfo(self)
+        url = self.url+"queries"
         if self.current_query.ID != -1:
-            backend_function.UpdateQuery(self.current_query.ID, config, self.queryStub)
+            # backend_function.UpdateQuery(self.current_query.ID, config, self.queryStub)
+            payload = json.dumps({
+                "ID": self.current_query.ID,
+                "QueryContent": str(config),
+            })
+            repsonse = requests.request("PUT", url, data=payload) 
         else:
-            backend_function.CreateQuery(config)
+            # backend_function.CreateQuery(config)
+            payload = json.dumps({
+                "QueryContent": str(config),
+            })
+            repsonse = requests.request("POST", url, data=payload) 
+            # queryID = json.dumps(repsonse.text).get("ID")
+
         UIFunctions.toggleLeftBox(self, True)
         UIFunctions.setup_deck(self, self.current_event.ID)
     
@@ -436,9 +685,9 @@ class UIFunctions():
         config = {}
         # Content group
         config["keyword"] = self.ui.text_keywords.text()
-        config["media_type"] = self.ui.box_media_type.currentText()
-        config["time_since"] = self.ui.time_since.dateTime().toString("yyyy-MM-dd hh:mm:ss")
-        config["time_until"] = self.ui.time_until.dateTime().toString("yyyy-MM-dd hh:mm:ss")
+        config["mediaType"] = self.ui.box_media_type.currentText()
+        config["since"] = self.ui.time_since.dateTime().toString("yyyy-MM-ddThh:mm:ss")
+        config["until"] = self.ui.time_until.dateTime().toString("yyyy-MM-ddThh:mm:ss")
         config["language"] = self.ui.box_lang.currentText()
         config["repost"] = self.ui.btn_repost.isChecked()
 
@@ -446,11 +695,11 @@ class UIFunctions():
         config["latitude"] = self.ui.text_latitude.text()
         config["longitude"] = self.ui.text_longitude.text()
         config["radius"] = self.ui.text_radius.text()
-        config["radius_unit"] = self.ui.box_radius_unit.currentText()
+        config["radiusUnit"] = self.ui.box_radius_unit.currentText()
 
         # Engagement group
-        config["min_retweet"] = self.ui.box_min_retweet.value()
-        config["min_fav"] = self.ui.box_min_fav.value()
+        config["minRetweet"] = self.ui.box_min_retweet.value()
+        config["minFac"] = self.ui.box_min_fav.value()
         # print(config)
         return config
     
@@ -459,8 +708,10 @@ class UIFunctions():
         self.ui.box_media_type.setCurrentText(event.mediaType)
         # event.since = datetime.strftime(event.since, "%Y-%m-%d %H:%M:%S")
         # event.until = datetime.strftime(event.until, "%Y-%m-%d %H:%M:%S")
-        self.ui.time_since.setDateTime(QDateTime.fromString(event.since, "yyyy-MM-dd hh:mm:ss"))
-        self.ui.time_until.setDateTime(QDateTime.fromString(event.until, "yyyy-MM-dd hh:mm:ss"))
+        if event.since:
+            self.ui.time_since.setDateTime(QDateTime.fromString(event.since.isoformat(), "yyyy-MM-ddThh:mm:ss"))
+        if event.until:
+            self.ui.time_until.setDateTime(QDateTime.fromString(event.until.isoformat(), "yyyy-MM-ddThh:mm:ss"))
         self.ui.box_lang.setCurrentText(event.language)
         self.ui.btn_repost.setChecked(event.repost)
 
@@ -474,10 +725,39 @@ class UIFunctions():
 
 
 
-    def search(self, text, queryID):
+    def search(self, text, queryID, rendering=True):
         print(f"searching {text} in queryID {queryID}")
-        # event = Event()
-        # backend_function.searchTweet(self, text, queryID)
+        url = self.url+"nlp/sementic_search"
+        payload = json.dumps({
+            "query" : text
+        })
+        response = requests.request("GET", url, headers=self.headers, data=payload)
+        tweets = json.loads(response.text)
+        cur_query = self.queries_dict[queryID][0]
+        content = json.loads(cur_query.content)
+        content["keyword"] = text
+        cur_query.content = json.dumps(content)
+        if len(tweets) > 0:
+            self.queries_dict[queryID] = [cur_query]
+            for tweet in tweets:
+                self.queries_dict[queryID].append(
+                    TweetInRedis(ID = tweet.get('ID'), tweetID=tweet.get("tweetID"), content = tweet.get('content'), userID = tweet.get('userID'))
+                )
+        if rendering:
+            self.ui.deck.setupQuery(self.queries_dict)
+            self.connect_query_btnClick()
+
+        url = self.url + "queries"
+        payload = json.dumps({
+            "ID": cur_query.ID,
+            "QueryContent": cur_query.content,
+            "Tweets": [tweet.get("ID").split(":")[-1] for tweet in tweets]
+        })
+        response = requests.request("PUT", url, headers=self.headers, data=payload)
+        if response.status_code != 200:
+            print("Fail to save query")
+        
+
 
     # END - GUI DEFINITIONS
 

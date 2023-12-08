@@ -5,6 +5,8 @@ from typing import Tuple
 from http import HTTPStatus
 import requests
 
+from backend.microservices.MongoDataAdapter import MongoDataAdapter
+from backend.microservices.RedisDataAdapter import RedisDataAdapter
 from http.server import SimpleHTTPRequestHandler, HTTPServer
 from langchain.embeddings import HuggingFaceInferenceAPIEmbeddings
 from langchain.vectorstores.redis import Redis
@@ -49,7 +51,13 @@ class NLPService(SimpleHTTPRequestHandler):
         _redis_password = 'ff7O5S04jRHY1JXUYLzdbwsRGt1YiYc8',
         embeddings = embeddings
     )
-
+    url = "mongodb+srv://xutianyi:nqw9TdLszitw28UR@cluster0.al3scwp.mongodb.net/"
+    mongoDataAdapter = MongoDataAdapter(url)
+    redisDataAdapter = RedisDataAdapter(
+        host='redis-12311.c11.us-east-1-2.ec2.cloud.redislabs.com',
+        port=12311,
+        password='ff7O5S04jRHY1JXUYLzdbwsRGt1YiYc8'
+    )
     def __init__(self, request: bytes, client_address: Tuple[str, int], server: socketserver.BaseServer):
         super().__init__(request, client_address, server)
     
@@ -67,38 +75,36 @@ class NLPService(SimpleHTTPRequestHandler):
             # sementic search on the query:
             # INPUT: query:str, K:int, 
             # OUTPUT: top K tweets id:List[int]
-            headers = {'content-type': 'application/json'}
-            topk = data.get('topk', 20)
+            topk = data.get('topk', 10)
             query = data.get('query', "")
             results = self.rds.similarity_search_with_score(query, k = topk)
             tweets = []
             for res in results:
-                tweet_id = res[0].metadata.get("tweet_id", None)
-                # TODO: get tweet from Deck Service
-                # payload = {
-                #     "id": res.metadata.get("tweet_id", None)
-                # }
-                # response = requests.request("GET", url = "", data=json.dumps(payload), headers = headers)
-                # tweets.append(response.body)
-            
-            payload = json.dumps({
-                "tweets":tweets
-            })
+                tweet_redis_id = res[0].metadata.get("id", None).split(":")[-1]
+                tweet = self.redisDataAdapter.readTweet(tweet_redis_id)
+                if tweet == -1:
+                    self.send_error(500, "Internal Server Error")
+                elif tweet is not None:
+                    tweets.append(tweet)
+            tweets_dict = [tweet.to_dict() for tweet in tweets]
 
-            # if content_type == "application/json":
-            self.send_response(HTTPStatus.OK)
-            self.send_header("Content-Type", "application/json")
-            self.end_headers()
-            self.wfile.write(payload)
+            if len(tweets_dict) > 0:
+                json_data = json.dumps(tweets_dict)
+                self.send_response(201)
+                self.send_header('Content-type', 'application/json')
+                self.end_headers()
+                self.wfile.write(json_data.encode('utf-8'))
+            else:
+                self.send_error(404, 'Record not found')
 
 # Set up and start the NLP service
 if __name__ == "__main__":
     port = 8010
     server_address = ('', port)
     httpd = HTTPServer(server_address, NLPService)
-    print(f"API Gateway running on port {port}...")
+    print(f"NLP service running on port {port}...")
     payload = {
-        "name": "/nlp/sementic_search",
+        "name": ["/nlp/sementic_search"],
         "url" : "http://localhost:8010"
     }
     requests.request("POST", url="http://localhost:8003/register", data=json.dumps(payload))

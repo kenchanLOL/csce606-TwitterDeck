@@ -2,6 +2,7 @@ from PySide6.QtCore import *
 from PySide6.QtGui import *
 from PySide6.QtWidgets import *
 from . tweets_query import TweetsQuery
+import json
 class TwitterDeck(QWidget):
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
@@ -40,9 +41,12 @@ class TwitterDeck(QWidget):
             child.deleteLater()
         for child in self.widget_scroll.findChildren(QPushButton):
             child.deleteLater()
-        for queryID, tweet_list in self.query_list.items():
+        for queryID, ls in self.query_list.items():
             # print(i)
-            tweet_query = TweetsQuery(self.stylesheet, tweet_list)
+            query = ls[0]
+            tweet_query = TweetsQuery(self.stylesheet, ls[1:])
+            keyword = json.loads(query.content)["keyword"]
+            tweet_query.text_search.setText(keyword)
             tweet_query.setObjectName(f"tweet_query_{queryID}")
             tweet_query.btn_edit.setObjectName(f"btn_edit_{queryID}")
             tweet_query.btn_search.setObjectName(f"btn_search_{queryID}")
